@@ -49,13 +49,19 @@ def test_clingen_parser(tmp_path):
     csv_text = "\n".join(
         [
             '"CLINGEN GENE DISEASE VALIDITY CURATIONS"',
-            '"GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP",'
-            '"CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE","GCEP"',
+            (
+                '"GENE SYMBOL","GENE ID (HGNC)","DISEASE LABEL","DISEASE ID (MONDO)","MOI","SOP",'
+                '"CLASSIFICATION","ONLINE REPORT","CLASSIFICATION DATE","GCEP"'
+            ),
             '"+++","+++"',
-            '"A","HGNC:1","cmt","M:1","AD","SOP10","Definitive","u","d",'
-            '"Charcot-Marie-Tooth Disease Gene Curation Expert Panel"',
-            '"B","HGNC:2","cmt","M:2","AD","SOP10","Limited","u","d",'
-            '"Charcot-Marie-Tooth Disease Gene Curation Expert Panel"',
+            (
+                '"A","HGNC:1","cmt","M:1","AD","SOP10","Definitive","u","d",'
+                '"Charcot-Marie-Tooth Disease Gene Curation Expert Panel"'
+            ),
+            (
+                '"B","HGNC:2","cmt","M:2","AD","SOP10","Limited","u","d",'
+                '"Charcot-Marie-Tooth Disease Gene Curation Expert Panel"'
+            ),
             '"C","HGNC:3","x","M:3","AD","SOP10","Definitive","u","d","Other Panel"',
         ]
     )

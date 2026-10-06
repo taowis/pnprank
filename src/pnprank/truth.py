@@ -146,7 +146,7 @@ def build_candidates(srcdir: Path, panel_ids: dict[str, int]) -> list[dict[str, 
     hgnc = load_hgnc(srcdir / "hgnc_complete_set.txt")
     neuro = {k: v for k, v in panel_ids.items() if k != "hsp"}
     sources: dict[str, set[str]] = {}
-    for name, pid in neuro.items():
+    for pid in neuro.values():
         for h in panelapp_genes(srcdir / f"panelapp_{pid}.json"):
             sources.setdefault(h, set()).add(f"panelapp_{pid}_green")
     for h in clingen_genes(srcdir / "clingen_gene_validity.csv", "Charcot-Marie-Tooth"):
@@ -241,3 +241,80 @@ def mentions_gene(rec: dict, names: list[str]) -> bool:
 
     text = rec["title"] + " " + rec["abstract"]
     return any(re.search(rf"(?<![A-Za-z0-9]){re.escape(n)}(?![A-Za-z0-9])", text) for n in names if n)
+
+
+PN_TERMS = (
+    'neuropathy[tiab] OR neuropathies[tiab] OR "Charcot-Marie-Tooth"[tiab] OR CMT[tiab] '
+    'OR HMSN[tiab] OR HSAN[tiab] OR HSN[tiab] OR dHMN[tiab] OR "distal spinal muscular atrophy"[tiab] '
+    'OR "hereditary motor"[tiab] OR "hereditary sensory"[tiab] OR neuronopathy[tiab] '
+    'OR polyneuropathy[tiab]'
+)
+
+
+def earlier_hits(names: list[str], before_year: int, limit: int = 5) -> list[str]:
+    """PMIDs mentioning the gene and a neuropathy term, published before before_year.
+
+    A screen only: hits are candidates for manual review, not evidence.
+    """
+    import urllib.parse
+
+    gene = " OR ".join(f'"{n}"[tiab]' for n in names if len(n) > 2)
+    term = f"({gene}) AND ({PN_TERMS}) AND (mutation*[tiab] OR variant*[tiab])"
+    q = urllib.parse.urlencode(
+        {"db": "pubmed", "retmode": "json", "retmax": limit, "sort": "pub_date",
+         "datetype": "pdat", "mindate": "1900", "maxdate": str(before_year - 1), "term": term}
+    )
+    res = json.loads(_get(f"{EUTILS}esearch.fcgi?{q}"))
+    return res["esearchresult"].get("idlist", [])
+
+
+def assemble_truth(curation: list[dict], candidates: list[dict[str, str]]) -> tuple[list[dict], list[dict]]:
+    """Check curated discovery papers against PubMed and build truth rows.
+
+    Returns (truth_rows, review_rows). Only status=verified records whose PMID
+    exists and mentions the gene become truth rows; every problem is listed in
+    review_rows for manual checking.
+    """
+    cand = {c["hgnc_symbol"]: c for c in candidates}
+    missing = set(cand) - {c["hgnc_symbol"] for c in curation}
+    review = [{"hgnc_symbol": s, "flag": "not_curated", "detail": ""} for s in sorted(missing)]
+    verified = [c for c in curation if c["status"] == "verified"]
+    recs = pubmed_records(sorted({str(c["pmid"]) for c in verified}))
+    truth = []
+    for c in curation:
+        sym = c["hgnc_symbol"]
+        if c["status"] != "verified":
+            review.append({"hgnc_symbol": sym, "flag": c["status"], "detail": c.get("notes", "")})
+            continue
+        pmid = str(c["pmid"])
+        rec = recs[pmid]
+        names = [sym] + [a for a in cand[sym]["aliases"].split("|") if a]
+        if not rec["exists"]:
+            review.append({"hgnc_symbol": sym, "flag": "pmid_not_found", "detail": pmid})
+            continue
+        year = discovery_year(rec)
+        flags = []
+        if not mentions_gene(rec, names):
+            flags.append("gene_not_in_title_abstract")
+        if c.get("confidence") != "high":
+            flags.append(f"confidence_{c.get('confidence')}")
+        earlier = earlier_hits(names, year)
+        if earlier:
+            flags.append("earlier_hits:" + ",".join(earlier))
+        for f in flags:
+            review.append({"hgnc_symbol": sym, "flag": f.split(":")[0], "detail": f"{pmid} {year} {f}"})
+        truth.append(
+            {
+                "hgnc_symbol": sym,
+                "ensembl_gene_id": cand[sym]["ensembl_gene_id"],
+                "disease_category": c["disease_category"],
+                "tier": str(c["tier"]),
+                "also_hsp": cand[sym]["also_hsp"],
+                "inheritance": c["inheritance"],
+                "discovery_year": str(year),
+                "pmid": pmid,
+                "source_url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+                "notes": c.get("phenotype_in_paper", ""),
+            }
+        )
+    return sorted(truth, key=lambda r: r["hgnc_symbol"]), review
