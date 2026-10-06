@@ -78,7 +78,7 @@ atlases:
   total_size_bytes: 739848000
   raw_counts_available: yes - GSE197289_snRNA-seq_human_raw_counts.RDS.gz / _mouse_raw_counts.RDS.gz
   author_annotations_available: yes - *_barcode_meta.csv.gz (class, cellID, subtype, donor, model) - verified
-  status: shortlisted
+  status: downloaded (Stage 3 pilot)
   notes: Human part of GSE197289.
   files:
   - name: GSE197289_snATAC-seq_human_barcode_meta.csv.gz

@@ -26,6 +26,15 @@ truth:
     hereditary_neuropathy_or_pain_gms: 846
     hsp: 165
 
+pseudobulk:
+  min_cells_per_group: 20      # cell type x donor groups below this are dropped
+  min_donors: 2                # cell types must be seen in at least this many donors
+
+pilot:
+  atlas: yang2022_human_tg
+  cell_type_column: subtype    # author labels: 8 neuron subtypes + 8 non-neuronal types
+  donor_column: donor
+
 backtest:
   cutoff_years: []             # TODO (Stage 1/5): chosen after the truth set's year distribution is known
   interval_window_years: null  # TODO (Stage 5)
