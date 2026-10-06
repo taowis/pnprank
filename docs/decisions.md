@@ -24,7 +24,8 @@ Each non-obvious choice, with its reason. Newest last.
 - **Private notes:** `private_notes/` and the root `CLAUDE.md` are gitignored and
   never pushed. The root `CLAUDE.md` is a symlink to `private_notes/CLAUDE.md`
   so the assistant loads it from the repo root.
-- **Disk budget:** `disk_limit_gb: 200` under the data root, confirmed by the user.
+- **Disk budget:** `disk_limit_gb: 200` under the data root, confirmed by the user;
+  raised to 300 GB by the user on 2026-10-07. Single-download limit stays 5 GB.
 - **Remote:** private GitHub repository; `private_notes/` and root `CLAUDE.md` are never pushed.
 
 ## 2026-10-06 — Stage 1 (truth set)
