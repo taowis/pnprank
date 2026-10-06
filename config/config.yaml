@@ -9,8 +9,10 @@ reference:
   ensembl_release: 116         # https://rest.ensembl.org/info/data (checked 2026-10-06)
   gencode_release: 50          # Ensembl 116 genebuild, https://rest.ensembl.org/info/genomes/homo_sapiens
   orthology:
-    source: null               # TODO (Stage 2): e.g. Ensembl Compara / HGNC HCOP, one-to-one only
-    release: null
+    source: Ensembl Compara protein_default homologies, ortholog_one2one only
+    release: 116               # mus_musculus dump; MD5 checked against the Ensembl MD5SUM file
+    url: https://ftp.ensembl.org/pub/release-116/tsv/ensembl-compara/homologies/mus_musculus/Compara.116.protein_default.homologies.tsv.gz
+    table: data/external/orthology/human_mouse_one2one_e116.tsv
 
 truth:
   path: data/truth/neuropathy_genes.tsv
