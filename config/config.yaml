@@ -6,15 +6,21 @@ project: pnprank
 reference:
   genome_build: GRCh38
   gene_key: ensembl_gene_id     # display: hgnc_symbol
-  ensembl_release: null        # TODO (Stage 1): pin and record source URL
-  gencode_release: null        # TODO (Stage 1): matching GENCODE release
+  ensembl_release: 116         # https://rest.ensembl.org/info/data (checked 2026-10-06)
+  gencode_release: 50          # Ensembl 116 genebuild, https://rest.ensembl.org/info/genomes/homo_sapiens
   orthology:
     source: null               # TODO (Stage 2): e.g. Ensembl Compara / HGNC HCOP, one-to-one only
     release: null
 
 truth:
   path: data/truth/neuropathy_genes.tsv
-  disease_categories: [CMT, dHMN, HSAN, HSP]
+  candidates: data/truth/candidates.tsv
+  sources_dir: data/external/truth_sources
+  disease_categories: [CMT, dHMN, HSAN, HSP, SYND]
+  panelapp_panels:              # Genomics England PanelApp panel IDs
+    hereditary_neuropathy: 85
+    hereditary_neuropathy_or_pain_gms: 846
+    hsp: 165
 
 backtest:
   cutoff_years: []             # TODO (Stage 1/5): chosen after the truth set's year distribution is known
