@@ -15,6 +15,9 @@ dependencies:
   # single-cell
   - anndata
   - scanpy
+  # R, only to read RDS count matrices deposited by atlas authors
+  - r-base
+  - r-matrix
   # modelling
   - scikit-learn
   # plotting
