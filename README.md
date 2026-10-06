@@ -1,12 +1,12 @@
 # pnprank
 
-**Status:** Stage 1 (Truth set) — complete, awaiting review before Stage 2.
+**Status:** Stage 2 (Atlases) — complete, awaiting review before Stage 3.
 
 | Stage | Description | Status |
 |---|---|---|
 | 0 | Scaffold | done |
 | 1 | Truth set with discovery years | done (242 genes) |
-| 2 | Locate and assess atlases | not started |
+| 2 | Locate and assess atlases | done (13 shortlisted of 133) |
 | 3 | Feasibility pilot on one atlas | not started |
 | 4 | Full feature set and model | not started |
 | 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | not started |

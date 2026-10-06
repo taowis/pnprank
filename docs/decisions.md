@@ -74,3 +74,32 @@ Each non-obvious choice, with its reason. Newest last.
 - **Unverified and excluded candidates** are removed from the positive set and
   must also be removed from the negative set in modelling (they are neither
   confirmed positives nor clean negatives).
+
+## 2026-10-07 — Stage 2 (atlases)
+
+- **Search method:** CELLxGENE curation API plus three scoped literature/GEO searches
+  by LLM subagents (peripheral nerve; sensory and autonomic ganglia; spinal motor
+  neurons and muscle) under `docs/atlas_search_protocol.md`. Subagents were told not
+  to download data or circumvent any access control. 133 candidate datasets are in
+  `results/tables/atlas_candidates.tsv`; raw subagent records are kept (not in git)
+  under `data/external/atlas_search/subagent_results/`.
+- **Independent check:** every shortlisted GEO accession was re-queried via E-utilities
+  (title, taxon, linked PMID), and CELLxGENE, SPARC and Zenodo records via their APIs.
+- **Shortlist (13 entries in `config/atlases.yaml`, status `shortlisted`):** chosen for
+  healthy/control cells, raw counts, deposited author annotations and coverage of
+  Schwann cells, nerve fibroblasts, sensory neuron subtypes, satellite glia, motor
+  neurons and NMJ. Not yet downloaded.
+- **Excluded from the shortlist:** Dropbox-only releases (e.g. the Bhuiyan 2025 human
+  DRG reference) because they have no version, checksum or licence; controlled-access
+  data (Tavares-Ferreira 2022, dbGaP); embargoed data (SPARC 464 until 2027-04-29);
+  spot-level spatial data; datasets without healthy controls.
+- **Disease datasets:** only control/naive cells enter features (e.g. Heming 2025 uses
+  its 4 control donors; iPain uses naive animals). Patient cells are not used.
+- **Licences:** GEO pages state no licence; recorded as "not stated". CELLxGENE data is
+  CC-BY 4.0 per its publication terms (verified on the CELLxGENE docs page).
+- **Orthology:** Ensembl Compara 116 protein_default homologies, one-to-one only. BioMart
+  is no longer reachable, and the homo_sapiens dump omits mouse in release 116, so the
+  mus_musculus dump is used. The parser accepts either gene order (Compara README).
+- **Large files:** iPain DRG all-cells h5ad (21 GB) exceeds the 5 GB single-download
+  limit and needs approval. ATAC fragment files (SPARC 465 17.8 GB, Krauter 8 GB) are
+  not needed and will not be downloaded.

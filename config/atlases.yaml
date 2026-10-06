@@ -14,4 +14,543 @@
 #     - name: ""
 #       size_bytes: null
 #       sha256: ""
-atlases: []
+atlases:
+- id: heming2025_human_sural
+  title: 'Multi-omic identification of perineurial hyperplasia and lipid-associated nerve macrophages
+    in human polyneuropathies (GEO: Multi-omic characterization of human sural nerves across polyneuropathies
+    [snRNA-seq])'
+  species: human
+  tissue: peripheral nerve (sural); Schwann subtypes, nerve fibroblasts, vascular, immune
+  scope: nerve
+  accession: GSE285983; GSE285984 (Xenium); zenodo.14226218
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE285983
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE285983
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE285983; https://ftp.ncbi.nlm.nih.gov/geo/series/GSE285nnn/GSE285983/suppl/filelist.txt;
+    https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12375038/fullTextXML; https://zenodo.org/api/records/14226218;
+    https://api.biorxiv.org/details/biorxiv/10.1101/2024.12.05.627043; https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=40849297
+  licence: 'GEO: not stated; Zenodo source-data record: cc-by-4.0'
+  publication:
+    pmid: '40849297'
+    date: '2025-08-23'
+    journal: Nat Commun
+  access: open
+  technology: snRNA-seq, 10x Genomics; CellBender-filtered matrices
+  n_cells_total: 365708
+  total_size_bytes: 1452276242
+  raw_counts_available: yes - per-sample CellBender h5 (GSM*_cellbender_raw_feature_bc_matrix_filtered.h5)
+    in GSE285983_RAW.tar; note CellBender ambient-corrected counts, not CellRanger raw
+  author_annotations_available: yes - GSE285983_metadata_all.csv.gz (barcode, sample, cluster, level2
+    diagnosis, sex, age, centre, plus label transfers from Milbrandt sciatic atlas and Suter P60 SNAT);
+    immune subclusters in GSE285983_metadata_ic.csv.gz
+  status: shortlisted
+  notes: Use the 4 control donors only; patients excluded from inputs.
+  files:
+  - name: GSE285983_RAW.tar
+    size_bytes: 1429237760
+    downloaded: false
+  - name: GSE285983_metadata_all.csv.gz
+    size_bytes: 22228346
+    downloaded: false
+  - name: GSE285983_metadata_ic.csv.gz
+    size_bytes: 810136
+    downloaded: false
+  - name: Zenodo 10.5281/zenodo.14226218 (PNS Atlas figure/source data, .qs files; record resolves to
+      10.5281/zenodo.15108216)
+    size_bytes: null
+    downloaded: false
+- id: yang2022_human_tg
+  title: Human and mouse trigeminal ganglia cell atlas implicates multiple cell types in migraine
+  species: human
+  tissue: trigeminal ganglion; neurons, Schwann (M/N), satellite glia, fibroblasts
+  scope: ganglia
+  accession: GSE197289
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289 ; PMC9338779
+  licence: not stated (GEO; no licence on page)
+  publication:
+    pmid: '35349784'
+    date: 2022 Jun 1
+    journal: Neuron
+  access: open
+  technology: snRNA-seq (10x human; inDrops mouse) + snATAC-seq
+  n_cells_total: 134961
+  total_size_bytes: 739848000
+  raw_counts_available: yes - GSE197289_snRNA-seq_human_raw_counts.RDS.gz / _mouse_raw_counts.RDS.gz
+  author_annotations_available: yes - *_barcode_meta.csv.gz (class, cellID, subtype, donor, model) - verified
+  status: shortlisted
+  notes: Human part of GSE197289.
+  files:
+  - name: GSE197289_snATAC-seq_human_barcode_meta.csv.gz
+    size_bytes: 72000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_human_raw_counts.RDS.gz
+    size_bytes: 40000000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_mouse_barcode_meta.csv.gz
+    size_bytes: 54000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_mouse_raw_counts.RDS.gz
+    size_bytes: 142000000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_human_barcode_meta.csv.gz
+    size_bytes: 822000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_human_raw_counts.RDS.gz
+    size_bytes: 174000000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_mouse_barcode_meta.csv.gz
+    size_bytes: 1900000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_mouse_raw_counts.RDS.gz
+    size_bytes: 381000000
+    downloaded: false
+- id: yang2022_mouse_tg
+  title: Human and mouse trigeminal ganglia cell atlas implicates multiple cell types in migraine
+  species: mouse
+  tissue: trigeminal ganglion
+  scope: ganglia
+  accession: GSE197289
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197289 ; PMC9338779
+  licence: not stated (GEO; no licence on page)
+  publication:
+    pmid: '35349784'
+    date: 2022 Jun 1
+    journal: Neuron
+  access: open
+  technology: snRNA-seq (10x human; inDrops mouse) + snATAC-seq
+  n_cells_total: 134961
+  total_size_bytes: 739848000
+  raw_counts_available: yes - GSE197289_snRNA-seq_human_raw_counts.RDS.gz / _mouse_raw_counts.RDS.gz
+  author_annotations_available: yes - *_barcode_meta.csv.gz (class, cellID, subtype, donor, model) - verified
+  status: shortlisted
+  notes: Mouse part of GSE197289; naive cells only (model column).
+  files:
+  - name: GSE197289_snATAC-seq_human_barcode_meta.csv.gz
+    size_bytes: 72000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_human_raw_counts.RDS.gz
+    size_bytes: 40000000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_mouse_barcode_meta.csv.gz
+    size_bytes: 54000
+    downloaded: false
+  - name: GSE197289_snATAC-seq_mouse_raw_counts.RDS.gz
+    size_bytes: 142000000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_human_barcode_meta.csv.gz
+    size_bytes: 822000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_human_raw_counts.RDS.gz
+    size_bytes: 174000000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_mouse_barcode_meta.csv.gz
+    size_bytes: 1900000
+    downloaded: false
+  - name: GSE197289_snRNA-seq_mouse_raw_counts.RDS.gz
+    size_bytes: 381000000
+    downloaded: false
+- id: jung2023_human_drg
+  title: Cross-species single-nuclei transcriptome atlas of dorsal root ganglion sensory neurons (human,
+    cynomolgus, guinea pig, mouse)
+  species: human
+  tissue: dorsal root ganglion; sensory neuron subtypes and non-neuronal cells
+  scope: ganglia
+  accession: GSE201654 (SuperSeries); GSE201586 (human); GSE201585 (cyno); GSE201653 (mouse); GSE201546
+    (guinea pig)
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE201654
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE201654
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE201654 ; https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE201586
+    ; PMC9870891 data availability
+  licence: not stated (GEO; no licence on page)
+  publication:
+    pmid: '36690629'
+    date: 2023 Jan 23
+    journal: Nat Commun
+  access: open
+  technology: snRNA-seq 10x (FACS or density-gradient nuclei)
+  n_cells_total: null
+  total_size_bytes: 12606000000
+  raw_counts_available: yes - per-sample matrices in RAW.tar; Seurat rds objects (counts slot expected)
+  author_annotations_available: yes - GSE201586_humanallcelltypes.rds, GSE201585_cynoallcelltypes.rds,
+    GSE201653_mouseallcelltypes.rds, GSE201654_mousegpcynohumanDRG.rds (annotation columns not inspected)
+  status: shortlisted
+  notes: Cross-species atlas, same workflow in human/macaque/mouse.
+  files:
+  - name: GSE201586_RAW.tar
+    size_bytes: 2000000000
+    downloaded: false
+  - name: GSE201586_humanallcelltypes.rds.gz
+    size_bytes: 3900000000
+    downloaded: false
+  - name: GSE201585_RAW.tar
+    size_bytes: 1200000000
+    downloaded: false
+  - name: GSE201585_cynoallcelltypes.rds.gz
+    size_bytes: 3300000000
+    downloaded: false
+  - name: GSE201653_RAW.tar
+    size_bytes: 766000000
+    downloaded: false
+  - name: GSE201653_mouseallcelltypes.rds.gz
+    size_bytes: 1200000000
+    downloaded: false
+  - name: GSE201654_mousegpcynohumanDRG.rds.gz
+    size_bytes: 240000000
+    downloaded: false
+- id: sparc465_human_sympathetic
+  title: 'A single-cell multi-omic atlas of human sympathetic ganglia (companion to: A multi-omic atlas
+    of human autonomic and sensory ganglia implicates cell types in peripheral neuropathies)'
+  species: human
+  tissue: sympathetic ganglia; neurons, satellite glia, Schwann (my/nm), fibroblasts
+  scope: ganglia
+  accession: SPARC dataset 465 (DOI 10.26275/oqxx-si9h)
+  url: https://api.pennsieve.io/discover/datasets/465
+  source_url_verified: https://api.pennsieve.io/discover/datasets/465
+  all_verification_urls: https://api.pennsieve.io/discover/datasets/465 ; files listing via api.pennsieve.io/discover/datasets/465/versions/1/files/browse
+    ; preprint PMC12458337
+  licence: Creative Commons Attribution (SPARC/Pennsieve dataset licence field)
+  publication:
+    pmid: '41000833'
+    date: 2025 Sep 19
+    journal: bioRxiv
+  access: open
+  technology: 10x Chromium Single Cell Multiome (snRNA + snATAC), 8 libraries
+  n_cells_total: 52950
+  total_size_bytes: 19943460393
+  raw_counts_available: yes - primary/filtered_feature_bc_matrix (matrix.mtx.gz, cellranger-arc aggr,
+    merged raw UMI counts)
+  author_annotations_available: yes - primary/meta.data.csv column "Celltypes" + "class" + library->donor
+    mapping (verified by fetching meta.data.csv, 12 MB)
+  status: shortlisted
+  notes: Skip the 17.8 GB ATAC fragments file; RNA only.
+  files:
+  - name: primary/filtered_feature_bc_matrix/matrix.mtx.gz
+    size_bytes: 2168008189
+    downloaded: false
+  - name: primary/filtered_feature_bc_matrix/features.tsv.gz
+    size_bytes: 3400616
+    downloaded: false
+  - name: primary/filtered_feature_bc_matrix/barcodes.tsv.gz
+    size_bytes: 422581
+    downloaded: false
+  - name: primary/meta.data.csv
+    size_bytes: 11996682
+    downloaded: false
+  - name: primary/atac_fragments.tsv.gz (not needed)
+    size_bytes: 17753218897
+    downloaded: false
+- id: yadav2023_human_spinal_cord
+  title: A cellular taxonomy of the adult human spinal cord
+  species: human
+  tissue: lumbar spinal cord; 1,331 labelled motoneurons
+  scope: motor
+  accession: GSE190442 (spatial companion GSE222322)
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190442
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190442
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190442; https://ftp.ncbi.nlm.nih.gov/geo/series/GSE190nnn/GSE190442/suppl/filelist.txt
+  licence: not stated
+  publication:
+    pmid: '36731429'
+    date: 2023 Feb 1
+    journal: Neuron
+  access: open
+  technology: snRNA-seq, 10x Chromium 3' v3
+  n_cells_total: 55289
+  total_size_bytes: 1086101059
+  raw_counts_available: yes - per-donor 10x raw_feature_bc_matrix.h5 in GSE190442_RAW.tar, plus aggregated
+    post-QC count matrix (csv.gz)
+  author_annotations_available: yes - GSE190442_aggregated_metadata_postqc.csv.gz (columns top_level_annotation,
+    subtype_annotation, sample); fetched and tabulated in this session
+  status: shortlisted
+  notes: Motoneuron cluster must be checked (CHAT/SLC5A7, ambient RNA) before use.
+  files:
+  - name: GSE190442_RAW.tar
+    size_bytes: 956160000
+    downloaded: false
+  - name: GSE190442_aggregated_counts_postqc.csv.gz
+    size_bytes: 128686403
+    downloaded: false
+  - name: GSE190442_aggregated_metadata_postqc.csv.gz
+    size_bytes: 1254656
+    downloaded: false
+- id: kedlian2024_human_muscle
+  title: Human skeletal muscle aging atlas
+  species: human
+  tissue: skeletal muscle; myonuclei, Schwann (my/nm), perineurial cells
+  scope: motor
+  accession: CELLxGENE 2d40e6a7-f2fd-49ba-9db9-6b97e4c6dad5; ArrayExpress E-MTAB-13874
+  url: https://api.cellxgene.cziscience.com/curation/v1/collections/2d40e6a7-f2fd-49ba-9db9-6b97e4c6dad5
+  source_url_verified: https://api.cellxgene.cziscience.com/curation/v1/collections/2d40e6a7-f2fd-49ba-9db9-6b97e4c6dad5
+  all_verification_urls: https://api.cellxgene.cziscience.com/curation/v1/collections/2d40e6a7-f2fd-49ba-9db9-6b97e4c6dad5;
+    https://www.ebi.ac.uk/biostudies/api/v1/studies/E-MTAB-13874
+  licence: CC-BY 4.0 (CELLxGENE Discover publication terms, https://cellxgene.cziscience.com/docs/032__Contribute%20and%20Publish%20Data,
+    checked 2026-10-07)
+  publication:
+    pmid: '38622407'
+    date: 2024 May
+    journal: Nat Aging
+  access: open
+  technology: scRNA-seq and snRNA-seq 10x 3' v2/v3
+  n_cells_total: 183161
+  total_size_bytes: 1879620545
+  raw_counts_available: likely in h5ad (CxG schema); FASTQ via ArrayExpress E-MTAB-13874
+  author_annotations_available: yes - CxG + muscleageingcellatlas.org
+  status: shortlisted
+  notes: ''
+  files:
+  - name: 5fd93c55-8047-48fb-905c-6ef2f7767483.h5ad (Human muscle cells and nuclei)
+    size_bytes: 1182283382
+    downloaded: false
+  - name: e3839dff-d480-4b2d-83c0-fc54ec40b9e3.h5ad (Fibroblasts and Schwann cells)
+    size_bytes: 194498797
+    downloaded: false
+  - name: 7085b988-463e-4183-b33d-838e1f6ad739.h5ad (Mouse muscle cells and nuclei)
+    size_bytes: 502838366
+    downloaded: false
+- id: yim2022_mouse_nerves
+  title: Disentangling glial diversity in peripheral nerves at single-nuclei resolution
+  species: mouse
+  tissue: sciatic/peroneal/sural/vagus nerves; healthy; Schwann, fibroblasts, immune
+  scope: nerve
+  accession: GSE182099 (SuperSeries); GSE182098 (sc/snRNA-seq); GSE181858 (bulk/RiboTag)
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182098
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182098
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182098; https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE182099;
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC9060899/; https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=35115729
+  licence: not stated
+  publication:
+    pmid: '35115729'
+    date: 2022-02
+    journal: Nat Neurosci
+  access: open
+  technology: snRNA-seq (Sun1-GFP nuclear sorting), 10x Genomics; immune atlas is scRNA-seq of CD45+ cells
+  n_cells_total: sciatic atlas 20,658 nuclei; combined 4-nerve atlas 22,553; Schwann cell atlas 10,253;
+    Mpz-enriched 3,047; immune scRNA atlas 3,543 cells (from paper via PMC)
+  total_size_bytes: 7460931087
+  raw_counts_available: likely yes inside Seurat RDS objects (counts slot) - unverified without download;
+    no separate mtx
+  author_annotations_available: yes - in the 5 Seurat RDS objects (cell-type identities); GLIA portal
+    https://milbrandtlab.wustl.edu/glia-portal/
+  status: shortlisted
+  notes: Annotations inside Seurat RDS; raw counts to be confirmed.
+  files:
+  - name: GSE182098_immune-cell_single-cell-atlas-15Jan2021.RDS.gz
+    size_bytes: 338544706
+    downloaded: false
+  - name: GSE182098_peripheral-nerves-Schwann-cell-specific_single-nuclei-atlas-8Feb2021.RDS.gz
+    size_bytes: 888492502
+    downloaded: false
+  - name: GSE182098_peripheral-nerves_single-nuclei-atlas-22Jan2021.RDS.gz
+    size_bytes: 1565570990
+    downloaded: false
+  - name: GSE182098_schwann_cell_single-nuclei-atlas-12Jan2021.RDS.gz
+    size_bytes: 1588336482
+    downloaded: false
+  - name: GSE182098_sciatic-nerve_single-nuclei-atlas-16Dec2020.RDS.gz
+    size_bytes: 3079986407
+    downloaded: false
+- id: stefanovska2025_mouse_sciatic
+  title: 'Fibroblast growth factor signaling induces a chondrocyte-like state of peripheral nerve fibroblast
+    during aging (GEO: snRNAseq from sciatic nerves from mouse of 2-3, 15-16, and 20-30 months old)'
+  species: mouse
+  tissue: sciatic nerve; young (2-3 mo) as controls
+  scope: nerve
+  accession: GSE280857; 10.5281/zenodo.14900774
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280857
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280857
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280857; https://zenodo.org/api/records/14900774;
+    https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12618493/fullTextXML; https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=41238529
+  licence: 'GEO: not stated; Zenodo: cc-by-4.0'
+  publication:
+    pmid: '41238529'
+    date: '2025-11-14'
+    journal: Nat Commun
+  access: open
+  technology: snRNA-seq (DRAQ7+ nuclei FACS-sorted), 10x Genomics
+  n_cells_total: not verified (9 samples)
+  total_size_bytes: 649899317
+  raw_counts_available: yes - per-sample 10x mtx in GSE280857_RAW.tar; h5ad on Zenodo probably also has
+    counts (unverified)
+  author_annotations_available: yes - Zenodo 10.5281/zenodo.14900774 h5ad files (all_final, adipo_final,
+    macro_final); also CELLxGENE docker on usegalaxy.eu
+  status: shortlisted
+  notes: Annotated h5ad on Zenodo under CC-BY-4.0.
+  files:
+  - name: GSE280857_RAW.tar
+    size_bytes: 173711360
+    downloaded: false
+  - name: Zenodo 14900774 all_final.h5ad
+    size_bytes: 409851403
+    downloaded: false
+  - name: Zenodo 14900774 adipo_final.h5ad
+    size_bytes: 42076877
+    downloaded: false
+  - name: Zenodo 14900774 macro_final.h5ad
+    size_bytes: 24259677
+    downloaded: false
+- id: krauter2025_mouse_drg
+  title: Spatial organization, chromatin accessibility and gene-regulatory programs defining mouse sensory
+    neurons
+  species: mouse
+  tissue: DRG neurons, 22 subtypes incl. proprioceptors and LTMRs
+  scope: ganglia
+  accession: GSE287551
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE287551
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE287551
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE287551
+  licence: not stated (GEO; no licence on page)
+  publication:
+    pmid: '40500276'
+    date: 2025 Jun 11
+    journal: Commun Biol
+  access: open
+  technology: 10x Multiome (NeuN+ / NeuN- nuclei) + integrated scRNA atlas (>44,000 neurons) + MERSCOPE
+  n_cells_total: 4714
+  total_size_bytes: 8783452297
+  raw_counts_available: yes - aggregated_raw/filtered_feature_bc_matrix.h5, rna_counts.tsv.gz
+  author_annotations_available: yes - GSE287551_metadata.tsv.gz CellID (verified)
+  status: shortlisted
+  notes: Skip the 8 GB ATAC fragments file.
+  files:
+  - name: GSE287551_aggregated_atac_fragments.tsv.gz
+    size_bytes: 8000000000
+    downloaded: false
+  - name: GSE287551_aggregated_atac_fragments.tsv.gz.tbi.gz
+    size_bytes: 2100000
+    downloaded: false
+  - name: GSE287551_aggregated_filtered_feature_bc_matrix.h5
+    size_bytes: 245000000
+    downloaded: false
+  - name: GSE287551_aggregated_raw_feature_bc_matrix.h5
+    size_bytes: 414000000
+    downloaded: false
+  - name: GSE287551_aggregation.csv.gz
+    size_bytes: 297
+    downloaded: false
+  - name: GSE287551_celltype_peak_counts.tsv.gz
+    size_bytes: 99000000
+    downloaded: false
+  - name: GSE287551_metadata.tsv.gz
+    size_bytes: 352000
+    downloaded: false
+  - name: GSE287551_rna_counts.tsv.gz
+    size_bytes: 23000000
+    downloaded: false
+- id: alkaslasi2021_mouse_mn
+  title: Single nucleus RNA-sequencing defines unexpected diversity of cholinergic neuron types in the
+    adult mouse spinal cord
+  species: mouse
+  tissue: spinal cord cholinergic neurons; 5,054 skeletal MNs (alpha/gamma)
+  scope: motor
+  accession: GSE167597; CELLxGENE 101d14fc-754d-42ad-883d-d810b00b06e3
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167597
+  source_url_verified: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167597
+  all_verification_urls: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167597; https://api.cellxgene.cziscience.com/curation/v1/collections/101d14fc-754d-42ad-883d-d810b00b06e3
+  licence: not stated
+  publication:
+    pmid: '33931636'
+    date: 2021 Apr 30
+    journal: Nat Commun
+  access: open
+  technology: snRNA-seq 10x 3' v3 (FANS-enriched)
+  n_cells_total: 34231
+  total_size_bytes: 1188473316
+  raw_counts_available: yes - GEO raw_feature_bc_matrix per region/sex in GSE167597_RAW.tar; GSE167597_allMN_countsmatrix.csv.gz;
+    CxG h5ad
+  author_annotations_available: yes - GSE167597_all_AlkaslasiPiccus_annotations.csv.gz (types, cholinergictypes,
+    skeletaltypes) and CxG cell_type (alpha/gamma motor neuron)
+  status: shortlisted
+  notes: Neurons only; GEO links the wrong PMID (37559423), correct is 33931636.
+  files:
+  - name: CxG All cells h5ad 8b1fc940-a0e4-463e-a2e4-7007974fb736.h5ad
+    size_bytes: 242072768
+    downloaded: false
+  - name: CxG Skeletal h5ad b223d506-19e1-4ffa-9ac9-c8ef2d9073ce.h5ad
+    size_bytes: 82163778
+    downloaded: false
+  - name: GSE167597_RAW.tar
+    size_bytes: 819128320
+    downloaded: false
+  - name: GSE167597_allMN_countsmatrix.csv.gz
+    size_bytes: 44774795
+    downloaded: false
+  - name: GSE167597_all_AlkaslasiPiccus_annotations.csv.gz
+    size_bytes: 333655
+    downloaded: false
+- id: ham2025_mouse_nmj
+  title: Single-nuclei sequencing of skeletal muscle reveals subsynaptic-specific transcripts involved
+    in neuromuscular junction maintenance
+  species: mouse
+  tissue: skeletal muscle; NMJ myonuclei, Schwann, perineurial
+  scope: motor
+  accession: CELLxGENE ef9f0fae-c12c-4f1a-bb67-63346c2ae0f1; GEO GSE267910 (SuperSeries GSE267913)
+  url: https://api.cellxgene.cziscience.com/curation/v1/collections/ef9f0fae-c12c-4f1a-bb67-63346c2ae0f1
+  source_url_verified: https://api.cellxgene.cziscience.com/curation/v1/collections/ef9f0fae-c12c-4f1a-bb67-63346c2ae0f1
+  all_verification_urls: https://api.cellxgene.cziscience.com/curation/v1/collections/ef9f0fae-c12c-4f1a-bb67-63346c2ae0f1;
+    https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE267910; Europe PMC PMC11882927
+  licence: CC-BY 4.0 (CELLxGENE Discover publication terms, https://cellxgene.cziscience.com/docs/032__Contribute%20and%20Publish%20Data,
+    checked 2026-10-07)
+  publication:
+    pmid: '40044687'
+    date: 2025 Mar 5
+    journal: Nat Commun
+  access: open
+  technology: snRNA-seq 10x 3' v3
+  n_cells_total: 102688
+  total_size_bytes: 2062089655
+  raw_counts_available: yes - CxG h5ad (raw layer per schema) and GEO per-sample 10x mtx
+  author_annotations_available: yes - CxG cell_type includes "neuromuscular junction nucleus"; Shiny app
+    ruegglab.shinyapps.io/snatlas
+  status: shortlisted
+  notes: Use innervated samples only.
+  files:
+  - name: b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad (Innervated only)
+    size_bytes: 304285589
+    downloaded: false
+  - name: f991c1a9-d2ff-488e-bd18-d75e0e1d2d7b.h5ad (all conditions)
+    size_bytes: 935859746
+    downloaded: false
+  - name: GSE267910_RAW.tar
+    size_bytes: 821944320
+    downloaded: false
+- id: ipain2024_mouse_drg_tg
+  title: iPain atlas - integrated DRG and TG atlases with pain models (CELLxGENE)
+  species: mouse
+  tissue: DRG and TG all cells; naive vs pain models
+  scope: ganglia
+  accession: CELLxGENE collection 03608e22-227a-4492-910b-3cb3f16f952e; GSE253345 (new iPain snMultiome/Smart-seq3
+    data)
+  url: https://api.cellxgene.cziscience.com/curation/v1/collections/03608e22-227a-4492-910b-3cb3f16f952e
+  source_url_verified: https://api.cellxgene.cziscience.com/curation/v1/collections/03608e22-227a-4492-910b-3cb3f16f952e
+  all_verification_urls: https://api.cellxgene.cziscience.com/curation/v1/collections/03608e22-227a-4492-910b-3cb3f16f952e
+    ; https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE253345
+  licence: CC BY 4.0 (CELLxGENE Discover data policy, https://cellxgene.cziscience.com/docs/032__Contribute%20and%20Publish%20Data)
+  publication:
+    pmid: '39362841'
+    date: 2024 Oct 4
+    journal: Nat Commun
+  access: open
+  technology: integrated 10x v2/v3, multiome, Smart-seq2/3, inDrop, Drop-seq, BD Rhapsody
+  n_cells_total: 276456
+  total_size_bytes: 29674465903
+  raw_counts_available: yes - raw.X in CxG h5ad
+  author_annotations_available: yes (CxG standard labels; author columns in obs not inspected - "glial
+    cell" lumps SGC/Schwann at CL level)
+  status: shortlisted
+  notes: 'DRG all-cells h5ad is 21 GB: ask before download. Glia not split into satellite vs Schwann.'
+  files:
+  - name: iPain Atlas TG Nociceptive Lineage Cells - RNA (https://datasets.cellxgene.cziscience.com/cdca77c2-db26-431a-9f51-36cfb7675b87.h5ad)
+    size_bytes: 160726083
+    downloaded: false
+  - name: iPain Atlas DRG All Cells - RNA (https://datasets.cellxgene.cziscience.com/9e592a91-b992-4f54-9bbe-2f53dd3308da.h5ad)
+    size_bytes: 20964916720
+    downloaded: false
+  - name: iPain Atlas TG All Cells - RNA (https://datasets.cellxgene.cziscience.com/40e0cedc-9c3c-4b1c-890d-96cc36743db2.h5ad)
+    size_bytes: 600536880
+    downloaded: false
+  - name: iPain Atlas DRG Nociceptive Lineage Cells - RNA (https://datasets.cellxgene.cziscience.com/8fc0b710-45f8-4cb8-b6db-fbadd5ed5ab5.h5ad)
+    size_bytes: 7948286220
+    downloaded: false
