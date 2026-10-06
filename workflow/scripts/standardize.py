@@ -97,6 +97,90 @@ def cellxgene(atlas_id: str, file_glob: str, label_col: str, donor_col: str, kee
     return sp.csr_matrix(X), var_names, obs
 
 
+def sparc465(atlas_id: str):
+    """Multiome mtx with Gene Expression rows first, then ATAC Peaks; keep genes only.
+
+    The matrix is filtered while streaming (awk) because the peak rows make it too large
+    to load. Libraries are used as the replicate unit (library-to-donor mapping is not
+    in meta.data.csv).
+    """
+    base = raw(atlas_id) / "primary" / "filtered_feature_bc_matrix"
+    out = interim(atlas_id) / "gex"
+    out.mkdir(parents=True, exist_ok=True)
+    feats = pd.read_csv(base / "features.tsv.gz", sep="\t", header=None)
+    gex = feats[feats[2] == "Gene Expression"]
+    n_gex = len(gex)
+    if not (gex.index == np.arange(n_gex)).all():
+        raise ValueError("expected Gene Expression rows first")
+    if not (out / "matrix.mtx.gz").exists():
+        cmd = (f"gzcat {sh(base / 'matrix.mtx.gz')} | awk 'BEGIN{{h=0}} /^%/{{next}} "
+               f"h==0{{h=1; ncol=$2; next}} $1<={n_gex}{{print; n++}} "
+               f"END{{print n, ncol > \"/dev/stderr\"}}' > {sh(out / 'body.txt')}")
+        res = subprocess.run(["bash", "-c", cmd], check=True, capture_output=True, text=True)
+        nnz, ncol = res.stderr.split()
+        with gzip.open(out / "matrix.mtx.gz", "wt") as fh:
+            fh.write("%%MatrixMarket matrix coordinate integer general\n")
+            fh.write(f"{n_gex} {ncol} {nnz}\n")
+            with open(out / "body.txt") as body:
+                for line in body:
+                    fh.write(line)
+        (out / "body.txt").unlink()
+        gex[1].to_csv(out / "features.tsv.gz", index=False, header=False)
+        subprocess.run(["cp", str(base / "barcodes.tsv.gz"), str(out / "barcodes.tsv.gz")], check=True)
+    import scipy.io
+    m = sp.csr_matrix(scipy.io.mmread(out / "matrix.mtx.gz"))
+    cells = [x.strip() for x in gzip.open(out / "barcodes.tsv.gz", "rt")]
+    meta = pd.read_csv(raw(atlas_id) / "primary" / "meta.data.csv").set_index("cell_name")
+    keep_cells = [c for c in cells if c in meta.index]
+    idx = [cells.index(c) for c in keep_cells] if len(keep_cells) < len(cells) else list(range(len(cells)))
+    m = m[:, idx]
+    meta = meta.loc[keep_cells]
+    obs = pd.DataFrame({"cell_type_author": meta["Celltypes"], "donor": meta["sample id"],
+                        "keep": True}, index=keep_cells)
+    return m.T, list(gex[0]), obs
+
+
+def sh(p) -> str:
+    import shlex
+    return shlex.quote(str(p))
+
+
+def heming2025(atlas_id: str):
+    """Per-sample CellBender h5 files inside GSE285983_RAW.tar; controls (level2 == CTRL) only.
+
+    Counts are CellBender ambient-corrected integer counts, as deposited.
+    """
+    import tarfile
+
+    import scanpy as sc
+
+    meta = pd.read_csv(raw(atlas_id) / "GSE285983_metadata_all.csv.gz", low_memory=False)
+    ctrl = meta[meta["level2"] == "CTRL"]
+    samples = sorted(ctrl["sample"].unique())
+    out = interim(atlas_id) / "h5"
+    out.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(raw(atlas_id) / "GSE285983_RAW.tar") as tf:
+        members = {m.name.split("_")[1]: m for m in tf.getmembers()}
+        for smp in samples:
+            if not (out / members[smp].name).exists():
+                tf.extract(members[smp], out)
+    mats, ids, obs_parts = [], None, []
+    for smp in samples:
+        a = sc.read_10x_h5(out / members[smp].name, gex_only=True)
+        a.obs_names = [f"{smp}_{b}" for b in a.obs_names]
+        m = ctrl[ctrl["sample"] == smp].set_index("barcode")
+        a = a[a.obs_names.isin(m.index)]
+        gene_ids = list(a.var["gene_ids"])
+        if ids is None:
+            ids = gene_ids
+        elif gene_ids != ids:
+            raise ValueError("gene order differs between samples")
+        mats.append(sp.csr_matrix(a.X))
+        obs_parts.append(pd.DataFrame({"cell_type_author": m.loc[a.obs_names, "cluster"],
+                                       "donor": smp, "keep": True}, index=a.obs_names))
+    return sp.vstack(mats).tocsr(), ids, pd.concat(obs_parts)
+
+
 READERS = {
     "yang2022_human_tg": lambda a: yang2022(a, "human"),
     "yang2022_mouse_tg": lambda a: yang2022(a, "mouse"),
@@ -108,10 +192,13 @@ READERS = {
     "kedlian2024_human_muscle": lambda a: cellxgene(
         a, "*.h5ad", "annotation_level1", "donor_id",
         keep_fn=lambda o: (o["suspension_type"] == "nucleus").to_numpy()),
+    "sparc465_human_sympathetic": sparc465,
+    "heming2025_human_sural": heming2025,
 }
 SPECIES = {"yang2022_human_tg": "human", "yang2022_mouse_tg": "mouse",
            "alkaslasi2021_mouse_mn": "mouse", "ham2025_mouse_nmj": "mouse",
-           "kedlian2024_human_muscle": "human"}
+           "kedlian2024_human_muscle": "human", "sparc465_human_sympathetic": "human",
+           "heming2025_human_sural": "human"}
 
 
 def main(atlas_id: str) -> None:

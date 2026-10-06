@@ -99,3 +99,38 @@ kedlian2024_human_muscle	Neutrophil	immune
 kedlian2024_human_muscle	CD16-NK	immune	
 kedlian2024_human_muscle	Eosinophil	immune	
 kedlian2024_human_muscle	pDC	immune	
+sparc465_human_sympathetic	Satellite glial	satellite_glia	
+sparc465_human_sympathetic	Macrophage	immune	
+sparc465_human_sympathetic	T	immune	
+sparc465_human_sympathetic	Schwann-nm	schwann_nonmyelinating	
+sparc465_human_sympathetic	Schwann-my	schwann_myelinating	
+sparc465_human_sympathetic	Fibroblast	fibroblast	
+sparc465_human_sympathetic	Endothelial	vascular_endothelial	
+sparc465_human_sympathetic	Mural	vascular_mural	
+sparc465_human_sympathetic	Adipocyte	adipocyte	
+sparc465_human_sympathetic	Neuronal_1	neuron_sympathetic	two author neuron clusters merged
+sparc465_human_sympathetic	Neuronal_2	neuron_sympathetic	two author neuron clusters merged
+heming2025_human_sural	nmSC	schwann_nonmyelinating	
+heming2025_human_sural	mySC	schwann_myelinating	
+heming2025_human_sural	repairSC	schwann_repair	
+heming2025_human_sural	damageSC	schwann_damage	
+heming2025_human_sural	periC1	fibroblast_perineurial	
+heming2025_human_sural	periC2	fibroblast_perineurial	
+heming2025_human_sural	periC3	fibroblast_perineurial	
+heming2025_human_sural	endoC	fibroblast_endoneurial	
+heming2025_human_sural	epiC	fibroblast_epineurial	
+heming2025_human_sural	PC1	vascular_mural	
+heming2025_human_sural	PC2	vascular_mural	
+heming2025_human_sural	VSMC	vascular_mural	
+heming2025_human_sural	ven_capEC1	vascular_endothelial	
+heming2025_human_sural	ven_capEC2	vascular_endothelial	
+heming2025_human_sural	artEC	vascular_endothelial	
+heming2025_human_sural	venEC	vascular_endothelial	
+heming2025_human_sural	LEC	vascular_endothelial	
+heming2025_human_sural	Macro1	immune	
+heming2025_human_sural	Macro2	immune	
+heming2025_human_sural	T_NK	immune	
+heming2025_human_sural	B	immune	
+heming2025_human_sural	Mast	immune	
+heming2025_human_sural	Granulo	immune	
+heming2025_human_sural	Adipo	adipocyte	
