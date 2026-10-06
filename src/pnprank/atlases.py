@@ -237,3 +237,78 @@ def collapse_to_ensembl(matrix, symbols: list[str], mapping: dict[str, str]):
     )
     unmapped = [symbols[i] for i in np.flatnonzero(ids.isna().to_numpy())]
     return agg @ sp.csr_matrix(matrix), list(uniq), unmapped
+
+
+# --- Standardised per-atlas cells and pseudobulk ----------------------------------
+
+STANDARD_OBS = ["cell_type_author", "donor", "keep"]
+
+
+def save_cells(path: str | Path, X, gene_ids: list[str], obs, species: str) -> None:
+    """Write a standardised cells.h5ad: X = raw integer counts (cells x genes, CSR),
+    var index = species-native Ensembl gene IDs, obs = cell_type_author, donor, keep."""
+    import anndata as ad
+    import numpy as np
+    import pandas as pd
+    import scipy.sparse as sp
+
+    X = sp.csr_matrix(X)
+    if X.nnz and not np.allclose(X.data, np.round(X.data)):
+        raise ValueError("counts must be integers")
+    missing = [c for c in STANDARD_OBS if c not in obs.columns]
+    if missing:
+        raise ValueError(f"obs missing {missing}")
+    obs = obs[STANDARD_OBS].copy()
+    obs["cell_type_author"] = obs["cell_type_author"].astype(str)
+    obs["donor"] = obs["donor"].astype(str)
+    obs["keep"] = obs["keep"].astype(bool)
+    obs.index = obs.index.astype(str)
+    a = ad.AnnData(X=X.astype(np.float32), obs=obs, var=pd.DataFrame(index=pd.Index(gene_ids, dtype=str)))
+    a.uns["species"] = species
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    a.write_h5ad(path, compression="gzip")
+
+
+def atlas_pseudobulk(cells_h5ad: str | Path, human_of: dict[str, str] | None = None):
+    """Sum kept cells' counts per (cell_type_author, donor), genes as human Ensembl IDs.
+
+    For mouse atlases pass `human_of` (mouse ID -> human ID, one-to-one); unmapped genes
+    are dropped. Returns (sums genes x groups, groups table).
+    """
+    import anndata as ad
+    import pandas as pd
+
+    from pnprank.pseudobulk import pseudobulk
+
+    a = ad.read_h5ad(cells_h5ad)
+    a = a[a.obs["keep"].to_numpy()]
+    genes = list(a.var_names)
+    X = a.X.T.tocsr()
+    if a.uns["species"] != "human":
+        if human_of is None:
+            raise ValueError("non-human atlas needs an orthology mapping")
+        X, genes, _ = collapse_to_ensembl(X, genes, human_of)
+    sums, n = pseudobulk(
+        X, genes, a.obs["cell_type_author"].reset_index(drop=True),
+        a.obs["donor"].reset_index(drop=True), min_cells=1,
+    )
+    groups = n.reset_index().rename(columns={"cell_type": "cell_type_author"})
+    groups.insert(0, "group", [f"g{i}" for i in range(len(groups))])
+    sums.columns = groups["group"]
+    return sums, groups
+
+
+def write_pseudobulk(outdir: str | Path, sums, groups) -> None:
+    outdir = Path(outdir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    sums.to_csv(outdir / "pseudobulk_sums.tsv.gz", sep="\t", compression="gzip")
+    groups.to_csv(outdir / "pseudobulk_groups.tsv", sep="\t", index=False)
+
+
+def read_pseudobulk(outdir: str | Path):
+    import pandas as pd
+
+    outdir = Path(outdir)
+    sums = pd.read_csv(outdir / "pseudobulk_sums.tsv.gz", sep="\t", index_col=0)
+    groups = pd.read_csv(outdir / "pseudobulk_groups.tsv", sep="\t", dtype={"donor": str})
+    return sums, groups
