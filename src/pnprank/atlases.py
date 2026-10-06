@@ -202,3 +202,38 @@ def symbol_to_ensembl(hgnc_tsv: str | Path) -> tuple[dict[str, str], dict[str, s
                 mapping[s] = next(iter(ids))
                 how[s] = label
     return mapping, how
+
+
+def load_mtx(counts_dir: str | Path):
+    """Read matrix.mtx.gz / features.tsv.gz / barcodes.tsv.gz (genes x cells)."""
+    import gzip
+
+    import scipy.io
+    import scipy.sparse as sp
+
+    d = Path(counts_dir)
+    m = sp.csr_matrix(scipy.io.mmread(d / "matrix.mtx.gz"))
+    genes = [line.rstrip("\n") for line in gzip.open(d / "features.tsv.gz", "rt")]
+    cells = [line.rstrip("\n") for line in gzip.open(d / "barcodes.tsv.gz", "rt")]
+    if m.shape != (len(genes), len(cells)):
+        raise ValueError(f"matrix {m.shape} vs {len(genes)} genes, {len(cells)} cells")
+    return m, genes, cells
+
+
+def collapse_to_ensembl(matrix, symbols: list[str], mapping: dict[str, str]):
+    """Map rows from symbols to Ensembl IDs, summing rows that map to the same ID.
+
+    Unmapped rows are dropped. Returns (matrix, ensembl_ids, unmapped_symbols).
+    """
+    import numpy as np
+    import pandas as pd
+    import scipy.sparse as sp
+
+    ids = pd.Series([mapping.get(s) for s in symbols])
+    keep = np.flatnonzero(ids.notna().to_numpy())
+    codes, uniq = pd.factorize(ids.iloc[keep])
+    agg = sp.csr_matrix(
+        (np.ones(len(keep)), (codes, keep)), shape=(len(uniq), len(symbols))
+    )
+    unmapped = [symbols[i] for i in np.flatnonzero(ids.isna().to_numpy())]
+    return agg @ sp.csr_matrix(matrix), list(uniq), unmapped
