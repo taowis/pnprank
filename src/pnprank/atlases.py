@@ -93,3 +93,112 @@ def one_to_one_orthologues(
     h = Counter(p[0] for p in pairs)
     m = Counter(p[1] for p in pairs)
     return {a: b for a, b in sorted(pairs) if h[a] == 1 and m[b] == 1}
+
+
+# --- Downloads ----------------------------------------------------------------
+
+SINGLE_DOWNLOAD_LIMIT_BYTES = 5 * 10**9  # CLAUDE.md: ask before any single download over 5 GB
+
+
+def dir_size_bytes(path: Path) -> int:
+    return sum(p.stat().st_size for p in Path(path).rglob("*") if p.is_file())
+
+
+def remote_size_bytes(url: str) -> int | None:
+    """Content-Length from a HEAD request, or None if the server does not say."""
+    import subprocess
+
+    out = subprocess.run(
+        ["curl", "-sIL", "-m", "60", url], capture_output=True, text=True, check=True
+    ).stdout
+    sizes = [int(line.split(":", 1)[1]) for line in out.splitlines()
+             if line.lower().startswith("content-length:")]
+    return sizes[-1] if sizes else None
+
+
+def download_atlas_files(
+    registry_path: str | Path,
+    atlas_id: str,
+    file_names: list[str],
+    base_url: str,
+    data_root: str | Path,
+    disk_limit_gb: float,
+) -> list[dict]:
+    """Download named files of one atlas into <data_root>/raw/<atlas_id>/.
+
+    Refuses any file over the single-download limit and any download that would push
+    usage under data_root past disk_limit_gb. Records url, sha256 and size in the
+    registry entry. Returns the updated file records.
+    """
+    import hashlib
+    import subprocess
+
+    registry_path = Path(registry_path)
+    text = registry_path.read_text()
+    header = text.split("atlases:")[0]
+    reg = yaml.safe_load(text)
+    entry = next(a for a in reg["atlases"] if a["id"] == atlas_id)
+    outdir = Path(data_root) / "raw" / atlas_id
+    outdir.mkdir(parents=True, exist_ok=True)
+    done = []
+    for name in file_names:
+        url = f"{base_url.rstrip('/')}/{name}"
+        size = remote_size_bytes(url)
+        if size is None:
+            raise RuntimeError(f"{url}: server did not report a size; check manually")
+        if size > SINGLE_DOWNLOAD_LIMIT_BYTES:
+            raise RuntimeError(f"{name} is {size / 1e9:.1f} GB, over the single-download limit")
+        used = dir_size_bytes(Path(data_root))
+        if used + size > disk_limit_gb * 10**9:
+            raise RuntimeError(f"{name} would exceed the {disk_limit_gb} GB disk budget")
+        dest = outdir / name
+        subprocess.run(["curl", "-sSfL", "-C", "-", "--retry", "5", "-o", str(dest), url], check=True)
+        if dest.stat().st_size != size:
+            raise RuntimeError(f"{name}: got {dest.stat().st_size} bytes, expected {size}")
+        sha = hashlib.sha256(dest.read_bytes()).hexdigest()
+        rec = next((f for f in entry["files"] if f["name"] == name), None)
+        if rec is None:
+            rec = {"name": name}
+            entry["files"].append(rec)
+        rec.update({"url": url, "size_bytes": size, "sha256": sha, "downloaded": True})
+        done.append(rec)
+    registry_path.write_text(
+        header + yaml.safe_dump(reg, sort_keys=False, allow_unicode=True, width=100)
+    )
+    return done
+
+
+# --- Gene identifiers ---------------------------------------------------------
+
+
+def symbol_to_ensembl(hgnc_tsv: str | Path) -> tuple[dict[str, str], dict[str, str]]:
+    """Map gene symbols to Ensembl gene IDs using an HGNC complete-set snapshot.
+
+    Approved symbols win. Previous symbols and aliases are used only when they point to
+    exactly one approved gene and do not collide with an approved symbol; ambiguous
+    names are left unmapped. Returns (mapping, how) where how[symbol] is
+    "approved" | "previous" | "alias".
+    """
+    import csv
+    from collections import defaultdict
+
+    approved: dict[str, str] = {}
+    prev: dict[str, set[str]] = defaultdict(set)
+    alias: dict[str, set[str]] = defaultdict(set)
+    with open(hgnc_tsv, newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="\t"):
+            ens = r["ensembl_gene_id"]
+            if r["status"] != "Approved" or not ens:
+                continue
+            approved[r["symbol"]] = ens
+            for s in filter(None, r["prev_symbol"].split("|")):
+                prev[s].add(ens)
+            for s in filter(None, r["alias_symbol"].split("|")):
+                alias[s].add(ens)
+    mapping, how = dict(approved), {s: "approved" for s in approved}
+    for table, label in ((prev, "previous"), (alias, "alias")):
+        for s, ids in table.items():
+            if s not in mapping and len(ids) == 1:
+                mapping[s] = next(iter(ids))
+                how[s] = label
+    return mapping, how

@@ -94,11 +94,15 @@ atlases:
     size_bytes: 142000000
     downloaded: false
   - name: GSE197289_snRNA-seq_human_barcode_meta.csv.gz
-    size_bytes: 822000
-    downloaded: false
+    size_bytes: 842041
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE197nnn/GSE197289/suppl/GSE197289_snRNA-seq_human_barcode_meta.csv.gz
+    sha256: 011e80637f6bed9c9ec84f162cde6e7d6d9f98b495dbd02bb03c6e370201391b
   - name: GSE197289_snRNA-seq_human_raw_counts.RDS.gz
-    size_bytes: 174000000
-    downloaded: false
+    size_bytes: 182486123
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE197nnn/GSE197289/suppl/GSE197289_snRNA-seq_human_raw_counts.RDS.gz
+    sha256: ae57c2ba997374394d2f69a09c676013a1476543ded63f3e3f067f7a2f9f4690
   - name: GSE197289_snRNA-seq_mouse_barcode_meta.csv.gz
     size_bytes: 1900000
     downloaded: false

@@ -26,6 +26,13 @@ def main(argv: list[str] | None = None) -> int:
     p_asm.add_argument("--curation", default="data/truth/curation.json")
     p_asm.add_argument("--review", default="data/truth/review.tsv")
 
+    p_dl = sub.add_parser("download-atlas", help="download listed files of one atlas")
+    p_dl.add_argument("atlas_id")
+    p_dl.add_argument("files", nargs="+")
+    p_dl.add_argument("--base-url", required=True)
+    p_dl.add_argument("--registry", default="config/atlases.yaml")
+    p_dl.add_argument("--paths", default="config/paths.yaml")
+
     args = parser.parse_args(argv)
     if args.command == "validate-truth":
         problems = validate_truth(args.path)
@@ -36,7 +43,25 @@ def main(argv: list[str] | None = None) -> int:
         return _build_candidates(args)
     if args.command == "assemble-truth":
         return _assemble_truth(args)
+    if args.command == "download-atlas":
+        return _download_atlas(args)
     parser.print_help()
+    return 0
+
+
+def _download_atlas(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    import yaml
+
+    from pnprank.atlases import download_atlas_files
+
+    paths = yaml.safe_load(Path(args.paths).read_text())
+    for rec in download_atlas_files(
+        args.registry, args.atlas_id, args.files, args.base_url,
+        paths["data_root"], paths["disk_limit_gb"],
+    ):
+        print(f"{rec['name']}\t{rec['size_bytes']}\t{rec['sha256']}")
     return 0
 
 
