@@ -17,6 +17,8 @@ truth:
   candidates: data/truth/candidates.tsv
   sources_dir: data/external/truth_sources
   disease_categories: [CMT, dHMN, HSAN, HSP, SYND]
+  # Secondary/atypical neuropathy: kept but forced to tier 2 (docs/decisions.md)
+  force_tier2: [HMBS, CPOX, PPOX, ADA2, AGXT, SMN1, PDYN, PRNP]
   panelapp_panels:              # Genomics England PanelApp panel IDs
     hereditary_neuropathy: 85
     hereditary_neuropathy_or_pain_gms: 846

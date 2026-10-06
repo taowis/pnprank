@@ -272,7 +272,9 @@ def earlier_hits(names: list[str], before_year: int, limit: int = 5) -> list[str
     return res["esearchresult"].get("idlist", [])
 
 
-def assemble_truth(curation: list[dict], candidates: list[dict[str, str]]) -> tuple[list[dict], list[dict]]:
+def assemble_truth(
+    curation: list[dict], candidates: list[dict[str, str]], force_tier2: frozenset[str] = frozenset()
+) -> tuple[list[dict], list[dict]]:
     """Check curated discovery papers against PubMed and build truth rows.
 
     Returns (truth_rows, review_rows). Only status=verified records whose PMID
@@ -312,7 +314,7 @@ def assemble_truth(curation: list[dict], candidates: list[dict[str, str]]) -> tu
                 "hgnc_symbol": sym,
                 "ensembl_gene_id": cand[sym]["ensembl_gene_id"],
                 "disease_category": c["disease_category"],
-                "tier": str(c["tier"]),
+                "tier": "2" if sym in force_tier2 else str(c["tier"]),
                 "also_hsp": cand[sym]["also_hsp"],
                 "inheritance": c["inheritance"],
                 "discovery_year": str(year),

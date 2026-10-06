@@ -62,7 +62,7 @@ def _assemble_truth(args: argparse.Namespace) -> int:
     with open(cfg["candidates"], newline="") as fh:
         candidates = list(csv.DictReader(fh, delimiter="\t"))
     curation = json.loads(Path(args.curation).read_text())
-    truth, review = assemble_truth(curation, candidates)
+    truth, review = assemble_truth(curation, candidates, frozenset(cfg.get("force_tier2", [])))
     _write_tsv(cfg["path"], truth, REQUIRED_COLUMNS)
     _write_tsv(args.review, review, ["hgnc_symbol", "flag", "detail"])
     print(f"{len(truth)} truth rows -> {cfg['path']}; {len(review)} review flags -> {args.review}")
