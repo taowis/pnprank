@@ -1,0 +1,34 @@
+# Run settings for pnprank. Values marked TODO are fixed in the stage noted,
+# with the reason recorded in docs/decisions.md.
+
+project: pnprank
+
+reference:
+  genome_build: GRCh38
+  gene_key: ensembl_gene_id     # display: hgnc_symbol
+  ensembl_release: null        # TODO (Stage 1): pin and record source URL
+  gencode_release: null        # TODO (Stage 1): matching GENCODE release
+  orthology:
+    source: null               # TODO (Stage 2): e.g. Ensembl Compara / HGNC HCOP, one-to-one only
+    release: null
+
+truth:
+  path: data/truth/neuropathy_genes.tsv
+  disease_categories: [CMT, dHMN, HSAN, HSP]
+
+backtest:
+  cutoff_years: []             # TODO (Stage 1/5): chosen after the truth set's year distribution is known
+  interval_window_years: null  # TODO (Stage 5)
+  interaction_db_release: null # must predate each cutoff, or PPI is dropped (see CLAUDE leakage controls)
+
+model:
+  type: null                   # TODO (Stage 4)
+  cv_folds: 5                  # inner CV, pre-cutoff genes only
+  hyperparameters: {}
+
+bootstrap:
+  n_resamples: 1000
+  ci: 0.95
+
+seeds:
+  global: 20261006

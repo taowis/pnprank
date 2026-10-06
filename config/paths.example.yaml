@@ -1,0 +1,3 @@
+# Copy to config/paths.yaml (gitignored) and edit for this machine.
+data_root: /path/to/pnprank-data   # large files live here, never in git
+disk_limit_gb: 200                 # total disk budget under data_root; ask before exceeding

@@ -1,0 +1,17 @@
+# One entry per atlas. Every field must be verified (Stage 2) with a source URL;
+# never fill an accession from memory.
+#
+# - id: short_name
+#   title: ""
+#   species: human | mouse
+#   tissue: ""
+#   accession: ""            # GEO / CELLxGENE / Zenodo, verified
+#   url: ""
+#   source_url_verified: ""  # page where the accession was confirmed
+#   licence: ""
+#   publication_year: null
+#   files:
+#     - name: ""
+#       size_bytes: null
+#       sha256: ""
+atlases: []
