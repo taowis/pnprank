@@ -1,0 +1,21 @@
+# Author cell-type labels -> harmonised cell types (or "exclude").
+# Every author label in a used atlas must appear here (features.harmonised_profile
+# raises on unmapped labels). Subtypes are merged when the author label has no clear
+# anatomical meaning, rather than inventing precision. Reasons in docs/decisions.md.
+atlas_id	cell_type_author	cell_type	note
+yang2022_human_tg	Schwann_M	schwann_myelinating	
+yang2022_human_tg	Schwann_N	schwann_nonmyelinating	
+yang2022_human_tg	Satglia	satellite_glia	
+yang2022_human_tg	Fibroblast_Apod	fibroblast	author subtypes not mapped to endo/peri/epineurium
+yang2022_human_tg	Fibroblast_Dcn	fibroblast	
+yang2022_human_tg	Fibroblast_Mgp	fibroblast	
+yang2022_human_tg	Vascular	vascular	
+yang2022_human_tg	Immune	immune	
+yang2022_human_tg	NF1	neuron_sensory_nf	NF = neurofilament-rich, myelinated A-fibre neurons; subtypes merged
+yang2022_human_tg	NF2	neuron_sensory_nf	
+yang2022_human_tg	NF3	neuron_sensory_nf	
+yang2022_human_tg	PEP	neuron_sensory_pep	peptidergic nociceptors
+yang2022_human_tg	NP	neuron_sensory_np	non-peptidergic nociceptors
+yang2022_human_tg	SST	neuron_sensory_sst	
+yang2022_human_tg	TRPM8	neuron_sensory_trpm8	cold-sensing
+yang2022_human_tg	cLTMR	neuron_sensory_cltmr	
