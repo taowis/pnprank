@@ -54,10 +54,22 @@ backtest:
   interval_window_years: null  # TODO (Stage 5)
   interaction_db_release: null # must predate each cutoff, or PPI is dropped (see CLAUDE leakage controls)
 
+features:
+  celltype_map: config/celltype_map.tsv
+  atlases:                     # standardised atlases used as features (Stage 4)
+    - yang2022_human_tg
+    - heming2025_human_sural
+    - sparc465_human_sympathetic
+    - kedlian2024_human_muscle
+    - alkaslasi2021_mouse_mn
+    - ham2025_mouse_nmj
+  gtex_tissues: [Nerve_Tibial, Muscle_Skeletal, Brain_Spinal_cord_cervical_c-1]
+  ppi: false                   # PPI dropped from the back-tested model (no pre-cutoff release pinned)
+
 model:
-  type: null                   # TODO (Stage 4)
-  cv_folds: 5                  # inner CV, pre-cutoff genes only
-  hyperparameters: {}
+  kinds: [logistic, hgb]       # see src/pnprank/model.py
+  cv_folds: 5                  # outer folds (Stage 4 evaluation)
+  inner_folds: 3               # hyperparameter tuning, training genes only
 
 bootstrap:
   n_resamples: 1000
