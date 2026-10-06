@@ -116,6 +116,37 @@ def remote_size_bytes(url: str) -> int | None:
     return sizes[-1] if sizes else None
 
 
+def parallel_range_download(url: str, dest: Path, size: int, parts: int = 8) -> None:
+    """Download `size` bytes of url as `parts` concurrent byte ranges, then concatenate.
+
+    Some hosts (NCBI GEO) cap per-connection speed; parallel ranges work around that.
+    Each part resumes if a partial file exists.
+    """
+    import subprocess
+
+    bounds = [(i * size // parts, (i + 1) * size // parts - 1) for i in range(parts)]
+    procs = []
+    for i, (a, b) in enumerate(bounds):
+        part = dest.with_name(f"{dest.name}.part{i}")
+        have = part.stat().st_size if part.exists() else 0
+        if have >= b - a + 1:
+            continue
+        procs.append(subprocess.Popen(
+            ["curl", "-sSfL", "--retry", "5", "-r", f"{a + have}-{b}", "-o", "-", url],
+            stdout=open(part, "ab"),
+        ))
+    if any(p.wait() != 0 for p in procs):
+        raise RuntimeError(f"{url}: a range download failed; rerun to resume")
+    with open(dest, "wb") as out:
+        for i in range(parts):
+            part = dest.with_name(f"{dest.name}.part{i}")
+            with open(part, "rb") as fh:
+                while chunk := fh.read(1 << 24):
+                    out.write(chunk)
+    for i in range(parts):
+        dest.with_name(f"{dest.name}.part{i}").unlink()
+
+
 def download_atlas_files(
     registry_path: str | Path,
     atlas_id: str,
@@ -134,10 +165,6 @@ def download_atlas_files(
     import subprocess
 
     registry_path = Path(registry_path)
-    text = registry_path.read_text()
-    header = text.split("atlases:")[0]
-    reg = yaml.safe_load(text)
-    entry = next(a for a in reg["atlases"] if a["id"] == atlas_id)
     outdir = Path(data_root) / "raw" / atlas_id
     outdir.mkdir(parents=True, exist_ok=True)
     done = []
@@ -152,20 +179,46 @@ def download_atlas_files(
         if used + size > disk_limit_gb * 10**9:
             raise RuntimeError(f"{name} would exceed the {disk_limit_gb} GB disk budget")
         dest = outdir / name
-        subprocess.run(["curl", "-sSfL", "-C", "-", "--retry", "5", "-o", str(dest), url], check=True)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        if not (dest.exists() and dest.stat().st_size == size):
+            if size > 200 * 10**6:
+                parallel_range_download(url, dest, size)
+            else:
+                subprocess.run(
+                    ["curl", "-sSfL", "-C", "-", "--retry", "5", "-o", str(dest), url], check=True
+                )
         if dest.stat().st_size != size:
             raise RuntimeError(f"{name}: got {dest.stat().st_size} bytes, expected {size}")
-        sha = hashlib.sha256(dest.read_bytes()).hexdigest()
-        rec = next((f for f in entry["files"] if f["name"] == name), None)
-        if rec is None:
-            rec = {"name": name}
-            entry["files"].append(rec)
-        rec.update({"url": url, "size_bytes": size, "sha256": sha, "downloaded": True})
-        done.append(rec)
-    registry_path.write_text(
-        header + yaml.safe_dump(reg, sort_keys=False, allow_unicode=True, width=100)
-    )
+        h = hashlib.sha256()
+        with open(dest, "rb") as fh:
+            while chunk := fh.read(1 << 24):
+                h.update(chunk)
+        done.append({"name": name, "url": url, "size_bytes": size, "sha256": h.hexdigest(),
+                     "downloaded": True})
+    _record_files(registry_path, atlas_id, done)
     return done
+
+
+def _record_files(registry_path: Path, atlas_id: str, records: list[dict]) -> None:
+    """Merge file records into one registry entry under an exclusive file lock, so
+    concurrent downloads of different atlases cannot overwrite each other."""
+    import fcntl
+
+    with open(registry_path.with_suffix(".lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        text = registry_path.read_text()
+        header = text.split("atlases:")[0]
+        reg = yaml.safe_load(text)
+        entry = next(a for a in reg["atlases"] if a["id"] == atlas_id)
+        for r in records:
+            rec = next((f for f in entry["files"] if f["name"] == r["name"]), None)
+            if rec is None:
+                entry["files"].append(dict(r))
+            else:
+                rec.update(r)
+        registry_path.write_text(
+            header + yaml.safe_dump(reg, sort_keys=False, allow_unicode=True, width=100)
+        )
 
 
 # --- Gene identifiers ---------------------------------------------------------
@@ -276,7 +329,6 @@ def atlas_pseudobulk(cells_h5ad: str | Path, human_of: dict[str, str] | None = N
     are dropped. Returns (sums genes x groups, groups table).
     """
     import anndata as ad
-    import pandas as pd
 
     from pnprank.pseudobulk import pseudobulk
 
