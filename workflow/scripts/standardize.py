@@ -84,11 +84,34 @@ def yang2022(atlas_id: str, species: str):
     return m.T, ids, obs
 
 
+def cellxgene(atlas_id: str, file_glob: str, label_col: str, donor_col: str, keep_fn=None):
+    """CELLxGENE h5ad: raw counts in .raw.X (or .X), var index = Ensembl IDs."""
+    import anndata as ad
+
+    a = ad.read_h5ad(next(raw(atlas_id).glob(file_glob)))
+    X = a.raw.X if a.raw is not None else a.X
+    var_names = list(a.raw.var_names if a.raw is not None else a.var_names)
+    keep = np.ones(a.n_obs, bool) if keep_fn is None else np.asarray(keep_fn(a.obs), bool)
+    obs = pd.DataFrame({"cell_type_author": a.obs[label_col].astype(str),
+                        "donor": a.obs[donor_col].astype(str), "keep": keep}, index=a.obs_names)
+    return sp.csr_matrix(X), var_names, obs
+
+
 READERS = {
     "yang2022_human_tg": lambda a: yang2022(a, "human"),
     "yang2022_mouse_tg": lambda a: yang2022(a, "mouse"),
+    # pooled animals per replicate; donor_id identifies the sample (region x sex x rep)
+    "alkaslasi2021_mouse_mn": lambda a: cellxgene(a, "*.h5ad", "cluster_assignment_fine", "donor_id"),
+    # "Innervated only" dataset: all normal
+    "ham2025_mouse_nmj": lambda a: cellxgene(a, "*.h5ad", "author_cell_type", "donor_id"),
+    # nuclei only (cells and nuclei are mixed; nuclei capture myonuclei); all donors normal
+    "kedlian2024_human_muscle": lambda a: cellxgene(
+        a, "*.h5ad", "annotation_level1", "donor_id",
+        keep_fn=lambda o: (o["suspension_type"] == "nucleus").to_numpy()),
 }
-SPECIES = {"yang2022_human_tg": "human", "yang2022_mouse_tg": "mouse"}
+SPECIES = {"yang2022_human_tg": "human", "yang2022_mouse_tg": "mouse",
+           "alkaslasi2021_mouse_mn": "mouse", "ham2025_mouse_nmj": "mouse",
+           "kedlian2024_human_muscle": "human"}
 
 
 def main(atlas_id: str) -> None:

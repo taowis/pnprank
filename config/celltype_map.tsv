@@ -19,3 +19,83 @@ yang2022_human_tg	NP	neuron_sensory_np	non-peptidergic nociceptors
 yang2022_human_tg	SST	neuron_sensory_sst	
 yang2022_human_tg	TRPM8	neuron_sensory_trpm8	cold-sensing
 yang2022_human_tg	cLTMR	neuron_sensory_cltmr	
+alkaslasi2021_mouse_mn	S2	neuron_motor_alpha	S2 = Alpha Motor Neurons in GSE167597 author annotations (cross-tab 1283/1285)
+alkaslasi2021_mouse_mn	S3	neuron_motor_gamma	S3 = Gamma Motor Neurons (2241/2241)
+alkaslasi2021_mouse_mn	S1	neuron_motor_type3	S1 = Type 3 Motor Neurons (1526/1528)
+alkaslasi2021_mouse_mn	V1	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V2	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V3	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V4	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V5	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V6	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V7	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V8	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V9	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V10	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	I1	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I2	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I3	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I4	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I5	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I6	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I7	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I8	neuron_cholinergic_interneuron	
+ham2025_mouse_nmj	Type IIB	myonucleus_type2	
+ham2025_mouse_nmj	Type IIX	myonucleus_type2	
+ham2025_mouse_nmj	Type IIA	myonucleus_type2	
+ham2025_mouse_nmj	NMJ	myonucleus_nmj	
+ham2025_mouse_nmj	MTJ	myonucleus_mtj	
+ham2025_mouse_nmj	FAPs	fibroblast	
+ham2025_mouse_nmj	Peri- and Endoneurial	fibroblast_nerve	
+ham2025_mouse_nmj	Schwann cells	schwann	
+ham2025_mouse_nmj	Immune cells	immune	
+ham2025_mouse_nmj	Endothelial	vascular_endothelial	
+ham2025_mouse_nmj	Mmrn1+	vascular_endothelial	
+ham2025_mouse_nmj	Pericytes	vascular_mural	
+ham2025_mouse_nmj	Smooth muscle	vascular_mural	
+ham2025_mouse_nmj	MuSCs	muscle_satellite	
+ham2025_mouse_nmj	Adipocytes	adipocyte	
+ham2025_mouse_nmj	Tenocytes	tenocyte	
+kedlian2024_human_muscle	MF-I	myonucleus_type1	
+kedlian2024_human_muscle	MF-II	myonucleus_type2	
+kedlian2024_human_muscle	MF-Isn(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-IIsn(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-IIsc(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-Isc(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF_type-RASA4+	myonucleus_other	
+kedlian2024_human_muscle	MF_type-MYH8+	myonucleus_other	
+kedlian2024_human_muscle	Hyb	myonucleus_other	
+kedlian2024_human_muscle	NMJ	myonucleus_nmj	
+kedlian2024_human_muscle	MTJ	myonucleus_mtj	
+kedlian2024_human_muscle	NMJ_accessory	nmj_accessory	
+kedlian2024_human_muscle	FB	fibroblast	
+kedlian2024_human_muscle	PnFB	fibroblast_perineurial	
+kedlian2024_human_muscle	EnFB	fibroblast_endoneurial	
+kedlian2024_human_muscle	MuSC	muscle_satellite	
+kedlian2024_human_muscle	Tenocyte	tenocyte	
+kedlian2024_human_muscle	Pericyte	vascular_mural	
+kedlian2024_human_muscle	SMC	vascular_mural	
+kedlian2024_human_muscle	CapEC	vascular_endothelial	
+kedlian2024_human_muscle	VenEC	vascular_endothelial	
+kedlian2024_human_muscle	ArtEC	vascular_endothelial	
+kedlian2024_human_muscle	LymphEC	vascular_endothelial	
+kedlian2024_human_muscle	Adipocyte	adipocyte	
+kedlian2024_human_muscle	nmSchwann	schwann_nonmyelinating	
+kedlian2024_human_muscle	mSchwann	schwann_myelinating	
+kedlian2024_human_muscle	Mesothelium	exclude	
+kedlian2024_human_muscle	RBC	exclude	
+kedlian2024_human_muscle	Macrophage	immune	
+kedlian2024_human_muscle	CD4+T	immune	
+kedlian2024_human_muscle	CD14+Mono	immune	
+kedlian2024_human_muscle	Mast	immune	
+kedlian2024_human_muscle	CD16+NK	immune	
+kedlian2024_human_muscle	CD8+T	immune	
+kedlian2024_human_muscle	cDC2	immune	
+kedlian2024_human_muscle	CD16+Mono	immune	
+kedlian2024_human_muscle	B-cell	immune	
+kedlian2024_human_muscle	cDC1	immune	
+kedlian2024_human_muscle	B-plasma	immune	
+kedlian2024_human_muscle	Neutrophil	immune	
+kedlian2024_human_muscle	CD16-NK	immune	
+kedlian2024_human_muscle	Eosinophil	immune	
+kedlian2024_human_muscle	pDC	immune	
