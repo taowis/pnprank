@@ -263,7 +263,11 @@ def earlier_hits(names: list[str], before_year: int, limit: int = 5) -> list[str
     import urllib.parse
 
     gene = " OR ".join(f'"{n}"[tiab]' for n in names if len(n) > 2)
-    term = f"({gene}) AND ({PN_TERMS}) AND (mutation*[tiab] OR variant*[tiab])"
+    # Exclude NCBI Bookshelf records: GeneReviews chapters carry the series date (1993).
+    term = (
+        f"({gene}) AND ({PN_TERMS}) AND (mutation*[tiab] OR variant*[tiab]) "
+        "NOT pubmed books[filter]"
+    )
     q = urllib.parse.urlencode(
         {"db": "pubmed", "retmode": "json", "retmax": limit, "sort": "pub_date",
          "datetype": "pdat", "mindate": "1900", "maxdate": str(before_year - 1), "term": term}
