@@ -10,7 +10,6 @@
 - Snakemake chosen as workflow engine (see `docs/decisions.md`).
 
 ## Open items
-- `disk_limit_gb` in `config/paths.yaml` is a placeholder (200 GB) pending user confirmation.
 - Ensembl/GENCODE release, cutoff years and model type are TODOs for later stages.
 
 ## Next step
