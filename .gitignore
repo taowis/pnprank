@@ -1,0 +1,47 @@
+# Private, never committed (user notes and the project instruction file)
+private_notes/
+/CLAUDE.md
+.claude/
+
+# Machine-specific config
+config/paths.yaml
+
+# Data: everything except the README and the curated truth set
+data/*
+!data/README.md
+!data/truth/
+!data/truth/**
+
+# Keep empty dirs via .gitkeep
+!**/.gitkeep
+
+# Large or non-reproducible outputs
+*.h5ad
+*.h5
+*.loom
+*.rds
+*.pkl
+*.joblib
+results/**/models/
+
+# Snakemake
+.snakemake/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+.venv/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
