@@ -104,3 +104,26 @@ Each non-obvious choice, with its reason. Newest last.
 - **Large files:** iPain DRG all-cells h5ad (21 GB) exceeds the 5 GB single-download
   limit and needs approval. ATAC fragment files (SPARC 465 17.8 GB, Krauter 8 GB) are
   not needed and will not be downloaded.
+
+## 2026-10-07 — Stage 3 (pilot)
+
+- **Pilot atlas (user-confirmed):** Yang 2022 human trigeminal ganglion (GSE197289),
+  snRNA-seq raw counts and author labels (`subtype`, 16 cell types, 3 donors).
+- **R for RDS input:** `r-base` and `r-matrix` added to the conda environment; the
+  RDS is converted to Matrix Market by `workflow/scripts/rds_to_mtx.R`. The GEO file
+  is gzip-compressed twice; the script strips one layer if `readRDS` fails.
+- **Gene IDs:** atlas symbols mapped to Ensembl 116 via HGNC (approved, then unique
+  previous symbol, then unique alias); ambiguous names dropped; rows mapping to the
+  same Ensembl ID summed. 10,225 of 32,214 symbols are unmapped, almost all
+  clone-based lncRNA names absent from HGNC.
+- **Pseudobulk:** raw counts summed per cell type x donor, groups with < 20 cells
+  dropped, CPM per group, mean over donors; cell types must appear in >= 2 donors.
+- **Specificity:** EWCE-style fraction of a gene's expression in each cell type, plus
+  tau on log1p(CPM).
+- **Gene universe and negatives:** HGNC protein-coding genes present in the atlas.
+  Negatives exclude all 249 candidates (including unverified/excluded ones).
+- **Expression-matched control:** specificity is ranked within deciles of mean
+  expression before computing AUROC, because known disease genes are more highly
+  expressed than average and raw specificity partly tracks expression.
+- **Pilot is not a back-test:** it uses all discovery years and reports no
+  temporal metric. No multiple-testing correction; results are exploratory.
