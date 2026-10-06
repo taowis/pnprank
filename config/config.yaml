@@ -26,6 +26,20 @@ truth:
     hereditary_neuropathy_or_pain_gms: 846
     hsp: 165
 
+external:                      # MD5 values are as published by the host (base64)
+  gnomad_constraint:
+    url: https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/constraint/gnomad.v4.1.constraint_metrics.tsv
+    md5_base64: FN9LKstYH8u7KoKjpVX9NQ==
+    dest: data/external/gnomad/gnomad.v4.1.constraint_metrics.tsv
+  gtex_median_tpm:
+    url: https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz
+    md5_base64: E9/dDLc8WJnNCxAq7l7mww==
+    dest: data/external/gtex/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz
+  mouse_gtf:
+    url: https://ftp.ensembl.org/pub/release-116/gtf/mus_musculus/Mus_musculus.GRCm39.116.gtf.gz
+    bsd_sum: "42607 105329"     # from Ensembl CHECKSUMS (BSD sum)
+    dest: data/external/annotation/Mus_musculus.GRCm39.116.gtf.gz
+
 pseudobulk:
   min_cells_per_group: 20      # cell type x donor groups below this are dropped
   min_donors: 2                # cell types must be seen in at least this many donors
