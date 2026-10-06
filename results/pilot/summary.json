@@ -1,0 +1,37 @@
+{
+ "atlas": "yang2022_human_tg",
+ "n_cells": 38028,
+ "n_symbols": 32214,
+ "symbol_mapping": {
+  "approved": 21003,
+  "unmapped": 10225,
+  "previous": 804,
+  "alias": 182
+ },
+ "n_ensembl_after_collapse": 21897,
+ "n_universe_protein_coding": 17979,
+ "n_negatives": 17732,
+ "truth_in_universe": 240,
+ "truth_missing": [
+  "MT-RNR1",
+  "MT-TL1"
+ ],
+ "cell_types_kept": [
+  "Fibroblast_Apod",
+  "Fibroblast_Dcn",
+  "Fibroblast_Mgp",
+  "Immune",
+  "NF1",
+  "NF2",
+  "NF3",
+  "NP",
+  "PEP",
+  "SST",
+  "Satglia",
+  "Schwann_M",
+  "Schwann_N",
+  "TRPM8",
+  "Vascular",
+  "cLTMR"
+ ]
+}

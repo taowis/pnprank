@@ -1,13 +1,13 @@
 # pnprank
 
-**Status:** Stage 2 (Atlases) — complete, awaiting review before Stage 3.
+**Status:** Stage 3 (Pilot) — complete, awaiting review before Stage 4.
 
 | Stage | Description | Status |
 |---|---|---|
 | 0 | Scaffold | done |
 | 1 | Truth set with discovery years | done (242 genes) |
 | 2 | Locate and assess atlases | done (13 shortlisted of 133) |
-| 3 | Feasibility pilot on one atlas | not started |
+| 3 | Feasibility pilot on one atlas | done (Yang 2022 human TG) |
 | 4 | Full feature set and model | not started |
 | 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | not started |
 | 6 | Command-line tool | not started |
