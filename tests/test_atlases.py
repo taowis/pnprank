@@ -51,3 +51,20 @@ def test_one_to_one_orthologues_both_orders(tmp_path):
             fh.write("\t".join(r) + "\n")
     assert one_to_one_orthologues(p) == {"ENSG1": "ENSMUSG1", "ENSG2": "ENSMUSG2"}
     assert one_to_one_orthologues(p, high_confidence=True) == {"ENSG1": "ENSMUSG1"}
+
+
+def test_symbol_to_ensembl_prefers_approved_and_drops_ambiguous(tmp_path):
+    from pnprank.atlases import symbol_to_ensembl
+
+    cols = ["hgnc_id", "symbol", "status", "ensembl_gene_id", "prev_symbol", "alias_symbol"]
+    rows = [
+        ["HGNC:1", "GARS1", "Approved", "ENSG1", "GARS", "X1"],
+        ["HGNC:2", "AARS1", "Approved", "ENSG2", "AARS", "X1"],  # X1 ambiguous
+        ["HGNC:3", "GARS", "Approved", "ENSG3", "", ""],  # approved symbol beats previous
+    ]
+    p = tmp_path / "h.tsv"
+    p.write_text("\n".join("\t".join(r) for r in [cols, *rows]) + "\n")
+    m, how = symbol_to_ensembl(p)
+    assert m["GARS"] == "ENSG3" and how["GARS"] == "approved"
+    assert m["AARS"] == "ENSG2" and how["AARS"] == "previous"
+    assert "X1" not in m
