@@ -41,6 +41,8 @@ def test_mentions_gene_whole_word():
     rec = {"title": "Mutations in GARS cause CMT2D", "abstract": ""}
     assert mentions_gene(rec, ["GARS1", "GARS"])
     assert not mentions_gene(rec, ["ARS"])
+    rec = {"title": "Mutation in the Mitofusin 2 gene", "abstract": ""}
+    assert mentions_gene(rec, ["MFN2"], ("mitofusin 2",))
 
 
 def test_clingen_parser(tmp_path):

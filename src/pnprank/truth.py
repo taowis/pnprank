@@ -171,6 +171,7 @@ def build_candidates(srcdir: Path, panel_ids: dict[str, int]) -> list[dict[str, 
                 "aliases": "|".join(
                     s for s in (rec["prev_symbol"] + "|" + rec["alias_symbol"]).split("|") if s
                 ),
+                "gene_names": "|".join(n for n in [rec["name"], *rec["prev_name"].split("|")] if n),
                 "also_hsp": "yes" if h in hsp else "no",
                 "candidate_sources": ";".join(sorted(srcs)),
             }
@@ -235,11 +236,14 @@ def discovery_year(rec: dict) -> int:
     return min(years)
 
 
-def mentions_gene(rec: dict, names: list[str]) -> bool:
-    """True if any symbol/alias appears as a whole word in the title or abstract."""
+def mentions_gene(rec: dict, names: list[str], full_names: tuple[str, ...] = ()) -> bool:
+    """True if any symbol/alias appears as a whole word, or any full gene name appears
+    (case-insensitive), in the title or abstract."""
     import re
 
     text = rec["title"] + " " + rec["abstract"]
+    if any(n.lower() in text.lower() for n in full_names if n):
+        return True
     return any(re.search(rf"(?<![A-Za-z0-9]){re.escape(n)}(?![A-Za-z0-9])", text) for n in names if n)
 
 
@@ -294,7 +298,7 @@ def assemble_truth(curation: list[dict], candidates: list[dict[str, str]]) -> tu
             continue
         year = discovery_year(rec)
         flags = []
-        if not mentions_gene(rec, names):
+        if not mentions_gene(rec, names, tuple(cand[sym]["gene_names"].split("|"))):
             flags.append("gene_not_in_title_abstract")
         if c.get("confidence") != "high":
             flags.append(f"confidence_{c.get('confidence')}")

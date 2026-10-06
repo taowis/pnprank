@@ -59,3 +59,18 @@ Each non-obvious choice, with its reason. Newest last.
 - **Literature curation method:** per-gene search by LLM subagents under a fixed
   protocol (`docs/truth_protocol.md`), followed by a scripted PubMed re-check of
   every PMID (existence, date, gene mentioned) and manual review of flagged rows.
+- **Stricter discovery rule (user-confirmed, after round 1):** neuropathy must be
+  documented in the discovery paper's own genotyped patients (abstract or full
+  text). "Recognised core feature of the disorder" no longer suffices. Round 1
+  subagents applied the looser rule inconsistently (one batch already used the
+  strict one), so ~30 genes are re-curated in round 2 (`docs/truth_protocol_round2.md`).
+- **Secondary or atypical neuropathies kept as tier 2 (user-confirmed):** acute
+  porphyrias (HMBS, CPOX, PPOX), ADA2, AGXT, SMN1, PDYN and PRNP are not
+  excluded; they are forced to tier 2.
+- **Independent earlier-paper screen:** every verified pick is re-searched on
+  PubMed (gene names AND neuropathy terms AND mutation/variant, published before
+  the pick's year). 130/244 picks had hits; each hit is read and accepted or
+  rejected with a reason in round 2.
+- **Unverified and excluded candidates** are removed from the positive set and
+  must also be removed from the negative set in modelling (they are neither
+  confirmed positives nor clean negatives).

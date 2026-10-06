@@ -1,250 +1,250 @@
-hgnc_id	hgnc_symbol	ensembl_gene_id	aliases	also_hsp	candidate_sources
-HGNC:13666	AAAS	ENSG00000094914		no	panelapp_846_green
-HGNC:20	AARS1	ENSG00000090861	AARS|CMT2N|AlaRS	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:29	ABCA1	ENSG00000165029	ABC1|HDLDT1|TGD	no	panelapp_846_green;panelapp_85_green
-HGNC:61	ABCD1	ENSG00000101986	ALD|AMN|ALDP|adrenoleukodystrophy	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:15868	ABHD12	ENSG00000100997	C20orf22|DKFZP434P106|dJ965G21.2|BEM46L2|ABHD12A	no	panelapp_846_green;panelapp_85_green
-HGNC:119	ACOX1	ENSG00000161533	PALMCOX	no	panelapp_846_green
-HGNC:1839	ADA2	ENSG00000093072	IDGFL|CECR1|ADGF	no	panelapp_846_green
-HGNC:237	ADCY6	ENSG00000174233	AC6	no	panelapp_846_green
-HGNC:13841	ADGRG6	ENSG00000112414	GPR126|FLJ14937	no	panelapp_846_green
-HGNC:21304	ADPRS	ENSG00000116863	ADPRHL2|ARH3|FLJ20446	no	panelapp_846_green
-HGNC:315	AFG3L2	ENSG00000141385	SCA28|SPAX5	yes	panelapp_165_green+neuropathy_panel
-HGNC:17258	AGTPBP1	ENSG00000135049	KIAA1035|Nna1|CCP1	no	panelapp_846_green;panelapp_85_green
-HGNC:341	AGXT	ENSG00000172482	SPAT|AGXT1|PH1|AGT|SPT|AGT1|TLH6|Ser-PyrAT	no	panelapp_846_green
-HGNC:8768	AIFM1	ENSG00000156709	PDCD8|NAMSD|AUNX1|AIF|CMTX4|DFNX5	no	panelapp_846_green;panelapp_85_green
-HGNC:9722	ALDH18A1	ENSG00000059573	GSAS|PYCS|SPG9|P5CS	yes	panelapp_165_green+neuropathy_panel
-HGNC:451	AMACR	ENSG00000242110	RACE|P504S	no	panelapp_846_green
-HGNC:559	AP1S1	ENSG00000106367	CLAPS1|EKV3|AP19|SIGMA1A|WUGSC:H_DJ0747G18.2	no	panelapp_846_green
-HGNC:22197	AP5Z1	ENSG00000242802	KIAA0415|SPG48|zeta	no	panelapp_846_green
-HGNC:600	APOA1	ENSG00000118137		no	panelapp_846_green
-HGNC:15984	APTX	ENSG00000137074	AXA1|FLJ20157|AOA|AOA1|EAOH|EOAHA	no	panelapp_846_green;panelapp_85_green
-HGNC:23724	ARHGAP19	ENSG00000213390	FLJ00194|MGC14258	no	panelapp_846_green;panelapp_85_green
-HGNC:697	ARL6IP1	ENSG00000170540	ARL6IP|AIP1|ARMER|KIAA0069|SPG61	no	panelapp_846_green
-HGNC:713	ARSA	ENSG00000100299	ASA	no	panelapp_846_green;panelapp_85_green
-HGNC:735	ASAH1	ENSG00000104763	ASAH|AC|PHP32|FLJ21558|ACDase	no	panelapp_846_green
-HGNC:25567	ATAD3A	ENSG00000197785	FLJ10709	no	panelapp_846_green
-HGNC:11231	ATL1	ENSG00000198513	SPG3|SPG3A|FSP1|AD-FSP	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:24526	ATL3	ENSG00000184743	DKFZP564J0863	no	clingen_cmt_gcep;panelapp_846_green
-HGNC:795	ATM	ENSG00000149311	ATA|ATDC|ATC|ATD|TEL1|TELO1	no	panelapp_846_green;panelapp_85_green
-HGNC:30213	ATP13A2	ENSG00000159363	PARK9|HSA9947|CLN12	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:799	ATP1A1	ENSG00000163399		no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:869	ATP7A	ENSG00000165240	MNK	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:4117	B4GALNT1	ENSG00000135454	GALGT|SPG26|beta1-4GalNAc-T	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:939	BAG3	ENSG00000151929		no	panelapp_846_green;panelapp_85_green
-HGNC:987	BCKDHB	ENSG00000083123	OVD1B	no	panelapp_846_green;panelapp_85_green
-HGNC:17208	BICD2	ENSG00000185963	KIAA0699	no	panelapp_846_green;panelapp_85_green
-HGNC:15832	BSCL2	ENSG00000168000	GNG3LG|SPG17|seipin	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:25443	C19orf12	ENSG00000131943	SPG43|MGC10922|DKFZP762D096|NBIA4|MPAN	yes	panelapp_165_green+neuropathy_panel
-HGNC:17601	CADM3	ENSG00000162706	IGSF4B|BIgR|FLJ10698|TSLL1|NECL1|SynCAM3|Necl-1	no	clingen_cmt_gcep;panelapp_846_green
-HGNC:1476	CAPN1	ENSG00000014216	muCANP|muCL|CANP|CANPL1	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:1689	CD59	ENSG00000085063	MIC11|MIN1|MSK21|MIN2|MIN3|MIRL|MACIF|HRF20|16.3A5|EJ16|EJ30|EL32|G344|p18-20	no	panelapp_846_green;panelapp_85_green
-HGNC:32331	CFAP276	ENSG00000179902	C1orf194	no	panelapp_846_green;panelapp_85_green
-HGNC:15559	CHCHD10	ENSG00000250479	C22orf16|N27C7-4|MIX17A	no	panelapp_846_green;panelapp_85_green
-HGNC:16999	CLP1	ENSG00000172409	HEAB|hClp1	no	panelapp_846_green
-HGNC:8011	CNTNAP1	ENSG00000108797	NRXN4|p190|Caspr|CNTNAP	no	panelapp_846_green;panelapp_85_green
-HGNC:25716	COA7	ENSG00000162377	C1orf163|SELRC1|FLJ12439|RESA1	no	panelapp_846_green;panelapp_85_green
-HGNC:2244	COQ7	ENSG00000167186	CLK-1|CAT5	no	clingen_cmt_gcep;panelapp_846_green
-HGNC:26801	COX18	ENSG00000163626	FLJ38991|OXA1L2	no	panelapp_846_green
-HGNC:26970	COX20	ENSG00000203667	FAM36A|FLJ43269	no	panelapp_846_green
-HGNC:2277	COX6A1	ENSG00000111775	COX6A|COX6AL	no	panelapp_846_green;panelapp_85_green
-HGNC:2321	CPOX	ENSG00000080819	CPO|CPX|HCP	no	panelapp_846_green;panelapp_85_green
-HGNC:2498	CTDP1	ENSG00000060069	FCP1	no	panelapp_846_green;panelapp_85_green
-HGNC:2605	CYP27A1	ENSG00000135929	CYP27|CTX|CP27	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:20582	CYP2U1	ENSG00000155016	SPG56|SPG49	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:25538	DARS2	ENSG00000117593	FLJ10514|mtAspRS	no	panelapp_846_green;panelapp_85_green
-HGNC:2711	DCTN1	ENSG00000204843		no	panelapp_846_green;panelapp_85_green
-HGNC:13709	DEGS1	ENSG00000143753	MLD|Des-1|DES1|FADS7|DEGS-1	no	panelapp_85_green
-HGNC:2865	DHH	ENSG00000139549	HHG-3|MGC35145	no	panelapp_846_green
-HGNC:23537	DHTKD1	ENSG00000181192	KIAA1630|MGC3090|DKFZP762M115|CMT2Q|OADC-E1|OADH-E1|E1a	no	panelapp_846_green
-HGNC:2750	DHX9	ENSG00000135829	LKP|DDX9|RHA	no	panelapp_846_green
-HGNC:2938	DMXL2	ENSG00000104093	RC3|KIAA0856|DFNA71	no	panelapp_846_green
-HGNC:5228	DNAJB2	ENSG00000135924	HSJ1|HSPF3|CMT2T	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:9439	DNAJC3	ENSG00000102580	PRKRI|P58|P58IPK|HP58|ERdj6|p58(IPK)	no	panelapp_846_green;panelapp_85_green
-HGNC:2974	DNM2	ENSG00000079805	DYNII|DYN2|CMTDIB|CMTDI1|DI-CMTB|CMT2M	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:2976	DNMT1	ENSG00000130816	DNMT|MCMT|CXXC9	no	panelapp_846_green;panelapp_85_green
-HGNC:3032	DRP2	ENSG00000102385		no	panelapp_846_green
-HGNC:1090	DST	ENSG00000151914	BPAG1|BP240|KIAA0728|FLJ21489|FLJ13425|FLJ32235|FLJ30627|CATX-15|BPA|MACF2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:2961	DYNC1H1	ENSG00000197102	DNECL|DNCL|DNCH1|Dnchc1|HL-3|p22|DHC1|CMT2O	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:3239	EGR2	ENSG00000122877	KROX20	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:5959	ELP1	ENSG00000070061	DYS|IKBKAP|IKAP|TOT1|IKI3	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:19880	EMILIN1	ENSG00000138080	DKFZp586M121|gp115|EMILIN	no	panelapp_846_green
-HGNC:3438	ERCC6	ENSG00000225830	CKN2|CSB|RAD26|ARMD5	no	panelapp_846_green;panelapp_85_green
-HGNC:3439	ERCC8	ENSG00000049167	CKN1|CSA	no	panelapp_846_green;panelapp_85_green
-HGNC:3483	ETFDH	ENSG00000171503	ETFQO	no	panelapp_846_green
-HGNC:17944	EXOSC3	ENSG00000107371	hRrp40p|Rrp40p|RRP40|CGI-102|p10|hRrp-40	no	panelapp_846_green
-HGNC:21197	FA2H	ENSG00000103089	FAXDC1|SPG35|FAAH|FLJ25287	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:3579	FAH	ENSG00000103876		no	panelapp_846_green;panelapp_85_green
-HGNC:3602	FBLN5	ENSG00000140092	EVEC|UP50|DANCE|ARMD3	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:28844	FBXO38	ENSG00000145868	MOKA|SP329|FLJ13962|Fbx38	no	clingen_cmt_gcep
-HGNC:3642	FDXR	ENSG00000161513	ADXR|ADR|AR	no	panelapp_846_green
-HGNC:19125	FGD4	ENSG00000139132	FRABP|frabin|ZFYVE6|CMT4H	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:18416	FICD	ENSG00000198855	HYPE|HIP13	no	panelapp_846_green
-HGNC:16873	FIG4	ENSG00000112367	KIAA0274|SAC3|hSac3|dJ249I4.1|ALS11|CMT4J	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:24682	FLVCR1	ENSG00000162769	AXPC1|FLVCR|MFSD7B|PCA|SLC49A1	no	panelapp_846_green;panelapp_85_green
-HGNC:3951	FXN	ENSG00000165060	FRDA|FA|FARR|X25|CyaY	no	panelapp_846_green;panelapp_85_green
-HGNC:4115	GALC	ENSG00000054983		no	panelapp_846_green;panelapp_85_green
-HGNC:4137	GAN	ENSG00000261609	GAN1|KLHL16|GIG	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:4162	GARS1	ENSG00000106105	CMT2D|GARS|GlyRS|DSMAV|SMAD1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:18986	GBA2	ENSG00000070610	SPG46|KIAA1605|AD035|DKFZp762K054	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:4181	GBF1	ENSG00000107862	KIAA0248|ARF1GEF	no	panelapp_846_green
-HGNC:15968	GDAP1	ENSG00000104381	CMT4A|CMT4|CMT2K	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:4283	GJB1	ENSG00000169562	CMTX1|CMTX|CX32	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:17494	GJC2	ENSG00000198835	GJA12|CX47|CX46.6|SPG44	no	panelapp_85_green
-HGNC:4296	GLA	ENSG00000102393	GALA	no	panelapp_846_green;panelapp_85_green
-HGNC:20731	GNB4	ENSG00000114450		no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:4620	GSN	ENSG00000148180	DKFZp313L0718	no	panelapp_846_green
-HGNC:4801	HADHA	ENSG00000084754	GBP|LCEH|LCHAD|MTPA	no	panelapp_846_green;panelapp_85_green
-HGNC:4803	HADHB	ENSG00000138029	MTPB	no	panelapp_846_green;panelapp_85_green
-HGNC:4816	HARS1	ENSG00000170445	USH3B|HARS|HisRS	no	panelapp_846_green;panelapp_85_green
-HGNC:4878	HEXA	ENSG00000213614		no	panelapp_846_green
-HGNC:4879	HEXB	ENSG00000049860		no	panelapp_846_green
-HGNC:4912	HINT1	ENSG00000169567	PRKCNH1|HINT|PKCI-1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:4922	HK1	ENSG00000156515	HKI	no	panelapp_846_green;panelapp_85_green
-HGNC:4982	HMBS	ENSG00000256269	PBGD|UPS|PORC	no	panelapp_846_green;panelapp_85_green
-HGNC:28242	HPDL	ENSG00000186603	GLOXD1|MGC15668|4-HPPD-L	no	panelapp_846_green
-HGNC:5246	HSPB1	ENSG00000106211	HSP27|HSP28|Hs.76067|Hsp25|CMT2F	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:30171	HSPB8	ENSG00000152137	H11|E2IG1|HSP22|CMT2L	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:24587	HYCC1	ENSG00000122591	FAM126A|DRCTNNB1A|HCC|hyccin	no	panelapp_846_green;panelapp_85_green
-HGNC:29685	IARS2	ENSG00000067704	FLJ10326	no	panelapp_846_green;panelapp_85_green
-HGNC:5542	IGHMBP2	ENSG00000132740	ZFAND7|SMUBP2|CATF1|SMARD1|HCSA|HMN6|CMT2S	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:23791	INF2	ENSG00000203485	C14orf151|C14orf173|MGC13251	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:6182	ITPR3	ENSG00000096433	IP3R3	no	clingen_cmt_gcep;panelapp_846_green
-HGNC:6220	KCNA2	ENSG00000177301	Kv1.2|HK4	no	panelapp_85_green
-HGNC:888	KIF1A	ENSG00000130294	ATSV|C2orf20|SPG30|UNC104	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:6323	KIF5A	ENSG00000155980	SPG10|D12S1889|NKHC|MY050	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:6470	L1CAM	ENSG00000198910	HSAS1|SPG1|HSAS|MASA|MIC5|S10|CD171|NCAM-L1|CAML1	yes	panelapp_165_green+neuropathy_panel
-HGNC:16841	LITAF	ENSG00000189067	PIG7|SIMPLE|FLJ38636|TP53I7	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:6636	LMNA	ENSG00000160789	LMN1|CMD1A|LGMD1B|PRO1|LMNL1|HGPS|MADA	no	panelapp_846_green;panelapp_85_green
-HGNC:25135	LRSAM1	ENSG00000148356	FLJ31641|CMT2P|RIFLE|TAL	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:1968	LYST	ENSG00000143669	CHS1|CHS|Mauve	no	panelapp_846_green;panelapp_85_green
-HGNC:6783	MAG	ENSG00000105695	GMA|SIGLEC4A|SIGLEC-4A|S-MAG|SIGLEC4	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:6946	MCM3AP	ENSG00000160294	Map80|KIAA0572|GANP|SAC3	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:16877	MFN2	ENSG00000116688	CPRP1|KIAA0214|MARF|CMT2A2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:24525	MMACHC	ENSG00000132763	DKFZP564I122|cblC	no	panelapp_846_green;panelapp_85_green
-HGNC:7154	MME	ENSG00000196549	CALLA|CD10|NEP	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:23573	MORC2	ENSG00000133422	ZCWCC1|ZCW3|KIAA0852|AC004542.C22.1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:7224	MPV17	ENSG00000115204	SYM1	no	panelapp_846_green;panelapp_85_green
-HGNC:7225	MPZ	ENSG00000158887	CMT1|CMT1B|HMSNIB|CMT2I|CMT2J|P0	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:7414	MT-ATP6	ENSG00000198899	MTATP6|RP|ATP6|ATPase-6|Su6m	no	panelapp_846_green;panelapp_85_green
-HGNC:7470	MT-RNR1	ENSG00000211459	MTRNR1|12S|MOTS-c	no	panelapp_85_green
-HGNC:7490	MT-TL1	ENSG00000209082	MTTL1|TRNL1	no	panelapp_85_green
-HGNC:7450	MTMR2	ENSG00000087053	CMT4B|KIAA1073	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:26784	MTRFR	ENSG00000130921	C12orf65|FLJ38663|SPG55|COXPD7|mtRF-R	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:7467	MTTP	ENSG00000138823	MTP|ABL	no	panelapp_846_green;panelapp_85_green
-HGNC:23212	MYH14	ENSG00000105357	DFNA4|FLJ13881|KIAA2034|MHC16|MYH17	no	panelapp_846_green
-HGNC:7631	NAGA	ENSG00000198951	D22S674	no	panelapp_846_green;panelapp_85_green
-HGNC:7643	NARS1	ENSG00000134440	NARS|AsnRS	no	panelapp_846_green
-HGNC:25525	NDC1	ENSG00000058804	TMEM48|FLJ10407|NET3	no	panelapp_846_green;panelapp_85_green
-HGNC:7679	NDRG1	ENSG00000104419	CAP43|DRG1|RTP|TDD5|NDR1	no	panelapp_846_green;panelapp_85_green
-HGNC:7713	NDUFS6	ENSG00000145494	CI-13kA	no	panelapp_846_green
-HGNC:7737	NEFH	ENSG00000100285	NF-H|NFH	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:7739	NEFL	ENSG00000277586	NFL|CMT1F|CMT2E|NF68|PPP1R110	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:10663	NEMF	ENSG00000165525	SDCCAG1|NY-CO-1|FLJ10051|RQC2	no	panelapp_846_green
-HGNC:29866	NFASC	ENSG00000163531	NRCAML|KIAA0756|FLJ46866|NF	no	panelapp_846_green
-HGNC:7808	NGF	ENSG00000134259	NGFB	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:17043	NIPA1	ENSG00000170113	SPG6|MGC35570|SLC57A1	yes	panelapp_165_green+neuropathy_panel
-HGNC:8031	NTRK1	ENSG00000198400	TRK|TRKA|MTC	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:8049	NUDT2	ENSG00000164978	APAH1	no	panelapp_846_green
-HGNC:8140	OPA1	ENSG00000198836	NTG|KIAA0567|FLJ12460|NPG|MGM1	no	panelapp_846_green;panelapp_85_green
-HGNC:8142	OPA3	ENSG00000125741	FLJ22187|MGA3	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:8756	PCYT2	ENSG00000185813	ET	yes	panelapp_165_green+neuropathy_panel
-HGNC:8806	PDHA1	ENSG00000131828	PDHA|E1alpha	no	panelapp_846_green;panelapp_85_green
-HGNC:8811	PDK3	ENSG00000067992		no	clingen_cmt_gcep;panelapp_846_green
-HGNC:8819	PDXK	ENSG00000160209	C21orf97|C21orf124|PNK|PKH|FLJ21324|PRED79|FLJ31940|MGC15873	no	panelapp_846_green
-HGNC:8820	PDYN	ENSG00000101327	SCA23|PENKB|ADCA	no	panelapp_846_green
-HGNC:8851	PEX10	ENSG00000157911	RNF69	no	panelapp_846_green;panelapp_85_green
-HGNC:8860	PEX7	ENSG00000112357	PTS2R|RD	no	panelapp_846_green;panelapp_85_green
-HGNC:8940	PHYH	ENSG00000107537	PAHX|RD|PHYH1	no	panelapp_846_green;panelapp_85_green
-HGNC:26270	PIEZO2	ENSG00000154864	FAM38B2|C18orf30|C18orf58|FAM38B|FLJ23403|FLJ23144|HsT748|HsT771|FLJ34907	no	panelapp_846_green
-HGNC:8959	PIGB	ENSG00000069943	PIG-B|GPI-MT-III	no	panelapp_846_green
-HGNC:25985	PIGG	ENSG00000174227	FLJ20265|GPI7|LAS21	no	panelapp_846_green
-HGNC:9039	PLA2G6	ENSG00000184381	iPLA2|PNPLA9|PARK14|iPLA2beta|NBIA2	no	panelapp_846_green
-HGNC:17825	PLAAT3	ENSG00000176485	HRASLS3|PLA2G16|HREV107|H-REV107-1|HREV107-3|MGC118754.|AdPLA|PLAAT-3	no	panelapp_846_green
-HGNC:29105	PLEKHG5	ENSG00000171680	KIAA0720|Syx|GEF720|Tech|ARHGEF45	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:9086	PLP1	ENSG00000123560	SPG2|PLP|GPM6C	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:9115	PMM2	ENSG00000140650	CDG1|CDGS|CDG1a|PMI|PMI1	no	panelapp_846_green;panelapp_85_green
-HGNC:9117	PMP2	ENSG00000147588	MP2|FABP8|M-FABP	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:9118	PMP22	ENSG00000109099	CMT1A|HNPP|GAS3|Sp110|HMSNIA	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:9154	PNKP	ENSG00000039650	PNK	no	panelapp_846_green;panelapp_85_green
-HGNC:16268	PNPLA6	ENSG00000032444	NTE|sws|iPLA2delta|SPG39	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:23166	PNPT1	ENSG00000138035	DFNB70|PNPase|OLD35|old-35	no	panelapp_846_green
-HGNC:9179	POLG	ENSG00000140521	POLG1|POLGA	no	panelapp_846_green;panelapp_85_green
-HGNC:30074	POLR3A	ENSG00000148606	RPC1|RPC155|hRPC155|C160	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:30348	POLR3B	ENSG00000013503	RPC2|FLJ10388|C128	no	panelapp_846_green
-HGNC:9280	PPOX	ENSG00000143224	VP|PPO	no	panelapp_846_green;panelapp_85_green
-HGNC:13997	PRDM12	ENSG00000130711	PFM9	no	panelapp_846_green;panelapp_85_green
-HGNC:9449	PRNP	ENSG00000171867	PRIP|GSS|CJD|CD230|PRP|AltPrP	no	panelapp_846_green;panelapp_85_green
-HGNC:9462	PRPS1	ENSG00000147224	DFN2|CMTX5|DFNX1|PRS-I|PPRibP	no	panelapp_846_green;panelapp_85_green
-HGNC:13797	PRX	ENSG00000105227	KIAA1620	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:9644	PTPN11	ENSG00000179295	NS1|BPTP3|SH-PTP2|SHP-2|PTP2C|SHP2	no	panelapp_85_green
-HGNC:24265	PTRH2	ENSG00000141378	BIT1|CGI-147|PTH2|CFAP37	no	panelapp_846_green
-HGNC:9788	RAB7A	ENSG00000075785	RAB7|CMT2B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:1913	RCC1	ENSG00000180198	CHC1	no	panelapp_846_green;panelapp_85_green
-HGNC:25786	REEP1	ENSG00000068615	C2orf23|FLJ13110|SPG31|Yip2a	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:25964	RETREG1	ENSG00000154153	FAM134B|FLJ20152|JK1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:10468	RTN2	ENSG00000125744	SPG12|NSP2|NSPL1	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:10519	SACS	ENSG00000151835	ARSACS|KIAA0730|DKFZp686B15167|DNAJC29|SPAX6|PPP1R138	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:1349	SAMD9L	ENSG00000177409	C7orf6|KIAA2005|FLJ39885	no	panelapp_846_green
-HGNC:10537	SARS1	ENSG00000031698	SARS|SERS	no	panelapp_846_green
-HGNC:10542	SBF1	ENSG00000100241	MTMR5|DENND7A	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:2135	SBF2	ENSG00000133812	CMT4B2|KIAA1766|MTMR13|DENND7B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:1665	SCARB2	ENSG00000138760	CD36L2|HLGP85|LIMPII|SR-BII|LIMP-2	no	panelapp_846_green
-HGNC:10582	SCN10A	ENSG00000185313	Nav1.8|hPN3|SNS|PN3	no	panelapp_846_green;panelapp_85_green
-HGNC:10583	SCN11A	ENSG00000168356	SCN12A|Nav1.9|NaN|SNS-2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:10597	SCN9A	ENSG00000169432	Nav1.7|PN1|NE-NA|NENA|ETHA	no	panelapp_846_green;panelapp_85_green
-HGNC:10604	SCO2	ENSG00000284194	MYP6|SCO1L	no	clingen_cmt_gcep;panelapp_846_green
-HGNC:7323	SEPTIN9	ENSG00000184640	MSF|SEPT9|MSF1|KIAA0991|PNUTL4|AF17q25|SeptD1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:445	SETX	ENSG00000107290	ALS4|SCAR1|KIAA0625|AOA2|Sen1|STEX	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:29427	SH3TC2	ENSG00000169247	KIAA1985|CMT4C	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:8157	SIGMAR1	ENSG00000147955	OPRS1|S1R|SIGMA1R|SR-BP1	no	panelapp_846_green;panelapp_85_green
-HGNC:10914	SLC12A6	ENSG00000140199	KCC3|ACCPN|KCC3A|KCC3B	no	panelapp_846_green;panelapp_85_green
-HGNC:14409	SLC25A19	ENSG00000125454	MCPHA|DNC|MUP1|TPC	no	panelapp_846_green;panelapp_85_green
-HGNC:25198	SLC25A46	ENSG00000164209		yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:30224	SLC52A2	ENSG00000185803	GPR172A|FLJ11856|PAR1|GPCR41|D15Ertd747e|RFVT2|hRFT3|RFT3|HuPAR-1	no	panelapp_846_green;panelapp_85_green
-HGNC:16187	SLC52A3	ENSG00000101276	C20orf54|bA371L19.1|hRFT2|RFVT3|RFT2	no	panelapp_846_green;panelapp_85_green
-HGNC:11041	SLC5A6	ENSG00000138074	SMVT	no	panelapp_846_green
-HGNC:14025	SLC5A7	ENSG00000115665	hCHT|CHT1|ChT	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:11117	SMN1	ENSG00000172062	SMA@|SMA|BCD541|SMNT|SMA1|SMA2|SMA3|GEMIN1|TDRD16A	no	panelapp_846_green;panelapp_85_green
-HGNC:11184	SORD	ENSG00000140263	SDH|XDH	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:11190	SOX10	ENSG00000100146	DOM|WS4|WS2E|SOX-10	no	panelapp_846_green;panelapp_85_green
-HGNC:18514	SPART	ENSG00000133104	SPG20|KIAA0610|TAHCCP1	yes	panelapp_165_green+neuropathy_panel
-HGNC:11233	SPAST	ENSG00000021574	SPG4|FSP2|ADPSP|KIAA1083	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:11226	SPG11	ENSG00000104133	KIAA1840|ALS5|FLJ21439	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:20373	SPG21	ENSG00000090487	ACP33|GL010|BM-019|MAST|ABHD21	yes	panelapp_165_green+neuropathy_panel
-HGNC:11237	SPG7	ENSG00000197912	CMAR|CAR|SPG5C	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
-HGNC:11273	SPTAN1	ENSG00000197694		no	panelapp_846_green
-HGNC:14896	SPTBN4	ENSG00000160460	SPTBN3|KIAA1642	no	panelapp_846_green;panelapp_85_green
-HGNC:11277	SPTLC1	ENSG00000090054	HSN1|LCB1|SPTI|HSAN1|hLCB1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:11278	SPTLC2	ENSG00000100596	KIAA0526|LCB2|LCB2A|hLCB2a	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:11474	SURF1	ENSG00000148290	SHY1	no	panelapp_846_green;panelapp_85_green
-HGNC:11510	SYT2	ENSG00000143858		no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:11582	TBCE	ENSG00000284770	KCS|HRD|KCS1|pac2	no	panelapp_846_green
-HGNC:18884	TDP1	ENSG00000042088	FLJ11090|SCAN1	no	panelapp_846_green
-HGNC:19957	TECPR2	ENSG00000196663	KIAA0329	no	panelapp_846_green
-HGNC:11758	TFG	ENSG00000114354	TF6|FLJ36137|SPG57	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
-HGNC:15974	TRIM2	ENSG00000109654	KIAA0517|RNF86|CMT2R	no	panelapp_846_green;panelapp_85_green
-HGNC:23141	TRMT5	ENSG00000126814	KIAA1393|TRM5	no	panelapp_846_green
-HGNC:497	TRPA1	ENSG00000104321	ANKTM1	no	panelapp_85_green
-HGNC:18083	TRPV4	ENSG00000111199	OTRPC4|TRP12|VROAC|VRL-2|VR-OAC|CMT2C	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:26006	TTC19	ENSG00000011295	FLJ20343|MGC19520	no	panelapp_846_green
-HGNC:12404	TTPA	ENSG00000137561	AVED	no	panelapp_846_green;panelapp_85_green
-HGNC:12405	TTR	ENSG00000118271	PALB|CTS1|HsT2651|CTS	no	panelapp_846_green;panelapp_85_green
-HGNC:20772	TUBB3	ENSG00000258947	FEOM3|beta-4|CFEOM3|CFEOM3A	no	panelapp_846_green;panelapp_85_green
-HGNC:1160	TWNK	ENSG00000107815	IOSCA|C10orf2|PEO|PEO1|TWINKLE|FLJ21832|TWINL	no	panelapp_846_green
-HGNC:3148	TYMP	ENSG00000025708	MNGIE|ECGF1	no	panelapp_846_green;panelapp_85_green
-HGNC:12469	UBA1	ENSG00000130985	A1S9T|GXP1|UBE1|UBE1X|POC20|CFAP124	no	panelapp_846_green
-HGNC:12513	UCHL1	ENSG00000154277	PARK5|PGP9.5|Uch-L1|UCHL-1	no	panelapp_846_green
-HGNC:12649	VAPB	ENSG00000124164	VAP-B|VAP-C|ALS8	no	panelapp_846_green
-HGNC:12666	VCP	ENSG00000165280	IBMPFD|p97|CDC48|TERA	no	panelapp_846_green
-HGNC:1908	VPS13A	ENSG00000197969	CHAC|KIAA0986|BLTP5A	no	panelapp_85_green
-HGNC:23595	VPS13D	ENSG00000048707	FLJ10619|KIAA0453|BLTP5D	no	panelapp_846_green
-HGNC:12718	VRK1	ENSG00000100749		no	panelapp_846_green;panelapp_85_green
-HGNC:30910	VWA1	ENSG00000179403	FLJ22215|VWA-1|WARP	no	panelapp_846_green;panelapp_85_green
-HGNC:12729	WARS1	ENSG00000140105	IFI53|WARS|IFP53	no	panelapp_846_green;panelapp_85_green
-HGNC:28984	WASHC5	ENSG00000164961	SPG8|KIAA0196	yes	panelapp_165_green+neuropathy_panel
-HGNC:14540	WNK1	ENSG00000060237	PRKWNK1|HSN2|HSAN2|PPP1R167	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:12811	XK	ENSG00000047597	NA|NAC|XKR1|Kx|X1k	no	panelapp_846_green;panelapp_85_green
-HGNC:12814	XPA	ENSG00000136936	XPAC|XP1	no	panelapp_846_green;panelapp_85_green
-HGNC:12840	YARS1	ENSG00000134684	YARS|YTS|YRS|tyrRS	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
-HGNC:20761	ZFYVE26	ENSG00000072121	SPG15|KIAA0321	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+hgnc_id	hgnc_symbol	ensembl_gene_id	aliases	gene_names	also_hsp	candidate_sources
+HGNC:13666	AAAS	ENSG00000094914		aladin WD repeat nucleoporin|achalasia, adrenocortical insufficiency, alacrimia (Allgrove, triple-A)|achalasia, adrenocortical insufficiency, alacrimia	no	panelapp_846_green
+HGNC:20	AARS1	ENSG00000090861	AARS|CMT2N|AlaRS	alanyl-tRNA synthetase 1|alanyl-tRNA synthetase	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:29	ABCA1	ENSG00000165029	ABC1|HDLDT1|TGD	ATP binding cassette subfamily A member 1|ATP-binding cassette, sub-family A (ABC1), member 1	no	panelapp_846_green;panelapp_85_green
+HGNC:61	ABCD1	ENSG00000101986	ALD|AMN|ALDP|adrenoleukodystrophy	ATP binding cassette subfamily D member 1|ATP-binding cassette, sub-family D (ALD), member 1	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:15868	ABHD12	ENSG00000100997	C20orf22|DKFZP434P106|dJ965G21.2|BEM46L2|ABHD12A	abhydrolase domain containing 12, lysophospholipase|chromosome 20 open reading frame 22|abhydrolase domain containing 12	no	panelapp_846_green;panelapp_85_green
+HGNC:119	ACOX1	ENSG00000161533	PALMCOX	acyl-CoA oxidase 1|acyl-Coenzyme A oxidase 1, palmitoyl|acyl-CoA oxidase 1, palmitoyl	no	panelapp_846_green
+HGNC:1839	ADA2	ENSG00000093072	IDGFL|CECR1|ADGF	adenosine deaminase 2|cat eye syndrome chromosome region, candidate 1	no	panelapp_846_green
+HGNC:237	ADCY6	ENSG00000174233	AC6	adenylate cyclase 6	no	panelapp_846_green
+HGNC:13841	ADGRG6	ENSG00000112414	GPR126|FLJ14937	adhesion G protein-coupled receptor G6|G protein-coupled receptor 126	no	panelapp_846_green
+HGNC:21304	ADPRS	ENSG00000116863	ADPRHL2|ARH3|FLJ20446	ADP-ribosylserine hydrolase|ADP-ribosylhydrolase like 2	no	panelapp_846_green
+HGNC:315	AFG3L2	ENSG00000141385	SCA28|SPAX5	AFG3 like matrix AAA peptidase subunit 2|AFG3 (ATPase family gene 3, yeast)-like 2|spinocerebellar ataxia 28|AFG3 ATPase family member 3-like 2 (S. cerevisiae)|AFG3 like AAA ATPase 2	yes	panelapp_165_green+neuropathy_panel
+HGNC:17258	AGTPBP1	ENSG00000135049	KIAA1035|Nna1|CCP1	ATP/GTP binding carboxypeptidase 1|ATP/GTP binding protein 1	no	panelapp_846_green;panelapp_85_green
+HGNC:341	AGXT	ENSG00000172482	SPAT|AGXT1|PH1|AGT|SPT|AGT1|TLH6|Ser-PyrAT	alanine--glyoxylate aminotransferase|serine:pyruvate aminotransferase|alanine--glyoxylate and serine--pyruvate aminotransferase	no	panelapp_846_green
+HGNC:8768	AIFM1	ENSG00000156709	PDCD8|NAMSD|AUNX1|AIF|CMTX4|DFNX5	apoptosis inducing factor mitochondria associated 1|programmed cell death 8 (apoptosis-inducing factor)|neuropathy, axonal, motor-sensory with deafness and mental retardation (Cowchock syndrome)|apoptosis-inducing factor, mitochondrion-associated, 1|apoptosis inducing factor, mitochondria associated 1|auditory neuropathy, X-linked recessive 1	no	panelapp_846_green;panelapp_85_green
+HGNC:9722	ALDH18A1	ENSG00000059573	GSAS|PYCS|SPG9|P5CS	aldehyde dehydrogenase 18 family member A1|pyrroline-5-carboxylate synthetase (glutamate gamma-semialdehyde synthetase)|spastic paraplegia 9 (autosomal dominant)	yes	panelapp_165_green+neuropathy_panel
+HGNC:451	AMACR	ENSG00000242110	RACE|P504S	alpha-methylacyl-CoA racemase	no	panelapp_846_green
+HGNC:559	AP1S1	ENSG00000106367	CLAPS1|EKV3|AP19|SIGMA1A|WUGSC:H_DJ0747G18.2	adaptor related protein complex 1 subunit sigma 1|erythrokeratodermia variabilis 3 (Kamouraska type)|adaptor related protein complex 1 sigma 1 subunit	no	panelapp_846_green
+HGNC:22197	AP5Z1	ENSG00000242802	KIAA0415|SPG48|zeta	adaptor related protein complex 5 subunit zeta 1|KIAA0415|adaptor-related protein complex 5, zeta 1 subunit|adaptor related protein complex 5 zeta 1 subunit	no	panelapp_846_green
+HGNC:600	APOA1	ENSG00000118137		apolipoprotein A1|apolipoprotein A-I	no	panelapp_846_green
+HGNC:15984	APTX	ENSG00000137074	AXA1|FLJ20157|AOA|AOA1|EAOH|EOAHA	aprataxin|ataxia 1, early onset with hypoalbuminemia	no	panelapp_846_green;panelapp_85_green
+HGNC:23724	ARHGAP19	ENSG00000213390	FLJ00194|MGC14258	Rho GTPase activating protein 19	no	panelapp_846_green;panelapp_85_green
+HGNC:697	ARL6IP1	ENSG00000170540	ARL6IP|AIP1|ARMER|KIAA0069|SPG61	ARL6 interacting reticulophagy regulator 1|ARF like GTPase 6 interacting protein 1|ADP-ribosylation factor-like 6 interacting protein|ADP-ribosylation factor-like 6 interacting protein 1|ADP ribosylation factor like GTPase 6 interacting protein 1	no	panelapp_846_green
+HGNC:713	ARSA	ENSG00000100299	ASA	arylsulfatase A	no	panelapp_846_green;panelapp_85_green
+HGNC:735	ASAH1	ENSG00000104763	ASAH|AC|PHP32|FLJ21558|ACDase	N-acylsphingosine amidohydrolase 1|N-acylsphingosine amidohydrolase (acid ceramidase)	no	panelapp_846_green
+HGNC:25567	ATAD3A	ENSG00000197785	FLJ10709	ATPase family AAA domain containing 3A	no	panelapp_846_green
+HGNC:11231	ATL1	ENSG00000198513	SPG3|SPG3A|FSP1|AD-FSP	atlastin GTPase 1|spastic paraplegia 3A (autosomal dominant)	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:24526	ATL3	ENSG00000184743	DKFZP564J0863	atlastin GTPase 3	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:795	ATM	ENSG00000149311	ATA|ATDC|ATC|ATD|TEL1|TELO1	ATM serine/threonine kinase|ataxia telangiectasia mutated (includes complementation groups A, C and D)|ataxia telangiectasia mutated	no	panelapp_846_green;panelapp_85_green
+HGNC:30213	ATP13A2	ENSG00000159363	PARK9|HSA9947|CLN12	ATPase cation transporting 13A2|Parkinson disease (autosomal recessive) 9 (Kufor-Rakeb syndrome)|ATPase type 13A2|ATPase 13A2	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:799	ATP1A1	ENSG00000163399		ATPase Na+/K+ transporting subunit alpha 1|ATPase, Na+/K+ transporting, alpha 1 polypeptide	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:869	ATP7A	ENSG00000165240	MNK	ATPase copper transporting alpha|Menkes syndrome|ATPase, Cu++ transporting, alpha polypeptide	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:4117	B4GALNT1	ENSG00000135454	GALGT|SPG26|beta1-4GalNAc-T	beta-1,4-N-acetyl-galactosaminyltransferase 1|UDP-N-acetyl-alpha-D-galactosamine:(N-acetylneuraminyl)-galactosylglucosylceramide N-acetylgalactosaminyltransferase (GalNAc-T)|UDP-Gal:betaGlcNAc beta-1,4-N-acetylgalactosaminyltransferase transferase 1|spastic paraplegia 26	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:939	BAG3	ENSG00000151929		BAG cochaperone 3|BCL2 associated athanogene 3	no	panelapp_846_green;panelapp_85_green
+HGNC:987	BCKDHB	ENSG00000083123	OVD1B	branched chain keto acid dehydrogenase E1 subunit beta|branched chain keto acid dehydrogenase E1, beta polypeptide	no	panelapp_846_green;panelapp_85_green
+HGNC:17208	BICD2	ENSG00000185963	KIAA0699	BICD cargo adaptor 2|bicaudal D homolog 2 (Drosophila)	no	panelapp_846_green;panelapp_85_green
+HGNC:15832	BSCL2	ENSG00000168000	GNG3LG|SPG17|seipin	BSCL2 lipid droplet biogenesis associated, seipin|spastic paraplegia 17 (Silver syndrome)|Berardinelli-Seip congenital lipodystrophy 2 (seipin)|BSCL2, seipin lipid droplet biogenesis associated	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:25443	C19orf12	ENSG00000131943	SPG43|MGC10922|DKFZP762D096|NBIA4|MPAN	chromosome 19 open reading frame 12|spastic paraplegia 43 (autosomal recessive)	yes	panelapp_165_green+neuropathy_panel
+HGNC:17601	CADM3	ENSG00000162706	IGSF4B|BIgR|FLJ10698|TSLL1|NECL1|SynCAM3|Necl-1	cell adhesion molecule 3|immunoglobulin superfamily, member 4B	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:1476	CAPN1	ENSG00000014216	muCANP|muCL|CANP|CANPL1	calpain 1|calpain 1, (mu/I) large subunit	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:1689	CD59	ENSG00000085063	MIC11|MIN1|MSK21|MIN2|MIN3|MIRL|MACIF|HRF20|16.3A5|EJ16|EJ30|EL32|G344|p18-20	CD59 molecule (CD59 blood group)|CD59 antigen p18-20 (antigen identified by monoclonal antibodies 16.3A5, EJ16, EJ30, EL32 and G344)|CD59 antigen, complement regulatory protein|CD59 molecule, complement regulatory protein|CD59 molecule	no	panelapp_846_green;panelapp_85_green
+HGNC:32331	CFAP276	ENSG00000179902	C1orf194	cilia and flagella associated protein 276|chromosome 1 open reading frame 194	no	panelapp_846_green;panelapp_85_green
+HGNC:15559	CHCHD10	ENSG00000250479	C22orf16|N27C7-4|MIX17A	coiled-coil-helix-coiled-coil-helix domain containing 10|chromosome 22 open reading frame 16	no	panelapp_846_green;panelapp_85_green
+HGNC:16999	CLP1	ENSG00000172409	HEAB|hClp1	cleavage factor polyribonucleotide kinase subunit 1|CLP1, cleavage and polyadenylation factor I subunit, homolog (S. cerevisiae)|cleavage and polyadenylation factor I subunit 1	no	panelapp_846_green
+HGNC:8011	CNTNAP1	ENSG00000108797	NRXN4|p190|Caspr|CNTNAP	contactin associated protein 1	no	panelapp_846_green;panelapp_85_green
+HGNC:25716	COA7	ENSG00000162377	C1orf163|SELRC1|FLJ12439|RESA1	cytochrome c oxidase assembly factor 7|chromosome 1 open reading frame 163|Sel1 repeat containing 1|cytochrome c oxidase assembly factor 7|cytochrome c oxidase assembly factor 7 (putative)	no	panelapp_846_green;panelapp_85_green
+HGNC:2244	COQ7	ENSG00000167186	CLK-1|CAT5	coenzyme Q7, hydroxylase|coenzyme Q, 7 (rat, yeast) homolog|coenzyme Q7 homolog, ubiquinone (yeast)	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:26801	COX18	ENSG00000163626	FLJ38991|OXA1L2	cytochrome c oxidase assembly factor COX18|COX18 cytochrome c oxidase assembly homolog (S. cerevisiae)|cytochrome c oxidase assembly homolog 18 (yeast)|COX18, cytochrome c oxidase assembly factor	no	panelapp_846_green
+HGNC:26970	COX20	ENSG00000203667	FAM36A|FLJ43269	cytochrome c oxidase assembly factor COX20|family with sequence similarity 36, member A|COX20 Cox2 chaperone homolog (S. cerevisiae)|COX20, cytochrome c oxidase assembly factor	no	panelapp_846_green
+HGNC:2277	COX6A1	ENSG00000111775	COX6A|COX6AL	cytochrome c oxidase subunit 6A1|cytochrome c oxidase subunit VIa polypeptide 1	no	panelapp_846_green;panelapp_85_green
+HGNC:2321	CPOX	ENSG00000080819	CPO|CPX|HCP	coproporphyrinogen oxidase|coproporphyrinogen oxidase (coproporphyria, harderoporphyria)	no	panelapp_846_green;panelapp_85_green
+HGNC:2498	CTDP1	ENSG00000060069	FCP1	CTD phosphatase 1|CTD (carboxy-terminal domain, RNA polymerase II, polypeptide A) phosphatase, subunit 1	no	panelapp_846_green;panelapp_85_green
+HGNC:2605	CYP27A1	ENSG00000135929	CYP27|CTX|CP27	cytochrome P450 family 27 subfamily A member 1|cytochrome P450, subfamily XXVIIA (steroid 27-hydroxylase, cerebrotendinous xanthomatosis), polypeptide 1|cytochrome P450, family 27, subfamily A, polypeptide 1	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:20582	CYP2U1	ENSG00000155016	SPG56|SPG49	cytochrome P450 family 2 subfamily U member 1|cytochrome P450, family 2, subfamily U, polypeptide 1|spastic paraplegia 56 (autosomal dominant)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:25538	DARS2	ENSG00000117593	FLJ10514|mtAspRS	aspartyl-tRNA synthetase 2, mitochondrial	no	panelapp_846_green;panelapp_85_green
+HGNC:2711	DCTN1	ENSG00000204843		dynactin subunit 1|dynactin 1 (p150, Glued (Drosophila) homolog)	no	panelapp_846_green;panelapp_85_green
+HGNC:13709	DEGS1	ENSG00000143753	MLD|Des-1|DES1|FADS7|DEGS-1	delta 4-desaturase, sphingolipid 1|degenerative spermatocyte homolog 1, lipid desaturase (Drosophila)	no	panelapp_85_green
+HGNC:2865	DHH	ENSG00000139549	HHG-3|MGC35145	desert hedgehog signaling molecule|desert hedgehog (Drosophila) homolog|desert hedgehog	no	panelapp_846_green
+HGNC:23537	DHTKD1	ENSG00000181192	KIAA1630|MGC3090|DKFZP762M115|CMT2Q|OADC-E1|OADH-E1|E1a	dehydrogenase E1 and transketolase domain containing 1	no	panelapp_846_green
+HGNC:2750	DHX9	ENSG00000135829	LKP|DDX9|RHA	DExH-box helicase 9|DEAD/H (Asp-Glu-Ala-Asp/His) box polypeptide 9|DEAH (Asp-Glu-Ala-His) box helicase 9	no	panelapp_846_green
+HGNC:2938	DMXL2	ENSG00000104093	RC3|KIAA0856|DFNA71	Dmx like 2	no	panelapp_846_green
+HGNC:5228	DNAJB2	ENSG00000135924	HSJ1|HSPF3|CMT2T	DnaJ heat shock protein family (Hsp40) member B2|DnaJ (Hsp40) homolog, subfamily B, member 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:9439	DNAJC3	ENSG00000102580	PRKRI|P58|P58IPK|HP58|ERdj6|p58(IPK)	DnaJ heat shock protein family (Hsp40) member C3|DnaJ (Hsp40) homolog, subfamily C, member 3	no	panelapp_846_green;panelapp_85_green
+HGNC:2974	DNM2	ENSG00000079805	DYNII|DYN2|CMTDIB|CMTDI1|DI-CMTB|CMT2M	dynamin 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:2976	DNMT1	ENSG00000130816	DNMT|MCMT|CXXC9	DNA methyltransferase 1|DNA (cytosine-5-)-methyltransferase 1	no	panelapp_846_green;panelapp_85_green
+HGNC:3032	DRP2	ENSG00000102385		dystrophin related protein 2	no	panelapp_846_green
+HGNC:1090	DST	ENSG00000151914	BPAG1|BP240|KIAA0728|FLJ21489|FLJ13425|FLJ32235|FLJ30627|CATX-15|BPA|MACF2	dystonin|bullous pemphigoid antigen 1, 230/240kDa	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:2961	DYNC1H1	ENSG00000197102	DNECL|DNCL|DNCH1|Dnchc1|HL-3|p22|DHC1|CMT2O	dynein cytoplasmic 1 heavy chain 1|dynein, cytoplasmic, heavy polypeptide 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:3239	EGR2	ENSG00000122877	KROX20	early growth response 2|early growth response 2 (Krox-20 homolog, Drosophila)	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:5959	ELP1	ENSG00000070061	DYS|IKBKAP|IKAP|TOT1|IKI3	elongator acetyltransferase complex subunit 1|dysautonomia (Riley-Day syndrome, hereditary sensory autonomic neuropathy type III)|inhibitor of kappa light polypeptide gene enhancer in B-cells, kinase complex-associated protein|elongator complex protein 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:19880	EMILIN1	ENSG00000138080	DKFZp586M121|gp115|EMILIN	elastin microfibril interfacer 1	no	panelapp_846_green
+HGNC:3438	ERCC6	ENSG00000225830	CKN2|CSB|RAD26|ARMD5	ERCC excision repair 6, chromatin remodeling factor|excision repair cross-complementing rodent repair deficiency, complementation group 6|excision repair cross-complementation group 6	no	panelapp_846_green;panelapp_85_green
+HGNC:3439	ERCC8	ENSG00000049167	CKN1|CSA	ERCC excision repair 8, CSA ubiquitin ligase complex subunit|Cockayne syndrome 1 (classical)|excision repair cross-complementing rodent repair deficiency, complementation group 8|excision repair cross-complementation group 8	no	panelapp_846_green;panelapp_85_green
+HGNC:3483	ETFDH	ENSG00000171503	ETFQO	electron transfer flavoprotein dehydrogenase|electron-transferring-flavoprotein dehydrogenase	no	panelapp_846_green
+HGNC:17944	EXOSC3	ENSG00000107371	hRrp40p|Rrp40p|RRP40|CGI-102|p10|hRrp-40	exosome component 3	no	panelapp_846_green
+HGNC:21197	FA2H	ENSG00000103089	FAXDC1|SPG35|FAAH|FLJ25287	fatty acid 2-hydroxylase|fatty acid hydroxylase domain containing 1|spastic paraplegia 35 (autosomal recessive)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:3579	FAH	ENSG00000103876		fumarylacetoacetate hydrolase	no	panelapp_846_green;panelapp_85_green
+HGNC:3602	FBLN5	ENSG00000140092	EVEC|UP50|DANCE|ARMD3	fibulin 5	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:28844	FBXO38	ENSG00000145868	MOKA|SP329|FLJ13962|Fbx38	F-box protein 38	no	clingen_cmt_gcep
+HGNC:3642	FDXR	ENSG00000161513	ADXR|ADR|AR	ferredoxin reductase	no	panelapp_846_green
+HGNC:19125	FGD4	ENSG00000139132	FRABP|frabin|ZFYVE6|CMT4H	FYVE, RhoGEF and PH domain containing 4|FGD1 family, member 4	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:18416	FICD	ENSG00000198855	HYPE|HIP13	FIC domain protein adenylyltransferase|FIC domain containing	no	panelapp_846_green
+HGNC:16873	FIG4	ENSG00000112367	KIAA0274|SAC3|hSac3|dJ249I4.1|ALS11|CMT4J	FIG4 phosphoinositide 5-phosphatase|KIAA0274|FIG4 homolog (S. cerevisiae)|FIG4 homolog, SAC1 lipid phosphatase domain containing (S. cerevisiae)	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:24682	FLVCR1	ENSG00000162769	AXPC1|FLVCR|MFSD7B|PCA|SLC49A1	FLVCR choline and heme transporter 1|ataxia, posterior column 1, with retinitis pigmentosa|feline leukemia virus subgroup C cellular receptor 1|FLVCR heme transporter 1	no	panelapp_846_green;panelapp_85_green
+HGNC:3951	FXN	ENSG00000165060	FRDA|FA|FARR|X25|CyaY	frataxin|Friedreich ataxia	no	panelapp_846_green;panelapp_85_green
+HGNC:4115	GALC	ENSG00000054983		galactosylceramidase|galactosylceramidase (Krabbe disease)	no	panelapp_846_green;panelapp_85_green
+HGNC:4137	GAN	ENSG00000261609	GAN1|KLHL16|GIG	gigaxonin|giant axonal neuropathy (gigaxonin)	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:4162	GARS1	ENSG00000106105	CMT2D|GARS|GlyRS|DSMAV|SMAD1	glycyl-tRNA synthetase 1|Charcot-Marie-Tooth neuropathy 2D|glycyl-tRNA synthetase	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:18986	GBA2	ENSG00000070610	SPG46|KIAA1605|AD035|DKFZp762K054	glucosylceramidase beta 2|spastic paraplegia 46 (autosomal recessive)|glucosidase, beta (bile acid) 2	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:4181	GBF1	ENSG00000107862	KIAA0248|ARF1GEF	golgi brefeldin A resistant guanine nucleotide exchange factor 1|golgi-specific brefeldin A resistance factor 1	no	panelapp_846_green
+HGNC:15968	GDAP1	ENSG00000104381	CMT4A|CMT4|CMT2K	ganglioside induced differentiation associated protein 1|Charcot-Marie-Tooth neuropathy 4A	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:4283	GJB1	ENSG00000169562	CMTX1|CMTX|CX32	gap junction protein beta 1|gap junction protein, beta 1, 32kD (connexin 32, Charcot-Marie-Tooth neuropathy, X-linked)|gap junction protein, beta 1, 32kDa (connexin 32, Charcot-Marie-Tooth neuropathy, X-linked)|gap junction protein, beta 1, 32kDa (connexin 32)|gap junction protein, beta 1, 32kDa	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:17494	GJC2	ENSG00000198835	GJA12|CX47|CX46.6|SPG44	gap junction protein gamma 2|gap junction protein, alpha 12, 47kDa|gap junction protein, gamma 2, 47kDa	no	panelapp_85_green
+HGNC:4296	GLA	ENSG00000102393	GALA	galactosidase alpha	no	panelapp_846_green;panelapp_85_green
+HGNC:20731	GNB4	ENSG00000114450		G protein subunit beta 4|guanine nucleotide binding protein (G protein), beta polypeptide 4	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:4620	GSN	ENSG00000148180	DKFZp313L0718	gelsolin|gelsolin (amyloidosis, Finnish type)	no	panelapp_846_green
+HGNC:4801	HADHA	ENSG00000084754	GBP|LCEH|LCHAD|MTPA	hydroxyacyl-CoA dehydrogenase trifunctional multienzyme complex subunit alpha|hydroxyacyl-Coenzyme A dehydrogenase/3-ketoacyl-Coenzyme A thiolase/enoyl-Coenzyme A hydratase (trifunctional protein), alpha subunit|hydroxyacyl-CoA dehydrogenase/3-ketoacyl-CoA thiolase/enoyl-CoA hydratase (trifunctional protein), alpha subunit	no	panelapp_846_green;panelapp_85_green
+HGNC:4803	HADHB	ENSG00000138029	MTPB	hydroxyacyl-CoA dehydrogenase trifunctional multienzyme complex subunit beta|hydroxyacyl-Coenzyme A dehydrogenase/3-ketoacyl-Coenzyme A thiolase/enoyl-Coenzyme A hydratase (trifunctional protein), beta subunit|hydroxyacyl-CoA dehydrogenase/3-ketoacyl-CoA thiolase/enoyl-CoA hydratase (trifunctional protein), beta subunit	no	panelapp_846_green;panelapp_85_green
+HGNC:4816	HARS1	ENSG00000170445	USH3B|HARS|HisRS	histidyl-tRNA synthetase 1|Usher syndrome 3B|histidyl-tRNA synthetase	no	panelapp_846_green;panelapp_85_green
+HGNC:4878	HEXA	ENSG00000213614		hexosaminidase subunit alpha|hexosaminidase A (alpha polypeptide)	no	panelapp_846_green
+HGNC:4879	HEXB	ENSG00000049860		hexosaminidase subunit beta|hexosaminidase B (beta polypeptide)	no	panelapp_846_green
+HGNC:4912	HINT1	ENSG00000169567	PRKCNH1|HINT|PKCI-1	histidine triad nucleotide binding protein 1|histidine triad nucleotide-binding protein	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:4922	HK1	ENSG00000156515	HKI	hexokinase 1	no	panelapp_846_green;panelapp_85_green
+HGNC:4982	HMBS	ENSG00000256269	PBGD|UPS|PORC	hydroxymethylbilane synthase|uroporphyrinogen I synthase|porphobilinogen deaminase|porphyria, acute; Chester type	no	panelapp_846_green;panelapp_85_green
+HGNC:28242	HPDL	ENSG00000186603	GLOXD1|MGC15668|4-HPPD-L	4-hydroxyphenylpyruvate dioxygenase like|glyoxalase domain containing 1	no	panelapp_846_green
+HGNC:5246	HSPB1	ENSG00000106211	HSP27|HSP28|Hs.76067|Hsp25|CMT2F	heat shock protein family B (small) member 1|heat shock 27kD protein 1|heat shock 27kDa protein 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:30171	HSPB8	ENSG00000152137	H11|E2IG1|HSP22|CMT2L	heat shock protein family B (small) member 8|heat shock 27kDa protein 8|heat shock 22kDa protein 8	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:24587	HYCC1	ENSG00000122591	FAM126A|DRCTNNB1A|HCC|hyccin	hyccin PI4KA lipid kinase complex subunit 1|family with sequence similarity 126, member A|family with sequence similarity 126 member A	no	panelapp_846_green;panelapp_85_green
+HGNC:29685	IARS2	ENSG00000067704	FLJ10326	isoleucyl-tRNA synthetase 2, mitochondrial	no	panelapp_846_green;panelapp_85_green
+HGNC:5542	IGHMBP2	ENSG00000132740	ZFAND7|SMUBP2|CATF1|SMARD1|HCSA|HMN6|CMT2S	immunoglobulin mu DNA binding protein 2|immunoglobulin mu binding protein 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:23791	INF2	ENSG00000203485	C14orf151|C14orf173|MGC13251	inverted formin 2|chromosome 14 open reading frame 151|chromosome 14 open reading frame 173|inverted formin, FH2 and WH2 domain containing	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:6182	ITPR3	ENSG00000096433	IP3R3	inositol 1,4,5-trisphosphate receptor type 3|inositol 1,4,5-triphosphate receptor, type 3|inositol 1,4,5-trisphosphate receptor, type 3	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:6220	KCNA2	ENSG00000177301	Kv1.2|HK4	potassium voltage-gated channel subfamily A member 2|potassium voltage-gated channel, shaker-related subfamily, member 2	no	panelapp_85_green
+HGNC:888	KIF1A	ENSG00000130294	ATSV|C2orf20|SPG30|UNC104	kinesin family member 1A|axonal transport of synaptic vesicles|chromosome 2 open reading frame 20|spastic paraplegia 30 (autosomal recessive)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:6323	KIF5A	ENSG00000155980	SPG10|D12S1889|NKHC|MY050	kinesin family member 5A|spastic paraplegia 10 (autosomal dominant)	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:6470	L1CAM	ENSG00000198910	HSAS1|SPG1|HSAS|MASA|MIC5|S10|CD171|NCAM-L1|CAML1	L1 cell adhesion molecule|antigen identified by monoclonal antibody R1	yes	panelapp_165_green+neuropathy_panel
+HGNC:16841	LITAF	ENSG00000189067	PIG7|SIMPLE|FLJ38636|TP53I7	lipopolysaccharide induced TNF factor|lipopolysaccharide-induced TNF factor	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:6636	LMNA	ENSG00000160789	LMN1|CMD1A|LGMD1B|PRO1|LMNL1|HGPS|MADA	lamin A/C|cardiomyopathy, dilated 1A (autosomal dominant)|limb girdle muscular dystrophy 1B (autosomal dominant)|progeria 1 (Hutchinson-Gilford type)|lamin A/C-like 1	no	panelapp_846_green;panelapp_85_green
+HGNC:25135	LRSAM1	ENSG00000148356	FLJ31641|CMT2P|RIFLE|TAL	leucine rich repeat and sterile alpha motif containing 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:1968	LYST	ENSG00000143669	CHS1|CHS|Mauve	lysosomal trafficking regulator|Chediak-Higashi syndrome 1	no	panelapp_846_green;panelapp_85_green
+HGNC:6783	MAG	ENSG00000105695	GMA|SIGLEC4A|SIGLEC-4A|S-MAG|SIGLEC4	myelin associated glycoprotein	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:6946	MCM3AP	ENSG00000160294	Map80|KIAA0572|GANP|SAC3	minichromosome maintenance complex component 3 associated protein|minichromosome maintenance deficient (S. cerevisiae) 3-associated protein|MCM3 minichromosome maintenance deficient 3 (S. cerevisiae) associated protein	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:16877	MFN2	ENSG00000116688	CPRP1|KIAA0214|MARF|CMT2A2	mitofusin 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:24525	MMACHC	ENSG00000132763	DKFZP564I122|cblC	metabolism of cobalamin associated C|methylmalonic aciduria (cobalamin deficiency) cblC type, with homocystinuria	no	panelapp_846_green;panelapp_85_green
+HGNC:7154	MME	ENSG00000196549	CALLA|CD10|NEP	membrane metalloendopeptidase	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:23573	MORC2	ENSG00000133422	ZCWCC1|ZCW3|KIAA0852|AC004542.C22.1	MORC family CW-type zinc finger 2|zinc finger, CW-type with coiled-coil domain 1|zinc finger, CW type with coiled-coil domain 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:7224	MPV17	ENSG00000115204	SYM1	mitochondrial inner membrane protein MPV17|MpV17 transgene, murine homolog, glomerulosclerosis	no	panelapp_846_green;panelapp_85_green
+HGNC:7225	MPZ	ENSG00000158887	CMT1|CMT1B|HMSNIB|CMT2I|CMT2J|P0	myelin protein zero|Charcot-Marie-Tooth neuropathy 1B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:7414	MT-ATP6	ENSG00000198899	MTATP6|RP|ATP6|ATPase-6|Su6m	mitochondrially encoded ATP synthase membrane subunit 6|ATP synthase 6|spicular retinitis pigmentosa with dementia, seizures, ataxia, proximal muscle weakness and sensory deficit|mitochondrially encoded ATP synthase 6	no	panelapp_846_green;panelapp_85_green
+HGNC:7470	MT-RNR1	ENSG00000211459	MTRNR1|12S|MOTS-c	mitochondrially encoded 12S rRNA|12S RNA|mitochondrially encoded 12S RNA	no	panelapp_85_green
+HGNC:7490	MT-TL1	ENSG00000209082	MTTL1|TRNL1	mitochondrially encoded tRNA-Leu (UUA/G) 1|tRNA leucine 1 (UUA/G)|mitochondrially encoded tRNA leucine 1 (UUA/G)	no	panelapp_85_green
+HGNC:7450	MTMR2	ENSG00000087053	CMT4B|KIAA1073	myotubularin related protein 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:26784	MTRFR	ENSG00000130921	C12orf65|FLJ38663|SPG55|COXPD7|mtRF-R	mitochondrial translation release factor in rescue|chromosome 12 open reading frame 65	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:7467	MTTP	ENSG00000138823	MTP|ABL	microsomal triglyceride transfer protein|microsomal triglyceride transfer protein (large polypeptide, 88kD)|microsomal triglyceride transfer protein (large polypeptide, 88kDa)	no	panelapp_846_green;panelapp_85_green
+HGNC:23212	MYH14	ENSG00000105357	DFNA4|FLJ13881|KIAA2034|MHC16|MYH17	myosin heavy chain 14|myosin, heavy polypeptide 14|myosin, heavy chain 14, non-muscle	no	panelapp_846_green
+HGNC:7631	NAGA	ENSG00000198951	D22S674	alpha-N-acetylgalactosaminidase|N-acetylgalactosaminidase, alpha-	no	panelapp_846_green;panelapp_85_green
+HGNC:7643	NARS1	ENSG00000134440	NARS|AsnRS	asparaginyl-tRNA synthetase 1|asparaginyl-tRNA synthetase	no	panelapp_846_green
+HGNC:25525	NDC1	ENSG00000058804	TMEM48|FLJ10407|NET3	NDC1 transmembrane nucleoporin|transmembrane protein 48	no	panelapp_846_green;panelapp_85_green
+HGNC:7679	NDRG1	ENSG00000104419	CAP43|DRG1|RTP|TDD5|NDR1	N-myc downstream regulated 1	no	panelapp_846_green;panelapp_85_green
+HGNC:7713	NDUFS6	ENSG00000145494	CI-13kA	NADH:ubiquinone oxidoreductase subunit S6|NADH dehydrogenase (ubiquinone) Fe-S protein 6 (13kD) (NADH-coenzyme Q reductase)|NADH dehydrogenase (ubiquinone) Fe-S protein 6, 13kDa (NADH-coenzyme Q reductase)	no	panelapp_846_green
+HGNC:7737	NEFH	ENSG00000100285	NF-H|NFH	neurofilament heavy chain|neurofilament, heavy polypeptide 200kDa|neurofilament heavy polypeptide|neurofilament heavy	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:7739	NEFL	ENSG00000277586	NFL|CMT1F|CMT2E|NF68|PPP1R110	neurofilament light chain|neurofilament, light polypeptide 68kDa|neurofilament, light polypeptide|neurofilament light	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:10663	NEMF	ENSG00000165525	SDCCAG1|NY-CO-1|FLJ10051|RQC2	nuclear export mediator factor|serologically defined colon cancer antigen 1	no	panelapp_846_green
+HGNC:29866	NFASC	ENSG00000163531	NRCAML|KIAA0756|FLJ46866|NF	neurofascin|neurofascin homolog (chicken)	no	panelapp_846_green
+HGNC:7808	NGF	ENSG00000134259	NGFB	nerve growth factor|nerve growth factor (beta polypeptide)	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:17043	NIPA1	ENSG00000170113	SPG6|MGC35570|SLC57A1	NIPA magnesium transporter 1|spastic paraplegia 6 (autosomal dominant)|non imprinted in Prader-Willi/Angelman syndrome 1	yes	panelapp_165_green+neuropathy_panel
+HGNC:8031	NTRK1	ENSG00000198400	TRK|TRKA|MTC	neurotrophic receptor tyrosine kinase 1|neurotrophic tyrosine kinase, receptor, type 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:8049	NUDT2	ENSG00000164978	APAH1	nudix hydrolase 2|nudix (nucleoside diphosphate linked moiety X)-type motif 2	no	panelapp_846_green
+HGNC:8140	OPA1	ENSG00000198836	NTG|KIAA0567|FLJ12460|NPG|MGM1	OPA1 mitochondrial dynamin like GTPase|optic atrophy 1 (autosomal dominant)|OPA1, mitochondrial dynamin like GTPase	no	panelapp_846_green;panelapp_85_green
+HGNC:8142	OPA3	ENSG00000125741	FLJ22187|MGA3	outer mitochondrial membrane lipid metabolism regulator OPA3|optic atrophy 3 (autosomal recessive, with chorea and spastic paraplegia)|OPA3, outer mitochondrial membrane lipid metabolism regulator	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:8756	PCYT2	ENSG00000185813	ET	phosphate cytidylyltransferase 2, ethanolamine	yes	panelapp_165_green+neuropathy_panel
+HGNC:8806	PDHA1	ENSG00000131828	PDHA|E1alpha	pyruvate dehydrogenase E1 subunit alpha 1|pyruvate dehydrogenase (lipoamide) alpha 1|pyruvate dehydrogenase alpha 1	no	panelapp_846_green;panelapp_85_green
+HGNC:8811	PDK3	ENSG00000067992		pyruvate dehydrogenase kinase 3|pyruvate dehydrogenase kinase, isoenzyme 3|pyruvate dehydrogenase kinase, isozyme 3	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:8819	PDXK	ENSG00000160209	C21orf97|C21orf124|PNK|PKH|FLJ21324|PRED79|FLJ31940|MGC15873	pyridoxal kinase|chromosome 21 open reading frame 97|chromosome 21 open reading frame 124|pyridoxal (pyridoxine, vitamin B6) kinase	no	panelapp_846_green
+HGNC:8820	PDYN	ENSG00000101327	SCA23|PENKB|ADCA	prodynorphin|spinocerebellar ataxia 23	no	panelapp_846_green
+HGNC:8851	PEX10	ENSG00000157911	RNF69	peroxisomal biogenesis factor 10|peroxisome biogenesis factor 10	no	panelapp_846_green;panelapp_85_green
+HGNC:8860	PEX7	ENSG00000112357	PTS2R|RD	peroxisomal biogenesis factor 7	no	panelapp_846_green;panelapp_85_green
+HGNC:8940	PHYH	ENSG00000107537	PAHX|RD|PHYH1	phytanoyl-CoA 2-hydroxylase|phytanoyl-CoA hydroxylase (Refsum disease)|phytanoyl-CoA hydroxylase	no	panelapp_846_green;panelapp_85_green
+HGNC:26270	PIEZO2	ENSG00000154864	FAM38B2|C18orf30|C18orf58|FAM38B|FLJ23403|FLJ23144|HsT748|HsT771|FLJ34907	piezo type mechanosensitive ion channel component 2|chromosome 18 open reading frame 30|chromosome 18 open reading frame 58|family with sequence similarity 38, member B|piezo-type mechanosensitive ion channel component 2	no	panelapp_846_green
+HGNC:8959	PIGB	ENSG00000069943	PIG-B|GPI-MT-III	phosphatidylinositol glycan anchor biosynthesis class B|phosphatidylinositol glycan, class B	no	panelapp_846_green
+HGNC:25985	PIGG	ENSG00000174227	FLJ20265|GPI7|LAS21	phosphatidylinositol glycan anchor biosynthesis class G (EMM blood group)|phosphatidylinositol glycan, class G|phosphatidylinositol glycan anchor biosynthesis class G	no	panelapp_846_green
+HGNC:9039	PLA2G6	ENSG00000184381	iPLA2|PNPLA9|PARK14|iPLA2beta|NBIA2	phospholipase A2 group VI|phospholipase A2, group VI (cytosolic, calcium-independent)	no	panelapp_846_green
+HGNC:17825	PLAAT3	ENSG00000176485	HRASLS3|PLA2G16|HREV107|H-REV107-1|HREV107-3|MGC118754.|AdPLA|PLAAT-3	phospholipase A and acyltransferase 3|HRAS-like suppressor 3|phospholipase A2, group XVI|phospholipase A2 group XVI	no	panelapp_846_green
+HGNC:29105	PLEKHG5	ENSG00000171680	KIAA0720|Syx|GEF720|Tech|ARHGEF45	pleckstrin homology and RhoGEF domain containing G5|pleckstrin homology domain containing, family G (with RhoGef domain) member 5	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:9086	PLP1	ENSG00000123560	SPG2|PLP|GPM6C	proteolipid protein 1|spastic paraplegia 2, uncomplicated	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:9115	PMM2	ENSG00000140650	CDG1|CDGS|CDG1a|PMI|PMI1	phosphomannomutase 2	no	panelapp_846_green;panelapp_85_green
+HGNC:9117	PMP2	ENSG00000147588	MP2|FABP8|M-FABP	peripheral myelin protein 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:9118	PMP22	ENSG00000109099	CMT1A|HNPP|GAS3|Sp110|HMSNIA	peripheral myelin protein 22|Charcot-Marie-Tooth neuropathy 1A (greatly reduced nerve conduction velocity, hereditary motor sensory neuropathy Ia)	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:9154	PNKP	ENSG00000039650	PNK	polynucleotide kinase 3'-phosphatase	no	panelapp_846_green;panelapp_85_green
+HGNC:16268	PNPLA6	ENSG00000032444	NTE|sws|iPLA2delta|SPG39	patatin like domain 6, lysophospholipase |patatin like phospholipase domain containing 6|patatin-like phospholipase domain containing 6	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:23166	PNPT1	ENSG00000138035	DFNB70|PNPase|OLD35|old-35	polyribonucleotide nucleotidyltransferase 1|deafness, autosomal recessive 70	no	panelapp_846_green
+HGNC:9179	POLG	ENSG00000140521	POLG1|POLGA	DNA polymerase gamma, catalytic subunit|polymerase (DNA directed), gamma|polymerase (DNA) gamma, catalytic subunit	no	panelapp_846_green;panelapp_85_green
+HGNC:30074	POLR3A	ENSG00000148606	RPC1|RPC155|hRPC155|C160	RNA polymerase III subunit A|polymerase (RNA) III (DNA directed) polypeptide A, 155kDa	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:30348	POLR3B	ENSG00000013503	RPC2|FLJ10388|C128	RNA polymerase III subunit B|polymerase (RNA) III (DNA directed) polypeptide B	no	panelapp_846_green
+HGNC:9280	PPOX	ENSG00000143224	VP|PPO	protoporphyrinogen oxidase|variegate porphyria	no	panelapp_846_green;panelapp_85_green
+HGNC:13997	PRDM12	ENSG00000130711	PFM9	PR/SET domain 12|PR domain containing 12|PR domain 12	no	panelapp_846_green;panelapp_85_green
+HGNC:9449	PRNP	ENSG00000171867	PRIP|GSS|CJD|CD230|PRP|AltPrP	prion protein (Kanno blood group)|prion protein (p27-30)|prion protein	no	panelapp_846_green;panelapp_85_green
+HGNC:9462	PRPS1	ENSG00000147224	DFN2|CMTX5|DFNX1|PRS-I|PPRibP	phosphoribosyl pyrophosphate synthetase 1|deafness, X-linked 2, perceptive, congenital	no	panelapp_846_green;panelapp_85_green
+HGNC:13797	PRX	ENSG00000105227	KIAA1620	periaxin	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:9644	PTPN11	ENSG00000179295	NS1|BPTP3|SH-PTP2|SHP-2|PTP2C|SHP2	protein tyrosine phosphatase non-receptor type 11|Noonan syndrome 1|protein tyrosine phosphatase, non-receptor type 11	no	panelapp_85_green
+HGNC:24265	PTRH2	ENSG00000141378	BIT1|CGI-147|PTH2|CFAP37	peptidyl-tRNA hydrolase 2	no	panelapp_846_green
+HGNC:9788	RAB7A	ENSG00000075785	RAB7|CMT2B	RAB7A, member RAS oncogene family|RAB7, member RAS oncogene family|Charcot-Marie-Tooth neuropathy 2B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:1913	RCC1	ENSG00000180198	CHC1	regulator of chromosome condensation 1|chromosome condensation 1	no	panelapp_846_green;panelapp_85_green
+HGNC:25786	REEP1	ENSG00000068615	C2orf23|FLJ13110|SPG31|Yip2a	receptor accessory protein 1|chromosome 2 open reading frame 23	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:25964	RETREG1	ENSG00000154153	FAM134B|FLJ20152|JK1	reticulophagy regulator 1|family with sequence similarity 134, member B|family with sequence similarity 134 member B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:10468	RTN2	ENSG00000125744	SPG12|NSP2|NSPL1	reticulon 2|spastic paraplegia 12 (autosomal dominant)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:10519	SACS	ENSG00000151835	ARSACS|KIAA0730|DKFZp686B15167|DNAJC29|SPAX6|PPP1R138	sacsin molecular chaperone|spastic ataxia of Charlevoix-Saguenay (sacsin)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:1349	SAMD9L	ENSG00000177409	C7orf6|KIAA2005|FLJ39885	sterile alpha motif domain containing 9 like|chromosome 7 open reading frame 6|sterile alpha motif domain containing 9-like	no	panelapp_846_green
+HGNC:10537	SARS1	ENSG00000031698	SARS|SERS	seryl-tRNA synthetase 1|seryl-tRNA synthetase	no	panelapp_846_green
+HGNC:10542	SBF1	ENSG00000100241	MTMR5|DENND7A	SET binding factor 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:2135	SBF2	ENSG00000133812	CMT4B2|KIAA1766|MTMR13|DENND7B	SET binding factor 2|Charcot-Marie-Tooth neuropathy 4B2 (autosomal recessive, with myelin outfolding)|DENN/MADD domain containing 7B	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:1665	SCARB2	ENSG00000138760	CD36L2|HLGP85|LIMPII|SR-BII|LIMP-2	scavenger receptor class B member 2|CD36 antigen (collagen type I receptor, thrombospondin receptor)-like 2 (lysosomal integral membrane protein II)	no	panelapp_846_green
+HGNC:10582	SCN10A	ENSG00000185313	Nav1.8|hPN3|SNS|PN3	sodium voltage-gated channel alpha subunit 10|sodium channel, voltage-gated, type X, alpha polypeptide|sodium channel, voltage-gated, type X, alpha subunit|sodium channel, voltage gated, type X alpha subunit	no	panelapp_846_green;panelapp_85_green
+HGNC:10583	SCN11A	ENSG00000168356	SCN12A|Nav1.9|NaN|SNS-2	sodium voltage-gated channel alpha subunit 11|sodium channel, voltage-gated, type XI, alpha polypeptide|sodium channel, voltage-gated, type XII, alpha|sodium channel, voltage-gated, type XI, alpha subunit|sodium channel, voltage gated, type XI alpha subunit	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:10597	SCN9A	ENSG00000169432	Nav1.7|PN1|NE-NA|NENA|ETHA	sodium voltage-gated channel alpha subunit 9|sodium channel, voltage-gated, type IX, alpha polypeptide|sodium channel, voltage-gated, type IX, alpha subunit|sodium channel, voltage gated, type IX alpha subunit	no	panelapp_846_green;panelapp_85_green
+HGNC:10604	SCO2	ENSG00000284194	MYP6|SCO1L	synthesis of cytochrome C oxidase 2|SCO (cytochrome oxidase deficient, yeast) homolog 2|SCO cytochrome oxidase deficient homolog 2 (yeast)|myopia 6|SCO2, cytochrome c oxidase assembly protein|SCO cytochrome c oxidase assembly protein 2	no	clingen_cmt_gcep;panelapp_846_green
+HGNC:7323	SEPTIN9	ENSG00000184640	MSF|SEPT9|MSF1|KIAA0991|PNUTL4|AF17q25|SeptD1	septin 9|MLL septin-like fusion	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:445	SETX	ENSG00000107290	ALS4|SCAR1|KIAA0625|AOA2|Sen1|STEX	senataxin|amyotrophic lateral sclerosis 4|spinocerebellar ataxia, recessive, non-Friedreich type 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:29427	SH3TC2	ENSG00000169247	KIAA1985|CMT4C	SH3 domain and tetratricopeptide repeats 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:8157	SIGMAR1	ENSG00000147955	OPRS1|S1R|SIGMA1R|SR-BP1	sigma receptor chaperone 1|sigma non-opioid intracellular receptor 1|opioid receptor, sigma 1	no	panelapp_846_green;panelapp_85_green
+HGNC:10914	SLC12A6	ENSG00000140199	KCC3|ACCPN|KCC3A|KCC3B	solute carrier family 12 member 6|agenesis of corpus callosum and peripheral neuropathy (Andermann syndrome)|solute carrier family 12 (potassium/chloride transporter), member 6	no	panelapp_846_green;panelapp_85_green
+HGNC:14409	SLC25A19	ENSG00000125454	MCPHA|DNC|MUP1|TPC	solute carrier family 25 member 19|solute carrier family 25 (mitochondrial deoxynucleotide carrier), member 19|microcephaly, Amish|solute carrier family 25 (mitochondrial thiamine pyrophosphate carrier), member 19	no	panelapp_846_green;panelapp_85_green
+HGNC:25198	SLC25A46	ENSG00000164209		solute carrier family 25 member 46|solute carrier family 25, member 46	yes	clingen_cmt_gcep;panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:30224	SLC52A2	ENSG00000185803	GPR172A|FLJ11856|PAR1|GPCR41|D15Ertd747e|RFVT2|hRFT3|RFT3|HuPAR-1	solute carrier family 52 member 2|G protein-coupled receptor 172A|solute carrier family 52 (riboflavin transporter), member 2	no	panelapp_846_green;panelapp_85_green
+HGNC:16187	SLC52A3	ENSG00000101276	C20orf54|bA371L19.1|hRFT2|RFVT3|RFT2	solute carrier family 52 member 3|chromosome 20 open reading frame 54|solute carrier family 52 (riboflavin transporter), member 3	no	panelapp_846_green;panelapp_85_green
+HGNC:11041	SLC5A6	ENSG00000138074	SMVT	solute carrier family 5 member 6|solute carrier family 5 (sodium-dependent vitamin transporter), member 6|solute carrier family 5 (sodium/multivitamin and iodide cotransporter), member 6	no	panelapp_846_green
+HGNC:14025	SLC5A7	ENSG00000115665	hCHT|CHT1|ChT	solute carrier family 5 member 7|solute carrier family 5 (choline transporter), member 7|solute carrier family 5 (sodium/choline cotransporter), member 7	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:11117	SMN1	ENSG00000172062	SMA@|SMA|BCD541|SMNT|SMA1|SMA2|SMA3|GEMIN1|TDRD16A	survival of motor neuron 1, telomeric|spinal muscular atrophy (Werdnig-Hoffmann disease, Kugelberg-Welander disease)	no	panelapp_846_green;panelapp_85_green
+HGNC:11184	SORD	ENSG00000140263	SDH|XDH	sorbitol dehydrogenase	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:11190	SOX10	ENSG00000100146	DOM|WS4|WS2E|SOX-10	SRY-box transcription factor 10|SRY (sex determining region Y)-box 10|SRY-box 10	no	panelapp_846_green;panelapp_85_green
+HGNC:18514	SPART	ENSG00000133104	SPG20|KIAA0610|TAHCCP1	spartin|spastic paraplegia 20 (Troyer syndrome)	yes	panelapp_165_green+neuropathy_panel
+HGNC:11233	SPAST	ENSG00000021574	SPG4|FSP2|ADPSP|KIAA1083	spastin|spastic paraplegia 4 (autosomal dominant; spastin)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:11226	SPG11	ENSG00000104133	KIAA1840|ALS5|FLJ21439	SPG11 vesicle trafficking associated, spatacsin|KIAA1840|spastic paraplegia 11 (autosomal recessive)|amyotrophic lateral sclerosis 5	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:20373	SPG21	ENSG00000090487	ACP33|GL010|BM-019|MAST|ABHD21	SPG21 abhydrolase domain containing, maspardin|spastic paraplegia 21 (autosomal recessive, Mast syndrome)|SPG21, maspardin	yes	panelapp_165_green+neuropathy_panel
+HGNC:11237	SPG7	ENSG00000197912	CMAR|CAR|SPG5C	SPG7 matrix AAA peptidase subunit, paraplegin|cell matrix adhesion regulator|spastic paraplegia 7 (pure and complicated autosomal recessive)	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green
+HGNC:11273	SPTAN1	ENSG00000197694		spectrin alpha, non-erythrocytic 1	no	panelapp_846_green
+HGNC:14896	SPTBN4	ENSG00000160460	SPTBN3|KIAA1642	spectrin beta, non-erythrocytic 4	no	panelapp_846_green;panelapp_85_green
+HGNC:11277	SPTLC1	ENSG00000090054	HSN1|LCB1|SPTI|HSAN1|hLCB1	serine palmitoyltransferase long chain base subunit 1|hereditary sensory neuropathy, type 1	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:11278	SPTLC2	ENSG00000100596	KIAA0526|LCB2|LCB2A|hLCB2a	serine palmitoyltransferase long chain base subunit 2	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:11474	SURF1	ENSG00000148290	SHY1	SURF1 cytochrome c oxidase assembly factor|surfeit 1	no	panelapp_846_green;panelapp_85_green
+HGNC:11510	SYT2	ENSG00000143858		synaptotagmin 2|synaptotagmin II	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:11582	TBCE	ENSG00000284770	KCS|HRD|KCS1|pac2	tubulin folding cofactor E|tubulin-specific chaperone e|Kenny-Caffey syndrome|hypoparathyroidism, growth and mental retardation, and dysmorphism	no	panelapp_846_green
+HGNC:18884	TDP1	ENSG00000042088	FLJ11090|SCAN1	tyrosyl-DNA phosphodiesterase 1	no	panelapp_846_green
+HGNC:19957	TECPR2	ENSG00000196663	KIAA0329	tectonin beta-propeller repeat containing 2|KIAA0329	no	panelapp_846_green
+HGNC:11758	TFG	ENSG00000114354	TF6|FLJ36137|SPG57	trafficking from ER to golgi regulator|TRK-fused gene	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
+HGNC:15974	TRIM2	ENSG00000109654	KIAA0517|RNF86|CMT2R	tripartite motif containing 2|tripartite motif-containing 2	no	panelapp_846_green;panelapp_85_green
+HGNC:23141	TRMT5	ENSG00000126814	KIAA1393|TRM5	tRNA methyltransferase 5|KIAA1393|tRNA methyltransferase 5 homolog (S. cerevisiae)	no	panelapp_846_green
+HGNC:497	TRPA1	ENSG00000104321	ANKTM1	transient receptor potential cation channel subfamily A member 1|ankyrin-like with transmembrane domains 1|transient receptor potential cation channel, subfamily A, member 1	no	panelapp_85_green
+HGNC:18083	TRPV4	ENSG00000111199	OTRPC4|TRP12|VROAC|VRL-2|VR-OAC|CMT2C	transient receptor potential cation channel subfamily V member 4|transient receptor potential cation channel, subfamily V, member 4	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:26006	TTC19	ENSG00000011295	FLJ20343|MGC19520	tetratricopeptide repeat domain 19	no	panelapp_846_green
+HGNC:12404	TTPA	ENSG00000137561	AVED	alpha tocopherol transfer protein|ataxia (Friedreich-like) with vitamin E deficiency|tocopherol (alpha) transfer protein	no	panelapp_846_green;panelapp_85_green
+HGNC:12405	TTR	ENSG00000118271	PALB|CTS1|HsT2651|CTS	transthyretin|prealbumin, amyloidosis type I|carpal tunnel syndrome 1	no	panelapp_846_green;panelapp_85_green
+HGNC:20772	TUBB3	ENSG00000258947	FEOM3|beta-4|CFEOM3|CFEOM3A	tubulin beta 3 class III|tubulin, beta 3|fibrosis of extraocular muscles, congenital, 3	no	panelapp_846_green;panelapp_85_green
+HGNC:1160	TWNK	ENSG00000107815	IOSCA|C10orf2|PEO|PEO1|TWINKLE|FLJ21832|TWINL	twinkle mtDNA helicase|infantile onset spinocerebellar ataxia (autosomal recessive)|chromosome 10 open reading frame 2	no	panelapp_846_green
+HGNC:3148	TYMP	ENSG00000025708	MNGIE|ECGF1	thymidine phosphorylase|endothelial cell growth factor 1 (platelet-derived)	no	panelapp_846_green;panelapp_85_green
+HGNC:12469	UBA1	ENSG00000130985	A1S9T|GXP1|UBE1|UBE1X|POC20|CFAP124	ubiquitin like modifier activating enzyme 1|ubiquitin-activating enzyme E1 (A1S9T and BN75 temperature sensitivity complementing)|ubiquitin-activating enzyme E1|ubiquitin-like modifier activating enzyme 1	no	panelapp_846_green
+HGNC:12513	UCHL1	ENSG00000154277	PARK5|PGP9.5|Uch-L1|UCHL-1	ubiquitin C-terminal hydrolase L1|ubiquitin carboxyl-terminal esterase L1 (ubiquitin thiolesterase)	no	panelapp_846_green
+HGNC:12649	VAPB	ENSG00000124164	VAP-B|VAP-C|ALS8	VAMP associated protein B and C|VAMP (vesicle-associated membrane protein)-associated protein B and C	no	panelapp_846_green
+HGNC:12666	VCP	ENSG00000165280	IBMPFD|p97|CDC48|TERA	valosin containing protein|valosin-containing protein	no	panelapp_846_green
+HGNC:1908	VPS13A	ENSG00000197969	CHAC|KIAA0986|BLTP5A	vacuolar protein sorting 13 homolog A|chorea acanthocytosis|vacuolar protein sorting 13A (yeast)|vacuolar protein sorting 13 homolog A (S. cerevisiae)	no	panelapp_85_green
+HGNC:23595	VPS13D	ENSG00000048707	FLJ10619|KIAA0453|BLTP5D	vacuolar protein sorting 13 homolog D|vacuolar protein sorting 13D (yeast)|vacuolar protein sorting 13 homolog D (S. cerevisiae)	no	panelapp_846_green
+HGNC:12718	VRK1	ENSG00000100749		VRK serine/threonine kinase 1|vaccinia related kinase 1	no	panelapp_846_green;panelapp_85_green
+HGNC:30910	VWA1	ENSG00000179403	FLJ22215|VWA-1|WARP	von Willebrand factor A domain containing 1	no	panelapp_846_green;panelapp_85_green
+HGNC:12729	WARS1	ENSG00000140105	IFI53|WARS|IFP53	tryptophanyl-tRNA synthetase 1|tryptophanyl-tRNA synthetase	no	panelapp_846_green;panelapp_85_green
+HGNC:28984	WASHC5	ENSG00000164961	SPG8|KIAA0196	WASH complex subunit 5|spastic paraplegia 8 (autosomal dominant)|KIAA0196	yes	panelapp_165_green+neuropathy_panel
+HGNC:14540	WNK1	ENSG00000060237	PRKWNK1|HSN2|HSAN2|PPP1R167	WNK lysine deficient protein kinase 1|protein kinase, lysine deficient 1|hereditary sensory neuropathy, type II	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:12811	XK	ENSG00000047597	NA|NAC|XKR1|Kx|X1k	X-linked Kx blood group antigen, Kell and VPS13A binding protein|Kell blood group precursor (McLeod phenotype)|XK, Kell blood group complex subunit (McLeod syndrome)|neuroacanthocytosis|neurocanthocytosis|X-linked Kx blood group	no	panelapp_846_green;panelapp_85_green
+HGNC:12814	XPA	ENSG00000136936	XPAC|XP1	XPA, DNA damage recognition and repair factor|xeroderma pigmentosum, complementation group A	no	panelapp_846_green;panelapp_85_green
+HGNC:12840	YARS1	ENSG00000134684	YARS|YTS|YRS|tyrRS	tyrosyl-tRNA synthetase 1|tyrosyl-tRNA synthetase	no	clingen_cmt_gcep;panelapp_846_green;panelapp_85_green
+HGNC:20761	ZFYVE26	ENSG00000072121	SPG15|KIAA0321	zinc finger FYVE-type containing 26|spastic paraplegia 15 (complicated, autosomal recessive)|zinc finger, FYVE domain containing 26	yes	panelapp_165_green+neuropathy_panel;panelapp_846_green;panelapp_85_green
