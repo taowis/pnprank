@@ -26,3 +26,36 @@ Each non-obvious choice, with its reason. Newest last.
   so the assistant loads it from the repo root.
 - **Disk budget:** `disk_limit_gb: 200` under the data root, confirmed by the user.
 - **Remote:** private GitHub repository; `private_notes/` and root `CLAUDE.md` are never pushed.
+
+## 2026-10-06 — Stage 1 (truth set)
+
+- **Scope (user-confirmed):** core set = PanelApp Green genes on the hereditary
+  neuropathy panels ∪ ClinGen CMT GCEP curations at Moderate/Strong/Definitive.
+  HSP genes are included only if Green on the HSP panel (165) *and* present on a
+  neuropathy panel at any confidence, and only if a neuropathy phenotype is
+  verified in the literature; flagged `also_hsp`.
+- **Two PanelApp neuropathy panels:** 85 (Hereditary neuropathy, 100K legacy,
+  v1.513) and 846 (Hereditary neuropathy or pain disorder, NHS GMS R78, v8.37).
+  846 is the actively maintained clinical panel and contains recently discovered
+  genes (e.g. CADM3, ITPR3, COQ7) that 85 lacks; omitting it would bias the
+  back-test against recent discoveries.
+- **Tiers:** 846 also contains syndromes where neuropathy is a minor feature. Each
+  gene gets `tier` 1 (neuropathy is the primary phenotype) or 2 (syndromic). The
+  primary analysis can use tier 1 with tier 1+2 as a sensitivity analysis
+  (decided in Stage 5).
+- **Category `SYND`** added for syndromic disorders with neuropathy.
+- **Discovery year (user-confirmed):** year of the earliest PubMed record
+  reporting pathogenic variants in the gene in human patients with a peripheral
+  neuropathy phenotype. Linkage-only, animal-only and association studies do not
+  count. A gene first reported for a non-neuropathy disease takes the year of its
+  first neuropathy report.
+- **Year from PubMed date:** min(print year, electronic year) taken from PubMed
+  esummary by code, never from the curator; a discovery is public from whichever
+  date came first.
+- **Symbols and Ensembl IDs from HGNC**, not from PanelApp (PanelApp symbols lag,
+  e.g. AARS vs AARS1).
+- **Reference:** Ensembl 116 / GENCODE 50 (GRCh38.p14), the current release on
+  2026-10-06.
+- **Literature curation method:** per-gene search by LLM subagents under a fixed
+  protocol (`docs/truth_protocol.md`), followed by a scripted PubMed re-check of
+  every PMID (existence, date, gene mentioned) and manual review of flagged rows.
