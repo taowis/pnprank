@@ -29,3 +29,5 @@ dependencies:
   - pytest
   - ruff
   - requests
+variables:
+  R_LIBS_USER: /nonexistent-pnprank-isolated   # isolate conda R from user R libraries

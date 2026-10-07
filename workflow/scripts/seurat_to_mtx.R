@@ -22,6 +22,7 @@ cat("dim:", dim(counts), " nnz:", length(counts@x), "\n")
 if (length(counts@x) == 0) stop("counts slot is empty")
 if (!all(counts@x == round(counts@x))) stop("counts are not integers")
 md <- obj@meta.data
+md$active_ident <- as.character(Idents(obj))
 md <- md[colnames(counts), , drop = FALSE]
 dir.create(args[2], showWarnings = FALSE, recursive = TRUE)
 writeMM(counts, file.path(args[2], "matrix.mtx"))
