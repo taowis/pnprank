@@ -1,12 +1,10 @@
 import gzip
-import io
 import zipfile
 from datetime import date
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import pytest
 import yaml
 
 from pnprank.comparators import (
@@ -141,6 +139,28 @@ def test_read_biogrid_tab_v2(tmp_path):
     e = read_biogrid(_zip(tmp_path, text, "BIOGRID-ORGANISM-Homo_sapiens-2.0.36.tab.txt"), {},
                      {"Z": "E9"}, hgnc_ids={"HGNC:1": "E1", "HGNC:2": "E2", "HGNC:3": "E3"})
     assert sorted(map(tuple, e.to_numpy())) == [("E1", "E2"), ("E3", "E9")]
+
+
+def test_uniprot_to_ensembl_resolves_trembl_and_secondary(tmp_path):
+    from pnprank.comparators import uniprot_to_ensembl
+
+    hgnc = tmp_path / "hgnc.txt"
+    hgnc.write_text("hgnc_id\tstatus\tensembl_gene_id\tuniprot_ids\tentrez_id\n"
+                    "HGNC:1\tApproved\tE1\tP11111\t1\n"
+                    "HGNC:2\tApproved\tE2\t\t2\n"
+                    "HGNC:3\tApproved\tE3\tQ33333\t3\n")
+    idm = tmp_path / "idm.dat.gz"
+    with gzip.open(idm, "wt") as fh:
+        fh.write("A0TREM\tHGNC\tHGNC:2\nA0TREM\tGeneID\t2\n"
+                 "B0AMBI\tHGNC\tHGNC:1\nB0AMBI\tHGNC\tHGNC:3\n")
+    sec = tmp_path / "sec_ac.txt"
+    sec.write_text("header\nSecondary AC  Primary AC\n____________  __________\n"
+                   "O00OLD        P11111\nO00TRM        A0TREM\nO00BAD        P11111\n"
+                   "O00BAD        Q33333\n")
+    m = uniprot_to_ensembl(hgnc, idm, sec)
+    assert m["P11111"] == "E1" and m["A0TREM"] == "E2"
+    assert m["O00OLD"] == "E1" and m["O00TRM"] == "E2"
+    assert "B0AMBI" not in m and "O00BAD" not in m
 
 
 def test_comparator_releases_predate_cutoffs():

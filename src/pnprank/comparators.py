@@ -139,6 +139,46 @@ def hgnc_uniprot(hgnc_tsv: str | Path) -> dict[str, str]:
     return {a: next(iter(e)) for a, e in m.items() if len(e) == 1}
 
 
+def uniprot_to_ensembl(hgnc_tsv: str | Path, idmapping: str | Path | None = None,
+                       sec_ac: str | Path | None = None) -> dict[str, str]:
+    """UniProt accession -> Ensembl gene ID.
+
+    1. HGNC's own UniProt cross-references (`hgnc_uniprot`).
+    2. UniProt's human idmapping (accession -> HGNC ID -> Ensembl via HGNC), which also
+       covers unreviewed (TrEMBL) entries.
+    3. Secondary accessions (UniProt sec_ac.txt) resolved to their primary accession,
+       then 1-2. Only unambiguous mappings are kept at each step.
+    """
+    out = hgnc_uniprot(hgnc_tsv)
+    if idmapping is not None:
+        hg = hgnc_column_map(hgnc_tsv, "hgnc_id")
+        m: dict[str, set[str]] = defaultdict(set)
+        with gzip.open(idmapping, "rt") as fh:
+            for line in fh:
+                acc, kind, val = line.rstrip("\n").split("\t")
+                if kind == "HGNC" and val in hg:
+                    m[acc.split("-")[0]].add(hg[val])
+        for acc, ens in m.items():
+            if acc not in out and len(ens) == 1:
+                out[acc] = next(iter(ens))
+    if sec_ac is not None:
+        prim: dict[str, set[str]] = defaultdict(set)
+        started = False
+        with open(sec_ac) as fh:
+            for line in fh:
+                if line.startswith("_____"):
+                    started = True
+                    continue
+                f = line.split()
+                if started and len(f) == 2:
+                    prim[f[0]].add(f[1])
+        for sec, ps in prim.items():
+            ens = {out[p] for p in ps if p in out}
+            if sec not in out and len(ens) == 1:
+                out[sec] = next(iter(ens))
+    return out
+
+
 def go_gene_matrix(gene_terms: pd.DataFrame, parents: dict[str, set[str]], alt: dict[str, str],
                    universe: list[str], min_genes: int = 3, max_genes: int = 500
                    ) -> tuple[sp.csr_matrix, list[str]]:
@@ -168,7 +208,7 @@ def go_similarity_scores(m: sp.csr_matrix, universe: list[str], known: set[str])
     """Cosine similarity of each gene's IDF-weighted GO vector to the centroid of the
     known genes' (unit-normalised) vectors. Unannotated genes, and every gene when no
     known gene is annotated, score 0. Depends on `known` only through the centroid."""
-    n_genes = np.asarray((m.sum(axis=1) > 0)).ravel().sum()
+    n_genes = np.asarray(m.sum(axis=1) > 0).ravel().sum()
     df = np.asarray(m.sum(axis=0)).ravel()
     idf = np.log(max(n_genes, 1) / np.maximum(df, 1))
     x = m.multiply(idf[None, :]).tocsr()
@@ -209,7 +249,7 @@ def read_biogrid(path: str | Path, entrez: dict[str, str], sym: dict[str, str],
         name = next(n for n in z.namelist() if "Homo_sapiens" in n)
         raw = z.read(name).decode("utf-8", errors="replace")
     lines = raw.splitlines()
-    hdr = next(i for i, l in enumerate(lines) if l.startswith("#") or l.startswith("INTERACTOR_A"))
+    hdr = next(i for i, ln in enumerate(lines) if ln.startswith(("#", "INTERACTOR_A")))
     df = pd.read_csv(io.StringIO("\n".join(lines[hdr:])), sep="\t", dtype=str)
     df.columns = [c.lstrip("#").strip() for c in df.columns]
     if "Entrez Gene Interactor A" in df.columns:  # tab2

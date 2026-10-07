@@ -44,6 +44,11 @@ for cutoff, r in cfg["go_ontology"]["releases"].items():
     rec = fetch(r["url"], out / "go" / r["release"] / Path(r["url"]).name)
     manifest.append({"kind": "go_ontology", "cutoff": cutoff, "release": r["release"],
                      "date": r["release"], **rec})
+idm = cfg["id_mapping"]
+for key in ("sec_ac", "human_idmapping"):
+    rec = fetch(idm[key], out / "uniprot" / idm["release"] / Path(idm[key]).name)
+    manifest.append({"kind": f"uniprot_{key}", "cutoff": None, "release": idm["release"],
+                     "date": None, **rec})
 host = cfg["interactions"]["host"]
 for cutoff, r in cfg["interactions"]["releases"].items():
     url = f"{host}BIOGRID-{r['release']}/{r['file']}"

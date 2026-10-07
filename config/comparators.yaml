@@ -42,6 +42,14 @@ interactions:
     2017: {release: "3.4.144", date: "2016-12-30", file: BIOGRID-ORGANISM-3.4.144.tab2.zip}
     2020: {release: "3.5.180", date: "2019-12-31", file: BIOGRID-ORGANISM-3.5.180.tab2.zip}
 
+id_mapping:
+  # Identifier maps only (no annotations): old GOA files key proteins by UniProt
+  # accessions, many of them now secondary or TrEMBL-only. UniProt release 2026_03
+  # (https://ftp.uniprot.org/pub/databases/uniprot/current_release/relnotes.txt).
+  release: "2026_03"
+  sec_ac: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/sec_ac.txt
+  human_idmapping: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz
+
 methods:
   go_min_genes: 3          # GO terms annotated (after propagation) to fewer genes are dropped
   go_max_genes: 500        # ... or to more genes (too general to discriminate)
