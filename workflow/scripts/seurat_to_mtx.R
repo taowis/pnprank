@@ -24,6 +24,7 @@ if (!all(counts@x == round(counts@x))) stop("counts are not integers")
 md <- obj@meta.data
 md$active_ident <- as.character(Idents(obj))
 md <- md[colnames(counts), , drop = FALSE]
+rm(obj, a); invisible(gc())  # free the full object before writing (large atlases)
 dir.create(args[2], showWarnings = FALSE, recursive = TRUE)
 writeMM(counts, file.path(args[2], "matrix.mtx"))
 system2("gzip", c("-f", shQuote(file.path(args[2], "matrix.mtx"))))

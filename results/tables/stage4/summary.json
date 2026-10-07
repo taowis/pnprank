@@ -2,6 +2,7 @@
  "atlases": [
   "yang2022_human_tg",
   "heming2025_human_sural",
+  "jung2023_human_drg",
   "sparc465_human_sympathetic",
   "yadav2023_human_spinal_cord",
   "kedlian2024_human_muscle",
@@ -11,9 +12,9 @@
   "alkaslasi2021_mouse_mn",
   "ham2025_mouse_nmj"
  ],
- "n_universe": 19228,
- "n_features_static": 224,
- "n_features_full": 234,
+ "n_universe": 19229,
+ "n_features_static": 239,
+ "n_features_full": 250,
  "final_logistic_params": {
   "logisticregression__C": 0.001
  },
@@ -41,6 +42,15 @@
    "schwann_myelinating",
    "schwann_nonmyelinating",
    "schwann_repair",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "jung2023_human_drg": [
+   "fibroblast",
+   "immune",
+   "neuron_sensory",
+   "satellite_glia",
+   "schwann_myelinating",
    "vascular_endothelial",
    "vascular_mural"
   ],

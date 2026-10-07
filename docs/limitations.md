@@ -17,6 +17,9 @@
   CellRanger counts.
 - Atlases differ in protocol (cells vs nuclei), species and depth; mouse genes enter only
   through one-to-one orthologues, so genes without one are missing from mouse features.
-- Yim 2022 (mouse nerves) is excluded because only numeric clusters were deposited; Jung
-  2023 (human DRG) is not yet included (memory limit).
+- Yim 2022 (mouse nerves) is excluded because only numeric clusters were deposited. Jung
+  2023 (human DRG) contributes one pooled DRG-neuron profile; its human object has no
+  neuron subtypes.
 - SPARC 465 uses library, not donor, as the replicate unit.
+- Stage 4 model comparisons use a single 5-fold CV split; split-to-split variance (about
+  0.005 AUROC observed) is not included in the bootstrap CIs.

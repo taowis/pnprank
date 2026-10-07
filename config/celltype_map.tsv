@@ -255,3 +255,12 @@ stefanovska2025_mouse_sciatic	High-PLP1 mSC	schwann_myelinating
 stefanovska2025_mouse_sciatic	Low-PLP1 mSC	schwann_myelinating	
 stefanovska2025_mouse_sciatic	Moto-neuron-associated Pmp2+ mSC	schwann_myelinating	
 stefanovska2025_mouse_sciatic	non-myelinating Schwann cells (nmSC)	schwann_nonmyelinating	
+jung2023_human_drg	Adipocyte	adipocyte	
+jung2023_human_drg	DRG Neuron	neuron_sensory	all DRG neurons; no subtypes in the deposited human object
+jung2023_human_drg	Endothelial	vascular_endothelial	
+jung2023_human_drg	Fibroblast	fibroblast	
+jung2023_human_drg	Lymphocyte	immune	
+jung2023_human_drg	Macrophage	immune	
+jung2023_human_drg	Myelinating Schwann cell	schwann_myelinating	
+jung2023_human_drg	Pericyte/Smooth muscle	vascular_mural	
+jung2023_human_drg	Satellite glia	satellite_glia	

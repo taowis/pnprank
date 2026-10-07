@@ -304,6 +304,38 @@ def stefanovska2025(atlas_id: str):
     return sp.vstack(mats).tocsr(), ids, pd.concat(obs_parts)
 
 
+def jung2023(atlas_id: str):
+    """Seurat RDS (humanallcelltypes, all cells human). Donor per sample from the GEO series
+    matrix: sample IDs (SAM...) appear in the per-sample file names, donors in characteristics."""
+    counts_dir = interim(atlas_id) / "counts"
+    if not (counts_dir / "matrix.mtx.gz").exists():
+        subprocess.run(["Rscript", "workflow/scripts/seurat_to_mtx.R",
+                        str(raw(atlas_id) / "GSE201586_humanallcelltypes.rds.gz"), str(counts_dir)],
+                       check=True)
+    m, symbols, cells = load_mtx(counts_dir)
+    meta = pd.read_csv(counts_dir / "meta.tsv.gz", sep="\t", index_col=0)
+    if list(meta.index) != cells:
+        raise ValueError("metadata order differs from matrix columns")
+    donor_of = {}
+    with gzip.open(raw(atlas_id) / "GSE201586_series_matrix.txt.gz", "rt") as fh:
+        rows = {}
+        for line in fh:
+            f = line.rstrip("\n").split("\t")
+            if f[0] == "!Sample_supplementary_file_1":
+                rows["file"] = [x.strip('"') for x in f[1:]]
+            elif f[0] == "!Sample_characteristics_ch1" and f[1].startswith('"donor #:'):
+                rows["donor"] = [x.strip('"').split(": ", 1)[1] for x in f[1:]]
+    for path, donor in zip(rows["file"], rows["donor"]):
+        donor_of[path.rsplit("/", 1)[1].split("_")[1]] = donor
+    missing = set(meta["orig.ident"]) - set(donor_of)
+    if missing:
+        raise ValueError(f"samples without donor: {sorted(missing)}")
+    m, ids, _ = human_symbols_to_ids(m, symbols)
+    obs = pd.DataFrame({"cell_type_author": meta["celltype"].astype(str),
+                        "donor": meta["orig.ident"].map(donor_of), "keep": True}, index=cells)
+    return m.T, ids, obs
+
+
 READERS = {
     "yang2022_human_tg": lambda a: yang2022(a, "human"),
     "yang2022_mouse_tg": lambda a: yang2022(a, "mouse", donor_col="sample_name"),
@@ -320,12 +352,14 @@ READERS = {
     "yadav2023_human_spinal_cord": yadav2023,
     "krauter2025_mouse_drg": krauter2025,
     "stefanovska2025_mouse_sciatic": stefanovska2025,
+    "jung2023_human_drg": jung2023,
 }
 SPECIES = {"yang2022_human_tg": "human", "yang2022_mouse_tg": "mouse",
            "alkaslasi2021_mouse_mn": "mouse", "ham2025_mouse_nmj": "mouse",
            "kedlian2024_human_muscle": "human", "sparc465_human_sympathetic": "human",
            "heming2025_human_sural": "human", "yadav2023_human_spinal_cord": "human",
-           "krauter2025_mouse_drg": "mouse", "stefanovska2025_mouse_sciatic": "mouse"}
+           "krauter2025_mouse_drg": "mouse", "stefanovska2025_mouse_sciatic": "mouse",
+           "jung2023_human_drg": "human"}
 
 
 def main(atlas_id: str) -> None:

@@ -153,11 +153,15 @@ Each non-obvious choice, with its reason. Newest last.
 - **Stefanovska 2025:** raw counts from GEO (the Zenodo h5ad holds only normalised
   values); young (3-month) samples only; GEO files matched to h5ad labels by barcode
   overlap (each file matched exactly one sample suffix, 100% of its labelled cells).
-- **Jung 2023 human DRG deferred:** counts and author labels are only in a single 4.2 GB
-  Seurat RDS that cannot be partially read; loading needs more RAM than is free on this
-  machine. Stage 4 is reported with 10 atlases. A per-sample route (RAW.tar matrices plus
-  labels from the 240 MB cross-species object) is to be checked; it is exact because
-  pseudobulk sums are additive.
+- **Jung 2023 human DRG (added after the first Stage 4 report):** the deposited human
+  object (GSE201586_humanallcelltypes.rds.gz, gzip applied twice; 9.6 GB serialised)
+  loaded with about 3 GB resident memory, less than estimated. Raw integer counts
+  (32,174 genes x 111,925 nuclei) and the author `celltype` column were exported. The
+  object has one "DRG Neuron" class (no neuron subtypes), mapped to `neuron_sensory`.
+  Donors come from the GEO series matrix (sample IDs in the per-sample file names; 18
+  libraries from 7 donors); libraries of one donor are summed. FACS and density-gradient
+  nuclei isolations are pooled. GEO lists hg19 for alignment; genes are matched by
+  symbol through HGNC, so the assembly does not affect the Ensembl 116 keys.
 - **Gene universe for modelling:** HGNC protein-coding genes seen in at least one atlas
   or in GTEx (19,228); genes with no expression data at all are dropped.
 - **Stage 4 evaluation is nested CV on current labels, not a back-test:** it asks only
