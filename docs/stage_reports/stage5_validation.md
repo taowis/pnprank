@@ -20,7 +20,7 @@
 - Functions in `src/pnprank/backtest.py`: `training_labels`, `oof_scores_at_cutoff`,
   `within_fold_percentile` and `evaluation_labels`.
 
-**Leakage tests:** `tests/test_leakage.py` passes in full, 29 tests including the
+**Leakage tests:** `tests/test_leakage.py` passes in full (10 leakage tests; 29 tests in the whole suite at the time), including the
 end-to-end back-test test, which is no longer skipped. The end-to-end test checks three
 things:
 - Removing, moving or adding post-cutoff truth genes, or changing their tier, leaves

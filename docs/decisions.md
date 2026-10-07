@@ -403,3 +403,12 @@ Each non-obvious choice, with its reason. Newest last.
   best; weak; none), and `human_genes_sharing_worm_gene` (human genes Alliance links to
   the chosen worm gene with at least 5 methods). The shortlist still contains clear
   orthologues only.
+
+## 2026-10-08 — GLDN not added to the truth set (user decision)
+
+- The top-50 literature check flagged GLDN (lethal congenital contracture syndrome 11, an
+  inherited nodopathy; PMID 27616481) as a possible truth-set gap. The user decided not to
+  add it: it is outside the Stage 1 candidate sources (no PanelApp neuropathy panel, no
+  ClinGen CMT curation), and adding it would require rerunning every downstream analysis.
+  GLDN stays an unlabelled gene; the top-50 report's class A entry stands as a noted
+  limitation of the candidate sources.

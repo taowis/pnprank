@@ -21,8 +21,10 @@
   2023 (human DRG) contributes one pooled DRG-neuron profile; its human object has no
   neuron subtypes.
 - SPARC 465 uses library, not donor, as the replicate unit.
-- Stage 4 model comparisons use a single 5-fold CV split; split-to-split variance (about
-  0.005 AUROC observed) is not included in the bootstrap CIs.
+- Stage 4 model comparisons use a single 5-fold CV split; split-to-split variance is not
+  included in the bootstrap CIs. Repeating the split over 10 seeds (Stage 5,
+  `results/backtest/repeated_cv_tier1.tsv`) gave an SD of 0.009 for the full-model AUROC
+  and 0.008 for the atlas gain.
 - Back-test cutoffs share test genes, so per-cutoff results are not independent and are
   not combined into one significance test. Late cutoffs (2017, 2020) have 19 and 13 test
   genes and wide CIs.
