@@ -214,6 +214,11 @@ atlases:
   - name: GSE201654_mousegpcynohumanDRG.rds.gz
     size_bytes: 240000000
     downloaded: false
+  - name: GSE201586_series_matrix.txt.gz
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE201nnn/GSE201586/matrix/GSE201586_series_matrix.txt.gz
+    size_bytes: 4410
+    sha256: 5092eb628c77e21ac7cd51a404da0e1abb517ecf0bc6125dbde296844330e8b8
+    downloaded: true
 - id: sparc465_human_sympathetic
   title: 'A single-cell multi-omic atlas of human sympathetic ganglia (companion to: A multi-omic atlas
     of human autonomic and sensory ganglia implicates cell types in peripheral neuropathies)'

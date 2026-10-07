@@ -59,6 +59,7 @@ features:
   atlases:                     # standardised atlases used as features (Stage 4)
     - yang2022_human_tg
     - heming2025_human_sural
+    - jung2023_human_drg
     - sparc465_human_sympathetic
     - yadav2023_human_spinal_cord
     - kedlian2024_human_muscle
