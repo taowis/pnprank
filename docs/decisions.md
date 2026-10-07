@@ -153,3 +153,14 @@ Each non-obvious choice, with its reason. Newest last.
 - **Stefanovska 2025:** raw counts from GEO (the Zenodo h5ad holds only normalised
   values); young (3-month) samples only; GEO files matched to h5ad labels by barcode
   overlap (each file matched exactly one sample suffix, 100% of its labelled cells).
+- **Jung 2023 human DRG deferred:** counts and author labels are only in a single 4.2 GB
+  Seurat RDS that cannot be partially read; loading needs more RAM than is free on this
+  machine. Stage 4 is reported with 10 atlases. A per-sample route (RAW.tar matrices plus
+  labels from the 240 MB cross-species object) is to be checked; it is exact because
+  pseudobulk sums are additive.
+- **Gene universe for modelling:** HGNC protein-coding genes seen in at least one atlas
+  or in GTEx (19,228); genes with no expression data at all are dropped.
+- **Stage 4 evaluation is nested CV on current labels, not a back-test:** it asks only
+  whether atlas features add signal over non-atlas predictors (paired bootstrap on
+  identical resamples).
+- **Lockfile regenerated** with `conda list --explicit --md5` after adding `r-seuratobject`.
