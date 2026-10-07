@@ -1,0 +1,8 @@
+locus_id	interval	grch38_start	grch38_end	grch38_span_mb	gene	cutoff_year	gene_in_interval	n_protein_coding	n_scored	known_tier1_not_scored	genome_pct_full	rank_full	rank_non_atlas	rank_gtex_nerve	rank_gtex_mean	rank_neg_loeuf
+HSN1	9q22.1-q22.3	87800000	99800000	12.0	SPTLC1	2001	True	80	78		0.849	12	30	31	31	50.0
+DI-CMTB	19p13.2-p12	6900000	24200000	17.3	DNM2	2005	True	435	398		0.773	51	36	53	51	10.0
+HMNX	Xq13.1-q21	68500000	99100000	30.6	ATP7A	2010	True	106	103	GJB1	0.743	36	77	48	53	
+CMTX4	Xq24-q26	117400000	138900000	21.5	AIFM1	2012	True	137	130		0.746	46	60	52	38	
+CMTX6	Xp22.11-p22.11	21900000	24900000	3.0	PDK3	2013	True	20	19		0.925	5	9	8	8	
+CMTX3	Xq26.3-q27.1	134500000	141200000	6.7	SOX3	2026	True	54	50		0.111	34	21	25	31	
+DHMN1	7q34-q36.2	138500000	155200000	16.7	UBE3C	2022	False	153	146		0.942	11	24	22	22	19.0
