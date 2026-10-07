@@ -292,3 +292,24 @@ Each non-obvious choice, with its reason. Newest last.
   the interval. Tier-1 genes known before the cutoff are training positives and are not
   ranked; they are listed. Cutoff 2001 (SPTLC1) has only 12 tier-1 positives.
 - **Reported as a demonstration on 7 loci, not a validation.**
+
+## 2026-10-08 — Literature check of the top 50 candidates (after Stage 6, at the user's request)
+
+- **Gene list:** `pnprank top -n 50` (known tier-1/2 genes excluded; L1CAM included as
+  `listed_not_in_truth`). Ranks 1-58.
+- **Classes A-E** as defined in `docs/case_studies/top50_literature.md`; each gene takes the
+  highest class its evidence supports. A and B require human genetic evidence; HSP counts
+  for A/B as well as neuropathy, as specified by the user.
+- **D requires functional or model-organism work** (knockout, knockdown, mutant) on axons,
+  myelin, Schwann cells or sensory/motor neurons. Expression alone (marker gene, atlas)
+  is E, because the ranking itself is built from expression and would otherwise count as
+  its own support.
+- **Alias filtering:** HGNC alias/previous symbols shorter than 4 characters, non-ASCII,
+  generic words (Beta2, beta-5) or equal to another gene's approved symbol are not
+  searched; they matched unrelated records (e.g. TUBB as an alias of TUBB2A).
+- **Borderline calls recorded, not hidden:** TARDBP (FOSMN/neuronopathy case reports) and
+  SCN7A (variant screening in painful neuropathy cohorts) are B with the alternative class
+  stated.
+- **Truth set not edited.** Class-A genes are listed for the user to decide; GLDN is the
+  only one that looks like a gap under the Stage 1 rules (L1CAM was already excluded;
+  TUBB4A has no neuropathy report).
