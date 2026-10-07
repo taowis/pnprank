@@ -215,3 +215,10 @@ Each non-obvious choice, with its reason. Newest last.
   still computed and reported (`transform = pooled`). The Stage 4 CV comparison is barely
   affected (tier 1 gain +0.048 pooled vs +0.044 within-fold; tier 1+2 +0.059 both),
   because the full model chose C = 0.001 in every fold there.
+- **Reproducibility fix:** the training rows at a cutoff were assembled from a Python set,
+  whose iteration order changes with string-hash randomisation between processes; inner
+  CV folds, and so the chosen C, changed between runs with the same seed (e.g. cutoff
+  2005 tier 1: pooled AUROC 0.762 vs 0.726). Rows now follow the label order, and a test
+  runs the scoring under three hash seeds. The episode also shows that C selection is
+  unstable with 30-40 positives; within-fold percentiles remove the scale problem, not
+  this variance. All Stage 5 results were regenerated after the fix.

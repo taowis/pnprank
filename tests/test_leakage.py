@@ -176,3 +176,26 @@ def test_within_fold_percentile_ignores_scale_between_folds():
     cov = pd.Series(rng.normal(size=40), index=idx)
     m = within_fold_percentile(s, fold, cov, n_bins=2)
     assert m.notna().all() and m.max() == 1.0
+
+
+def test_backtest_scores_reproducible_across_hash_seeds(tmp_path):
+    """Back-test scores must not depend on Python's string-hash randomisation."""
+    import subprocess
+    import sys
+
+    script = tmp_path / "run.py"
+    script.write_text(
+        "import numpy as np, pandas as pd\n"
+        "from pnprank.backtest import oof_scores_at_cutoff\n"
+        "idx=[f'G{i}' for i in range(120)]\n"
+        "rng=np.random.default_rng(0)\n"
+        "X=pd.DataFrame(rng.normal(size=(120,4)),index=idx)\n"
+        "y=pd.Series(0,index=idx); y.iloc[::6]=1\n"
+        "s,_,_=oof_scores_at_cutoff(X,y,'logistic',0,3,3)\n"
+        "print(','.join(f'{v:.12f}' for v in s))\n")
+    outs = []
+    for h in ("1", "2", "3"):
+        r = subprocess.run([sys.executable, str(script)], capture_output=True, text=True,
+                           env={**__import__("os").environ, "PYTHONHASHSEED": h}, check=True)
+        outs.append(r.stdout)
+    assert outs[0] == outs[1] == outs[2]

@@ -118,7 +118,8 @@ def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_fo
     splits = list(KFold(n_splits=folds, shuffle=True, random_state=seed).split(zeros))
 
     def run(k, tr, te):
-        train = list(known) + list(zeros[tr])
+        # positives in y's order (never set order: it varies with hash randomisation)
+        train = list(y.index[y == 1]) + list(zeros[tr])
         est, best = fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds)
         return pd.Series(est.predict_proba(X.loc[zeros[te]])[:, 1], index=zeros[te]), best
 
