@@ -1,0 +1,101 @@
+hgnc_symbol	ensembl_gene_id	disease_category	hgnc_id	worm_gene	wormbase_id	ensembl_type	ensembl_pct_id_human	alliance_n_methods	alliance_best_both_ways	clear_orthologue	clear_rule	orthology_class	human_genes_sharing_worm_gene	n_worm_orthologues_any
+AARS1	ENSG00000090861	CMT	HGNC:20	aars-2	WBGene00000197	one2one	56.7	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		2
+ADCY6	ENSG00000174233	SYND	HGNC:237	acy-4	WBGene00000071	many2many	29.5	9.0	True	True	alliance_reciprocal_best	clear	ADCY5;ADCY8	18
+AIFM1	ENSG00000156709	CMT	HGNC:8768	wah-1	WBGene00006937	one2one	33.0	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+AMACR	ENSG00000242110	SYND	HGNC:451	ZK892.4	WBGene00014128	one2many	37.2	9.0	True	True	alliance_reciprocal_best	clear		2
+ARHGAP19	ENSG00000213390	CMT	HGNC:23724							False		none		0
+ATL3	ENSG00000184743	HSAN	HGNC:24526	atln-1	WBGene00021868	one2one	53.2	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear	ATL1;ATL2	2
+ATP1A1	ENSG00000163399	CMT	HGNC:799	eat-6	WBGene00001137			8.0	False	False		supported	ATP1A2;ATP1A3;ATP1A4	5
+ATP7A	ENSG00000165240	dHMN	HGNC:869	cua-1	WBGene00000834			8.0	True	True	alliance_reciprocal_best	clear	ATP7B	9
+BICD2	ENSG00000185963	dHMN	HGNC:17208	bicd-1	WBGene00016611	one2many	25.1	9.0	True	True	alliance_reciprocal_best	clear	BICD1	1
+BSCL2	ENSG00000168000	dHMN	HGNC:15832	seip-1	WBGene00019808	one2one	11.7	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+CADM3	ENSG00000162706	CMT	HGNC:17601							False		none		0
+CFAP276	ENSG00000179902	CMT	HGNC:32331	C09D4.1	WBGene00015632			1.0	False	False		weak		5
+CHCHD10	ENSG00000250479	dHMN	HGNC:15559	har-1	WBGene00007630	one2one	40.8	7.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear	CHCHD2;CHCHD2P9	1
+CNTNAP1	ENSG00000108797	SYND	HGNC:8011	nlr-1	WBGene00003772			7.0	False	False		supported	CNTNAP2;CNTNAP3;CNTNAP3B;CNTNAP4;CNTNAP5	38
+COX6A1	ENSG00000111775	CMT	HGNC:2277	cox-6A	WBGene00006519			8.0	True	True	alliance_reciprocal_best	clear	COX6A2	1
+DCTN1	ENSG00000204843	dHMN	HGNC:2711	dnc-1	WBGene00001017	one2one	23.8	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+DHTKD1	ENSG00000181192	CMT	HGNC:23537	ogdh-2	WBGene00014098	one2one	49.0	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+DHX9	ENSG00000135829	CMT	HGNC:2750	rha-1	WBGene00004355	one2one	41.3	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+DNAJB2	ENSG00000135924	dHMN	HGNC:5228	dnj-24	WBGene00001042	many2many	23.1	5.0	False	False		supported	DNAJB6;DNAJB7;DNAJB8	5
+DNM2	ENSG00000079805	CMT	HGNC:2974	dyn-1	WBGene00001130			8.0	True	True	alliance_reciprocal_best	clear	DNM1;DNM3	2
+DNMT1	ENSG00000130816	HSAN	HGNC:2976	Y75B8A.6	WBGene00013543	one2one	3.7	0.0	False	True	ensembl_one2one	clear		1
+DRP2	ENSG00000102385	CMT	HGNC:3032	dys-1	WBGene00001131			4.0	False	False		weak		6
+DST	ENSG00000151914	HSAN	HGNC:1090	vab-10	WBGene00006876			7.0	True	True	alliance_reciprocal_best	clear	MACF1	8
+DYNC1H1	ENSG00000197102	CMT	HGNC:2961	dhc-1	WBGene00000962	one2one	55.0	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+EGR2	ENSG00000122877	CMT	HGNC:3239	egrh-1	WBGene00007772			2.0	False	False		weak		3
+ELP1	ENSG00000070061	HSAN	HGNC:5959	elpc-1	WBGene00022463	one2one	18.5	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+FBLN5	ENSG00000140092	CMT	HGNC:3602							False		none		0
+FBXO38	ENSG00000145868	dHMN	HGNC:28844							False		none		0
+FGD4	ENSG00000139132	CMT	HGNC:19125	exc-5	WBGene00001366	many2many	18.3	8.0	True	True	alliance_reciprocal_best	clear	FGD1;FGD2;FGD3	4
+FIG4	ENSG00000112367	CMT	HGNC:16873	figo-1	WBGene00007912	one2one	32.1	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+GAN	ENSG00000261609	CMT	HGNC:4137	W07A12.4	WBGene00012322	one2many	11.9	1.0	False	False		weak		1
+GARS1	ENSG00000106105	CMT	HGNC:4162	gars-1	WBGene00001744	one2one	52.5	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+GBF1	ENSG00000107862	CMT	HGNC:4181	gbf-1	WBGene00007703	many2many	38.0	9.0	True	True	alliance_reciprocal_best	clear		4
+GDAP1	ENSG00000104381	CMT	HGNC:15968	gst-43	WBGene00001791	many2many	9.2	1.0	False	False		weak		5
+GJB1	ENSG00000169562	CMT	HGNC:4283							False		none		0
+GNB4	ENSG00000114450	CMT	HGNC:20731	gpb-1	WBGene00001679	one2many	84.7	8.0	False	False		supported	GNB1;GNB2;GNB3	1
+HARS1	ENSG00000170445	CMT	HGNC:4816	hars-1	WBGene00002001	one2many	54.4	9.0	True	True	alliance_reciprocal_best	clear	HARS2	1
+HINT1	ENSG00000169567	CMT	HGNC:4912	hint-1	WBGene00009002	one2one	62.7	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+HK1	ENSG00000156515	CMT	HGNC:4922	hxk-2	WBGene00010416	many2many	19.8	6.0	True	True	alliance_reciprocal_best	clear	HK2;HK3;HKDC1	3
+HSPB1	ENSG00000106211	CMT	HGNC:5246	hsp-12.2	WBGene00002011	many2many	16.6	5.0	False	False		supported	CRYAA;CRYAB;HSPB2;HSPB6	17
+HSPB8	ENSG00000152137	dHMN	HGNC:30171	hsp-25	WBGene00002023	many2many	19.4	3.0	False	False		weak		17
+IGHMBP2	ENSG00000132740	dHMN	HGNC:5542	Y106G6D.5	WBGene00014965			5.0	True	True	alliance_reciprocal_best	clear		4
+INF2	ENSG00000203485	CMT	HGNC:23791	exc-6	WBGene00019030			2.0	False	False		weak		4
+ITPR3	ENSG00000096433	CMT	HGNC:6182	itr-1	WBGene00002173	many2many	38.5	8.0	True	True	alliance_reciprocal_best	clear	ITPR1;ITPR2	2
+KIF1A	ENSG00000130294	HSAN	HGNC:888	unc-104	WBGene00006831	many2many	47.0	9.0	True	True	alliance_reciprocal_best	clear	KIF1B	8
+LITAF	ENSG00000189067	CMT	HGNC:16841	F36G3.3	WBGene00009484			5.0	True	True	alliance_reciprocal_best	clear		12
+LMNA	ENSG00000160789	CMT	HGNC:6636	lmn-1	WBGene00003052			8.0	True	True	alliance_reciprocal_best	clear	LMNB1;LMNB2	13
+LRSAM1	ENSG00000148356	CMT	HGNC:25135							False		none		0
+MCM3AP	ENSG00000160294	CMT	HGNC:6946	mcm-3AP	WBGene00017642	one2one	13.1	6.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+MFN2	ENSG00000116688	CMT	HGNC:16877	fzo-1	WBGene00001509	one2many	34.7	8.0	False	False		supported	MFN1	1
+MME	ENSG00000196549	CMT	HGNC:7154	nep-2	WBGene00020230	many2many	34.5	5.0	True	True	alliance_reciprocal_best	clear	MMEL1	24
+MORC2	ENSG00000133422	CMT	HGNC:23573	morc-1	WBGene00022531			6.0	True	True	alliance_reciprocal_best	clear	MORC1	1
+MPZ	ENSG00000158887	CMT	HGNC:7225							False		none		0
+MTMR2	ENSG00000087053	CMT	HGNC:7450	mtm-1	WBGene00003475	many2many	38.9	9.0	True	True	alliance_reciprocal_best	clear	MTM1;MTMR1	3
+NDRG1	ENSG00000104419	CMT	HGNC:7679	ndrr-1	WBGene00013020	one2many	24.9	9.0	True	True	alliance_reciprocal_best	clear	NDRG2;NDRG3;NDRG4	2
+NDUFS6	ENSG00000145494	CMT	HGNC:7713	nduf-6	WBGene00009051	one2one	35.5	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+NEFH	ENSG00000100285	CMT	HGNC:7737	F35A5.1	WBGene00018024	one2one	21.9	2.0	True	True	ensembl_one2one	clear		9
+NEFL	ENSG00000277586	CMT	HGNC:7739	ifa-1	WBGene00002050	many2many	19.7	2.0	False	False		weak		11
+NGF	ENSG00000134259	HSAN	HGNC:7808							False		none		0
+NTRK1	ENSG00000198400	HSAN	HGNC:8031	cam-1	WBGene00000289	many2many	20.4	1.0	False	False		weak		20
+PDK3	ENSG00000067992	CMT	HGNC:8811	pdhk-2	WBGene00022719	one2many	49.0	8.0	False	False		supported	PDK1;PDK2;PDK4	1
+PDXK	ENSG00000160209	CMT	HGNC:8819	pdxk-1	WBGene00019008	one2one	39.4	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+PIGG	ENSG00000174227	SYND	HGNC:25985	pigg-1	WBGene00009204	one2one	19.8	8.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		2
+PLEKHG5	ENSG00000171680	dHMN	HGNC:29105	rhgf-2	WBGene00006476	one2one	21.0	6.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+PMP2	ENSG00000147588	CMT	HGNC:9117	lbp-7	WBGene00002259	many2many	42.4	8.0	False	False		supported	FABP12;FABP3;FABP4;FABP5;FABP7;FABP9	5
+PMP22	ENSG00000109099	CMT	HGNC:9118	clc-2	WBGene00000523			1.0	True	False		weak		3
+POLR3A	ENSG00000148606	CMT	HGNC:30074	rpc-1	WBGene00004411	one2one	56.7	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+PRDM12	ENSG00000130711	HSAN	HGNC:13997	set-17	WBGene00011887			1.0	False	False		weak		2
+PRPS1	ENSG00000147224	CMT	HGNC:9462	prps-1	WBGene00020107	one2many	81.4	8.0	False	False		supported	PRPS1L1;PRPS2	1
+PRX	ENSG00000105227	CMT	HGNC:13797	T19B10.5	WBGene00011833	one2many	4.1	2.0	True	False		weak		2
+RAB7A	ENSG00000075785	CMT	HGNC:9788	rab-7	WBGene00004271			8.0	True	True	alliance_reciprocal_best	clear		2
+RCC1	ENSG00000180198	CMT	HGNC:1913	ran-3	WBGene00004304			8.0	True	True	alliance_reciprocal_best	clear		2
+RETREG1	ENSG00000154153	HSAN	HGNC:25964							False		none		0
+RTN2	ENSG00000125744	dHMN	HGNC:10468	ret-1	WBGene00004336			2.0	False	False		weak		1
+SARS1	ENSG00000031698	CMT	HGNC:10537	sars-1	WBGene00005663	one2one	62.6	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+SBF1	ENSG00000100241	CMT	HGNC:10542	mtm-5	WBGene00003477	many2many	21.6	9.0	True	True	alliance_reciprocal_best	clear	SBF2	6
+SBF2	ENSG00000133812	CMT	HGNC:2135	mtm-5	WBGene00003477	many2many	22.3	9.0	True	True	alliance_reciprocal_best	clear	SBF1	6
+SCN10A	ENSG00000185313	HSAN	HGNC:10582	egl-19	WBGene00001187			1.0	False	False		weak		2
+SCN11A	ENSG00000168356	HSAN	HGNC:10583	egl-19	WBGene00001187	many2many	20.7	2.0	False	False		weak		4
+SCN9A	ENSG00000169432	HSAN	HGNC:10597	egl-19	WBGene00001187	many2many	20.5	2.0	False	False		weak		4
+SEPTIN9	ENSG00000184640	SYND	HGNC:7323	unc-59	WBGene00006793			1.0	False	False		weak		1
+SH3TC2	ENSG00000169247	CMT	HGNC:29427							False		none		0
+SIGMAR1	ENSG00000147955	dHMN	HGNC:8157	W08F4.3	WBGene00021093	one2one	18.8	8.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+SLC12A6	ENSG00000140199	SYND	HGNC:10914	kcc-2	WBGene00019205	many2many	43.6	8.0	False	False		supported	SLC12A4;SLC12A5;SLC12A7	3
+SLC5A6	ENSG00000138074	SYND	HGNC:11041	slc-5A12	WBGene00014092			4.0	False	False		weak		2
+SLC5A7	ENSG00000115665	dHMN	HGNC:14025	cho-1	WBGene00000501			9.0	True	True	alliance_reciprocal_best	clear		3
+SORD	ENSG00000140263	CMT	HGNC:11184	R04B5.5	WBGene00011003	one2many	51.5	9.0	True	True	alliance_reciprocal_best	clear		2
+SPTAN1	ENSG00000197694	dHMN	HGNC:11273	spc-1	WBGene00004951			8.0	True	True	alliance_reciprocal_best	clear	SPTA1	5
+SPTLC1	ENSG00000090054	HSAN	HGNC:11277	sptl-1	WBGene00016020	one2one	47.1	9.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+SPTLC2	ENSG00000100596	HSAN	HGNC:11278	sptl-2	WBGene00018398	one2many	48.0	9.0	True	True	alliance_reciprocal_best	clear	SPTLC3	2
+SYT2	ENSG00000143858	dHMN	HGNC:11510	snt-1	WBGene00004921	many2many	51.6	8.0	False	False		supported	SYT1;SYT5	9
+TFG	ENSG00000114354	CMT	HGNC:11758	tfg-1	WBGene00006565	one2many	26.2	5.0	True	True	alliance_reciprocal_best	clear		2
+TRIM2	ENSG00000109654	CMT	HGNC:15974	ncl-1	WBGene00003559			3.0	True	False		weak		5
+TRPV4	ENSG00000111199	CMT	HGNC:18083	ocr-4	WBGene00003841			6.0	False	False		supported	TRPV1;TRPV2;TRPV3;TRPV5;TRPV6	5
+TTR	ENSG00000118271	SYND	HGNC:12405	R09H10.3	WBGene00011181			4.0	True	False		weak		2
+UBA1	ENSG00000130985	dHMN	HGNC:12469	uba-1	WBGene00006699			8.0	True	True	alliance_reciprocal_best	clear		1
+VWA1	ENSG00000179403	dHMN	HGNC:30910	mup-4	WBGene00003497	many2many	14.6	1.0	False	False		weak		9
+WARS1	ENSG00000140105	dHMN	HGNC:12729	wars-1	WBGene00006945	one2one	53.1	8.0	True	True	ensembl_one2one+alliance_reciprocal_best	clear		1
+WNK1	ENSG00000060237	HSAN	HGNC:14540	wnk-1	WBGene00006941	many2many	18.3	3.0	True	False		weak		2
+YARS1	ENSG00000134684	CMT	HGNC:12840	yars-1	WBGene00013677			4.0	True	False		weak		1

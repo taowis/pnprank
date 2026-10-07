@@ -359,3 +359,47 @@ Each non-obvious choice, with its reason. Newest last.
   count and PPI degree as seed-free scores, and each seed-based comparator re-run with 20
   random seed sets of the same size (random-seed null). Added because RWR scores track
   degree; reported for every cutoff, not selected.
+
+## 2026-10-08 — C. elegans shortlist (after Stage 6, at the user's request)
+
+- **Purpose:** a list of top-ranked candidates a C. elegans collaborator could test
+  (loss-of-function mutants or neuron-specific RNAi; axon degeneration, transport, touch
+  or motor phenotypes). It is a hand-off list, not a validation of the model.
+- **Candidates:** the top 200 genes of the release ranking with known tier-1/2 genes
+  excluded, exactly as `pnprank top -n 200` (same `top_genes` function).
+- **Orthology sources:** two independent public resources, both queried live and cached
+  as JSON under `<data_root>/external/celegans/`:
+  - Ensembl REST homology with `compara=pan_homology`. The default (vertebrate) Compara
+    of Ensembl 116 returns no C. elegans homologies, so the pan-taxonomic Compara is the
+    only Ensembl route to worm orthologues.
+  - Alliance of Genome Resources orthology API (`filter.stringency=all`), which reports
+    which of the prediction methods (9 called for human-worm pairs) support each pair and
+    whether the pair is the best score in each direction.
+- **"Clear orthologue" rule:** a human-worm pair is clear if
+  (a) Ensembl pan-Compara calls it `ortholog_one2one`, or
+  (b) Alliance marks it best score in both directions (reciprocal best) and at least 5
+      of the prediction methods support it (a majority of the 9 called).
+  Reason: one-to-one tree-based calls and majority-supported reciprocal-best pairs are
+  the two standard high-confidence definitions; requiring both would discard genes whose
+  worm orthologue is shared with human paralogues (e.g. many-to-many families) even when
+  one worm gene is the agreed counterpart. The rule that fired is recorded per gene.
+  When a human gene has several worm orthologues, the reported one is the clear pair with
+  the most supporting methods, ties broken by Ensembl % identity.
+- **Testability flag:** genes whose `top_cell_type` is a Schwann-cell type or
+  oligodendrocyte are flagged as less testable in worms, which have no myelin or Schwann
+  cells. They stay on the list, flagged.
+- **Enrichment (optional columns, Alliance only):** the number of alleles Alliance lists
+  for the worm gene with `alleleCategory=allele`, and the number of expression
+  annotations in the Alliance expression ribbon overall and under nervous system
+  (UBERON:0001016). These are counts of records, not curated statements of phenotype.
+- **Tier-1 count:** the same orthology queries and rule are applied to the 100 tier-1
+  genes, so the collaborator has a sourced figure for how many established neuropathy
+  genes have a clear worm orthologue.
+- **Added after the first run (reporting only, the rule is unchanged):** the first run
+  showed that several human paralogues share one worm gene (tubulins, actins,
+  calmodulins) and that some well-supported pairs fail the reciprocal-best test because
+  the worm gene is shared with a paralogue (e.g. MFN2 / fzo-1). Two columns were added:
+  `orthology_class` (clear; supported = at least 5 Alliance methods but not reciprocal
+  best; weak; none), and `human_genes_sharing_worm_gene` (human genes Alliance links to
+  the chosen worm gene with at least 5 methods). The shortlist still contains clear
+  orthologues only.
