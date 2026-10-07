@@ -299,7 +299,8 @@ Each non-obvious choice, with its reason. Newest last.
   `listed_not_in_truth`). Ranks 1-58.
 - **Classes A-E** as defined in `docs/case_studies/top50_literature.md`; each gene takes the
   highest class its evidence supports. A and B require human genetic evidence; HSP counts
-  for A/B as well as neuropathy, as specified by the user.
+  for A/B as well as neuropathy, as specified in the task given to the literature-check
+  agent (the project scope includes related HSP).
 - **D requires functional or model-organism work** (knockout, knockdown, mutant) on axons,
   myelin, Schwann cells or sensory/motor neurons. Expression alone (marker gene, atlas)
   is E, because the ranking itself is built from expression and would otherwise count as
