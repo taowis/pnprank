@@ -9,3 +9,12 @@ rule stage6_ranking:
         "results/tables/pnprank_ranking_meta.json",
     shell:
         "pnprank build-ranking --n-jobs 5 --out {output[0]}"
+
+
+rule stage6_checks:
+    input:
+        "results/tables/pnprank_ranking.tsv.gz",
+    output:
+        "results/tables/stage6/release_checks.tsv",
+    shell:
+        "python workflow/scripts/stage6_checks.py"

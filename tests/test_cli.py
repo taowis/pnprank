@@ -75,6 +75,7 @@ def test_cli_query_and_top(tmp_path, capsys):
     assert main(["query", "GENEA", "olda", "--ranking", path, "--tsv"]) == 0
     out = pd.read_csv(pd.io.common.StringIO(capsys.readouterr().out), sep="\t")
     assert list(out.ensembl_gene_id) == ["ENSG01", "ENSG01"]
+    assert out["rank"].dtype.kind == "i"   # printed as 1, not 1.0
     assert main(["query", "NOPE", "--ranking", path]) == 1
     assert "not found" in capsys.readouterr().err
     genes = tmp_path / "genes.txt"

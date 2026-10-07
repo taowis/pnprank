@@ -216,7 +216,7 @@ def resolve(tab: pd.DataFrame, queries: list[str]) -> tuple[pd.DataFrame, dict[s
             continue
         rows.append(tab.iloc[i].to_dict() | {"query": q.strip()})
     out = pd.DataFrame(rows, columns=["query"] + COLUMNS)
-    return out, problems
+    return out.astype({"rank": "Int64", "gtex_mean_decile": "Int64"}), problems
 
 
 def top_genes(tab: pd.DataFrame, n: int, include_known: bool = False,
