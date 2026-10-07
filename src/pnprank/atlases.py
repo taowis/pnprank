@@ -116,6 +116,37 @@ def remote_size_bytes(url: str) -> int | None:
     return sizes[-1] if sizes else None
 
 
+def parallel_range_download(url: str, dest: Path, size: int, parts: int = 8) -> None:
+    """Download `size` bytes of url as `parts` concurrent byte ranges, then concatenate.
+
+    Some hosts (NCBI GEO) cap per-connection speed; parallel ranges work around that.
+    Each part resumes if a partial file exists.
+    """
+    import subprocess
+
+    bounds = [(i * size // parts, (i + 1) * size // parts - 1) for i in range(parts)]
+    procs = []
+    for i, (a, b) in enumerate(bounds):
+        part = dest.with_name(f"{dest.name}.part{i}")
+        have = part.stat().st_size if part.exists() else 0
+        if have >= b - a + 1:
+            continue
+        procs.append(subprocess.Popen(
+            ["curl", "-sSfL", "--retry", "5", "-r", f"{a + have}-{b}", "-o", "-", url],
+            stdout=open(part, "ab"),
+        ))
+    if any(p.wait() != 0 for p in procs):
+        raise RuntimeError(f"{url}: a range download failed; rerun to resume")
+    with open(dest, "wb") as out:
+        for i in range(parts):
+            part = dest.with_name(f"{dest.name}.part{i}")
+            with open(part, "rb") as fh:
+                while chunk := fh.read(1 << 24):
+                    out.write(chunk)
+    for i in range(parts):
+        dest.with_name(f"{dest.name}.part{i}").unlink()
+
+
 def download_atlas_files(
     registry_path: str | Path,
     atlas_id: str,
@@ -134,10 +165,6 @@ def download_atlas_files(
     import subprocess
 
     registry_path = Path(registry_path)
-    text = registry_path.read_text()
-    header = text.split("atlases:")[0]
-    reg = yaml.safe_load(text)
-    entry = next(a for a in reg["atlases"] if a["id"] == atlas_id)
     outdir = Path(data_root) / "raw" / atlas_id
     outdir.mkdir(parents=True, exist_ok=True)
     done = []
@@ -152,20 +179,46 @@ def download_atlas_files(
         if used + size > disk_limit_gb * 10**9:
             raise RuntimeError(f"{name} would exceed the {disk_limit_gb} GB disk budget")
         dest = outdir / name
-        subprocess.run(["curl", "-sSfL", "-C", "-", "--retry", "5", "-o", str(dest), url], check=True)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        if not (dest.exists() and dest.stat().st_size == size):
+            if size > 200 * 10**6:
+                parallel_range_download(url, dest, size)
+            else:
+                subprocess.run(
+                    ["curl", "-sSfL", "-C", "-", "--retry", "5", "-o", str(dest), url], check=True
+                )
         if dest.stat().st_size != size:
             raise RuntimeError(f"{name}: got {dest.stat().st_size} bytes, expected {size}")
-        sha = hashlib.sha256(dest.read_bytes()).hexdigest()
-        rec = next((f for f in entry["files"] if f["name"] == name), None)
-        if rec is None:
-            rec = {"name": name}
-            entry["files"].append(rec)
-        rec.update({"url": url, "size_bytes": size, "sha256": sha, "downloaded": True})
-        done.append(rec)
-    registry_path.write_text(
-        header + yaml.safe_dump(reg, sort_keys=False, allow_unicode=True, width=100)
-    )
+        h = hashlib.sha256()
+        with open(dest, "rb") as fh:
+            while chunk := fh.read(1 << 24):
+                h.update(chunk)
+        done.append({"name": name, "url": url, "size_bytes": size, "sha256": h.hexdigest(),
+                     "downloaded": True})
+    _record_files(registry_path, atlas_id, done)
     return done
+
+
+def _record_files(registry_path: Path, atlas_id: str, records: list[dict]) -> None:
+    """Merge file records into one registry entry under an exclusive file lock, so
+    concurrent downloads of different atlases cannot overwrite each other."""
+    import fcntl
+
+    with open(registry_path.with_suffix(".lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        text = registry_path.read_text()
+        header = text.split("atlases:")[0]
+        reg = yaml.safe_load(text)
+        entry = next(a for a in reg["atlases"] if a["id"] == atlas_id)
+        for r in records:
+            rec = next((f for f in entry["files"] if f["name"] == r["name"]), None)
+            if rec is None:
+                entry["files"].append(dict(r))
+            else:
+                rec.update(r)
+        registry_path.write_text(
+            header + yaml.safe_dump(reg, sort_keys=False, allow_unicode=True, width=100)
+        )
 
 
 # --- Gene identifiers ---------------------------------------------------------
@@ -237,3 +290,77 @@ def collapse_to_ensembl(matrix, symbols: list[str], mapping: dict[str, str]):
     )
     unmapped = [symbols[i] for i in np.flatnonzero(ids.isna().to_numpy())]
     return agg @ sp.csr_matrix(matrix), list(uniq), unmapped
+
+
+# --- Standardised per-atlas cells and pseudobulk ----------------------------------
+
+STANDARD_OBS = ["cell_type_author", "donor", "keep"]
+
+
+def save_cells(path: str | Path, X, gene_ids: list[str], obs, species: str) -> None:
+    """Write a standardised cells.h5ad: X = raw integer counts (cells x genes, CSR),
+    var index = species-native Ensembl gene IDs, obs = cell_type_author, donor, keep."""
+    import anndata as ad
+    import numpy as np
+    import pandas as pd
+    import scipy.sparse as sp
+
+    X = sp.csr_matrix(X)
+    if X.nnz and not np.allclose(X.data, np.round(X.data)):
+        raise ValueError("counts must be integers")
+    missing = [c for c in STANDARD_OBS if c not in obs.columns]
+    if missing:
+        raise ValueError(f"obs missing {missing}")
+    obs = obs[STANDARD_OBS].copy()
+    obs["cell_type_author"] = obs["cell_type_author"].astype(str)
+    obs["donor"] = obs["donor"].astype(str)
+    obs["keep"] = obs["keep"].astype(bool)
+    obs.index = obs.index.astype(str)
+    a = ad.AnnData(X=X.astype(np.float32), obs=obs, var=pd.DataFrame(index=pd.Index(gene_ids, dtype=str)))
+    a.uns["species"] = species
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    a.write_h5ad(path, compression="gzip")
+
+
+def atlas_pseudobulk(cells_h5ad: str | Path, human_of: dict[str, str] | None = None):
+    """Sum kept cells' counts per (cell_type_author, donor), genes as human Ensembl IDs.
+
+    For mouse atlases pass `human_of` (mouse ID -> human ID, one-to-one); unmapped genes
+    are dropped. Returns (sums genes x groups, groups table).
+    """
+    import anndata as ad
+
+    from pnprank.pseudobulk import pseudobulk
+
+    a = ad.read_h5ad(cells_h5ad)
+    a = a[a.obs["keep"].to_numpy()]
+    genes = list(a.var_names)
+    X = a.X.T.tocsr()
+    if a.uns["species"] != "human":
+        if human_of is None:
+            raise ValueError("non-human atlas needs an orthology mapping")
+        X, genes, _ = collapse_to_ensembl(X, genes, human_of)
+    sums, n = pseudobulk(
+        X, genes, a.obs["cell_type_author"].reset_index(drop=True),
+        a.obs["donor"].reset_index(drop=True), min_cells=1,
+    )
+    groups = n.reset_index().rename(columns={"cell_type": "cell_type_author"})
+    groups.insert(0, "group", [f"g{i}" for i in range(len(groups))])
+    sums.columns = groups["group"]
+    return sums, groups
+
+
+def write_pseudobulk(outdir: str | Path, sums, groups) -> None:
+    outdir = Path(outdir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    sums.to_csv(outdir / "pseudobulk_sums.tsv.gz", sep="\t", compression="gzip")
+    groups.to_csv(outdir / "pseudobulk_groups.tsv", sep="\t", index=False)
+
+
+def read_pseudobulk(outdir: str | Path):
+    import pandas as pd
+
+    outdir = Path(outdir)
+    sums = pd.read_csv(outdir / "pseudobulk_sums.tsv.gz", sep="\t", index_col=0)
+    groups = pd.read_csv(outdir / "pseudobulk_groups.tsv", sep="\t", dtype={"donor": str})
+    return sums, groups

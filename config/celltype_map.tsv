@@ -1,0 +1,257 @@
+# Author cell-type labels -> harmonised cell types (or "exclude").
+# Every author label in a used atlas must appear here (features.harmonised_profile
+# raises on unmapped labels). Subtypes are merged when the author label has no clear
+# anatomical meaning, rather than inventing precision. Reasons in docs/decisions.md.
+atlas_id	cell_type_author	cell_type	note
+yang2022_human_tg	Schwann_M	schwann_myelinating	
+yang2022_human_tg	Schwann_N	schwann_nonmyelinating	
+yang2022_human_tg	Satglia	satellite_glia	
+yang2022_human_tg	Fibroblast_Apod	fibroblast	author subtypes not mapped to endo/peri/epineurium
+yang2022_human_tg	Fibroblast_Dcn	fibroblast	
+yang2022_human_tg	Fibroblast_Mgp	fibroblast	
+yang2022_human_tg	Vascular	vascular	
+yang2022_human_tg	Immune	immune	
+yang2022_human_tg	NF1	neuron_sensory_nf	NF = neurofilament-rich, myelinated A-fibre neurons; subtypes merged
+yang2022_human_tg	NF2	neuron_sensory_nf	
+yang2022_human_tg	NF3	neuron_sensory_nf	
+yang2022_human_tg	PEP	neuron_sensory_pep	peptidergic nociceptors
+yang2022_human_tg	NP	neuron_sensory_np	non-peptidergic nociceptors
+yang2022_human_tg	SST	neuron_sensory_sst	
+yang2022_human_tg	TRPM8	neuron_sensory_trpm8	cold-sensing
+yang2022_human_tg	cLTMR	neuron_sensory_cltmr	
+alkaslasi2021_mouse_mn	S2	neuron_motor_alpha	S2 = Alpha Motor Neurons in GSE167597 author annotations (cross-tab 1283/1285)
+alkaslasi2021_mouse_mn	S3	neuron_motor_gamma	S3 = Gamma Motor Neurons (2241/2241)
+alkaslasi2021_mouse_mn	S1	neuron_motor_type3	S1 = Type 3 Motor Neurons (1526/1528)
+alkaslasi2021_mouse_mn	V1	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V2	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V3	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V4	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V5	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V6	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V7	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V8	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V9	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	V10	neuron_visceral_motor	
+alkaslasi2021_mouse_mn	I1	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I2	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I3	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I4	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I5	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I6	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I7	neuron_cholinergic_interneuron	
+alkaslasi2021_mouse_mn	I8	neuron_cholinergic_interneuron	
+ham2025_mouse_nmj	Type IIB	myonucleus_type2	
+ham2025_mouse_nmj	Type IIX	myonucleus_type2	
+ham2025_mouse_nmj	Type IIA	myonucleus_type2	
+ham2025_mouse_nmj	NMJ	myonucleus_nmj	
+ham2025_mouse_nmj	MTJ	myonucleus_mtj	
+ham2025_mouse_nmj	FAPs	fibroblast	
+ham2025_mouse_nmj	Peri- and Endoneurial	fibroblast_nerve	
+ham2025_mouse_nmj	Schwann cells	schwann	
+ham2025_mouse_nmj	Immune cells	immune	
+ham2025_mouse_nmj	Endothelial	vascular_endothelial	
+ham2025_mouse_nmj	Mmrn1+	vascular_endothelial	
+ham2025_mouse_nmj	Pericytes	vascular_mural	
+ham2025_mouse_nmj	Smooth muscle	vascular_mural	
+ham2025_mouse_nmj	MuSCs	muscle_satellite	
+ham2025_mouse_nmj	Adipocytes	adipocyte	
+ham2025_mouse_nmj	Tenocytes	tenocyte	
+kedlian2024_human_muscle	MF-I	myonucleus_type1	
+kedlian2024_human_muscle	MF-II	myonucleus_type2	
+kedlian2024_human_muscle	MF-Isn(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-IIsn(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-IIsc(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF-Isc(fg)	myonucleus_other	
+kedlian2024_human_muscle	MF_type-RASA4+	myonucleus_other	
+kedlian2024_human_muscle	MF_type-MYH8+	myonucleus_other	
+kedlian2024_human_muscle	Hyb	myonucleus_other	
+kedlian2024_human_muscle	NMJ	myonucleus_nmj	
+kedlian2024_human_muscle	MTJ	myonucleus_mtj	
+kedlian2024_human_muscle	NMJ_accessory	nmj_accessory	
+kedlian2024_human_muscle	FB	fibroblast	
+kedlian2024_human_muscle	PnFB	fibroblast_perineurial	
+kedlian2024_human_muscle	EnFB	fibroblast_endoneurial	
+kedlian2024_human_muscle	MuSC	muscle_satellite	
+kedlian2024_human_muscle	Tenocyte	tenocyte	
+kedlian2024_human_muscle	Pericyte	vascular_mural	
+kedlian2024_human_muscle	SMC	vascular_mural	
+kedlian2024_human_muscle	CapEC	vascular_endothelial	
+kedlian2024_human_muscle	VenEC	vascular_endothelial	
+kedlian2024_human_muscle	ArtEC	vascular_endothelial	
+kedlian2024_human_muscle	LymphEC	vascular_endothelial	
+kedlian2024_human_muscle	Adipocyte	adipocyte	
+kedlian2024_human_muscle	nmSchwann	schwann_nonmyelinating	
+kedlian2024_human_muscle	mSchwann	schwann_myelinating	
+kedlian2024_human_muscle	Mesothelium	exclude	
+kedlian2024_human_muscle	RBC	exclude	
+kedlian2024_human_muscle	Macrophage	immune	
+kedlian2024_human_muscle	CD4+T	immune	
+kedlian2024_human_muscle	CD14+Mono	immune	
+kedlian2024_human_muscle	Mast	immune	
+kedlian2024_human_muscle	CD16+NK	immune	
+kedlian2024_human_muscle	CD8+T	immune	
+kedlian2024_human_muscle	cDC2	immune	
+kedlian2024_human_muscle	CD16+Mono	immune	
+kedlian2024_human_muscle	B-cell	immune	
+kedlian2024_human_muscle	cDC1	immune	
+kedlian2024_human_muscle	B-plasma	immune	
+kedlian2024_human_muscle	Neutrophil	immune	
+kedlian2024_human_muscle	CD16-NK	immune	
+kedlian2024_human_muscle	Eosinophil	immune	
+kedlian2024_human_muscle	pDC	immune	
+sparc465_human_sympathetic	Satellite glial	satellite_glia	
+sparc465_human_sympathetic	Macrophage	immune	
+sparc465_human_sympathetic	T	immune	
+sparc465_human_sympathetic	Schwann-nm	schwann_nonmyelinating	
+sparc465_human_sympathetic	Schwann-my	schwann_myelinating	
+sparc465_human_sympathetic	Fibroblast	fibroblast	
+sparc465_human_sympathetic	Endothelial	vascular_endothelial	
+sparc465_human_sympathetic	Mural	vascular_mural	
+sparc465_human_sympathetic	Adipocyte	adipocyte	
+sparc465_human_sympathetic	Neuronal_1	neuron_sympathetic	two author neuron clusters merged
+sparc465_human_sympathetic	Neuronal_2	neuron_sympathetic	two author neuron clusters merged
+heming2025_human_sural	nmSC	schwann_nonmyelinating	
+heming2025_human_sural	mySC	schwann_myelinating	
+heming2025_human_sural	repairSC	schwann_repair	
+heming2025_human_sural	damageSC	schwann_damage	
+heming2025_human_sural	periC1	fibroblast_perineurial	
+heming2025_human_sural	periC2	fibroblast_perineurial	
+heming2025_human_sural	periC3	fibroblast_perineurial	
+heming2025_human_sural	endoC	fibroblast_endoneurial	
+heming2025_human_sural	epiC	fibroblast_epineurial	
+heming2025_human_sural	PC1	vascular_mural	
+heming2025_human_sural	PC2	vascular_mural	
+heming2025_human_sural	VSMC	vascular_mural	
+heming2025_human_sural	ven_capEC1	vascular_endothelial	
+heming2025_human_sural	ven_capEC2	vascular_endothelial	
+heming2025_human_sural	artEC	vascular_endothelial	
+heming2025_human_sural	venEC	vascular_endothelial	
+heming2025_human_sural	LEC	vascular_endothelial	
+heming2025_human_sural	Macro1	immune	
+heming2025_human_sural	Macro2	immune	
+heming2025_human_sural	T_NK	immune	
+heming2025_human_sural	B	immune	
+heming2025_human_sural	Mast	immune	
+heming2025_human_sural	Granulo	immune	
+heming2025_human_sural	Adipo	adipocyte	
+yang2022_mouse_tg	Schwann_M	schwann_myelinating	
+yang2022_mouse_tg	Schwann_N	schwann_nonmyelinating	
+yang2022_mouse_tg	Satglia	satellite_glia	
+yang2022_mouse_tg	Fibroblast_Apod	fibroblast	author subtypes not mapped to endo/peri/epineurium
+yang2022_mouse_tg	Fibroblast_Dcn	fibroblast	
+yang2022_mouse_tg	Fibroblast_Mgp	fibroblast	
+yang2022_mouse_tg	Vascular	vascular	
+yang2022_mouse_tg	Immune	immune	
+yang2022_mouse_tg	NF1	neuron_sensory_nf	NF = neurofilament-rich, myelinated A-fibre neurons; subtypes merged
+yang2022_mouse_tg	NF2	neuron_sensory_nf	
+yang2022_mouse_tg	NF3	neuron_sensory_nf	
+yang2022_mouse_tg	PEP	neuron_sensory_pep	peptidergic nociceptors
+yang2022_mouse_tg	NP	neuron_sensory_np	non-peptidergic nociceptors
+yang2022_mouse_tg	SST	neuron_sensory_sst	
+yang2022_mouse_tg	TRPM8	neuron_sensory_trpm8	cold-sensing
+yang2022_mouse_tg	cLTMR	neuron_sensory_cltmr	
+yang2022_mouse_tg	Injured	exclude	injury-response neuron state
+yadav2023_human_spinal_cord	Arterial Endothelial	vascular_endothelial	
+yadav2023_human_spinal_cord	Ependymal Cells	ependymal	
+yadav2023_human_spinal_cord	Ex-Dorsal-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-10	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-11	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-12	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-3	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-4	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-5	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-6	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-7	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-8	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-Dorsal-9	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-M-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-M-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-M-3	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-M-4	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-V-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-V-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Ex-V-3	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	GM Astrocytes-1	astrocyte	
+yadav2023_human_spinal_cord	GM Astrocytes-2	astrocyte	
+yadav2023_human_spinal_cord	IEG	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-3	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-4	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-5	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-6	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-7	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-8	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-Dorsal-9	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-M-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-M-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-V-1	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-V-2	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Inh-V-3	neuron_spinal_interneuron	author interneuron subtypes merged
+yadav2023_human_spinal_cord	Lymphocytes	immune	
+yadav2023_human_spinal_cord	Macrophages	microglia	
+yadav2023_human_spinal_cord	Meninges-1	meninges	
+yadav2023_human_spinal_cord	Meninges-2	meninges	
+yadav2023_human_spinal_cord	Meninges-3	meninges	
+yadav2023_human_spinal_cord	Meninges-4	meninges	
+yadav2023_human_spinal_cord	Microglia-1	microglia	
+yadav2023_human_spinal_cord	Microglia-2	microglia	
+yadav2023_human_spinal_cord	Microglia-3	microglia	
+yadav2023_human_spinal_cord	Microglia-4	microglia	
+yadav2023_human_spinal_cord	Motoneurons	neuron_motor	
+yadav2023_human_spinal_cord	OPC	opc	
+yadav2023_human_spinal_cord	Oligo Progenitor	opc	
+yadav2023_human_spinal_cord	Oligo-1	oligodendrocyte	
+yadav2023_human_spinal_cord	Oligo-2	oligodendrocyte	
+yadav2023_human_spinal_cord	Oligo-3	oligodendrocyte	
+yadav2023_human_spinal_cord	Oligo-4	oligodendrocyte	
+yadav2023_human_spinal_cord	Oligo-5	oligodendrocyte	
+yadav2023_human_spinal_cord	Oligo-6	oligodendrocyte	
+yadav2023_human_spinal_cord	Pericytes/SM	vascular_mural	
+yadav2023_human_spinal_cord	Perivascular Microglia	microglia	
+yadav2023_human_spinal_cord	Proliferating Microglia	microglia	
+yadav2023_human_spinal_cord	Schwann-1	schwann	
+yadav2023_human_spinal_cord	Schwann-2	schwann	
+yadav2023_human_spinal_cord	Ven/Cap Endothelial	vascular_endothelial	
+yadav2023_human_spinal_cord	WM Astrocytes	astrocyte	
+krauter2025_mouse_drg	Abeta-Field	neuron_sensory_abeta_ltmr	
+krauter2025_mouse_drg	Abeta-RA-LTMR	neuron_sensory_abeta_ltmr	
+krauter2025_mouse_drg	Adelta-LTMR	neuron_sensory_adelta_ltmr	
+krauter2025_mouse_drg	C-LTMR	neuron_sensory_cltmr	
+krauter2025_mouse_drg	Proprioceptor	neuron_sensory_proprioceptor	
+krauter2025_mouse_drg	Rxfp1	neuron_sensory_other	
+krauter2025_mouse_drg	NP1	neuron_sensory_np	
+krauter2025_mouse_drg	NP2.1	neuron_sensory_np	
+krauter2025_mouse_drg	NP2.2	neuron_sensory_np	
+krauter2025_mouse_drg	NP3	neuron_sensory_np	
+krauter2025_mouse_drg	PEP1.1.a	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP1.1.b	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP1.2	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP1.3.a	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP1.3.b	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP1.4	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP2.1	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP2.2	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP3.1	neuron_sensory_pep	
+krauter2025_mouse_drg	PEP3.2	neuron_sensory_pep	
+krauter2025_mouse_drg	TRPM8.1	neuron_sensory_trpm8	
+krauter2025_mouse_drg	TRPM8.2	neuron_sensory_trpm8	
+stefanovska2025_mouse_sciatic	Adipocyte1	adipocyte	
+stefanovska2025_mouse_sciatic	B-cells	immune	
+stefanovska2025_mouse_sciatic	Macrophages	immune	
+stefanovska2025_mouse_sciatic	T- and NK cells	immune	
+stefanovska2025_mouse_sciatic	Chondrocyte-like state cells	fibroblast_other	
+stefanovska2025_mouse_sciatic	Endoneurial fibroblasts	fibroblast_endoneurial	
+stefanovska2025_mouse_sciatic	Perineurial_fibroblast	fibroblast_perineurial	
+stefanovska2025_mouse_sciatic	Epineurial cells	fibroblast_epineurial	
+stefanovska2025_mouse_sciatic	Endothelial cells (EC1)	vascular_endothelial	
+stefanovska2025_mouse_sciatic	Endothelial cells (EC2)	vascular_endothelial	
+stefanovska2025_mouse_sciatic	Nerve associated-EC	vascular_endothelial	
+stefanovska2025_mouse_sciatic	Lymphatic endothelial cells	vascular_endothelial	
+stefanovska2025_mouse_sciatic	Pericytes	vascular_mural	
+stefanovska2025_mouse_sciatic	Vascular smooth muscle cell (VSMC)	vascular_mural	
+stefanovska2025_mouse_sciatic	High-PLP1 mSC	schwann_myelinating	
+stefanovska2025_mouse_sciatic	Low-PLP1 mSC	schwann_myelinating	
+stefanovska2025_mouse_sciatic	Moto-neuron-associated Pmp2+ mSC	schwann_myelinating	
+stefanovska2025_mouse_sciatic	non-myelinating Schwann cells (nmSC)	schwann_nonmyelinating	

@@ -47,10 +47,14 @@ atlases:
   files:
   - name: GSE285983_RAW.tar
     size_bytes: 1429237760
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE285nnn/GSE285983/suppl/GSE285983_RAW.tar
+    sha256: b44b152cec708c269c59c0c87641ae217bc7a19e2eb75cc33ec8e7c4a0a7e27f
   - name: GSE285983_metadata_all.csv.gz
     size_bytes: 22228346
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE285nnn/GSE285983/suppl/GSE285983_metadata_all.csv.gz
+    sha256: 53b395600269979c9689fd63ae06fb95bc6228138e7cfe632b676faca133ec8a
   - name: GSE285983_metadata_ic.csv.gz
     size_bytes: 810136
     downloaded: false
@@ -151,11 +155,15 @@ atlases:
     size_bytes: 174000000
     downloaded: false
   - name: GSE197289_snRNA-seq_mouse_barcode_meta.csv.gz
-    size_bytes: 1900000
-    downloaded: false
+    size_bytes: 2038613
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE197nnn/GSE197289/suppl/GSE197289_snRNA-seq_mouse_barcode_meta.csv.gz
+    sha256: 2c9a6a660fb7cd897b4dd951e461f9584691ff2bde1422077132dd0df625120f
   - name: GSE197289_snRNA-seq_mouse_raw_counts.RDS.gz
-    size_bytes: 381000000
-    downloaded: false
+    size_bytes: 399656879
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE197nnn/GSE197289/suppl/GSE197289_snRNA-seq_mouse_raw_counts.RDS.gz
+    sha256: 369439c14a5a82b809b57d3daf85ee8b6313eaeb42133258a8e3c153ed63f2d7
 - id: jung2023_human_drg
   title: Cross-species single-nuclei transcriptome atlas of dorsal root ganglion sensory neurons (human,
     cynomolgus, guinea pig, mouse)
@@ -187,8 +195,10 @@ atlases:
     size_bytes: 2000000000
     downloaded: false
   - name: GSE201586_humanallcelltypes.rds.gz
-    size_bytes: 3900000000
-    downloaded: false
+    size_bytes: 4223086818
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE201nnn/GSE201586/suppl/GSE201586_humanallcelltypes.rds.gz
+    sha256: 8bed94df0f250553fa08b017c414b1c39447f3cac27437cc70adce8311c126c7
   - name: GSE201585_RAW.tar
     size_bytes: 1200000000
     downloaded: false
@@ -276,10 +286,14 @@ atlases:
     downloaded: false
   - name: GSE190442_aggregated_counts_postqc.csv.gz
     size_bytes: 128686403
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE190nnn/GSE190442/suppl/GSE190442_aggregated_counts_postqc.csv.gz
+    sha256: b07965c72c97f8388ae0356bd059db89d37a0382bac854bd820ce0ceabe20ed3
   - name: GSE190442_aggregated_metadata_postqc.csv.gz
     size_bytes: 1254656
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE190nnn/GSE190442/suppl/GSE190442_aggregated_metadata_postqc.csv.gz
+    sha256: 82ecd6fef6ab3067eec2586a9c343cf60955b8f0f3a1fde36119f7b52969c3b2
 - id: kedlian2024_human_muscle
   title: Human skeletal muscle aging atlas
   species: human
@@ -355,7 +369,9 @@ atlases:
     downloaded: false
   - name: GSE182098_sciatic-nerve_single-nuclei-atlas-16Dec2020.RDS.gz
     size_bytes: 3079986407
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE182nnn/GSE182098/suppl/GSE182098_sciatic-nerve_single-nuclei-atlas-16Dec2020.RDS.gz
+    sha256: 80113890432586f583c70c0c6fb1695db7c2327b578075663a35c90dd05903a5
 - id: stefanovska2025_mouse_sciatic
   title: 'Fibroblast growth factor signaling induces a chondrocyte-like state of peripheral nerve fibroblast
     during aging (GEO: snRNAseq from sciatic nerves from mouse of 2-3, 15-16, and 20-30 months old)'
@@ -385,7 +401,9 @@ atlases:
   files:
   - name: GSE280857_RAW.tar
     size_bytes: 173711360
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE280nnn/GSE280857/suppl/GSE280857_RAW.tar
+    sha256: f2e89df8bda7db4b607b7919a43ef88865d01d79c8fd814fcee04de2118b3b79
   - name: Zenodo 14900774 all_final.h5ad
     size_bytes: 409851403
     downloaded: false
@@ -426,8 +444,10 @@ atlases:
     size_bytes: 2100000
     downloaded: false
   - name: GSE287551_aggregated_filtered_feature_bc_matrix.h5
-    size_bytes: 245000000
-    downloaded: false
+    size_bytes: 257208744
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE287nnn/GSE287551/suppl/GSE287551_aggregated_filtered_feature_bc_matrix.h5
+    sha256: 9f022dfa200ceeb23f798ab1873a3846d23b18d4ba7f17a4b31507a851ecc83b
   - name: GSE287551_aggregated_raw_feature_bc_matrix.h5
     size_bytes: 414000000
     downloaded: false
@@ -438,8 +458,10 @@ atlases:
     size_bytes: 99000000
     downloaded: false
   - name: GSE287551_metadata.tsv.gz
-    size_bytes: 352000
-    downloaded: false
+    size_bytes: 360449
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE287nnn/GSE287551/suppl/GSE287551_metadata.tsv.gz
+    sha256: 1f3d26401397227742751fc2143d60f5d8b1479dc310f80761f7aa74a744d143
   - name: GSE287551_rna_counts.tsv.gz
     size_bytes: 23000000
     downloaded: false

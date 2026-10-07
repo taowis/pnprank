@@ -18,6 +18,7 @@ dependencies:
   # R, only to read RDS count matrices deposited by atlas authors
   - r-base
   - r-matrix
+  - r-seuratobject
   # modelling
   - scikit-learn
   # plotting
@@ -28,3 +29,5 @@ dependencies:
   - pytest
   - ruff
   - requests
+variables:
+  R_LIBS_USER: /nonexistent-pnprank-isolated   # isolate conda R from user R libraries

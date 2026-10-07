@@ -10,3 +10,13 @@
 - Discovery-paper curation was performed by LLM subagents under a written
   protocol and checked by script (PMID existence, PubMed dates, gene mention,
   earlier-paper screen). It was not independently curated by a clinical expert.
+- Expression level is a confound: known neuropathy genes are more highly expressed than
+  average, and the current model also ranks broadly expressed housekeeping and
+  cytoskeletal genes highly. AUROC partly reflects expression level.
+- Heming 2025 sural nerve counts are CellBender-corrected (as deposited), not raw
+  CellRanger counts.
+- Atlases differ in protocol (cells vs nuclei), species and depth; mouse genes enter only
+  through one-to-one orthologues, so genes without one are missing from mouse features.
+- Yim 2022 (mouse nerves) is excluded because only numeric clusters were deposited; Jung
+  2023 (human DRG) is not yet included (memory limit).
+- SPARC 465 uses library, not donor, as the replicate unit.

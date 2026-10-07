@@ -68,3 +68,23 @@ def test_symbol_to_ensembl_prefers_approved_and_drops_ambiguous(tmp_path):
     assert m["GARS"] == "ENSG3" and how["GARS"] == "approved"
     assert m["AARS"] == "ENSG2" and how["AARS"] == "previous"
     assert "X1" not in m
+
+
+def test_save_cells_and_pseudobulk_mouse(tmp_path):
+    import numpy as np
+    import pandas as pd
+    import scipy.sparse as sp
+
+    from pnprank.atlases import atlas_pseudobulk, save_cells
+
+    X = sp.csr_matrix(np.array([[1, 0, 2], [0, 3, 0], [5, 5, 5]]))  # 3 cells x 3 genes
+    obs = pd.DataFrame(
+        {"cell_type_author": ["A", "A", "B"], "donor": ["d1", "d1", "d1"], "keep": [True, True, False]},
+        index=["c1", "c2", "c3"],
+    )
+    p = tmp_path / "cells.h5ad"
+    save_cells(p, X, ["ENSMUSG1", "ENSMUSG2", "ENSMUSG3"], obs, "mouse")
+    sums, groups = atlas_pseudobulk(p, {"ENSMUSG1": "ENSG1", "ENSMUSG3": "ENSG3"})
+    assert list(sums.index) == ["ENSG1", "ENSG3"]  # ENSMUSG2 has no human orthologue
+    assert groups["cell_type_author"].tolist() == ["A"]  # B dropped (keep=False)
+    assert sums.iloc[:, 0].tolist() == [1, 2]

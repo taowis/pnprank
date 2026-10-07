@@ -1,0 +1,145 @@
+{
+ "atlases": [
+  "yang2022_human_tg",
+  "heming2025_human_sural",
+  "sparc465_human_sympathetic",
+  "yadav2023_human_spinal_cord",
+  "kedlian2024_human_muscle",
+  "yang2022_mouse_tg",
+  "stefanovska2025_mouse_sciatic",
+  "krauter2025_mouse_drg",
+  "alkaslasi2021_mouse_mn",
+  "ham2025_mouse_nmj"
+ ],
+ "n_universe": 19228,
+ "n_features_static": 224,
+ "n_features_full": 234,
+ "final_logistic_params": {
+  "logisticregression__C": 0.001
+ },
+ "cell_types": {
+  "yang2022_human_tg": [
+   "fibroblast",
+   "immune",
+   "neuron_sensory_cltmr",
+   "neuron_sensory_nf",
+   "neuron_sensory_np",
+   "neuron_sensory_pep",
+   "neuron_sensory_sst",
+   "neuron_sensory_trpm8",
+   "satellite_glia",
+   "schwann_myelinating",
+   "schwann_nonmyelinating",
+   "vascular"
+  ],
+  "heming2025_human_sural": [
+   "adipocyte",
+   "fibroblast_endoneurial",
+   "fibroblast_epineurial",
+   "fibroblast_perineurial",
+   "immune",
+   "schwann_myelinating",
+   "schwann_nonmyelinating",
+   "schwann_repair",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "sparc465_human_sympathetic": [
+   "adipocyte",
+   "fibroblast",
+   "immune",
+   "neuron_sympathetic",
+   "satellite_glia",
+   "schwann_myelinating",
+   "schwann_nonmyelinating",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "yadav2023_human_spinal_cord": [
+   "astrocyte",
+   "ependymal",
+   "immune",
+   "meninges",
+   "microglia",
+   "neuron_motor",
+   "neuron_spinal_interneuron",
+   "oligodendrocyte",
+   "opc",
+   "schwann",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "kedlian2024_human_muscle": [
+   "adipocyte",
+   "fibroblast",
+   "fibroblast_endoneurial",
+   "fibroblast_perineurial",
+   "immune",
+   "muscle_satellite",
+   "myonucleus_mtj",
+   "myonucleus_nmj",
+   "myonucleus_other",
+   "myonucleus_type1",
+   "myonucleus_type2",
+   "nmj_accessory",
+   "tenocyte",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "yang2022_mouse_tg": [
+   "fibroblast",
+   "immune",
+   "neuron_sensory_cltmr",
+   "neuron_sensory_nf",
+   "neuron_sensory_np",
+   "neuron_sensory_pep",
+   "neuron_sensory_sst",
+   "neuron_sensory_trpm8",
+   "satellite_glia",
+   "schwann_myelinating",
+   "schwann_nonmyelinating",
+   "vascular"
+  ],
+  "stefanovska2025_mouse_sciatic": [
+   "adipocyte",
+   "fibroblast_endoneurial",
+   "fibroblast_epineurial",
+   "fibroblast_other",
+   "fibroblast_perineurial",
+   "immune",
+   "schwann_myelinating",
+   "schwann_nonmyelinating",
+   "vascular_endothelial",
+   "vascular_mural"
+  ],
+  "krauter2025_mouse_drg": [
+   "neuron_sensory_abeta_ltmr",
+   "neuron_sensory_adelta_ltmr",
+   "neuron_sensory_cltmr",
+   "neuron_sensory_np",
+   "neuron_sensory_pep",
+   "neuron_sensory_trpm8"
+  ],
+  "alkaslasi2021_mouse_mn": [
+   "neuron_cholinergic_interneuron",
+   "neuron_motor_alpha",
+   "neuron_motor_gamma",
+   "neuron_motor_type3",
+   "neuron_visceral_motor"
+  ],
+  "ham2025_mouse_nmj": [
+   "adipocyte",
+   "fibroblast",
+   "fibroblast_nerve",
+   "immune",
+   "muscle_satellite",
+   "myonucleus_mtj",
+   "myonucleus_nmj",
+   "myonucleus_type2",
+   "schwann",
+   "tenocyte",
+   "vascular_endothelial",
+   "vascular_mural"
+  ]
+ }
+}

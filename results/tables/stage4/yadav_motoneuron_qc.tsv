@@ -1,0 +1,8 @@
+donor	n_motoneurons	SLC5A7_cpm	PRPH_cpm	SLC5A7_interneuron_median	PRPH_interneuron_median	pass
+1	54	45.7	105.8	14.8	3.1	False
+2	132	999.3	1665.5	14.8	3.1	True
+3	505	711.3	2342.3	14.8	3.1	True
+4	376	716.1	1476.2	14.8	3.1	True
+5	195	6.1	0.0	14.8	3.1	False
+6	37	217.7	158.3	14.8	3.1	True
+7	32	248.3	94.2	14.8	3.1	True

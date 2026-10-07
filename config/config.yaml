@@ -26,6 +26,20 @@ truth:
     hereditary_neuropathy_or_pain_gms: 846
     hsp: 165
 
+external:                      # MD5 values are as published by the host (base64)
+  gnomad_constraint:
+    url: https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/constraint/gnomad.v4.1.constraint_metrics.tsv
+    md5_base64: FN9LKstYH8u7KoKjpVX9NQ==
+    dest: data/external/gnomad/gnomad.v4.1.constraint_metrics.tsv
+  gtex_median_tpm:
+    url: https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz
+    md5_base64: E9/dDLc8WJnNCxAq7l7mww==
+    dest: data/external/gtex/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz
+  mouse_gtf:
+    url: https://ftp.ensembl.org/pub/release-116/gtf/mus_musculus/Mus_musculus.GRCm39.116.gtf.gz
+    bsd_sum: "42607 105329"     # from Ensembl CHECKSUMS (BSD sum)
+    dest: data/external/annotation/Mus_musculus.GRCm39.116.gtf.gz
+
 pseudobulk:
   min_cells_per_group: 20      # cell type x donor groups below this are dropped
   min_donors: 2                # cell types must be seen in at least this many donors
@@ -40,10 +54,26 @@ backtest:
   interval_window_years: null  # TODO (Stage 5)
   interaction_db_release: null # must predate each cutoff, or PPI is dropped (see CLAUDE leakage controls)
 
+features:
+  celltype_map: config/celltype_map.tsv
+  atlases:                     # standardised atlases used as features (Stage 4)
+    - yang2022_human_tg
+    - heming2025_human_sural
+    - sparc465_human_sympathetic
+    - yadav2023_human_spinal_cord
+    - kedlian2024_human_muscle
+    - yang2022_mouse_tg
+    - stefanovska2025_mouse_sciatic
+    - krauter2025_mouse_drg
+    - alkaslasi2021_mouse_mn
+    - ham2025_mouse_nmj
+  gtex_tissues: [Nerve_Tibial, Muscle_Skeletal, Brain_Spinal_cord_cervical_c-1]
+  ppi: false                   # PPI dropped from the back-tested model (no pre-cutoff release pinned)
+
 model:
-  type: null                   # TODO (Stage 4)
-  cv_folds: 5                  # inner CV, pre-cutoff genes only
-  hyperparameters: {}
+  kinds: [logistic, hgb]       # see src/pnprank/model.py
+  cv_folds: 5                  # outer folds (Stage 4 evaluation)
+  inner_folds: 3               # hyperparameter tuning, training genes only
 
 bootstrap:
   n_resamples: 1000

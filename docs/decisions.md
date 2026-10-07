@@ -127,3 +127,40 @@ Each non-obvious choice, with its reason. Newest last.
   expressed than average and raw specificity partly tracks expression.
 - **Pilot is not a back-test:** it uses all discovery years and reports no
   temporal metric. No multiple-testing correction; results are exploratory.
+
+## 2026-10-07 — Stage 4 (features and model)
+
+- **Primary positive set (user-confirmed):** tier 1 (100 genes); tier 1+2 is a
+  sensitivity analysis.
+- **iPain not downloaded (user-confirmed):** mouse DRG is covered by Krauter 2025;
+  the 21 GB iPain file is not needed.
+- **Yim 2022 excluded from features:** the deposited Seurat object holds raw counts but
+  only numeric cluster IDs (res.0.6 / active identity); author cell-type names are not
+  deposited. Re-annotating clusters ourselves would add an undocumented judgement, and
+  mouse sciatic nerve is already covered by Stefanovska 2025 with author labels.
+- **R isolation:** the conda R must not load packages from the user R library
+  (binary-incompatible, segfaults); `R_LIBS_USER` is pointed to a non-existent path in the
+  environment (`environment.yml` `variables`).
+- **Yadav motoneuron QC (pre-specified rule):** a donor's "Motoneurons" are kept only if
+  pseudobulk CPM of both SLC5A7 and PRPH is >= 10x the interneuron median. Donor 5
+  (SLC5A7 6, PRPH 0, high MBP/PLP1/GFAP: glial contamination or mislabel) and donor 1
+  (SLC5A7 ~3x) fail; 1,082 motoneurons from 5 donors remain
+  (`results/tables/stage4/yadav_motoneuron_qc.tsv`).
+- **Yang 2022 mouse:** naive animals only; "Control" and "PBS" are procedural controls
+  for the headache models and are excluded. "Injured" neurons are excluded.
+- **Kedlian 2024:** nuclei only (cells and nuclei are mixed in the object).
+- **SPARC 465:** library used as replicate unit (library-to-donor mapping not deposited).
+- **Stefanovska 2025:** raw counts from GEO (the Zenodo h5ad holds only normalised
+  values); young (3-month) samples only; GEO files matched to h5ad labels by barcode
+  overlap (each file matched exactly one sample suffix, 100% of its labelled cells).
+- **Jung 2023 human DRG deferred:** counts and author labels are only in a single 4.2 GB
+  Seurat RDS that cannot be partially read; loading needs more RAM than is free on this
+  machine. Stage 4 is reported with 10 atlases. A per-sample route (RAW.tar matrices plus
+  labels from the 240 MB cross-species object) is to be checked; it is exact because
+  pseudobulk sums are additive.
+- **Gene universe for modelling:** HGNC protein-coding genes seen in at least one atlas
+  or in GTEx (19,228); genes with no expression data at all are dropped.
+- **Stage 4 evaluation is nested CV on current labels, not a back-test:** it asks only
+  whether atlas features add signal over non-atlas predictors (paired bootstrap on
+  identical resamples).
+- **Lockfile regenerated** with `conda list --explicit --md5` after adding `r-seuratobject`.

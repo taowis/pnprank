@@ -45,3 +45,7 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+config/atlases.lock
+
+# Run logs
+logs/

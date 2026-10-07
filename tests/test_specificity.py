@@ -62,3 +62,16 @@ def test_within_bin_percentile_removes_covariate():
     assert auroc(score.to_numpy(), labels.to_numpy()) > 0.85
     matched = within_bin_percentile(score, cov, n_bins=20)
     assert abs(auroc(matched.to_numpy(), labels.to_numpy()) - 0.5) < 0.1
+
+
+def test_paired_bootstrap_diff():
+    from pnprank.backtest import paired_bootstrap_diff
+
+    rng = np.random.default_rng(0)
+    y = np.r_[np.ones(50), np.zeros(500)].astype(bool)
+    good = y + rng.normal(scale=0.5, size=len(y))
+    noise = rng.normal(size=len(y))
+    d, lo, hi, p = paired_bootstrap_diff(good, noise, y, n_resamples=200, seed=1)
+    assert d > 0.3 and lo > 0 and p == 0
+    d, lo, hi, p = paired_bootstrap_diff(good, good, y, n_resamples=50, seed=1)
+    assert d == 0 and lo == 0 and hi == 0
