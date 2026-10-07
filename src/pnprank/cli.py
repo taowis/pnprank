@@ -5,8 +5,17 @@ from __future__ import annotations
 import argparse
 import sys
 
+from pathlib import Path
+
 from pnprank import __version__
 from pnprank.truth import assemble_truth, build_candidates, fetch_sources, validate_truth
+
+DEFAULT_RANKING = Path(__file__).resolve().parents[2] / "results" / "tables" / "pnprank_ranking.tsv.gz"
+DISPLAY = ["rank", "hgnc_symbol", "status", "percentile", "percentile_seed_min",
+           "percentile_seed_max", "percentile_expr_matched", "percentile_non_atlas",
+           "gtex_mean_decile", "top_cell_type"]
+NOTE = ("note: percentiles rank genes for follow-up; they are not evidence that a gene causes "
+        "neuropathy. Known tier-1 genes were training positives and have no percentile.")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -33,6 +42,27 @@ def main(argv: list[str] | None = None) -> int:
     p_dl.add_argument("--registry", default="config/atlases.yaml")
     p_dl.add_argument("--paths", default="config/paths.yaml")
 
+    p_build = sub.add_parser("build-ranking", help="fit the release model and write the ranking")
+    p_build.add_argument("--config", default="config/config.yaml")
+    p_build.add_argument("--paths", default="config/paths.yaml")
+    p_build.add_argument("--out", default=str(DEFAULT_RANKING))
+    p_build.add_argument("--n-jobs", type=int, default=1)
+
+    p_q = sub.add_parser("query", help="look up genes in the ranking")
+    p_q.add_argument("genes", nargs="*", help="HGNC symbols (aliases accepted) or Ensembl IDs")
+    p_q.add_argument("--file", help="file with one gene per line ('-' for stdin)")
+    p_q.add_argument("--ranking", default=str(DEFAULT_RANKING))
+    p_q.add_argument("--tsv", action="store_true", help="tab-separated output, all columns")
+
+    p_top = sub.add_parser("top", help="list the highest-ranked genes")
+    p_top.add_argument("-n", type=int, default=50)
+    p_top.add_argument("--include-known", action="store_true",
+                       help="include known tier-1/2 neuropathy genes")
+    p_top.add_argument("--expr-matched", action="store_true",
+                       help="order by the expression-matched percentile")
+    p_top.add_argument("--ranking", default=str(DEFAULT_RANKING))
+    p_top.add_argument("--tsv", action="store_true", help="tab-separated output, all columns")
+
     args = parser.parse_args(argv)
     if args.command == "validate-truth":
         problems = validate_truth(args.path)
@@ -45,6 +75,10 @@ def main(argv: list[str] | None = None) -> int:
         return _assemble_truth(args)
     if args.command == "download-atlas":
         return _download_atlas(args)
+    if args.command == "build-ranking":
+        return _build_ranking(args)
+    if args.command in ("query", "top"):
+        return _lookup(args)
     parser.print_help()
     return 0
 
@@ -114,6 +148,80 @@ def _build_candidates(args: argparse.Namespace) -> int:
         w.writerows(rows)
     print(f"{len(rows)} candidates -> {out}")
     return 0
+
+
+def _build_ranking(args: argparse.Namespace) -> int:
+    import json
+
+    import pandas as pd
+    import yaml
+
+    from pnprank.features import atlas_profiles, label_features, load_celltype_map
+    from pnprank.ranking import build_ranking
+
+    cfg = yaml.safe_load(Path(args.config).read_text())
+    root = Path(yaml.safe_load(Path(args.paths).read_text())["data_root"])
+    fc, rc = cfg["features"], cfg["release"]
+    X = pd.read_csv(root / "processed" / "features_static.tsv.gz", sep="\t", index_col=0)
+    universe = list(X.index)
+    profiles = atlas_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
+                              cfg["pseudobulk"]["min_cells_per_group"],
+                              cfg["pseudobulk"]["min_donors"])
+    truth = pd.read_csv(cfg["truth"]["path"], sep="\t", dtype=str)
+    cands = pd.read_csv(cfg["truth"]["candidates"], sep="\t", dtype=str)
+    hgnc = pd.read_csv(Path(cfg["truth"]["sources_dir"]) / "hgnc_complete_set.txt", sep="\t",
+                       dtype=str)
+    hgnc = hgnc[hgnc.ensembl_gene_id.isin(universe) & (hgnc.status == "Approved")]
+    symbols = dict(zip(hgnc.ensembl_gene_id, hgnc.symbol))
+    aliases = {g: "|".join(filter(None, [a or "", p or ""])) for g, a, p in
+               zip(hgnc.ensembl_gene_id, hgnc.alias_symbol.fillna(""), hgnc.prev_symbol.fillna(""))}
+    seeds = [cfg["seeds"]["global"] + i for i in range(rc["stability_seeds"])]
+    tab, meta = build_ranking(
+        X, truth, set(cands.ensembl_gene_id) - set(truth.ensembl_gene_id), symbols, aliases,
+        lambda known: label_features(profiles, universe, known),
+        [c for c in X.columns if c.startswith(("gnomad|", "gtex|"))],
+        X[rc["expression_covariate"]], seeds, rc["scoring_folds"], cfg["model"]["inner_folds"],
+        rc["expression_bins"], args.n_jobs)
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tab.to_csv(out, sep="\t", index=False, compression="gzip")
+    meta = {"pnprank_version": __version__, "n_genes": len(tab), **meta}
+    meta_path = out.with_name(out.name.removesuffix(".tsv.gz") + "_meta.json")
+    meta_path.write_text(json.dumps(meta, indent=2) + "\n")
+    print(f"{len(tab)} genes -> {out}; metadata -> {meta_path}")
+    return 0
+
+
+def _lookup(args: argparse.Namespace) -> int:
+    from pnprank.ranking import load_ranking, resolve, top_genes
+
+    path = Path(args.ranking)
+    if not path.exists():
+        print(f"ranking not found: {path} (run `pnprank build-ranking` first)", file=sys.stderr)
+        return 2
+    tab = load_ranking(path)
+    if args.command == "top":
+        out = top_genes(tab, args.n, args.include_known,
+                        "percentile_expr_matched" if args.expr_matched else "percentile")
+        problems = {}
+    else:
+        queries = list(args.genes)
+        if args.file:
+            fh = sys.stdin if args.file == "-" else open(args.file)
+            queries += [ln.split("\t")[0].strip() for ln in fh if not ln.startswith("#")]
+        if not queries:
+            print("no genes given", file=sys.stderr)
+            return 2
+        out, problems = resolve(tab, queries)
+    if args.tsv:
+        out.to_csv(sys.stdout, sep="\t", index=False)
+    else:
+        cols = (["query"] if "query" in out.columns else []) + DISPLAY
+        print(out[cols].to_string(index=False, na_rep="-") if len(out) else "(no matches)")
+    for q, why in problems.items():
+        print(f"{q}: {why}", file=sys.stderr)
+    print(NOTE, file=sys.stderr)
+    return 1 if problems and out.empty else 0
 
 
 if __name__ == "__main__":
