@@ -5,10 +5,10 @@ Must pass before any back-test result is reported.
 
 import numpy as np
 import pandas as pd
-import pytest
 
 from pnprank.coexpression import known_gene_similarity
 from pnprank.features import known_before, label_features
+from pnprank.backtest import evaluation_labels, oof_scores_at_cutoff, training_labels
 from pnprank.model import cross_validated_scores
 from pnprank.truth import known_before as known_before_rows
 
@@ -103,6 +103,99 @@ def test_cv_label_features_use_training_fold_only():
     assert not oof.isna().any()
 
 
-@pytest.mark.skip(reason="activated in Stage 5 once the back-test pipeline exists")
+def _backtest_scores(truth, cutoff, tiers=frozenset({"1"})):
+    profiles = _profiles(n_genes=80)
+    universe = list(profiles["atlasA"].index)
+    rng = np.random.default_rng(2)
+    X_static = pd.DataFrame(rng.normal(size=(80, 3)), index=universe, columns=["a", "b", "c"])
+    y = training_labels(universe, truth, cutoff, set(tiers))
+    scores, _, _ = oof_scores_at_cutoff(
+        X_static, y, "logistic", seed=0, folds=3, inner_folds=2,
+        label_fn=lambda known: label_features(profiles, universe, known))
+    return y, scores
+
+
+def _truth_backtest():
+    years = [1995, 1998, 2001, 2003, 2004, 2006, 2007, 2009, 2012, 2015, 2018, 2021]
+    return pd.DataFrame({"ensembl_gene_id": [f"G{i}" for i in range(12)],
+                         "discovery_year": [str(y) for y in years],
+                         "tier": ["1"] * 10 + ["2", "2"]})
+
+
 def test_backtest_pipeline_end_to_end():
-    pass
+    """Back-test scores at a cutoff must not change when post-cutoff truth is removed,
+    moved later, or extended; and positives (pre-cutoff genes) are never scored."""
+    cutoff = 2008
+    t = _truth_backtest()
+    y, base = _backtest_scores(t, cutoff)
+    assert set(y.index[y == 1]) == {"G0", "G1", "G2", "G3", "G4", "G5", "G6"}
+    assert not set(base.index) & set(y.index[y == 1])
+    assert not base.isna().any()
+    pre = t.discovery_year.astype(int) < cutoff
+    variants = [
+        t[pre],
+        t.assign(discovery_year=t.discovery_year.where(pre, "2040")),
+        pd.concat([t, pd.DataFrame({"ensembl_gene_id": ["G40", "G41"],
+                                    "discovery_year": ["2010", "2019"], "tier": ["1", "2"]})]),
+        t.assign(tier=t.tier.where(pre, "2")),
+    ]
+    for v in variants:
+        yv, sv = _backtest_scores(v, cutoff)
+        pd.testing.assert_series_equal(y, yv)
+        pd.testing.assert_series_equal(base, sv)
+
+
+def test_backtest_drops_pre_cutoff_other_tier_only():
+    t = _truth_backtest().assign(tier=["1"] * 9 + ["2", "2", "2"])
+    t.loc[9, "discovery_year"] = "2000"  # tier 2, known before the cutoff
+    y = training_labels([f"G{i}" for i in range(20)], t, 2008, {"1"})
+    assert "G9" not in y.index           # known (tier 2) before cutoff: dropped
+    assert y["G10"] == 0 and y["G11"] == 0  # tier 2 after cutoff: unknown then, label 0
+    assert y["G8"] == 0                  # tier 1 discovered 2012: label 0 at 2008
+
+
+def test_evaluation_labels_window():
+    t = _truth_backtest()
+    neg = {f"N{i}" for i in range(5)}
+    e = evaluation_labels(t, neg, 2008, {"1"})
+    assert set(e.index[e == 1]) == {"G7", "G8", "G9"}
+    w = evaluation_labels(t, neg, 2008, {"1"}, window=5)
+    assert set(w.index[w == 1]) == {"G7", "G8"}
+
+
+def test_within_fold_percentile_ignores_scale_between_folds():
+    """Scores on different scales per fold give the same percentiles as unscaled ones."""
+    from pnprank.backtest import within_fold_percentile
+
+    idx = [f"G{i}" for i in range(40)]
+    rng = np.random.default_rng(3)
+    s = pd.Series(rng.normal(size=40), index=idx)
+    fold = pd.Series(np.repeat([0, 1], 20), index=idx)
+    shifted = s.where(fold == 0, s * 10 - 5)
+    pd.testing.assert_series_equal(within_fold_percentile(s, fold), within_fold_percentile(shifted, fold))
+    cov = pd.Series(rng.normal(size=40), index=idx)
+    m = within_fold_percentile(s, fold, cov, n_bins=2)
+    assert m.notna().all() and m.max() == 1.0
+
+
+def test_backtest_scores_reproducible_across_hash_seeds(tmp_path):
+    """Back-test scores must not depend on Python's string-hash randomisation."""
+    import subprocess
+    import sys
+
+    script = tmp_path / "run.py"
+    script.write_text(
+        "import numpy as np, pandas as pd\n"
+        "from pnprank.backtest import oof_scores_at_cutoff\n"
+        "idx=[f'G{i}' for i in range(120)]\n"
+        "rng=np.random.default_rng(0)\n"
+        "X=pd.DataFrame(rng.normal(size=(120,4)),index=idx)\n"
+        "y=pd.Series(0,index=idx); y.iloc[::6]=1\n"
+        "s,_,_=oof_scores_at_cutoff(X,y,'logistic',0,3,3)\n"
+        "print(','.join(f'{v:.12f}' for v in s))\n")
+    outs = []
+    for h in ("1", "2", "3"):
+        r = subprocess.run([sys.executable, str(script)], capture_output=True, text=True,
+                           env={**__import__("os").environ, "PYTHONHASHSEED": h}, check=True)
+        outs.append(r.stdout)
+    assert outs[0] == outs[1] == outs[2]

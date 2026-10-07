@@ -1,6 +1,6 @@
 # pnprank
 
-**Status:** Stage 4 (Full feature set and model) — complete, awaiting review before Stage 5.
+**Status:** Stage 5 (Validation) — complete, awaiting review before Stage 6.
 
 | Stage | Description | Status |
 |---|---|---|
@@ -9,7 +9,7 @@
 | 2 | Locate and assess atlases | done (13 shortlisted of 133) |
 | 3 | Feasibility pilot on one atlas | done (Yang 2022 human TG) |
 | 4 | Full feature set and model | done (11 atlases; nested-CV AUROC 0.79 tier 1) |
-| 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | not started |
+| 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | done (back-test AUROC 0.75–0.78 tier 1; see report) |
 | 6 | Command-line tool | not started |
 
 ## What this is

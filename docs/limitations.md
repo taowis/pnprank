@@ -23,3 +23,13 @@
 - SPARC 465 uses library, not donor, as the replicate unit.
 - Stage 4 model comparisons use a single 5-fold CV split; split-to-split variance (about
   0.005 AUROC observed) is not included in the bootstrap CIs.
+- Back-test cutoffs share test genes, so per-cutoff results are not independent and are
+  not combined into one significance test. Late cutoffs (2017, 2020) have 19 and 13 test
+  genes and wide CIs.
+- Hyperparameter selection is unstable with few pre-cutoff positives (30-40); back-test
+  scores are compared within the fold model that produced them, a deviation from the
+  pre-specified pooled analysis (both are reported).
+- Genes without a one-to-one mouse orthologue have no features from the five mouse
+  atlases (e.g. PRPS1, MORC2), which lowers their rank.
+- Genes acting in rare cell types with low bulk expression (e.g. SLC5A7 in motor neurons)
+  are ranked low because overall expression carries much of the model's weight.

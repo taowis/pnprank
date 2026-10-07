@@ -168,3 +168,57 @@ Each non-obvious choice, with its reason. Newest last.
   whether atlas features add signal over non-atlas predictors (paired bootstrap on
   identical resamples).
 - **Lockfile regenerated** with `conda list --explicit --md5` after adding `r-seuratobject`.
+
+## 2026-10-07 — Stage 5 (validation), pre-specified before any back-test was run
+
+- **Cutoff years:** 2005, 2008, 2011, 2014, 2017, 2020 (every 3 years from the first year
+  with >= 30 pre-cutoff tier-1 genes; user-confirmed rule). Post-cutoff tier-1 genes:
+  70, 62, 54, 32, 19, 13.
+- **Training labels at cutoff c (no future information):** 1 = tier-1 genes discovered
+  before c. Tier-2 genes discovered before c are dropped (known before c). Every other
+  gene is 0, including genes discovered at or after c and unverified/excluded candidates,
+  because at time c they were not known neuropathy genes and their current status is
+  future information.
+- **Out-of-fold scoring:** genes labelled 0 are split into 5 folds; each fold is scored by
+  a model trained on the pre-cutoff positives and the other folds, so no evaluated gene
+  is scored by a model that saw it as a training negative. Hyperparameters are tuned by
+  inner CV on the training genes only. Label-derived co-expression uses only pre-cutoff
+  tier-1 genes.
+- **Evaluation at cutoff c:** positives = tier-1 genes discovered in or after c;
+  negatives = protein-coding genes that are not candidates (current knowledge is allowed
+  for evaluation). Primary: all post-cutoff genes. Secondary: genes discovered in
+  [c, c + 5).
+- **Primary model:** logistic regression with all features (chosen in Stage 4). Gradient
+  boosting is not back-tested (worse in Stage 4 and much slower).
+- **Comparators at every cutoff:** non-atlas logistic model; GTEx tibial nerve
+  expression; GTEx mean expression; -LOEUF. Paired bootstrap differences on identical
+  resamples.
+- **Expression-matched evaluation:** every score is converted to its percentile within
+  GTEx mean-expression deciles (computed over the universe) before AUROC, as in the pilot.
+- **Interval simulation:** for each year y from 2005 to 2026 with tier-1 discoveries, a
+  model is trained with cutoff y and each gene discovered in y is ranked among all genes
+  scored at that cutoff (percentile). Per-category summaries (CMT, dHMN, HSAN) use these
+  percentiles. Failure analysis lists the genes ranked lowest at discovery.
+- **Repeated CV:** the Stage 4 current-label comparison (logistic full vs non-atlas) is
+  repeated over 10 seeds to measure split-to-split variance.
+- **Tier 1+2** is a sensitivity analysis with the same procedure (positives tier 1+2).
+- **Deviation from the pre-specified design (found while running, before results for all
+  cutoffs were seen):** pooling raw out-of-fold scores across the 5 scoring folds is
+  invalid when the fold models choose different regularisation, because their predicted
+  probabilities are on different scales. At cutoff 2008 one fold chose C = 1.0 and the
+  others 0.001-0.01; median scores per fold ranged 0.000-0.114, and the pooled AUROC of
+  the full model (0.675) was below every one of its within-fold AUROCs except the lowest
+  (0.675-0.854). Primary analysis is therefore changed to percentiles within the fold
+  model that scored each gene (each fold is a random fifth of the scored genes), applied
+  to every score including baselines and to the expression-matched analysis (fold x
+  expression decile) and the interval simulation. The pre-specified pooled analysis is
+  still computed and reported (`transform = pooled`). The Stage 4 CV comparison is barely
+  affected (tier 1 gain +0.048 pooled vs +0.044 within-fold; tier 1+2 +0.059 both),
+  because the full model chose C = 0.001 in every fold there.
+- **Reproducibility fix:** the training rows at a cutoff were assembled from a Python set,
+  whose iteration order changes with string-hash randomisation between processes; inner
+  CV folds, and so the chosen C, changed between runs with the same seed (e.g. cutoff
+  2005 tier 1: pooled AUROC 0.762 vs 0.726). Rows now follow the label order, and a test
+  runs the scoring under three hash seeds. The episode also shows that C selection is
+  unstable with 30-40 positives; within-fold percentiles remove the scale problem, not
+  this variance. All Stage 5 results were regenerated after the fix.
