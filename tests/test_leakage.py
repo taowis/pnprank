@@ -109,7 +109,7 @@ def _backtest_scores(truth, cutoff, tiers=frozenset({"1"})):
     rng = np.random.default_rng(2)
     X_static = pd.DataFrame(rng.normal(size=(80, 3)), index=universe, columns=["a", "b", "c"])
     y = training_labels(universe, truth, cutoff, set(tiers))
-    scores, _ = oof_scores_at_cutoff(
+    scores, _, _ = oof_scores_at_cutoff(
         X_static, y, "logistic", seed=0, folds=3, inner_folds=2,
         label_fn=lambda known: label_features(profiles, universe, known))
     return y, scores
@@ -161,3 +161,18 @@ def test_evaluation_labels_window():
     assert set(e.index[e == 1]) == {"G7", "G8", "G9"}
     w = evaluation_labels(t, neg, 2008, {"1"}, window=5)
     assert set(w.index[w == 1]) == {"G7", "G8"}
+
+
+def test_within_fold_percentile_ignores_scale_between_folds():
+    """Scores on different scales per fold give the same percentiles as unscaled ones."""
+    from pnprank.backtest import within_fold_percentile
+
+    idx = [f"G{i}" for i in range(40)]
+    rng = np.random.default_rng(3)
+    s = pd.Series(rng.normal(size=40), index=idx)
+    fold = pd.Series(np.repeat([0, 1], 20), index=idx)
+    shifted = s.where(fold == 0, s * 10 - 5)
+    pd.testing.assert_series_equal(within_fold_percentile(s, fold), within_fold_percentile(shifted, fold))
+    cov = pd.Series(rng.normal(size=40), index=idx)
+    m = within_fold_percentile(s, fold, cov, n_bins=2)
+    assert m.notna().all() and m.max() == 1.0

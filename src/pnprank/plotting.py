@@ -49,3 +49,65 @@ def auroc_heatmap(
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(path, dpi=200, facecolor=SURFACE)
     plt.close(fig)
+
+
+# Categorical series colours (distinct hues, readable on a light surface).
+SERIES = {"full": "#d1495b", "non_atlas": "#00798c", "gtex_nerve": "#edae49",
+          "gtex_mean": "#66a182", "neg_loeuf": "#8d6a9f"}
+LABELS = {"full": "PNPrank (all features)", "non_atlas": "Non-atlas model",
+          "gtex_nerve": "GTEx tibial nerve", "gtex_mean": "GTEx mean expression",
+          "neg_loeuf": "gnomAD -LOEUF"}
+
+
+def auroc_by_cutoff(perf: pd.DataFrame, panels: list[tuple[str, str]], path: str) -> None:
+    """AUROC (95% CI) against cutoff year, one line per score; one panel per
+    (adjust, title). `perf` needs columns cutoff, score, adjust, auroc, auroc_lo, auroc_hi."""
+    fig, axes = plt.subplots(1, len(panels), figsize=(4.2 * len(panels), 3.4), sharey=True)
+    fig.patch.set_facecolor(SURFACE)
+    axes = np.atleast_1d(axes)
+    scores = [s for s in SERIES if s in set(perf.score)]
+    for ax, (adjust, title) in zip(axes, panels):
+        d = perf[perf.adjust == adjust]
+        for i, s in enumerate(scores):
+            r = d[d.score == s].sort_values("cutoff")
+            x = r.cutoff + (i - (len(scores) - 1) / 2) * 0.22
+            ax.errorbar(x, r.auroc, yerr=[r.auroc - r.auroc_lo, r.auroc_hi - r.auroc],
+                        color=SERIES[s], marker="o", ms=3.5, lw=1.4 if s == "full" else 1.0,
+                        capsize=0, elinewidth=0.8, label=LABELS[s])
+        ax.axhline(0.5, color=MUTED, lw=0.8, ls=":")
+        ax.set_title(title, fontsize=9.5, color=INK, loc="left")
+        ax.set_xlabel("Cutoff year", fontsize=8.5, color=INK)
+        ax.set_xticks(sorted(set(perf.cutoff)))
+        ax.tick_params(labelsize=8, colors=INK)
+        ax.set_facecolor(SURFACE)
+        for sp in ("top", "right"):
+            ax.spines[sp].set_visible(False)
+    axes[0].set_ylabel("AUROC, genes discovered after cutoff", fontsize=8.5, color=INK)
+    axes[-1].legend(fontsize=7, frameon=False, loc="lower left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=200, facecolor=SURFACE)
+    plt.close(fig)
+
+
+def percentile_strip(sim: pd.DataFrame, cols: list[str], path: str) -> None:
+    """Distribution of each gene's percentile rank in its discovery year, per score."""
+    fig, ax = plt.subplots(figsize=(6.4, 3.2))
+    fig.patch.set_facecolor(SURFACE)
+    rng = np.random.default_rng(0)
+    for i, c in enumerate(cols):
+        s = c.removeprefix("pct_")
+        v = sim[c].dropna().to_numpy()
+        ax.scatter(i + rng.uniform(-0.18, 0.18, len(v)), v, s=9, alpha=0.6,
+                   color=SERIES.get(s, MUTED), linewidths=0)
+        ax.plot([i - 0.28, i + 0.28], [np.median(v)] * 2, color=INK, lw=1.6)
+    ax.axhline(0.5, color=MUTED, lw=0.8, ls=":")
+    ax.set_xticks(range(len(cols)), [LABELS.get(c.removeprefix("pct_"), c) for c in cols],
+                  fontsize=7.5, color=INK, rotation=15, ha="right")
+    ax.set_ylabel("Percentile at discovery (1 = top)", fontsize=8.5, color=INK)
+    ax.tick_params(labelsize=8, colors=INK)
+    ax.set_facecolor(SURFACE)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(path, dpi=200, facecolor=SURFACE)
+    plt.close(fig)

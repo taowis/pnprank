@@ -100,7 +100,11 @@ def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_fo
     Label-derived features are built once from the positives in `y` (pre-cutoff genes).
     Genes labelled 0 are split into `folds`; each fold is scored by a model trained on
     all positives and the remaining folds, with hyperparameters tuned by inner CV on that
-    training set. Positives are not scored. Returns a Series over the 0-labelled genes.
+    training set. Positives are not scored.
+
+    Returns (scores, best params per fold, fold index per gene). Scores from different
+    fold models are on different scales (hyperparameters differ), so they must be
+    compared within fold (`within_fold_percentile`) before pooling.
     """
     import pandas as pd
     from joblib import Parallel, delayed
@@ -119,7 +123,29 @@ def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_fo
         return pd.Series(est.predict_proba(X.loc[zeros[te]])[:, 1], index=zeros[te]), best
 
     out = Parallel(n_jobs=n_jobs)(delayed(run)(k, tr, te) for k, (tr, te) in enumerate(splits))
-    return pd.concat([s for s, _ in out]).reindex(zeros), [b for _, b in out]
+    fold = pd.Series(0, index=zeros)
+    for k, (_, te) in enumerate(splits):
+        fold.iloc[te] = k
+    return pd.concat([s for s, _ in out]).reindex(zeros), [b for _, b in out], fold
+
+
+def within_fold_percentile(scores, fold, covariate=None, n_bins: int = 10):
+    """Percentile (0-1] of each score among genes scored by the same fold model.
+
+    With `covariate`, genes are additionally grouped into quantile bins of it (computed
+    over all genes), so the percentile is also matched on that covariate (e.g. expression
+    level). Missing scores or covariates give NaN.
+    """
+    import pandas as pd
+
+    df = pd.DataFrame({"s": scores, "g": fold.reindex(scores.index)})
+    if covariate is not None:
+        c = covariate.reindex(scores.index)
+        df = df[c.notna()]
+        b = pd.qcut(c[c.notna()].rank(method="first"), n_bins, labels=False)
+        df["g"] = df["g"] * n_bins + b
+    df = df.dropna()
+    return df.groupby("g")["s"].rank(pct=True).reindex(scores.index)
 
 
 def evaluation_labels(truth, negatives: set[str], cutoff: int, tiers: set[str],

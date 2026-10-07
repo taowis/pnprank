@@ -202,3 +202,16 @@ Each non-obvious choice, with its reason. Newest last.
 - **Repeated CV:** the Stage 4 current-label comparison (logistic full vs non-atlas) is
   repeated over 10 seeds to measure split-to-split variance.
 - **Tier 1+2** is a sensitivity analysis with the same procedure (positives tier 1+2).
+- **Deviation from the pre-specified design (found while running, before results for all
+  cutoffs were seen):** pooling raw out-of-fold scores across the 5 scoring folds is
+  invalid when the fold models choose different regularisation, because their predicted
+  probabilities are on different scales. At cutoff 2008 one fold chose C = 1.0 and the
+  others 0.001-0.01; median scores per fold ranged 0.000-0.114, and the pooled AUROC of
+  the full model (0.675) was below every one of its within-fold AUROCs except the lowest
+  (0.675-0.854). Primary analysis is therefore changed to percentiles within the fold
+  model that scored each gene (each fold is a random fifth of the scored genes), applied
+  to every score including baselines and to the expression-matched analysis (fold x
+  expression decile) and the interval simulation. The pre-specified pooled analysis is
+  still computed and reported (`transform = pooled`). The Stage 4 CV comparison is barely
+  affected (tier 1 gain +0.048 pooled vs +0.044 within-fold; tier 1+2 +0.059 both),
+  because the full model chose C = 0.001 in every fold there.
