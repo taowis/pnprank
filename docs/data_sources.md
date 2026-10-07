@@ -65,3 +65,43 @@ Note: GEO GSE167597 links PMID 37559423, an unrelated paper; the correct paper i
 
 Interval text, interval PMIDs and gene sources are in `config/loci.tsv`; every PMID was
 retrieved from PubMed E-utilities (efetch) and its abstract read on 2026-10-08.
+
+## Comparator back-test (dated GO and interaction releases)
+
+Release choice and dates are in `config/comparators.yaml`; files are under
+`<data_root>/external/comparators/` with `manifest.json` (size, MD5, SHA-256). Downloaded
+2026-10-08. Host checksums: the EBI GOA archive publishes none; GO archive and BioGRID
+objects expose an S3 ETag, which equals the MD5 only for single-part uploads (marked
+"ETag match"; multipart ETags cannot be checked).
+
+| Source | Release | Release date (source) | SHA-256 | Host check | URL |
+|---|---|---|---|---|---|
+| EBI GOA human GAF | 25 | 2004-12-14 (archive listing) | d1b3e0910a467b30cef03ca27c65132e96660575626c4ee0a5cd164ede6a0a27 | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.25.gz |
+| EBI GOA human GAF | 58 | 2007-12-18 (archive listing) | 5231a5bda92ece9c86ee70c2feed759f1552c680d308d8a1c2619df95d1818db | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.58.gz |
+| EBI GOA human GAF | 92 | 2010-12-13 (archive listing) | 941d36d346a258b3d14d848c31d1729d58371c8301c2c5bd190df14b6e35aa81 | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.92.gz |
+| EBI GOA human GAF | 128 | 2013-12-09 (archive listing) | 3beb821f8b831d25f23dbff815465a2c501ecbbb4406e0844bb4e26726ad5306 | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.128.gz |
+| EBI GOA human GAF | 163 | 2016-11-28 (archive listing) | 4b9fcc9be1012894a4040232e88aa3d899c5825890e74ab85f3e39a3aac4a8a5 | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.163.gz |
+| EBI GOA human GAF | 197 | 2019-12-17 (archive listing) | f9d1defbb12a04f8853a70c9c86af8856f6e96f18f7bcfc6847e76387486ad3c | none | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.197.gz |
+| GO ontology (OBO) | 2004-12-01 | 2004-12-01 (release directory) | 865a5d413e3bda146a93e4afd0c0face72e8514dfe468a6a03fab4935360c9a4 | ETag match | https://release.geneontology.org/2004-12-01/ontology/gene_ontology.obo |
+| GO ontology (OBO) | 2007-12-01 | 2007-12-01 (release directory) | 0f2982b68a9274a8dd01a961e7bd04a37bd4b69fa80f847812e23aaa8418a8e1 | none | https://release.geneontology.org/2007-12-01/ontology/gene_ontology.obo |
+| GO ontology (OBO) | 2010-12-01 | 2010-12-01 (release directory) | 9298c0bc42385593ee8cd1f0678fabdbeb2bcf4c6e7cf1ba64852bf21fc38be7 | none | https://release.geneontology.org/2010-12-01/ontology/gene_ontology.obo |
+| GO ontology (OBO) | 2013-12-01 | 2013-12-01 (release directory) | 2004f361f5d485e181f62068fa2b5ad1811c736a6476d994b805003be447afcd | none | https://release.geneontology.org/2013-12-01/ontology/go-basic.obo |
+| GO ontology (OBO) | 2016-12-01 | 2016-12-01 (release directory) | f52c5907e4a00428bb642e66fcc017b4fa3ea7b1f6bd1e51473eb43346d45511 | none | https://release.geneontology.org/2016-12-01/ontology/go-basic.obo |
+| GO ontology (OBO) | 2019-12-09 | 2019-12-09 (release directory) | fa2d88125ae6ccc372f56bf352253194ad1612238c15488ef33da2a887c5a7dd | none | https://release.geneontology.org/2019-12-09/ontology/go-basic.obo |
+| UniProt secondary accessions | 2026_03 | n/a (relnotes.txt (UniProt 2026_03)) | dcc2908ceec5e536c70e8e1f76813df5bed95fe467510942579bc7eaef5767f0 | none | https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/sec_ac.txt |
+| UniProt human idmapping | 2026_03 | n/a (relnotes.txt (UniProt 2026_03)) | 5fb356e81b07a938ac4d8e8a4b5e0faa89001bcff2aef59422ff30eaa8e72996 | none | https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz |
+| BioGRID ORGANISM | 2.0.36 | 2007-12-15 (PSI-MI 2.5 releaseDate) | 4359674f14080055b8dbfe5a0e190ef392dc649bb2668ff5a5e80c3f001d5639 | ETag match | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-2.0.36/BIOGRID-ORGANISM-2.0.36.tab.zip |
+| BioGRID ORGANISM | 3.1.72 | 2010-12-25 (PSI-MI 2.5 releaseDate) | 7bb5e8f91efce7c2454380eeee83f12080f046c59cf52ac1d801bb68f01502e7 | ETag match | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.1.72/BIOGRID-ORGANISM-3.1.72.tab2.zip |
+| BioGRID ORGANISM | 3.2.108 | 2013-12-26 (PSI-MI 2.5 releaseDate) | cfbfaca7dcb39ee9f9aa64cb728f71e0ecc356209b888d136aa419ef3ea61671 | none | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.2.108/BIOGRID-ORGANISM-3.2.108.tab2.zip |
+| BioGRID ORGANISM | 3.4.144 | 2016-12-30 (PSI-MI 2.5 releaseDate) | fabaaece8e2bb9b8baa088ae2d3ac5dd6a67ccfe4752dd00ca855fe7be6d8305 | none | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.4.144/BIOGRID-ORGANISM-3.4.144.tab2.zip |
+| BioGRID ORGANISM | 3.5.180 | 2019-12-31 (PSI-MI 2.5 releaseDate) | 429038d3f97b0c89eb1f15d0a1b3c4d0dc8ae642bb14f06a3d44e36e16d28f83 | none | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.5.180/BIOGRID-ORGANISM-3.5.180.tab2.zip |
+
+Release-date sources: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/ (GOA),
+https://release.geneontology.org/ (GO), BioGRID `<source releaseDate>` read from each
+`BIOGRID-ORGANISM-<v>.psi25.zip` (Homo sapiens file) at
+https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/ (archive index:
+https://downloads.thebiogrid.org/BioGRID/Release-Archive/). BioGRID data are MIT-licensed
+(stated on the archive download page); GO, GOA and UniProt licences: not yet verified. The earliest BioGRID archive release is 2.0.17
+(releaseDate 2006-03-28) and the earliest IntAct archive directory is 2006-01-01
+(https://ftp.ebi.ac.uk/pub/databases/intact/); HPRD (http://www.hprd.org/download) returned
+HTTP 503 on 2026-10-08. No interaction release before 2005 was used.

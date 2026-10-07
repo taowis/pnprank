@@ -41,3 +41,9 @@
   expression-matched percentile does not remove this confound at the extreme. 40 of the
   top 100 ranked genes are in the top expression decile.
 - Tier-1 genes are training positives and receive no percentile in the release.
+- Comparators (`docs/stage_reports/comparators.md`) are re-implementations of the GO
+  similarity and network-propagation ideas behind existing tools on dated releases, not
+  the tools themselves; phenotype-driven tools that rely on disease annotations cannot be
+  back-tested without leakage and are not compared. The PPI comparator has no pre-2005
+  release and is not run at 2005. Old GO releases lose 30-40% of proteins to identifiers
+  that cannot be mapped today.

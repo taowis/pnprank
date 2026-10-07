@@ -53,10 +53,13 @@ def auroc_heatmap(
 
 # Categorical series colours (distinct hues, readable on a light surface).
 SERIES = {"full": "#d1495b", "non_atlas": "#00798c", "gtex_nerve": "#edae49",
-          "gtex_mean": "#66a182", "neg_loeuf": "#8d6a9f"}
+          "gtex_mean": "#66a182", "neg_loeuf": "#8d6a9f", "go_similarity": "#30638e",
+          "ppi_rwr": "#7f5539", "mis_z": "#9a9a94", "pli": "#c9a227"}
 LABELS = {"full": "PNPrank (all features)", "non_atlas": "Non-atlas model",
           "gtex_nerve": "GTEx tibial nerve", "gtex_mean": "GTEx mean expression",
-          "neg_loeuf": "gnomAD -LOEUF"}
+          "neg_loeuf": "gnomAD -LOEUF", "go_similarity": "GO similarity (dated GOA)",
+          "ppi_rwr": "PPI propagation (dated BioGRID)", "mis_z": "gnomAD missense Z",
+          "pli": "gnomAD pLI"}
 
 
 def auroc_by_cutoff(perf: pd.DataFrame, panels: list[tuple[str, str]], path: str) -> None:

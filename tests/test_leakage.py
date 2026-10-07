@@ -199,3 +199,82 @@ def test_backtest_scores_reproducible_across_hash_seeds(tmp_path):
                            env={**__import__("os").environ, "PYTHONHASHSEED": h}, check=True)
         outs.append(r.stdout)
     assert outs[0] == outs[1] == outs[2]
+
+
+# --- comparators (docs/stage_reports/comparators.md) ---------------------------------
+
+
+def _comparator_inputs():
+    import scipy.sparse as sp
+
+    from pnprank.comparators import adjacency
+
+    universe = [f"G{i}" for i in range(40)]
+    rng = np.random.default_rng(5)
+    go = sp.csr_matrix((rng.random((40, 15)) < 0.25).astype(float))
+    edges = pd.DataFrame(rng.choice(universe, size=(80, 2)), columns=["a", "b"])
+    edges = edges[edges.a != edges.b]
+    return universe, go, adjacency(edges, universe)
+
+
+def test_comparators_ignore_post_cutoff_genes():
+    """GO similarity and network propagation scores at a cutoff must not change when
+    post-cutoff truth is removed, moved later, extended or re-tiered; the seed set is
+    exactly the pre-cutoff tier-1 genes; seeds are never scored."""
+    from pnprank.comparators import go_similarity_scores, rwr_scores, seed_scores_at_cutoff
+
+    universe, go, adj = _comparator_inputs()
+    cutoff = 2008
+    t = _truth_backtest()
+    pre = t.discovery_year.astype(int) < cutoff
+    variants = [
+        t[pre],
+        t.assign(discovery_year=t.discovery_year.where(pre, "2040")),
+        pd.concat([t, pd.DataFrame({"ensembl_gene_id": ["G30", "G31"],
+                                    "discovery_year": ["2010", "2019"], "tier": ["1", "2"]})]),
+        t.assign(tier=t.tier.where(pre, "2")),
+    ]
+    seen = []
+
+    def go_fn(known):
+        seen.append(frozenset(known))
+        return go_similarity_scores(go, universe, known)
+
+    def ppi_fn(known):
+        seen.append(frozenset(known))
+        return rwr_scores(adj, universe, known, restart=0.5)
+
+    for fn in (go_fn, ppi_fn):
+        y = training_labels(universe, t, cutoff, {"1"})
+        base = seed_scores_at_cutoff(fn, y)
+        assert not set(base.index) & set(y.index[y == 1])
+        assert base.notna().all()
+        for v in variants:
+            yv = training_labels(universe, v, cutoff, {"1"})
+            pd.testing.assert_series_equal(base, seed_scores_at_cutoff(fn, yv))
+    assert set(seen) == {frozenset({"G0", "G1", "G2", "G3", "G4", "G5", "G6"})}
+
+
+def test_comparators_do_change_with_pre_cutoff_genes():
+    """Sanity: the test above would catch leakage, because the seeds do matter."""
+    from pnprank.comparators import go_similarity_scores, rwr_scores
+
+    universe, go, adj = _comparator_inputs()
+    a, b = {"G0", "G1"}, {"G0", "G1", "G7"}
+    assert not go_similarity_scores(go, universe, a).equals(go_similarity_scores(go, universe, b))
+    assert not rwr_scores(adj, universe, a).equals(rwr_scores(adj, universe, b))
+
+
+def test_comparator_annotations_filtered_to_pre_cutoff(tmp_path):
+    """The GO annotation reader drops annotations dated on or after the cutoff."""
+    import gzip
+
+    from pnprank.comparators import read_gaf
+
+    row = ["UniProt", "P1", "A", "", "GO:1", "r", "IDA", "", "P", "", "", "protein",
+           "taxon:9606"]
+    p = tmp_path / "a.gaf.gz"
+    with gzip.open(p, "wt") as fh:
+        fh.write("\t".join(row + ["20071231", "x"]) + "\n")
+        fh.write("\t".join(row[:1] + ["P2"] + row[2:] + ["20080101", "x"]) + "\n")
+    assert read_gaf(p, before="20080101").db_id.tolist() == ["P1"]
