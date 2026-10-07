@@ -111,7 +111,7 @@ for set_name, tiers in (("tier1", {"1"}), ("tier1+2", {"1", "2"})):
     for name, X, lf, kind in specs:
         oof, params = cross_validated_scores(X.loc[y.index], y, kind, seed, mc["cv_folds"],
                                              mc["inner_folds"], lf)
-        oof.to_csv(out / f"oof_{set_name}_{name.replace(':', '_')}.tsv", sep="\t", header=["score"])
+        oof.to_csv(out / f"oof_{set_name}_{name.replace(':', '_')}.tsv.gz", sep="\t", header=["score"])
         params_log[f"{set_name}|{name}"] = params
         results.append({"positives": set_name, **evaluate(oof, y, name, k)})
         k += 1
@@ -121,7 +121,7 @@ for set_name, tiers in (("tier1", {"1"}), ("tier1+2", {"1", "2"})):
 pairs = []
 for set_name, tiers in (("tier1", {"1"}), ("tier1+2", {"1", "2"})):
     y = labelled(tiers)
-    oofs = {n: pd.read_csv(out / f"oof_{set_name}_{n.replace(':', '_')}.tsv", sep="\t",
+    oofs = {n: pd.read_csv(out / f"oof_{set_name}_{n.replace(':', '_')}.tsv.gz", sep="\t",
                            index_col=0)["score"].reindex(y.index)
             for n in ("logistic:full", "logistic:non_atlas", "hgb:full", "hgb:non_atlas")}
     for a, b in (("logistic:full", "logistic:non_atlas"), ("hgb:full", "hgb:non_atlas"),
