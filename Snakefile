@@ -10,3 +10,5 @@ rule all:
     input:
         "results/tables/truth_validated.txt",
         "results/tables/stage4/cv_performance.tsv",
+        "results/backtest/interval_summary.tsv",
+        "results/backtest/repeated_cv_tier1.tsv",

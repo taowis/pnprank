@@ -49,3 +49,4 @@ config/atlases.lock
 
 # Run logs
 logs/
+results/backtest/scores/

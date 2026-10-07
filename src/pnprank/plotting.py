@@ -62,7 +62,7 @@ LABELS = {"full": "PNPrank (all features)", "non_atlas": "Non-atlas model",
 def auroc_by_cutoff(perf: pd.DataFrame, panels: list[tuple[str, str]], path: str) -> None:
     """AUROC (95% CI) against cutoff year, one line per score; one panel per
     (adjust, title). `perf` needs columns cutoff, score, adjust, auroc, auroc_lo, auroc_hi."""
-    fig, axes = plt.subplots(1, len(panels), figsize=(4.2 * len(panels), 3.4), sharey=True)
+    fig, axes = plt.subplots(1, len(panels), figsize=(4.2 * len(panels), 3.8), sharey=True)
     fig.patch.set_facecolor(SURFACE)
     axes = np.atleast_1d(axes)
     scores = [s for s in SERIES if s in set(perf.score)]
@@ -83,8 +83,10 @@ def auroc_by_cutoff(perf: pd.DataFrame, panels: list[tuple[str, str]], path: str
         for sp in ("top", "right"):
             ax.spines[sp].set_visible(False)
     axes[0].set_ylabel("AUROC, genes discovered after cutoff", fontsize=8.5, color=INK)
-    axes[-1].legend(fontsize=7, frameon=False, loc="lower left")
-    fig.tight_layout()
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, fontsize=7.5, frameon=False, loc="lower center",
+               ncol=len(scores))
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
     fig.savefig(path, dpi=200, facecolor=SURFACE)
     plt.close(fig)
 
