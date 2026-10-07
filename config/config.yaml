@@ -50,8 +50,12 @@ pilot:
   donor_column: donor
 
 backtest:
-  cutoff_years: []             # TODO (Stage 1/5): chosen after the truth set's year distribution is known
-  interval_window_years: null  # TODO (Stage 5)
+  cutoff_years: [2005, 2008, 2011, 2014, 2017, 2020]  # every 3 years from the first with >= 30 pre-cutoff tier-1 genes
+  interval_window_years: 5     # secondary evaluation: genes discovered in [cutoff, cutoff + 5)
+  interval_simulation_years: [2005, 2026]  # rank each gene in the year it was discovered
+  scoring_folds: 5             # out-of-fold scoring of unlabelled genes at each cutoff
+  repeated_cv_seeds: 10        # Stage 4 comparison repeated over seeds (split variance)
+  expression_bins: 10          # GTEx mean-expression deciles for the matched evaluation
   interaction_db_release: null # must predate each cutoff, or PPI is dropped (see CLAUDE leakage controls)
 
 features:
