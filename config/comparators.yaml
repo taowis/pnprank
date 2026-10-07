@@ -1,0 +1,50 @@
+# Dated annotation and interaction releases for the comparator back-test
+# (docs/stage_reports/comparators.md). For each cutoff year c, the release is the last
+# one dated before 1 January of c. Release dates were read from the primary source
+# (URL in `date_source`), never entered from memory. Checksums are filled in by
+# workflow/scripts/comparators_fetch.py and recorded in docs/data_sources.md.
+
+go_annotation:
+  # EBI GOA human GAF archive; dates from the archive directory listing.
+  date_source: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/
+  releases:
+    2005: {release: 25,  date: "2004-12-14", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.25.gz}
+    2008: {release: 58,  date: "2007-12-18", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.58.gz}
+    2011: {release: 92,  date: "2010-12-13", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.92.gz}
+    2014: {release: 128, date: "2013-12-09", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.128.gz}
+    2017: {release: 163, date: "2016-11-28", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.163.gz}
+    2020: {release: 197, date: "2019-12-17", url: https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.197.gz}
+
+go_ontology:
+  # GO Consortium release archive (S3 bucket go-data-product-release); the release
+  # directory name is the release date.
+  date_source: https://release.geneontology.org/
+  releases:
+    2005: {release: "2004-12-01", url: https://release.geneontology.org/2004-12-01/ontology/gene_ontology.obo}
+    2008: {release: "2007-12-01", url: https://release.geneontology.org/2007-12-01/ontology/gene_ontology.obo}
+    2011: {release: "2010-12-01", url: https://release.geneontology.org/2010-12-01/ontology/gene_ontology.obo}
+    2014: {release: "2013-12-01", url: https://release.geneontology.org/2013-12-01/ontology/go-basic.obo}
+    2017: {release: "2016-12-01", url: https://release.geneontology.org/2016-12-01/ontology/go-basic.obo}
+    2020: {release: "2019-12-09", url: https://release.geneontology.org/2019-12-09/ontology/go-basic.obo}
+
+interactions:
+  # BioGRID release archive. Release date = PSI-MI 2.5 <source releaseDate> in the
+  # Homo sapiens file of BIOGRID-ORGANISM-<v>.psi25.zip (read 2026-10-08).
+  # The earliest archived release is 2.0.17 (releaseDate 2006-03-28), so no BioGRID
+  # release predates the 2005 cutoff; the PPI comparator is not run at 2005.
+  date_source: https://downloads.thebiogrid.org/BioGRID/Release-Archive/
+  host: https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/
+  earliest_release: {release: "2.0.17", date: "2006-03-28"}
+  releases:
+    2008: {release: "2.0.36",  date: "2007-12-15", file: BIOGRID-ORGANISM-2.0.36.tab.zip}
+    2011: {release: "3.1.72",  date: "2010-12-25", file: BIOGRID-ORGANISM-3.1.72.tab2.zip}
+    2014: {release: "3.2.108", date: "2013-12-26", file: BIOGRID-ORGANISM-3.2.108.tab2.zip}
+    2017: {release: "3.4.144", date: "2016-12-30", file: BIOGRID-ORGANISM-3.4.144.tab2.zip}
+    2020: {release: "3.5.180", date: "2019-12-31", file: BIOGRID-ORGANISM-3.5.180.tab2.zip}
+
+methods:
+  go_min_genes: 3          # GO terms annotated (after propagation) to fewer genes are dropped
+  go_max_genes: 500        # ... or to more genes (too general to discriminate)
+  go_exclude_evidence: [ND]  # "no biological data available"
+  rwr_restart: 0.5         # random walk with restart, fixed a priori (not tuned)
+  ppi_physical_only: true  # BioGRID experimental system type "physical"
