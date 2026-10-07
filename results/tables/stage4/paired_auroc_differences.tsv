@@ -1,0 +1,7 @@
+positives	a	b	auroc_diff	ci_lo	ci_hi	frac_resamples_le0
+tier1	logistic:full	logistic:non_atlas	0.052	0.011	0.094	0.006
+tier1	hgb:full	hgb:non_atlas	0.064	0.017	0.116	0.005
+tier1	logistic:full	hgb:full	0.041	0.005	0.076	0.016
+tier1+2	logistic:full	logistic:non_atlas	0.054	0.028	0.084	0.0
+tier1+2	hgb:full	hgb:non_atlas	0.044	0.01	0.078	0.009
+tier1+2	logistic:full	hgb:full	0.028	0.005	0.052	0.012

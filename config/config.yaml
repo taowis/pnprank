@@ -60,7 +60,11 @@ features:
     - yang2022_human_tg
     - heming2025_human_sural
     - sparc465_human_sympathetic
+    - yadav2023_human_spinal_cord
     - kedlian2024_human_muscle
+    - yang2022_mouse_tg
+    - stefanovska2025_mouse_sciatic
+    - krauter2025_mouse_drg
     - alkaslasi2021_mouse_mn
     - ham2025_mouse_nmj
   gtex_tissues: [Nerve_Tibial, Muscle_Skeletal, Brain_Spinal_cord_cervical_c-1]
