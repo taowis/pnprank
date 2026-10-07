@@ -147,8 +147,8 @@ def orthologues(ensg: str) -> tuple[dict, list[str]]:
     m = ens.merge(al, on="wb_id", how="outer")
     base = {"hgnc_id": h, "n_worm_orthologues_any": len(m)}
     if m.empty:
-        return base | {"clear_orthologue": False}, []
-    m["all_n_methods"] = m.all_n_methods.fillna(0).astype(int)
+        return base | {"clear_orthologue": False, "orthology_class": "none"}, []
+    m["all_n_methods"] = pd.to_numeric(m.all_n_methods).fillna(0).astype(int)
     m["all_best"] = m.all_best.astype("boolean").fillna(False).astype(bool)
     m["all_best_reverse"] = m.all_best_reverse.astype("boolean").fillna(False).astype(bool)
     m["rule_ens_one2one"] = m.ens_type.eq("one2one")
@@ -176,8 +176,34 @@ def orthologues(ensg: str) -> tuple[dict, list[str]]:
         "alliance_methods": best.get("all_methods"),
         "clear_orthologue": bool(best["clear"]),
         "clear_rule": rule or None,
+        "orthology_class": orthology_class(bool(best["clear"]), int(best["all_n_methods"])),
         "n_worm_genes_clear": int(m.clear.sum()),
     }, others
+
+
+def orthology_class(clear: bool, n_methods: int) -> str:
+    """clear: the rule above. supported: >= MIN_METHODS Alliance methods but not reciprocal
+    best (typically a worm gene shared with a human paralogue that is the better match).
+    weak: any other call."""
+    if clear:
+        return "clear"
+    return "supported" if n_methods >= MIN_METHODS else "weak"
+
+
+def human_genes_of_worm_gene(wb: str) -> list[str]:
+    """Human genes that Alliance links to this worm gene with >= MIN_METHODS methods."""
+    d = cached("alliance_orthologs", f"WB_{wb}",
+               f"{ALLIANCE}/gene/WB:{wb}/orthologs?filter.stringency=all&limit=1000")
+    if d.get("total", 0) > d.get("returnedRecords", 0):
+        raise RuntimeError(f"Alliance orthologs paginated for {wb}")
+    out = []
+    for r in d["results"]:
+        g = r["geneToGeneOrthologyGenerated"]
+        o = g["objectGene"]
+        if (o["taxon"]["curie"] == "NCBITaxon:9606"
+                and len(g.get("predictionMethodsMatched", [])) >= MIN_METHODS):
+            out.append(o["geneSymbol"]["displayText"])
+    return sorted(set(out))
 
 
 def worm_gene_name(wb: str) -> str | None:
@@ -215,6 +241,10 @@ def annotate(genes: pd.DataFrame, enrich: bool) -> pd.DataFrame:
         if o.get("wormbase_id") and not o.get("worm_gene"):
             o["worm_gene"] = worm_gene_name(o["wormbase_id"])
         o["other_worm_orthologues_ge3_methods"] = ";".join(others) or None
+        if o.get("wormbase_id") and o["orthology_class"] != "weak":
+            hs = human_genes_of_worm_gene(o["wormbase_id"])
+            o["human_genes_sharing_worm_gene"] = ";".join(
+                h for h in hs if h != g.hgnc_symbol) or None
         if enrich and o.get("clear_orthologue"):
             o |= enrichment(o["wormbase_id"])
         rows.append({"ensembl_gene_id": g.ensembl_gene_id} | o)
@@ -253,12 +283,15 @@ def main() -> None:
     t1_cols = ["hgnc_symbol", "ensembl_gene_id", "disease_category", "hgnc_id",
                "worm_gene", "wormbase_id", "ensembl_type", "ensembl_pct_id_human",
                "alliance_n_methods", "alliance_best_both_ways", "clear_orthologue",
-               "clear_rule", "n_worm_orthologues_any"]
+               "clear_rule", "orthology_class", "human_genes_sharing_worm_gene",
+               "n_worm_orthologues_any"]
     t1[t1_cols].to_csv(out_dir / "tier1_celegans_orthologues.tsv", sep="\t", index=False)
 
     any1 = (t1.n_worm_orthologues_any > 0).sum()
     clear1 = t1.clear_orthologue.fillna(False).astype(bool).sum()
     print(f"Tier-1 with any worm orthologue call: {any1}/{len(t1)}; clear: {clear1}")
+    print("Tier-1 orthology classes:", t1.orthology_class.value_counts().to_dict())
+    print("Top-200 orthology classes:", cand.orthology_class.value_counts().to_dict())
     print(f"Top {N_TOP}: clear orthologue {len(short)}; "
           f"of which myelinating-glia top cell type {(short.cell_class == 'myelinating_glia').sum()}")
 
