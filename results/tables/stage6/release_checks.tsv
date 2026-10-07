@@ -1,0 +1,15 @@
+check	score	n_pos	value	ci_lo	ci_hi
+tier2_held_out_auroc	percentile	140.0	0.713	0.674	0.752
+tier2_held_out_auroc	percentile_expr_matched	140.0	0.66	0.614	0.704
+tier2_held_out_auroc	percentile_non_atlas	140.0	0.647	0.605	0.689
+tier2_held_out_auroc_diff	percentile - percentile_non_atlas	140.0	0.067	0.036	0.101
+top100_status	unlabelled		91.0		
+top100_status	known_tier2		8.0		
+top100_status	listed_not_in_truth		1.0		
+top100_frac_expr_decile10	gtex_mean_decile		0.4		
+top100_frac_expr_decile_le5	gtex_mean_decile		0.28		
+top500_status	unlabelled		478.0		
+top500_status	known_tier2		21.0		
+top500_status	listed_not_in_truth		1.0		
+top500_frac_expr_decile10	gtex_mean_decile		0.306		
+top500_frac_expr_decile_le5	gtex_mean_decile		0.256		
