@@ -412,3 +412,15 @@ Each non-obvious choice, with its reason. Newest last.
   ClinGen CMT curation), and adding it would require rerunning every downstream analysis.
   GLDN stays an unlabelled gene; the top-50 report's class A entry stands as a noted
   limitation of the candidate sources.
+
+## 2026-10-08 — Manuscript tracked in git; directory and repository renamed (user decisions)
+
+- `manuscript/` (Word drafts with EndNote temporary citations, the matching `.ris`/`.xml`
+  EndNote library, Markdown twins with source comments, `issues.md`) moved out of the
+  gitignored `private_notes/` to the repository root and is pushed to GitHub at the user's
+  request (hard rule 3: user approved pushing these non-code files).
+- The local checkout directory and the GitHub repository are renamed `pnprank` ->
+  `pnprank-dev` (GitHub redirects the old URL). The Python package and the CLI remain
+  `pnprank`, so code, imports and commands are unchanged. Locally only the
+  machine-specific `config/paths.yaml` (data root) and the editable install change. This
+  departs from the project instruction that repo and directory are named `pnprank`.
