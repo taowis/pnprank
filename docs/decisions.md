@@ -265,3 +265,30 @@ Each non-obvious choice, with its reason. Newest last.
 - **Post hoc release checks** (`workflow/scripts/stage6_checks.py`), not pre-specified:
   tier-2 genes never enter training, so their percentiles are a held-out check against
   unlabelled genes; and the share of highly expressed genes at the top of the list.
+
+## 2026-10-08 — Linkage-locus case study (after Stage 6, at the user's request)
+
+- **Question:** inside a published linkage interval, where would the model (trained on
+  tier-1 genes known before the gene was reported) have placed the gene later found to
+  cause the disease?
+- **Locus selection (stated as a bias):** loci come from PubMed papers by one research
+  group (author search `Kennerson ML[Author]`, 74 records, 2026-10-08), chosen because the
+  user wants to show the analysis to that group. Included: every locus paper in that list
+  that reports a cytoband interval and whose gene was later reported. Not hand-picked by
+  result: all were chosen before any were scored.
+  - Excluded: HSN1B 3p22-p24 (PMID 12870133), shown in 2025 to be an erroneous mapping
+    caused by biallelic RFC1 expansions on chromosome 4 (PMID 41084404), so it has no gene
+    in the interval.
+  - CMTX3 (cause: a non-coding insertion; SOX3 proposed as the dysregulated gene in 2026)
+    and DHMN1 (UBE3C lies outside the linkage interval; a partial copy is inserted into it)
+    are kept and flagged, because they test the model on structural-variant loci.
+- **Intervals:** the cytobands stated in the paper, mapped to GRCh38 with the UCSC hg38
+  cytoBand table (from the first sub-band of the start band to the last sub-band of the
+  end band). Marker-defined intervals are narrower than whole bands but marker positions
+  are not available on GRCh38 from a maintained source; whole bands make the task
+  harder, not easier.
+- **Scores:** the Stage 5 back-test scores at the cutoff year (the year the gene was
+  reported; preprint year for UBE3C and SOX3), within-fold percentiles, ranked inside
+  the interval. Tier-1 genes known before the cutoff are training positives and are not
+  ranked; they are listed. Cutoff 2001 (SPTLC1) has only 12 tier-1 positives.
+- **Reported as a demonstration on 7 loci, not a validation.**

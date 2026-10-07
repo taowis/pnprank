@@ -55,3 +55,13 @@ independently on 2026-10-07 (GEO E-utilities, CELLxGENE curation API, Pennsieve,
 
 Note: GEO GSE167597 links PMID 37559423, an unrelated paper; the correct paper is 33931636
 (matches the CELLxGENE DOI 10.1038/s41467-021-22691-2).
+
+## Linkage-locus case study
+
+| Source | Version | Checksum | URL | Retrieved |
+|---|---|---|---|---|
+| UCSC hg38 cytoBand table | file dated 2022-10-29 | sha256 e514e48b0a12a516fd5231b44241a20a282f290bdd6131cadcddc6276ee26082 | https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/cytoBand.txt.gz | 2026-10-08 |
+| Ensembl REST overlap and symbol lookup (protein-coding genes per interval) | release 116, GRCh38 (stored per cached file) | n/a (API) | https://rest.ensembl.org/overlap/region/human/ | 2026-10-08 |
+
+Interval text, interval PMIDs and gene sources are in `config/loci.tsv`; every PMID was
+retrieved from PubMed E-utilities (efetch) and its abstract read on 2026-10-08.
