@@ -33,3 +33,11 @@
   atlases (e.g. PRPS1, MORC2), which lowers their rank.
 - Genes acting in rare cell types with low bulk expression (e.g. SLC5A7 in motor neurons)
   are ranked low because overall expression carries much of the model's weight.
+- The released ranking (Stage 6) is not itself back-tested: it applies the back-tested
+  procedure to today's labels. Its percentiles mean "rank among genes scored by the same
+  fold model", not a probability of being a neuropathy gene.
+- Expression matching uses GTEx mean-expression deciles; within the top decile, very highly
+  expressed genes (tubulins, actin, clathrin) still rank at the top, so the
+  expression-matched percentile does not remove this confound at the extreme. 40 of the
+  top 100 ranked genes are in the top expression decile.
+- Tier-1 genes are training positives and receive no percentile in the release.
