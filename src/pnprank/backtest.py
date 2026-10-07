@@ -70,3 +70,75 @@ def paired_bootstrap_diff(
         diffs[i] = stat(a[idx], y[idx]) - stat(b[idx], y[idx])
     lo, hi = np.nanpercentile(diffs, [(1 - ci) / 2 * 100, (1 + ci) / 2 * 100])
     return d0, float(lo), float(hi), float(np.mean(diffs <= 0))
+
+
+# --- temporal back-test -----------------------------------------------------------
+
+
+def training_labels(universe: list[str], truth, cutoff: int, tiers: set[str]):
+    """Training labels at a cutoff, using only what was known before it.
+
+    1 = truth genes in `tiers` discovered before `cutoff`. Truth genes of other tiers
+    discovered before `cutoff` are dropped (they were known). Every other gene is 0,
+    including genes discovered at or after the cutoff and candidates whose status is
+    only known today.
+    """
+    import pandas as pd
+
+    from pnprank.features import known_before
+
+    pos = known_before(truth, cutoff, tiers)
+    drop = known_before(truth, cutoff, {"1", "2"}) - pos
+    genes = [g for g in universe if g not in drop]
+    return pd.Series([int(g in pos) for g in genes], index=genes)
+
+
+def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_folds: int,
+                         label_fn=None, n_jobs: int = 1):
+    """Score every gene labelled 0 out of fold.
+
+    Label-derived features are built once from the positives in `y` (pre-cutoff genes).
+    Genes labelled 0 are split into `folds`; each fold is scored by a model trained on
+    all positives and the remaining folds, with hyperparameters tuned by inner CV on that
+    training set. Positives are not scored. Returns a Series over the 0-labelled genes.
+    """
+    import pandas as pd
+    from joblib import Parallel, delayed
+    from sklearn.model_selection import KFold
+
+    from pnprank.model import fit_tuned, with_label_features
+
+    known = set(y.index[y == 1])
+    X = with_label_features(X_static, label_fn, known).loc[y.index]
+    zeros = y.index[y == 0].to_numpy()
+    splits = list(KFold(n_splits=folds, shuffle=True, random_state=seed).split(zeros))
+
+    def run(k, tr, te):
+        train = list(known) + list(zeros[tr])
+        est, best = fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds)
+        return pd.Series(est.predict_proba(X.loc[zeros[te]])[:, 1], index=zeros[te]), best
+
+    out = Parallel(n_jobs=n_jobs)(delayed(run)(k, tr, te) for k, (tr, te) in enumerate(splits))
+    return pd.concat([s for s, _ in out]).reindex(zeros), [b for _, b in out]
+
+
+def evaluation_labels(truth, negatives: set[str], cutoff: int, tiers: set[str],
+                      window: int | None = None):
+    """Evaluation set at a cutoff: truth genes in `tiers` discovered at or after `cutoff`
+    (and before cutoff + window, if given) are 1; `negatives` are 0."""
+    import pandas as pd
+
+    t = truth[truth.tier.isin(tiers)]
+    yr = t.discovery_year.astype(int)
+    sel = yr >= cutoff
+    if window is not None:
+        sel &= yr < cutoff + window
+    pos = set(t.ensembl_gene_id[sel])
+    genes = sorted(pos | (negatives - pos))
+    return pd.Series([int(g in pos) for g in genes], index=genes)
+
+
+def percentile_rank(scores, genes) -> dict:
+    """Percentile (0-1, 1 = top) of each gene in `genes` among all scored genes."""
+    r = scores.rank(pct=True)
+    return {g: float(r[g]) for g in genes if g in r.index and not np.isnan(r[g])}
