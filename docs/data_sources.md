@@ -105,3 +105,20 @@ https://downloads.thebiogrid.org/BioGRID/Release-Archive/). BioGRID data are MIT
 (releaseDate 2006-03-28) and the earliest IntAct archive directory is 2006-01-01
 (https://ftp.ebi.ac.uk/pub/databases/intact/); HPRD (http://www.hprd.org/download) returned
 HTTP 503 on 2026-10-08. No interaction release before 2005 was used.
+
+## C. elegans shortlist
+
+Queried live by `workflow/scripts/celegans_orthologues.py`; every response is cached as
+JSON under `<data_root>/external/celegans/` (not committed). Retrieved 2026-10-08.
+
+| Source | Version | URL pattern | Used for |
+|---|---|---|---|
+| HGNC REST | live (no release number) | https://rest.genenames.org/fetch/ensembl_gene_id/{ENSG} | Ensembl gene ID to HGNC ID (Alliance key) |
+| Ensembl REST homology, pan-taxonomic Compara | REST release 116 (`/info/data`); `/info/eg_version` reports 63 | https://rest.ensembl.org/homology/id/human/{ENSG}?target_species=caenorhabditis_elegans&type=orthologues&compara=pan_homology&sequence=none | orthology type, % identity |
+| Alliance of Genome Resources orthology API | 9.1.0, released 2026-09-02 (`/api/releaseInfo`) | https://www.alliancegenome.org/api/gene/{HGNC_ID or WB:ID}/orthologs?filter.stringency=all | supporting methods (9 called for human-worm), best score each way, worm gene symbol and WormBase ID |
+| Alliance alleles | 9.1.0 | https://www.alliancegenome.org/api/gene/WB:{ID}/alleles?limit=1&filter.alleleCategory=allele | allele count (record count only) |
+| Alliance expression ribbon (POST body `["WB:{ID}"]`) | 9.1.0 | https://www.alliancegenome.org/api/expression/ribbon-summary | expression annotation counts, all anatomy and nervous system (UBERON:0001016) |
+
+Note: the default (vertebrate) Compara of Ensembl 116 returns no C. elegans homologies;
+`compara=pan_homology` is required. Licences: not yet verified for these APIs; only
+identifiers and derived counts are committed.
