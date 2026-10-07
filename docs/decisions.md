@@ -313,3 +313,48 @@ Each non-obvious choice, with its reason. Newest last.
 - **Truth set not edited.** Class-A genes are listed for the user to decide; GLDN is the
   only one that looks like a gap under the Stage 1 rules (L1CAM was already excluded;
   TUBB4A has no neuropathy report).
+
+## 2026-10-08 — Comparators in the temporal back-test (after Stage 6)
+
+- **Question:** how does PNPrank compare with existing gene-prioritisation approaches in
+  the same back-test (cutoffs, labels, transforms, paired bootstrap as Stage 5)? Full
+  feasibility assessment and sources: `docs/stage_reports/comparators.md`.
+- **Which comparators are run:** tools that need disease labels (HPO/OMIM/Orphanet/
+  ClinVar/HGMD/ClinGen/DDG2P) or that exist only as static post-2015 releases
+  (Exomiser, Phen2Gene, AMELIE, GADO, Episcore, HIPred, GHIS, pHaplo) cannot be made
+  leakage-free and are documented, not run. Run: (1) GO guilt-by-association
+  (ToppGene/Endeavour-style functional similarity) on archived GOA + GO releases; (2)
+  network propagation on archived BioGRID releases; (3) label-free gnomAD pLI and missense
+  Z next to the Stage 5 -LOEUF baseline.
+- **Release rule:** for cutoff c, the last release dated before 1 January of c (the
+  back-test's strict "before c"). A test checks every configured date. GOA rows dated on or
+  after the cutoff are also dropped at read time (none were found).
+- **No PPI comparator at 2005:** the earliest BioGRID archive release is 2.0.17
+  (2006-03-28). STRING v5.1 (2004-07-30) exists, but its channels include text mining and
+  curated databases that encode disease knowledge; not used.
+- **GO method (fixed before running):** annotations except NOT and ND, propagated over
+  is_a and part_of with the ontology release of the same era; terms with 3-500 annotated
+  universe genes; IDF weights; score = cosine similarity of a gene's unit vector to the mean
+  of the seed genes' unit vectors. Unannotated genes score 0 (bottom tie). A single
+  variant was run, to avoid choosing among variants on the results.
+- **PPI method (fixed before running):** BioGRID human-human physical interactions
+  (Experimental System Type "physical"; release 2.0 has no type column, so its systems are
+  classified with BioGRID's 3.x genetic-system list and the legacy "Invivo"/"Invitro"
+  systems count as physical), unweighted and undirected; random walk with restart, restart
+  probability 0.5, not tuned. Genes outside the network score 0.
+- **Seeds:** exactly the training positives of the PNPrank back-test at the same cutoff
+  (`training_labels`): pre-cutoff tier-1 genes (tier 1+2 for the sensitivity set). Seeds
+  are not scored; scored genes are those in the cached PNPrank scores, checked to be equal.
+- **Identifier mapping:** GOA rows by UniProt accession via HGNC, then UniProt human
+  idmapping (accession -> HGNC ID), then UniProt secondary accessions, then symbol; BioGRID
+  by Entrez ID (3.x) or HGNC ID (2.0) via HGNC, then symbol. These are current identifier
+  maps (UniProt 2026_03, HGNC 2026-10-06); they carry no annotations. Old releases still
+  lose proteins that cannot be mapped today (2005: 70% of GOA proteins mapped; 2008: 61%,
+  mostly deleted TrEMBL entries; >98% from 2011).
+- **Transforms:** comparators have no fold models, but get the same within-fold percentile
+  (and fold x expression-decile) transform as PNPrank, as the Stage 5 baselines did, so
+  every score is compared on identical gene sets and ranks.
+- **Study-bias controls (added after the first run, before writing up):** GO annotation
+  count and PPI degree as seed-free scores, and each seed-based comparator re-run with 20
+  random seed sets of the same size (random-seed null). Added because RWR scores track
+  degree; reported for every cutoff, not selected.
