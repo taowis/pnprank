@@ -207,7 +207,43 @@ def yadav2023(atlas_id: str):
     m, ids, _ = human_symbols_to_ids(m, symbols)
     obs = pd.DataFrame({"cell_type_author": meta["subtype_annotation"].astype(str),
                         "donor": meta["sample"].astype(str), "keep": True}, index=cols)
+    obs.loc[(obs.cell_type_author == "Motoneurons") & ~obs.donor.isin(mn_qc_pass(m, ids, obs)), "keep"] = False
     return m.T, ids, obs
+
+
+def mn_qc_pass(m_genes_x_cells, ids, obs, fold: float = 10.0) -> set[str]:
+    """Donors whose 'Motoneurons' cluster passes a marker check.
+
+    Pass if pseudobulk CPM of both SLC5A7 and PRPH in the donor's motoneurons is at least
+    `fold` times the median over donors of those genes in interneurons (Ex-/Inh-).
+    The table is written to results/tables/stage4/yadav_motoneuron_qc.tsv.
+    """
+    mapping, _ = symbol_to_ensembl(HGNC)
+    idx = {g: ids.index(mapping[g]) for g in ("SLC5A7", "PRPH")}
+    m = sp.csc_matrix(m_genes_x_cells)
+    lib = np.asarray(m.sum(axis=0)).ravel()
+
+    def cpm(mask):
+        tot = lib[mask].sum()
+        return {g: float(m[i][:, np.flatnonzero(mask)].sum()) / tot * 1e6 for g, i in idx.items()}
+
+    inter = obs.cell_type_author.str.startswith(("Ex-", "Inh-")).to_numpy()
+    mn = (obs.cell_type_author == "Motoneurons").to_numpy()
+    ref = pd.DataFrame([cpm(inter & (obs.donor == d).to_numpy()) for d in sorted(obs.donor.unique())]).median()
+    rows = []
+    for d in sorted(obs.donor.unique()):
+        sel = mn & (obs.donor == d).to_numpy()
+        if not sel.any():
+            continue
+        c = cpm(sel)
+        ok = all(c[g] >= fold * ref[g] for g in idx)
+        rows.append({"donor": d, "n_motoneurons": int(sel.sum()), **{f"{g}_cpm": round(c[g], 1) for g in idx},
+                     **{f"{g}_interneuron_median": round(ref[g], 1) for g in idx}, "pass": ok})
+    t = pd.DataFrame(rows)
+    Path("results/tables/stage4").mkdir(parents=True, exist_ok=True)
+    t.to_csv("results/tables/stage4/yadav_motoneuron_qc.tsv", sep="\t", index=False)
+    print(t.to_string(index=False))
+    return set(t.donor[t["pass"]])
 
 
 def krauter2025(atlas_id: str):
