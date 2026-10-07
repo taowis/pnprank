@@ -80,6 +80,12 @@ model:
   cv_folds: 5                  # outer folds (Stage 4 evaluation)
   inner_folds: 3               # hyperparameter tuning, training genes only
 
+release:                       # Stage 6: ranking shipped with the CLI (docs/decisions.md)
+  scoring_folds: 5             # same out-of-fold scoring as the back-test
+  stability_seeds: 10          # first seed gives the reported percentile; all give its range
+  expression_covariate: gtex|mean_all|logtpm
+  expression_bins: 10
+
 bootstrap:
   n_resamples: 1000
   ci: 0.95

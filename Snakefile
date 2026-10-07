@@ -4,6 +4,7 @@ configfile: "config/paths.yaml"
 
 include: "workflow/rules/truth.smk"
 include: "workflow/rules/features.smk"
+include: "workflow/rules/tool.smk"
 
 
 rule all:
@@ -12,3 +13,4 @@ rule all:
         "results/tables/stage4/cv_performance.tsv",
         "results/backtest/interval_summary.tsv",
         "results/backtest/repeated_cv_tier1.tsv",
+        "results/tables/stage6/release_checks.tsv",

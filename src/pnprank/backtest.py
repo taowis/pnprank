@@ -93,18 +93,16 @@ def training_labels(universe: list[str], truth, cutoff: int, tiers: set[str]):
     return pd.Series([int(g in pos) for g in genes], index=genes)
 
 
-def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_folds: int,
-                         label_fn=None, n_jobs: int = 1):
-    """Score every gene labelled 0 out of fold.
+def fit_fold_models(X_static, y, kind: str, seed: int, folds: int, inner_folds: int,
+                    label_fn=None, n_jobs: int = 1):
+    """Fit one model per scoring fold of the genes labelled 0.
 
     Label-derived features are built once from the positives in `y` (pre-cutoff genes).
-    Genes labelled 0 are split into `folds`; each fold is scored by a model trained on
-    all positives and the remaining folds, with hyperparameters tuned by inner CV on that
-    training set. Positives are not scored.
+    Genes labelled 0 are split into `folds`; model k is trained on all positives and the
+    0-genes outside fold k, with hyperparameters tuned by inner CV on that training set.
 
-    Returns (scores, best params per fold, fold index per gene). Scores from different
-    fold models are on different scales (hyperparameters differ), so they must be
-    compared within fold (`within_fold_percentile`) before pooling.
+    Returns (feature matrix incl. label features, models, best params, fold index per
+    0-gene).
     """
     import pandas as pd
     from joblib import Parallel, delayed
@@ -113,21 +111,38 @@ def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_fo
     from pnprank.model import fit_tuned, with_label_features
 
     known = set(y.index[y == 1])
-    X = with_label_features(X_static, label_fn, known).loc[y.index]
+    X = with_label_features(X_static, label_fn, known)
     zeros = y.index[y == 0].to_numpy()
     splits = list(KFold(n_splits=folds, shuffle=True, random_state=seed).split(zeros))
 
-    def run(k, tr, te):
+    def run(k, tr):
         # positives in y's order (never set order: it varies with hash randomisation)
         train = list(y.index[y == 1]) + list(zeros[tr])
-        est, best = fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds)
-        return pd.Series(est.predict_proba(X.loc[zeros[te]])[:, 1], index=zeros[te]), best
+        return fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds)
 
-    out = Parallel(n_jobs=n_jobs)(delayed(run)(k, tr, te) for k, (tr, te) in enumerate(splits))
+    out = Parallel(n_jobs=n_jobs)(delayed(run)(k, tr) for k, (tr, _) in enumerate(splits))
     fold = pd.Series(0, index=zeros)
     for k, (_, te) in enumerate(splits):
         fold.iloc[te] = k
-    return pd.concat([s for s, _ in out]).reindex(zeros), [b for _, b in out], fold
+    return X, [m for m, _ in out], [b for _, b in out], fold
+
+
+def oof_scores_at_cutoff(X_static, y, kind: str, seed: int, folds: int, inner_folds: int,
+                         label_fn=None, n_jobs: int = 1):
+    """Score every gene labelled 0 out of fold (see `fit_fold_models`). Positives are not
+    scored.
+
+    Returns (scores, best params per fold, fold index per gene). Scores from different
+    fold models are on different scales (hyperparameters differ), so they must be
+    compared within fold (`within_fold_percentile`) before pooling.
+    """
+    import pandas as pd
+
+    X, models, params, fold = fit_fold_models(X_static, y, kind, seed, folds, inner_folds,
+                                              label_fn, n_jobs)
+    parts = [pd.Series(m.predict_proba(X.loc[fold.index[fold == k]])[:, 1],
+                       index=fold.index[fold == k]) for k, m in enumerate(models)]
+    return pd.concat(parts).reindex(fold.index), params, fold
 
 
 def within_fold_percentile(scores, fold, covariate=None, n_bins: int = 10):

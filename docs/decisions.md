@@ -163,7 +163,8 @@ Each non-obvious choice, with its reason. Newest last.
   nuclei isolations are pooled. GEO lists hg19 for alignment; genes are matched by
   symbol through HGNC, so the assembly does not affect the Ensembl 116 keys.
 - **Gene universe for modelling:** HGNC protein-coding genes seen in at least one atlas
-  or in GTEx (19,228); genes with no expression data at all are dropped.
+  or in GTEx (19,228 before Jung 2023 was added; 19,229 after); genes with no expression
+  data at all are dropped.
 - **Stage 4 evaluation is nested CV on current labels, not a back-test:** it asks only
   whether atlas features add signal over non-atlas predictors (paired bootstrap on
   identical resamples).
@@ -222,3 +223,45 @@ Each non-obvious choice, with its reason. Newest last.
   runs the scoring under three hash seeds. The episode also shows that C selection is
   unstable with 30-40 positives; within-fold percentiles remove the scale problem, not
   this variance. All Stage 5 results were regenerated after the fix.
+
+## 2026-10-07 — Stage 6 (command-line tool)
+
+- **The released ranking reuses the back-tested procedure, not the Stage 4 final model.**
+  The Stage 4 ranking (`ranking_current_logistic_full.tsv.gz`) scores genes with a model
+  that saw them as training negatives, which pushes their scores down in-sample. The
+  release instead applies the Stage 5 out-of-fold scoring to today's labels: tier-1 genes
+  are positives, every other gene is scored by a fold model that did not train on it,
+  and scores are reported as within-fold percentiles. `fit_fold_models` was factored out
+  of `oof_scores_at_cutoff` so both use one code path (cutoff 2005 scores reproduced to
+  1e-16).
+- **Tier-2 genes** are left out of training (as in the back-test) and scored by all five
+  fold models; each gets the mean of its percentiles against the genes each model scored.
+  **Tier-1 genes** were training positives in every fold model, so they get no
+  percentile and no rank; the CLI reports them as known.
+- **Regularisation (user-agreed proposal):** C stays tuned by inner CV in each fold model,
+  as back-tested. The reported percentile comes from the first seed (the validated
+  procedure, one seed). Nine further seeds are run only to report the range of each
+  gene's percentile and the chosen C per fold, so users can see how much a rank depends
+  on the random split. Averaging over seeds was not adopted because it was not
+  back-tested.
+- **Outputs (user-agreed proposal):** each gene's percentile is shown next to its
+  expression-matched percentile (within fold x GTEx mean-expression decile) and the
+  non-atlas model's percentile, so a high rank driven mainly by expression level, or not
+  helped by atlas features, is visible.
+- **Gene lookup** accepts Ensembl IDs (version ignored), HGNC approved symbols, then
+  HGNC previous and alias symbols; an alias shared by several genes is reported as
+  ambiguous rather than guessed. Aliases come from the HGNC complete set snapshot used
+  for the truth set.
+- **`top` excludes known tier-1/2 genes by default** (they are already known);
+  `--include-known` shows them. Unverified candidate-list genes are shown with status
+  `listed_not_in_truth`.
+- **The ranking table is committed** (`results/tables/pnprank_ranking.tsv.gz`, one row
+  per protein-coding gene, about 1 MB) so `pnprank query` works without the raw data.
+- **C at the grid boundary (checked, grid kept):** with today's 100 tier-1 positives every
+  fold model and seed chose C = 0.001, the smallest value in the grid. An extended inner-CV
+  grid on the full release training set peaked at C = 3e-4, with inner-CV AUROC higher
+  than at 0.001 by 0.001-0.006 (three seeds). The grid is kept as back-tested; the gain
+  from extending it is within split-to-split noise.
+- **Post hoc release checks** (`workflow/scripts/stage6_checks.py`), not pre-specified:
+  tier-2 genes never enter training, so their percentiles are a held-out check against
+  unlabelled genes; and the share of highly expressed genes at the top of the list.
