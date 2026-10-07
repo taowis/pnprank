@@ -65,21 +65,28 @@ def rds_to_mtx(rds: Path, outdir: Path) -> None:
 # --- readers -------------------------------------------------------------------
 
 
-def yang2022(atlas_id: str, species: str):
+def yang2022(atlas_id: str, species: str, donor_col: str = "donor"):
     tag = "human" if species == "human" else "mouse"
     counts_dir = interim(atlas_id) / "counts"
     rds_to_mtx(next(raw(atlas_id).glob(f"*snRNA-seq_{tag}_raw_counts.RDS.gz")), counts_dir)
     m, symbols, cells = load_mtx(counts_dir)
     meta = pd.read_csv(next(raw(atlas_id).glob(f"*snRNA-seq_{tag}_barcode_meta.csv.gz")))
-    meta = meta.set_index(meta.columns[0]).loc[cells]
+    # Barcodes repeat across libraries of one sample (mouse), so align by position; the
+    # metadata row order must equal the matrix column order.
+    if list(meta.iloc[:, 0]) != cells:
+        raise ValueError("metadata order differs from matrix columns")
+    cells = [f"{c}#{i}" for i, c in enumerate(cells)]
+    meta.index = cells
     if species == "human":
         m, ids, _ = human_symbols_to_ids(m, symbols)
     else:
         m, ids, _ = collapse_to_ensembl(m, symbols, mouse_symbol_map())
     keep = np.ones(len(meta), bool)
-    if "model" in meta.columns:  # mouse TG: headache models vs naive
-        keep = meta["model"].astype(str).str.lower().isin(["naive", "control", "ctrl", "sham"]).to_numpy()
-    obs = pd.DataFrame({"cell_type_author": meta["subtype"], "donor": meta["donor"].astype(str),
+    if "model" in meta.columns:
+        # mouse TG: keep naive animals only. "Control" and "PBS" are procedural controls
+        # for the headache models (CSD, IS), so they are excluded as well.
+        keep = (meta["model"].astype(str) == "Naive").to_numpy()
+    obs = pd.DataFrame({"cell_type_author": meta["subtype"], "donor": meta[donor_col].astype(str),
                         "keep": keep}, index=cells)
     return m.T, ids, obs
 
@@ -181,9 +188,89 @@ def heming2025(atlas_id: str):
     return sp.vstack(mats).tocsr(), ids, pd.concat(obs_parts)
 
 
+def yadav2023(atlas_id: str):
+    """Dense genes x cells CSV (R make.names barcodes) read in row chunks to sparse."""
+    meta = pd.read_csv(raw(atlas_id) / "GSE190442_aggregated_metadata_postqc.csv.gz", index_col=0)
+    meta.index = meta.index.str.replace("-", ".", regex=False)
+    chunks, symbols, cols = [], [], None
+    for ch in pd.read_csv(raw(atlas_id) / "GSE190442_aggregated_counts_postqc.csv.gz",
+                          index_col=0, chunksize=1000, dtype={0: str}):
+        if cols is None:
+            cols = list(ch.columns)
+        symbols += list(ch.index)
+        v = ch.to_numpy()
+        if not np.allclose(v, np.round(v)):
+            raise ValueError("Yadav counts are not integers")
+        chunks.append(sp.csr_matrix(v.astype(np.int32)))
+    m = sp.vstack(chunks).tocsr()  # genes x cells
+    meta = meta.loc[cols]
+    m, ids, _ = human_symbols_to_ids(m, symbols)
+    obs = pd.DataFrame({"cell_type_author": meta["subtype_annotation"].astype(str),
+                        "donor": meta["sample"].astype(str), "keep": True}, index=cols)
+    return m.T, ids, obs
+
+
+def krauter2025(atlas_id: str):
+    """Aggregated 10x multiome h5 (gene expression only) + author neuron labels."""
+    import scanpy as sc
+
+    a = sc.read_10x_h5(raw(atlas_id) / "GSE287551_aggregated_filtered_feature_bc_matrix.h5",
+                       gex_only=True)
+    meta = pd.read_csv(raw(atlas_id) / "GSE287551_metadata.tsv.gz", sep="\t", index_col=0)
+    a = a[a.obs_names.isin(meta.index)]
+    meta = meta.loc[a.obs_names]
+    obs = pd.DataFrame({"cell_type_author": meta["CellID"].astype(str),
+                        "donor": meta["orig.ident"].astype(str), "keep": True}, index=a.obs_names)
+    return sp.csr_matrix(a.X), list(a.var["gene_ids"]), obs
+
+
+def stefanovska2025(atlas_id: str):
+    """Per-sample 10x mtx from GSE280857 (Young samples only) + labels from the Zenodo h5ad.
+
+    The h5ad barcodes carry a sample suffix (_k) that is not documented; each Young file
+    is matched to the suffix with the largest barcode overlap, and the overlap is checked.
+    """
+    import io
+    import tarfile
+
+    import anndata as ad
+    import scipy.io
+
+    lab = ad.read_h5ad(raw(atlas_id) / "all_final.h5ad", backed="r").obs
+    lab = lab.assign(bc=lab.index.str.rsplit("_", n=1).str[0], suffix=lab.index.str.rsplit("_", n=1).str[1])
+    mats, ids, obs_parts = [], None, []
+    with tarfile.open(raw(atlas_id) / "GSE280857_RAW.tar") as tf:
+        names = tf.getnames()
+        for smp in sorted({n.split("_")[1] for n in names if "_Young" in n}):
+            pref = next(n for n in names if f"_{smp}_" in n).rsplit("_", 1)[0]
+            rd = lambda kind: tf.extractfile(f"{pref}_{kind}").read()  # noqa: E731
+            m = sp.csr_matrix(scipy.io.mmread(io.BytesIO(gzip.decompress(rd("matrix.mtx.gz")))))
+            bcs = gzip.decompress(rd("barcodes.tsv.gz")).decode().split()
+            feats = pd.read_csv(io.BytesIO(gzip.decompress(rd("features.tsv.gz"))), sep="\t", header=None)
+            overlap = lab[lab.bc.isin(set(bcs))].groupby("suffix").size()
+            sfx = overlap.idxmax()
+            sub = lab[lab.suffix == sfx]
+            frac = sub.bc.isin(set(bcs)).mean()
+            if frac < 0.99 or overlap.max() < 0.8 * len(sub):
+                raise ValueError(f"{smp}: ambiguous barcode match (suffix {sfx}, {frac:.3f})")
+            print(smp, "-> suffix", sfx, "| individual", sub.individual.unique().tolist(),
+                  "| matched", len(sub), "of", len(bcs), "barcodes")
+            col = {b: i for i, b in enumerate(bcs)}
+            m = m[:, [col[b] for b in sub.bc]]
+            gid = list(feats[0])
+            if ids is None:
+                ids = gid
+            elif gid != ids:
+                raise ValueError("feature order differs between samples")
+            mats.append(m.T.tocsr())
+            obs_parts.append(pd.DataFrame({"cell_type_author": sub.populations.astype(str).to_numpy(),
+                                           "donor": smp, "keep": True}, index=sub.index))
+    return sp.vstack(mats).tocsr(), ids, pd.concat(obs_parts)
+
+
 READERS = {
     "yang2022_human_tg": lambda a: yang2022(a, "human"),
-    "yang2022_mouse_tg": lambda a: yang2022(a, "mouse"),
+    "yang2022_mouse_tg": lambda a: yang2022(a, "mouse", donor_col="sample_name"),
     # pooled animals per replicate; donor_id identifies the sample (region x sex x rep)
     "alkaslasi2021_mouse_mn": lambda a: cellxgene(a, "*.h5ad", "cluster_assignment_fine", "donor_id"),
     # "Innervated only" dataset: all normal
@@ -194,11 +281,15 @@ READERS = {
         keep_fn=lambda o: (o["suspension_type"] == "nucleus").to_numpy()),
     "sparc465_human_sympathetic": sparc465,
     "heming2025_human_sural": heming2025,
+    "yadav2023_human_spinal_cord": yadav2023,
+    "krauter2025_mouse_drg": krauter2025,
+    "stefanovska2025_mouse_sciatic": stefanovska2025,
 }
 SPECIES = {"yang2022_human_tg": "human", "yang2022_mouse_tg": "mouse",
            "alkaslasi2021_mouse_mn": "mouse", "ham2025_mouse_nmj": "mouse",
            "kedlian2024_human_muscle": "human", "sparc465_human_sympathetic": "human",
-           "heming2025_human_sural": "human"}
+           "heming2025_human_sural": "human", "yadav2023_human_spinal_cord": "human",
+           "krauter2025_mouse_drg": "mouse", "stefanovska2025_mouse_sciatic": "mouse"}
 
 
 def main(atlas_id: str) -> None:
