@@ -67,9 +67,9 @@ To rebuild the ranking from the raw data (Stages 1–4 must have been run):
 ## Layout
 
 - `config/` — run settings, atlas registry, machine paths template
-- `data/` — not in git except `data/truth/` (curated labels) and `data/README.md`
+- `data/` — not in git except `data/truth/` (curated labels) and `data/README.md`, which lists the source of every other file
 - `src/pnprank/` — the importable package and `pnprank` CLI
-- `workflow/` — Snakemake rules (one file per stage) and thin wrapper scripts
+- `workflow/` — Snakemake rules and thin wrapper scripts; every step is listed in `docs/workflow.md`
 - `results/` — small tables and figures (committed); models and matrices are not
 - `docs/` — decisions, data sources, limitations, per-stage reports
 - `tests/` — including `test_leakage.py`, which must pass before any back-test result is reported

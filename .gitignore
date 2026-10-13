@@ -50,3 +50,7 @@ config/atlases.lock
 # Run logs
 logs/
 results/backtest/scores/
+
+# Word lock files and run markers
+~$*
+results/tables/truth_validated.txt

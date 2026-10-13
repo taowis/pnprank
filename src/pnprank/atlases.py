@@ -97,7 +97,7 @@ def one_to_one_orthologues(
 
 # --- Downloads ----------------------------------------------------------------
 
-SINGLE_DOWNLOAD_LIMIT_BYTES = 5 * 10**9  # CLAUDE.md: ask before any single download over 5 GB
+SINGLE_DOWNLOAD_LIMIT_BYTES = 5 * 10**9  # project rule: ask before any single download over 5 GB
 
 
 def dir_size_bytes(path: Path) -> int:
