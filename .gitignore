@@ -54,3 +54,6 @@ results/backtest/scores/
 # Word lock files and run markers
 ~$*
 results/tables/truth_validated.txt
+
+# Animation GIFs are fallback copies, rebuilt from the MP4s
+presentations/**/*.gif

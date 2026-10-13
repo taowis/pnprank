@@ -134,6 +134,12 @@ EndNote library). They are written by hand from the reports above and are not bu
 the workflow. `manuscript/figures/plain_figures.py` redraws the summary figures from the
 committed result tables.
 
+### Presentations
+
+`presentations/<yyyy-mm>_<audience>/` holds one talk each. The animations are drawn by a
+script in the same folder that reads `results/` and the data root, and the deck is
+assembled by a second script; see the folder's README.
+
 ## Dependency outline
 
 ```
