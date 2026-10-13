@@ -248,16 +248,24 @@ atlases:
   files:
   - name: primary/filtered_feature_bc_matrix/matrix.mtx.gz
     size_bytes: 2168008189
-    downloaded: false
+    downloaded: true
+    url: https://sparc-prod-aod-discover-publish50-use1.s3.amazonaws.com/465/files/primary/filtered_feature_bc_matrix/matrix.mtx.gz
+    sha256: fa0407c36080ce2b4663f8e91d5fd98aff87dc3f28576e2d214a4ef1732e4071
   - name: primary/filtered_feature_bc_matrix/features.tsv.gz
     size_bytes: 3400616
-    downloaded: false
+    downloaded: true
+    url: https://sparc-prod-aod-discover-publish50-use1.s3.amazonaws.com/465/files/primary/filtered_feature_bc_matrix/features.tsv.gz
+    sha256: 9195555c29194b8409b2ab99a60e4386539df8f3044ccffc6a67617d7353572d
   - name: primary/filtered_feature_bc_matrix/barcodes.tsv.gz
     size_bytes: 422581
-    downloaded: false
+    downloaded: true
+    url: https://sparc-prod-aod-discover-publish50-use1.s3.amazonaws.com/465/files/primary/filtered_feature_bc_matrix/barcodes.tsv.gz
+    sha256: ba983bbc9f4d35bb6c9989943b36786f3e204e1c32da2dc806b860942238a69e
   - name: primary/meta.data.csv
     size_bytes: 11996682
-    downloaded: false
+    downloaded: true
+    url: https://sparc-prod-aod-discover-publish50-use1.s3.amazonaws.com/465/files/primary/meta.data.csv
+    sha256: 4280393c13f70581f95ccc27d22e8f25bfdf0fa9b91b7f4ca68cfa12a425b5d4
   - name: primary/atac_fragments.tsv.gz (not needed)
     size_bytes: 17753218897
     downloaded: false
@@ -324,9 +332,12 @@ atlases:
   status: shortlisted
   notes: ''
   files:
-  - name: 5fd93c55-8047-48fb-905c-6ef2f7767483.h5ad (Human muscle cells and nuclei)
+  - name: 5fd93c55-8047-48fb-905c-6ef2f7767483.h5ad
+    label: Human muscle cells and nuclei
     size_bytes: 1182283382
-    downloaded: false
+    downloaded: true
+    url: https://datasets.cellxgene.cziscience.com/5fd93c55-8047-48fb-905c-6ef2f7767483.h5ad
+    sha256: 1ed4db016c1c93c7032a94d4a1cdfc5b72666134b93e9d877ea68f3edcdd5620
   - name: e3839dff-d480-4b2d-83c0-fc54ec40b9e3.h5ad (Fibroblasts and Schwann cells)
     size_bytes: 194498797
     downloaded: false
@@ -409,9 +420,12 @@ atlases:
     downloaded: true
     url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE280nnn/GSE280857/suppl/GSE280857_RAW.tar
     sha256: f2e89df8bda7db4b607b7919a43ef88865d01d79c8fd814fcee04de2118b3b79
-  - name: Zenodo 14900774 all_final.h5ad
+  - name: all_final.h5ad
+    label: Zenodo 14900774
     size_bytes: 409851403
-    downloaded: false
+    downloaded: true
+    url: https://zenodo.org/records/14900774/files/all_final.h5ad
+    sha256: b4844bd822dfe555b4720a454f8c76b263d9cad38a7b904a1cef392334b04974
   - name: Zenodo 14900774 adipo_final.h5ad
     size_bytes: 42076877
     downloaded: false
@@ -496,9 +510,12 @@ atlases:
   status: shortlisted
   notes: Neurons only; GEO links the wrong PMID (37559423), correct is 33931636.
   files:
-  - name: CxG All cells h5ad 8b1fc940-a0e4-463e-a2e4-7007974fb736.h5ad
+  - name: 8b1fc940-a0e4-463e-a2e4-7007974fb736.h5ad
+    label: CxG All cells
     size_bytes: 242072768
-    downloaded: false
+    downloaded: true
+    url: https://datasets.cellxgene.cziscience.com/8b1fc940-a0e4-463e-a2e4-7007974fb736.h5ad
+    sha256: 61eab680be459e23454dccd8a75ac732771d20f036a3e19ac7838824d0e4b619
   - name: CxG Skeletal h5ad b223d506-19e1-4ffa-9ac9-c8ef2d9073ce.h5ad
     size_bytes: 82163778
     downloaded: false
@@ -510,7 +527,9 @@ atlases:
     downloaded: false
   - name: GSE167597_all_AlkaslasiPiccus_annotations.csv.gz
     size_bytes: 333655
-    downloaded: false
+    downloaded: true
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE167nnn/GSE167597/suppl/GSE167597_all_AlkaslasiPiccus_annotations.csv.gz
+    sha256: 6e69c106544a394dd23b6e7b4fc2d159a715aaa8a70adbd61721338e8d29c091
 - id: ham2025_mouse_nmj
   title: Single-nuclei sequencing of skeletal muscle reveals subsynaptic-specific transcripts involved
     in neuromuscular junction maintenance
@@ -538,9 +557,12 @@ atlases:
   status: shortlisted
   notes: Use innervated samples only.
   files:
-  - name: b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad (Innervated only)
+  - name: b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad
+    label: Innervated only
     size_bytes: 304285589
-    downloaded: false
+    downloaded: true
+    url: https://datasets.cellxgene.cziscience.com/b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad
+    sha256: 1a706ee1e6b4159a5cdb6e6b48ca3ce51c676ac35e599f4b6a32e995cc7ab58b
   - name: f991c1a9-d2ff-488e-bd18-d75e0e1d2d7b.h5ad (all conditions)
     size_bytes: 935859746
     downloaded: false
