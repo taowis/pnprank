@@ -72,6 +72,8 @@ To rebuild the ranking from the raw data (Stages 1–4 must have been run):
 - `workflow/` — Snakemake rules and thin wrapper scripts; every step is listed in `docs/workflow.md`
 - `results/` — small tables and figures (committed); models and matrices are not
 - `docs/` — decisions, data sources, limitations, per-stage reports
+- `manuscript/` — paper draft and collaborator summary (Word, with an EndNote library)
+- `presentations/` — talks, one folder per talk, with the scripts that draw their animations
 - `tests/` — including `test_leakage.py`, which must pass before any back-test result is reported
 
 ## Data policy
