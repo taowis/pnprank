@@ -423,3 +423,30 @@ Each non-obvious choice, with its reason. Newest last.
   `pnprank`, so code, imports and commands are unchanged. Locally only the
   machine-specific `config/paths.yaml` (data root) and the editable install change. This
   departs from the project instruction that repo and directory are named `pnprank`.
+
+## 2026-10-13 — Whole analysis wired into Snakemake; data provenance completed
+
+- Steps that had been run by hand now have rules: reference downloads
+  (`fetch_external`), atlas downloads (`download_atlas_file`), the Stage 3 pilot, the
+  comparator back-test (fetch, back-test, summary), the literature queries and the
+  C. elegans orthologues. `docs/workflow.md` lists every step with its inputs and outputs.
+- The literature and C. elegans rules query live services whose answers change, so they
+  are left out of `all` and run as `live_queries`. Rerunning them later would overwrite
+  the committed tables with different numbers.
+- `fetch_external.py` reproduces the reference files that were fetched by hand on
+  2026-10-07/08. Rebuilt from the downloaded sources, `mouse_genes_e116.tsv` and
+  `human_mouse_one2one_e116.tsv` are byte-identical to the files the analysis used, and
+  every download matched its host checksum. The cytoband SHA-256 and the Compara MD5
+  (Ensembl MD5SUM) are now in `config/config.yaml`.
+- Reference tables are `ancient()` rule inputs: they are fixed by release and checked by
+  checksum, so refetching them should not force every atlas to be reprocessed. The
+  leakage tests are an input of every rule that summarises back-test results.
+- Nine atlas files downloaded on 2026-10-07 (three CELLxGENE h5ad files, the Zenodo
+  `all_final.h5ad`, four SPARC 465 files and the Alkaslasi annotation CSV) had no URL or
+  checksum in `config/atlases.yaml`. Their URLs come from the download commands; each
+  remote size matched the local file on 2026-10-13, and the Zenodo file also matched the
+  MD5 that Zenodo publishes. The recorded SHA-256 values are of the local files, computed
+  on 2026-10-13, not at download time.
+- The modification time of `data/truth/neuropathy_genes.tsv` was reset to its last commit
+  (2026-10-06). Its content is unchanged since then, but the GLDN add-and-revert on
+  2026-10-08 had touched the file, which made Snakemake want to rerun Stage 4 onwards.
