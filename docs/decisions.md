@@ -21,12 +21,11 @@ Each non-obvious choice, with its reason. Newest last.
 - **Back-test cutoff split is strict:** a gene is "known before" year Y only if
   `discovery_year < Y`.
 - **Random seed:** `20261006` (the scaffold date; arbitrary but fixed).
-- **Private notes:** `private_notes/` and the root `CLAUDE.md` are gitignored and
-  never pushed. The root `CLAUDE.md` is a symlink to `private_notes/CLAUDE.md`
-  so the assistant loads it from the repo root.
+- **Private notes:** `private_notes/` and personal instruction files at the repo root
+  are gitignored and never pushed.
 - **Disk budget:** `disk_limit_gb: 200` under the data root, confirmed by the user;
   raised to 300 GB by the user on 2026-10-07. Single-download limit stays 5 GB.
-- **Remote:** private GitHub repository; `private_notes/` and root `CLAUDE.md` are never pushed.
+- **Remote:** private GitHub repository; `private_notes/` is never pushed.
 
 ## 2026-10-06 — Stage 1 (truth set)
 

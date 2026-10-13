@@ -56,7 +56,7 @@ backtest:
   scoring_folds: 5             # out-of-fold scoring of unlabelled genes at each cutoff
   repeated_cv_seeds: 10        # Stage 4 comparison repeated over seeds (split variance)
   expression_bins: 10          # GTEx mean-expression deciles for the matched evaluation
-  interaction_db_release: null # must predate each cutoff, or PPI is dropped (see CLAUDE leakage controls)
+  interaction_db_release: null # must predate each cutoff, or PPI is dropped (leakage control)
 
 features:
   celltype_map: config/celltype_map.tsv
