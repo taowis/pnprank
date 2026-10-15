@@ -450,3 +450,11 @@ Each non-obvious choice, with its reason. Newest last.
 - The modification time of `data/truth/neuropathy_genes.tsv` was reset to its last commit
   (2026-10-06). Its content is unchanged since then, but the GLDN add-and-revert on
   2026-10-08 had touched the file, which made Snakemake want to rerun Stage 4 onwards.
+
+## 2026-10-16 — Intended use alongside sequencing; scoring user-supplied intervals
+
+- **Positioning.** PNPrank is described as a complement to variant discovery, not a substitute. It does not detect variants. Its use is to order genes (and so the variants in them) for follow-up once sequencing has narrowed a locus but left several candidates. DHMN1 is the example: the structural variant brought UBE3C into consideration, and the ranking (UBE3C 11 of 146) only helps after that. The Discussion of the manuscript and the Stage 6 report say this.
+- **Patient RNA-seq tissues.** The claim that atlases add information that blood or fibroblast RNA-seq cannot see is backed by a count from GTEx v10 (`docs/case_studies/patient_tissue_expression.md`), not by a citation. TPM >= 1 was used as the detection cut-off because it is conventional; counts at 5 and 10 TPM are reported too, so the result does not hang on one threshold.
+- **Genome build for user intervals.** Intervals are scored on GRCh38, because every input (Ensembl 116 / GENCODE 50 gene coordinates, the hg38 cytoband table, GTEx v10 and gnomAD v4.1) is annotated on GRCh38. Intervals given on hg19 or T2T-CHM13 are lifted over to GRCh38 and checked against the flanking markers. T2T-CHM13 is not used for scoring: genes annotated only on that assembly have no expression or constraint data in these inputs, so they could not be scored anyway.
+- **Unpublished intervals.** Coordinates of unpublished loci, even from the lab that owns them, are lab-internal data and do not enter the repository (hard rule 2). The genome-wide ranking does not depend on the interval, so an interval is only a filter on the committed table; it is applied outside the repository, and nothing about such loci is committed.
+- **Prospective test.** The proposed test on unsolved loci is blind: the ranking is fixed (git tag and date recorded) before any interval is received, and the ranking returned is the one from that tag.

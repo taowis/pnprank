@@ -119,6 +119,7 @@ The `pnprank query` and `pnprank top` commands read the committed ranking. Repor
 | Rule | Script | Reads | Writes |
 |---|---|---|---|
 | `locus_case_study` | `locus_case_study.py` | `config/loci.tsv`, cytobands, cached back-test scores; interval genes from the Ensembl REST API, cached under `external/loci/` | `results/case_studies/locus_ranking.tsv`, `locus_top10.tsv` |
+| `patient_tissue_expression` | `patient_tissue_expression.py` | truth set, GTEx v10 median TPM | `results/case_studies/patient_tissue_expression.tsv`, `patient_tissue_expression_genes.tsv` |
 | `top50_literature_queries` (live) | `top50_literature_queries.py` | the ranking; PubMed, HGNC, PanelApp and ClinGen queried live | `results/tables/top50_literature_queries.tsv`, `top50_literature_curated.tsv` |
 | `celegans_orthologues` (live) | `celegans_orthologues.py` | the ranking; HGNC, Ensembl and Alliance APIs, cached under `external/celegans/` | `results/tables/celegans_shortlist.tsv`, `tier1_celegans_orthologues.tsv` |
 

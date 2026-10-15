@@ -134,3 +134,17 @@ All six stages are done. Possible follow-ups, none started:
    to separate already-reported links from genuinely new candidates.
 3. List top candidates that have clear C. elegans orthologues, for the collaborator.
 4. Write a two-page summary for collaborators and draft the paper.
+
+## Addendum (2026-10-16): intended use alongside sequencing
+
+- **The ranking does not find variants.** It orders genes for follow-up once sequencing has narrowed a locus.
+  - **WGS of a linked family.** An interval can still hold many rare variants and several structural variants, and the ranking gives an order for checking them.
+  - **Structural or regulatory variants.** Where the cause acts through one of these, the ranking can miss it (CMTX3), or it only helps after the variant has pointed to the gene (DHMN1, UBE3C 11 of 146).
+- **Atlases add what patient RNA-seq on blood or fibroblasts cannot see.** In GTEx v10:
+  - 33 of 100 tier-1 genes are below 1 TPM in whole blood;
+  - 16 are below 1 TPM in cultured fibroblasts;
+  - 15 are below 1 TPM in both, including GJB1, SH3TC2, PMP2 and DRP2, which are well expressed in tibial nerve.
+
+  The atlases show which nerve, ganglion or spinal cord cell types express such genes (`docs/case_studies/patient_tissue_expression.md`).
+- **Best setting:** loci that remain unsolved after sequencing.
+- **Scoring a user-supplied interval.** Use GRCh38 coordinates, lifting over from hg19 or T2T-CHM13 and checking against flanking markers. Unpublished intervals are filtered outside the repository. A prospective test fixes the ranking before the intervals are seen (`docs/decisions.md`, 2026-10-16).

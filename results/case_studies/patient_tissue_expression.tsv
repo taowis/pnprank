@@ -1,0 +1,7 @@
+tissue	n_genes	n_tpm_ge_1	n_tpm_ge_5	n_tpm_ge_10
+Whole_Blood	100	67	54	35
+Cells_EBV-transformed_lymphocytes	100	74	63	59
+Cells_Cultured_fibroblasts	100	84	72	62
+Muscle_Skeletal	100	75	55	45
+Nerve_Tibial	100	92	85	78
+Brain_Spinal_cord_cervical_c-1	100	89	76	60

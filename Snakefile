@@ -23,3 +23,4 @@ rule all:
         "results/backtest/comparators/comparator_headline_differences.tsv",
         "results/tables/stage6/release_checks.tsv",
         "results/case_studies/locus_ranking.tsv",
+        "results/case_studies/patient_tissue_expression.tsv",
