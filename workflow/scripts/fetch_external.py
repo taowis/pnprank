@@ -5,6 +5,7 @@ Files (all under data/external/):
 - gnomAD v4.1 constraint metrics           (GCS object MD5)
 - GTEx v10 gene median TPM                 (GCS object MD5)
 - Ensembl 116 mouse GTF -> mouse_genes_e116.tsv (gene ID, name, biotype)  (BSD sum)
+- Ensembl 116 human GTF (gene coordinates; table built by gene_coordinates.py)  (BSD sum)
 - Ensembl Compara 116 mus_musculus homologies -> human_mouse_one2one_e116.tsv  (MD5SUM)
 - UCSC hg38 cytoBand table                 (SHA-256 recorded at first download)
 
@@ -69,6 +70,9 @@ for key in ("gnomad_constraint", "gtex_median_tpm"):
 
 g = ext["mouse_gtf"]
 fetch(g["url"], Path(g["dest"]), lambda p: (bsd_sum(p), g["bsd_sum"]))
+
+h = ext["human_gtf"]
+fetch(h["url"], Path(h["dest"]), lambda p: (bsd_sum(p), h["bsd_sum"]))
 
 c = ext["ucsc_cytoband"]
 fetch(c["url"], Path(c["dest"]), lambda p: (digest(p, "sha256"), c["sha256"]))

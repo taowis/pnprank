@@ -28,6 +28,7 @@ rule fetch_external:
         EXT["gtex_median_tpm"]["dest"],
         EXT["mouse_gtf"]["dest"],
         EXT["mouse_gtf"]["genes_table"],
+        EXT["human_gtf"]["dest"],
         EXT["ucsc_cytoband"]["dest"],
         config["reference"]["orthology"]["dest"],
         config["reference"]["orthology"]["table"],

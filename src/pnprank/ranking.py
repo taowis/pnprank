@@ -9,6 +9,7 @@ tune their regularisation separately (docs/decisions.md, Stage 5).
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import numpy as np
@@ -228,3 +229,55 @@ def top_genes(tab: pd.DataFrame, n: int, include_known: bool = False,
     if by == "percentile":
         return d.sort_values("rank").head(n)
     return d.sort_values([by, "percentile"], ascending=False).head(n)
+
+
+# --- intervals --------------------------------------------------------------------
+
+GRCH38_NAMES = {"grch38", "hg38"}
+_REGION = re.compile(r"^(?:(?P<name>[^=\s]+)=)?(?:chr)?(?P<chrom>[1-9]|1[0-9]|2[0-2]|X|Y|MT|M)"
+                     r":(?P<start>[0-9,]+)-(?P<end>[0-9,]+)$", re.IGNORECASE)
+
+
+def parse_region(text: str) -> tuple[str, str, int, int]:
+    """'[name=][chr]7:150,000,000-160,000,000' -> (name, '7', 150000000, 160000000).
+    Coordinates are 1-based and inclusive (as in Ensembl and the UCSC browser)."""
+    m = _REGION.match(text.strip())
+    if not m:
+        raise ValueError(f"cannot read region {text!r}; expected e.g. chr7:150000000-160000000")
+    chrom = m["chrom"].upper()
+    chrom = "MT" if chrom == "M" else chrom
+    start, end = int(m["start"].replace(",", "")), int(m["end"].replace(",", ""))
+    if start < 1 or end < start:
+        raise ValueError(f"bad coordinates in {text!r}")
+    return m["name"] or f"chr{chrom}:{start}-{end}", chrom, start, end
+
+
+def read_bed(lines) -> list[tuple[str, str, int, int]]:
+    """BED lines (chrom, 0-based start, end, optional name) -> 1-based inclusive regions."""
+    out = []
+    for ln in lines:
+        if not ln.strip() or ln.startswith(("#", "track", "browser")):
+            continue
+        f = ln.rstrip("\n").split("\t")
+        name, chrom, s, e = parse_region(f"{f[0]}:{int(f[1]) + 1}-{f[2]}")
+        out.append((f[3] if len(f) > 3 and f[3] else name, chrom, s, e))
+    return out
+
+
+def load_coordinates(path: str | Path) -> pd.DataFrame:
+    return pd.read_csv(path, sep="\t", dtype={"chrom": str})
+
+
+def genes_in_interval(tab: pd.DataFrame, coords: pd.DataFrame, chrom: str, start: int,
+                      end: int, pad: int = 0, by: str = "percentile") -> pd.DataFrame:
+    """Ranked genes overlapping chrom:start-end (padded by `pad` bp on each side).
+    `interval_rank` orders the scored genes by `by` (1 = highest); known tier-1 genes were
+    training positives, have no score and are listed last."""
+    s, e = max(1, start - pad), end + pad
+    c = coords[(coords.chrom == chrom) & (coords.end >= s) & (coords.start <= e)]
+    d = tab.merge(c[["ensembl_gene_id", "chrom", "start", "end"]], on="ensembl_gene_id")
+    scored = d[d[by].notna()].sort_values([by, "percentile"], ascending=False)
+    scored = scored.assign(interval_rank=range(1, len(scored) + 1))
+    rest = d[d[by].isna()].sort_values("start")
+    out = pd.concat([scored, rest], ignore_index=True)
+    return out.astype({"interval_rank": "Int64", "rank": "Int64", "gtex_mean_decile": "Int64"})

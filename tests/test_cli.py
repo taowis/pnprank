@@ -1,3 +1,4 @@
+import io
 from pathlib import Path
 
 import numpy as np
@@ -146,3 +147,65 @@ def test_build_ranking_is_reproducible_and_learns_from_tier1():
     X2.loc["ENSG0100", ["gtex|mean_all|logtpm", "a1|t1|spec"]] = [3.0, 1.5]
     c, _ = _build(X2, truth)
     assert c.set_index("ensembl_gene_id").percentile["ENSG0100"] > 0.9
+
+
+# --- intervals --------------------------------------------------------------------
+
+
+def test_parse_region_forms():
+    from pnprank.ranking import parse_region
+
+    assert parse_region("chr7:150,000,000-160,000,000") == (
+        "chr7:150000000-160000000", "7", 150_000_000, 160_000_000)
+    assert parse_region("DHMN1=7:1-10") == ("DHMN1", "7", 1, 10)
+    assert parse_region("chrx:5-6")[1] == "X"
+    for bad in ["7:10-5", "chr7:0-5", "7q34-q36", "chr23:1-2", "chr7:1-"]:
+        with pytest.raises(ValueError):
+            parse_region(bad)
+
+
+def test_read_bed_is_zero_based():
+    from pnprank.ranking import read_bed
+
+    regions = read_bed(["# comment\n", "chr7\t99\t200\tLOC1\n", "X\t0\t10\n"])
+    assert regions == [("LOC1", "7", 100, 200), ("chrX:1-10", "X", 1, 10)]
+
+
+def _coords():
+    return pd.DataFrame({"ensembl_gene_id": ["ENSG01", "ENSG02", "ENSG03", "ENSG04", "ENSG05"],
+                         "chrom": ["1", "1", "1", "2", "1"],
+                         "start": [100, 250, 400, 100, 180],
+                         "end": [200, 300, 500, 200, 260]})
+
+
+def test_genes_in_interval_overlap_order_and_known():
+    from pnprank.ranking import genes_in_interval
+
+    tab = _table(rank=[1, 2, 3, 4, None], hgnc_symbol=["A", "B", "C", "D", "E"],
+                 ensembl_gene_id=["ENSG01", "ENSG02", "ENSG03", "ENSG04", "ENSG05"],
+                 status=["unlabelled"] * 4 + ["known_tier1"],
+                 percentile=[0.5, 0.9, 0.7, 0.99, None],
+                 percentile_expr_matched=[0.95, 0.1, 0.2, 0.3, None])
+    # 200-260 touches A at its last base and E (known); B starts at 250
+    out = genes_in_interval(tab, _coords(), "1", 200, 260)
+    assert list(out.hgnc_symbol) == ["B", "A", "E"]
+    assert list(out.interval_rank.astype("float").fillna(0)) == [1, 2, 0]
+    assert "D" not in set(out.hgnc_symbol)          # other chromosome
+    padded = genes_in_interval(tab, _coords(), "1", 200, 260, pad=200)
+    assert list(padded.hgnc_symbol) == ["B", "C", "A", "E"]
+    em = genes_in_interval(tab, _coords(), "1", 200, 260, by="percentile_expr_matched")
+    assert list(em.hgnc_symbol[:2]) == ["A", "B"]
+
+
+def test_interval_cli(tmp_path, capsys):
+    ranking = _ranking(tmp_path)
+    coords = tmp_path / "coords.tsv.gz"
+    _coords().to_csv(coords, sep="\t", index=False, compression="gzip")
+    args = ["interval", "--ranking", str(ranking), "--coordinates", str(coords)]
+    assert main(args + ["L1=chr1:150-450", "--tsv"]) == 0
+    out = pd.read_csv(io.StringIO(capsys.readouterr().out), sep="\t")
+    assert list(out.hgnc_symbol) == ["GENEA", "GENEB", "GENEC", "GENEE"]
+    assert set(out.interval) == {"L1"}
+    assert main(args + ["chr1:150-450", "--build", "hg19"]) == 2
+    assert main(args + ["7q34"]) == 2
+    assert main(args) == 2
