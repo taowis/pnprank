@@ -472,3 +472,11 @@ Each non-obvious choice, with its reason. Newest last.
 - **Coordinate conventions.** Coordinates on the command line are 1-based and inclusive, as shown by Ensembl and the UCSC browser. BED input is 0-based and half-open, as BED defines it.
 - **Genome build.** Only GRCh38 is accepted. The tool refuses other builds rather than lifting them over itself. Lift-over needs chain files, and its result should be checked against the flanking markers by the person who knows the locus (see the 2026-10-16 entry above).
 - **Ranking within the interval.** `interval_rank` orders scored genes by the genome-wide percentile, or by the expression-matched percentile with `--expr-matched`. Known tier-1 genes were training positives, have no percentile, and are listed after the ranked genes.
+- **Check against the case study (2026-10-18).** The case study took its gene sets from the Ensembl REST API. For all seven linkage loci, `genes_in_interval` on the same cytoband spans returns exactly the same genes as those REST sets, restricted to the ranking: 78, 398, 104, 130, 19, 50 and 145 genes.
+- **Ranked genes without coordinates.** 19,221 of the 19,229 ranked genes are in the Ensembl 116 primary GTF, so 8 can never appear in `pnprank interval` output:
+  - CLECL1, PAXX, FAM153B, CCL3L1, PRY, PRY2, SMIM2 and MSL3B.
+  - The Ensembl REST archive (queried 2026-10-18) gave these results:
+    - CLECL1, PRY, PRY2 and SMIM2 were last current in releases 112 to 115;
+    - CCL3L1 is current in 116 but is not on the primary assembly;
+    - PAXX, FAM153B and MSL3B returned no usable answer.
+  - These IDs entered the gene universe through HGNC. They are left in the ranking, because changing the universe would change the frozen ranking.

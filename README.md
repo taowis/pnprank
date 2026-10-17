@@ -51,7 +51,9 @@ the UCSC browser (BED files are read as 0-based, as BED defines). Gene coordinat
 from Ensembl 116 (`results/tables/gene_coordinates_e116.tsv.gz`). A gene is included if any
 part of it overlaps the interval. `interval_rank` orders the scored genes inside the
 interval; known tier-1 genes have no score and are listed last. Intervals on hg19 or
-T2T-CHM13 must be lifted over first, and checked against their flanking markers.
+T2T-CHM13 must be lifted over first, and checked against their flanking markers. Eight ranked genes
+have no Ensembl 116 primary-assembly coordinates and never appear in interval output
+(listed in `docs/decisions.md`).
 
 Columns:
 
