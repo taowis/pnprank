@@ -18,3 +18,13 @@ rule stage6_checks:
         "results/tables/stage6/release_checks.tsv",
     shell:
         "python workflow/scripts/stage6_checks.py"
+
+
+rule gene_coordinates:
+    input:
+        "results/tables/pnprank_ranking.tsv.gz",
+        ancient(config["external"]["human_gtf"]["dest"]),
+    output:
+        config["external"]["human_gtf"]["coordinates_table"],
+    shell:
+        "python workflow/scripts/gene_coordinates.py"

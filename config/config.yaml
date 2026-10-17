@@ -42,6 +42,11 @@ external:                      # MD5 values are as published by the host (base64
     bsd_sum: "42607 105329"     # from Ensembl CHECKSUMS (BSD sum)
     dest: data/external/annotation/Mus_musculus.GRCm39.116.gtf.gz
     genes_table: data/external/annotation/mouse_genes_e116.tsv  # gene_id, name, biotype
+  human_gtf:                   # gene coordinates for `pnprank interval`
+    url: https://ftp.ensembl.org/pub/release-116/gtf/homo_sapiens/Homo_sapiens.GRCh38.116.gtf.gz
+    bsd_sum: "49151 137815"     # from Ensembl CHECKSUMS (BSD sum)
+    dest: data/external/annotation/Homo_sapiens.GRCh38.116.gtf.gz
+    coordinates_table: results/tables/gene_coordinates_e116.tsv.gz  # committed; ranked genes only
   ucsc_cytoband:               # linkage-locus case study; host file dated 2022-10-29
     url: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/cytoBand.txt.gz
     sha256: e514e48b0a12a516fd5231b44241a20a282f290bdd6131cadcddc6276ee26082

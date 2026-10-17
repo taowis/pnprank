@@ -11,6 +11,7 @@ from pnprank import __version__
 from pnprank.truth import assemble_truth, build_candidates, fetch_sources, validate_truth
 
 DEFAULT_RANKING = Path(__file__).resolve().parents[2] / "results" / "tables" / "pnprank_ranking.tsv.gz"
+DEFAULT_COORDS = DEFAULT_RANKING.with_name("gene_coordinates_e116.tsv.gz")
 DISPLAY = ["rank", "hgnc_symbol", "status", "percentile", "percentile_seed_min",
            "percentile_seed_max", "percentile_expr_matched", "percentile_non_atlas",
            "gtex_mean_decile", "top_cell_type"]
@@ -63,6 +64,24 @@ def main(argv: list[str] | None = None) -> int:
     p_top.add_argument("--ranking", default=str(DEFAULT_RANKING))
     p_top.add_argument("--tsv", action="store_true", help="tab-separated output, all columns")
 
+    p_int = sub.add_parser(
+        "interval", help="rank the genes inside one or more GRCh38 intervals",
+        description="Rank the protein-coding genes overlapping each interval. Coordinates are "
+                    "GRCh38, 1-based and inclusive (e.g. chr7:150,000,000-160,000,000, "
+                    "optionally named: DHMN1=chr7:...). Lift intervals on other assemblies "
+                    "over to GRCh38 first.")
+    p_int.add_argument("regions", nargs="*", help="[name=]chrom:start-end")
+    p_int.add_argument("--bed", help="BED file of intervals (0-based starts, as BED defines)")
+    p_int.add_argument("--build", default="GRCh38", help="assembly of the coordinates "
+                       "(only GRCh38/hg38 is accepted)")
+    p_int.add_argument("--pad-kb", type=float, default=0,
+                       help="extend each interval by this many kb on both sides")
+    p_int.add_argument("--expr-matched", action="store_true",
+                       help="order by the expression-matched percentile")
+    p_int.add_argument("--ranking", default=str(DEFAULT_RANKING))
+    p_int.add_argument("--coordinates", default=str(DEFAULT_COORDS))
+    p_int.add_argument("--tsv", action="store_true", help="tab-separated output, all columns")
+
     args = parser.parse_args(argv)
     if args.command == "validate-truth":
         problems = validate_truth(args.path)
@@ -79,6 +98,8 @@ def main(argv: list[str] | None = None) -> int:
         return _build_ranking(args)
     if args.command in ("query", "top"):
         return _lookup(args)
+    if args.command == "interval":
+        return _interval(args)
     parser.print_help()
     return 0
 
@@ -222,6 +243,56 @@ def _lookup(args: argparse.Namespace) -> int:
         print(f"{q}: {why}", file=sys.stderr)
     print(NOTE, file=sys.stderr)
     return 1 if problems and out.empty else 0
+
+
+def _interval(args: argparse.Namespace) -> int:
+    import pandas as pd
+
+    from pnprank.ranking import (GRCH38_NAMES, genes_in_interval, load_coordinates,
+                                 load_ranking, parse_region, read_bed)
+
+    if args.build.lower() not in GRCH38_NAMES:
+        print(f"build {args.build!r} not supported: the ranking uses GRCh38 (Ensembl 116) gene "
+              "coordinates. Lift the intervals over to GRCh38 (e.g. UCSC liftOver) and check "
+              "them against the flanking markers.", file=sys.stderr)
+        return 2
+    try:
+        regions = [parse_region(r) for r in args.regions]
+        if args.bed:
+            with open(args.bed) as fh:
+                regions += read_bed(fh)
+    except (ValueError, IndexError) as err:
+        print(err, file=sys.stderr)
+        return 2
+    if not regions:
+        print("no intervals given", file=sys.stderr)
+        return 2
+    for p in (args.ranking, args.coordinates):
+        if not Path(p).exists():
+            print(f"not found: {p}", file=sys.stderr)
+            return 2
+    tab, coords = load_ranking(args.ranking), load_coordinates(args.coordinates)
+    by = "percentile_expr_matched" if args.expr_matched else "percentile"
+    pad = int(args.pad_kb * 1000)
+    blocks = []
+    for name, chrom, start, end in regions:
+        out = genes_in_interval(tab, coords, chrom, start, end, pad, by)
+        out.insert(0, "interval", name)
+        blocks.append(out)
+        if args.tsv:
+            continue
+        n_known = int(out.interval_rank.isna().sum())
+        span = f"chr{chrom}:{max(1, start - pad):,}-{end + pad:,}"
+        print(f"== {name}  {span} (GRCh38)  {len(out)} genes, {len(out) - n_known} scored, "
+              f"{n_known} known tier-1")
+        cols = ["interval_rank"] + DISPLAY + ["start"]
+        print(out[cols].to_string(index=False, na_rep="-") if len(out) else "(no genes)")
+        print()
+    if args.tsv:
+        pd.concat(blocks, ignore_index=True).to_csv(sys.stdout, sep="\t", index=False)
+    print(NOTE + " interval_rank orders scored genes within the interval (1 = highest); "
+          "genes partly overlapping an edge are included.", file=sys.stderr)
+    return 0
 
 
 if __name__ == "__main__":

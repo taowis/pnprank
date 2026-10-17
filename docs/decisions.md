@@ -459,3 +459,16 @@ Each non-obvious choice, with its reason. Newest last.
 - **Unpublished intervals.** Coordinates of unpublished loci, even from the lab that owns them, are lab-internal data and do not enter the repository (hard rule 2). The genome-wide ranking does not depend on the interval, so an interval is only a filter on the committed table; it is applied outside the repository, and nothing about such loci is committed.
 - **Prospective test.** The proposed test on unsolved loci is blind: the ranking is fixed (git tag and date recorded) before any interval is received, and the ranking returned is the one from that tag.
 - **Freeze recorded.** Tag `ranking-frozen-2026-10-16` (annotated, on commit 9f95a9d, pushed 2026-10-16). It fixes `results/tables/pnprank_ranking.tsv.gz` at SHA-256 `e6bd0aa855f6d326d58d3f1d0ae4f96728253053bf5afa42a40e40ff636898f7`; the file was last changed in 6b51299 (2026-10-07). No interval for the test had been received when the tag was made.
+
+## 2026-10-16 — `pnprank interval`
+
+- **Purpose.** Ranks the genes inside user-supplied intervals, for the blind test on unsolved loci and for routine use. It reads the committed ranking and does not rescore anything, so its output for a given ranking file is fixed.
+- **Gene coordinates.**
+  - Coordinates come from the Ensembl 116 human GTF, the release used for the gene universe. They are written to a small committed table, `results/tables/gene_coordinates_e116.tsv.gz`, so the tool works without the data root.
+  - The linkage case study used the Ensembl REST overlap endpoint instead. That service follows the current release, and it needs network access.
+- **Overlap rule.**
+  - Any overlap counts, so a gene that crosses an interval edge is included. This matches the REST overlap endpoint used in the case study.
+  - Users can widen intervals with `--pad-kb`. No padding is applied by default, because how far to extend an interval depends on how it was defined.
+- **Coordinate conventions.** Coordinates on the command line are 1-based and inclusive, as shown by Ensembl and the UCSC browser. BED input is 0-based and half-open, as BED defines it.
+- **Genome build.** Only GRCh38 is accepted. The tool refuses other builds rather than lifting them over itself. Lift-over needs chain files, and its result should be checked against the flanking markers by the person who knows the locus (see the 2026-10-16 entry above).
+- **Ranking within the interval.** `interval_rank` orders scored genes by the genome-wide percentile, or by the expression-matched percentile with `--expr-matched`. Known tier-1 genes were training positives, have no percentile, and are listed after the ranked genes.

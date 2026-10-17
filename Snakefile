@@ -22,5 +22,6 @@ rule all:
         "results/backtest/repeated_cv_tier1.tsv",
         "results/backtest/comparators/comparator_headline_differences.tsv",
         "results/tables/stage6/release_checks.tsv",
+        "results/tables/gene_coordinates_e116.tsv.gz",
         "results/case_studies/locus_ranking.tsv",
         "results/case_studies/patient_tissue_expression.tsv",

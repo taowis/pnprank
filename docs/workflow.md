@@ -110,6 +110,7 @@ Report: `docs/stage_reports/comparators.md`.
 |---|---|---|---|
 | `stage6_ranking` | `pnprank build-ranking` | feature matrix, truth set | `results/tables/pnprank_ranking.tsv.gz` and `_meta.json` |
 | `stage6_checks` | `stage6_checks.py` | the ranking | `results/tables/stage6/release_checks.tsv` |
+| `gene_coordinates` | `gene_coordinates.py` | the ranking, Ensembl 116 human GTF | `results/tables/gene_coordinates_e116.tsv.gz` (used by `pnprank interval`) |
 
 The `pnprank query` and `pnprank top` commands read the committed ranking. Report:
 `docs/stage_reports/stage6_cli.md`.

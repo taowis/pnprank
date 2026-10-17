@@ -10,7 +10,7 @@
 | 3 | Feasibility pilot on one atlas | done (Yang 2022 human TG) |
 | 4 | Full feature set and model | done (11 atlases; nested-CV AUROC 0.79 tier 1) |
 | 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | done (back-test AUROC 0.75–0.78 tier 1; see report) |
-| 6 | Command-line tool | done (`pnprank query`, `pnprank top`; see report) |
+| 6 | Command-line tool | done (`pnprank query`, `pnprank top`, `pnprank interval`; see report) |
 
 ## What this is
 
@@ -42,7 +42,16 @@ pnprank query SPTLC1 KIF5A ENSG00000158887        # symbols (aliases ok) or Ense
 pnprank query --file my_candidates.txt --tsv > hits.tsv   # one gene per line
 pnprank top -n 50                                  # best-ranked genes not yet known
 pnprank top -n 50 --expr-matched                   # order by expression-matched percentile
+pnprank interval DHMN1=chr7:138,500,001-155,200,000  # 7q34-q36.2 (UCSC hg38 bands), ranked
+pnprank interval --bed loci.bed --pad-kb 500 --tsv > loci.tsv  # several intervals, padded
 ```
+
+`pnprank interval` takes GRCh38 coordinates, 1-based and inclusive as shown in Ensembl and
+the UCSC browser (BED files are read as 0-based, as BED defines). Gene coordinates are
+from Ensembl 116 (`results/tables/gene_coordinates_e116.tsv.gz`). A gene is included if any
+part of it overlaps the interval. `interval_rank` orders the scored genes inside the
+interval; known tier-1 genes have no score and are listed last. Intervals on hg19 or
+T2T-CHM13 must be lifted over first, and checked against their flanking markers.
 
 Columns:
 

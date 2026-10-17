@@ -28,6 +28,7 @@ SHA-256 checksums of each snapshot are in `data/external/truth_sources/manifest.
 |---|---|---|---|---|---|
 | gnomAD constraint metrics | v4.1 | MD5 (base64) FN9LKstYH8u7KoKjpVX9NQ== | not yet verified | https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/constraint/gnomad.v4.1.constraint_metrics.tsv | 2026-10-07 |
 | GTEx gene median TPM | v10 (RNASeQC 2.4.2) | MD5 (base64) E9/dDLc8WJnNCxAq7l7mww== | not yet verified | https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/GTEx_Analysis_v10_RNASeQCv2.4.2_gene_median_tpm.gct.gz | 2026-10-07 |
+| Ensembl human gene annotation (GTF) | 116, GRCh38 | BSD sum 49151 137815 | not yet verified | https://ftp.ensembl.org/pub/release-116/gtf/homo_sapiens/Homo_sapiens.GRCh38.116.gtf.gz | 2026-10-16 |
 | Ensembl mouse gene annotation (GTF) | 116, GRCm39 | BSD sum 42607 105329 | not yet verified | https://ftp.ensembl.org/pub/release-116/gtf/mus_musculus/Mus_musculus.GRCm39.116.gtf.gz | 2026-10-07 |
 
 Checksums are from the host (GCS object MD5, Ensembl CHECKSUMS) and are checked after download.

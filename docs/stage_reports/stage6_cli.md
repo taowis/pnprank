@@ -30,6 +30,7 @@ pnprank query SPTLC1 KIF5A ENSG00000158887   # symbols, aliases or Ensembl IDs
 pnprank query --file genes.txt --tsv         # one gene per line; '-' reads stdin
 pnprank top -n 50                            # best-ranked genes not yet known
 pnprank top -n 50 --expr-matched             # order by expression-matched percentile
+pnprank interval chr7:138500001-155200000    # genes in a GRCh38 interval (added 2026-10-16)
 pnprank build-ranking --n-jobs 5             # rebuild from the processed data
 ```
 
