@@ -33,6 +33,11 @@
   pre-specified pooled analysis (both are reported).
 - Genes without a one-to-one mouse orthologue have no features from the five mouse
   atlases (e.g. PRPS1, MORC2), which lowers their rank.
+- Only protein-coding genes are ranked. All 100 tier-1 training genes and 240 of the 242
+  truth-set genes are protein-coding (the other two, MT-RNR1 and MT-TL1, are mitochondrial
+  RNA genes), so there are no non-coding examples to learn from. A non-coding RNA gene
+  that causes neuropathy would be missed; a non-coding variant acting on a nearby
+  protein-coding gene can still be reached through that gene's rank.
 - Genes acting in rare cell types with low bulk expression (e.g. SLC5A7 in motor neurons)
   are ranked low because overall expression carries much of the model's weight.
 - The released ranking (Stage 6) is not itself back-tested: it applies the back-tested
