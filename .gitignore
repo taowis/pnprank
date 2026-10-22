@@ -11,6 +11,8 @@ data/*
 !data/README.md
 !data/truth/
 !data/truth/**
+!data/metadata/
+!data/metadata/**
 
 # Keep empty dirs via .gitkeep
 !**/.gitkeep

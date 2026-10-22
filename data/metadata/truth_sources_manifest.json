@@ -1,0 +1,37 @@
+[
+  {
+    "source": "panelapp:hereditary_neuropathy",
+    "file": "panelapp_85.json",
+    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/85/",
+    "retrieved": "2026-10-06",
+    "sha256": "0a5817940431cb12bdd6cf14b010a69b11ad21e27c4f453d043f013c3193f6b3"
+  },
+  {
+    "source": "panelapp:hereditary_neuropathy_or_pain_gms",
+    "file": "panelapp_846.json",
+    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/846/",
+    "retrieved": "2026-10-06",
+    "sha256": "84462c38f7c83f4bbb005f968fbdd156f782e64e24dff769740a6b753fabe8fc"
+  },
+  {
+    "source": "panelapp:hsp",
+    "file": "panelapp_165.json",
+    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/165/",
+    "retrieved": "2026-10-06",
+    "sha256": "ad310503f392af4c1e40e16533a72ca2fcba1247c1bc5f3aed444a5a7f3db1a4"
+  },
+  {
+    "source": "clingen",
+    "file": "clingen_gene_validity.csv",
+    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
+    "retrieved": "2026-10-06",
+    "sha256": "979e814b2371a13133ab11ef14b613c58f11967928634b2af128df0632865016"
+  },
+  {
+    "source": "hgnc",
+    "file": "hgnc_complete_set.txt",
+    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+    "retrieved": "2026-10-06",
+    "sha256": "2b4224ea847df2fc6982f5b2a52804c5d92fbb8810b134afb636f6029452dc03"
+  }
+]
