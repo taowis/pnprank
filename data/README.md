@@ -1,6 +1,6 @@
 # data/
 
-Only this file and `truth/` are in git. Everything else sits under the data root set in
+Only this file, `truth/` and `metadata/` are in git. Everything else sits under the data root set in
 `config/paths.yaml` (about 19 GB at present: 13 GB `raw/`, 4.4 GB `interim/`, 0.9 GB
 `external/`, 31 MB `processed/`) and is either downloaded or rebuilt by the Snakemake
 workflow. This file lists every untracked file, where it came from and how to get it back.
@@ -65,6 +65,16 @@ Only cells from healthy, control or naive donors are used (see `standardize.py`)
 | ham2025_mouse_nmj | `b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad` | 304 MB | CELLxGENE ef9f0fae-c12c-4f1a-bb67-63346c2ae0f1 | https://datasets.cellxgene.cziscience.com/b69ec11e-bab4-4e12-8c52-0028fc3c2ed3.h5ad |
 
 
+## metadata/ (in git)
+
+Copies of checksum manifests that the workflow writes next to the data, kept here so they
+survive when `external/` is deleted. If a fetch step rewrites the original, copy it here again.
+
+| File | Copy of | Contents |
+|---|---|---|
+| `truth_sources_manifest.json` | `external/truth_sources/manifest.json` | URL, retrieval date and SHA-256 of the HGNC, PanelApp and ClinGen snapshots |
+| `comparators_manifest.json` | `external/comparators/manifest.json` | URL, release, size, MD5 and SHA-256 of all 19 GOA, GO, BioGRID and UniProt comparator files |
+
 ## external/: reference and annotation files
 
 | Path | Contents | Source | Version, date retrieved | How to obtain |
@@ -81,12 +91,12 @@ Only cells from healthy, control or naive donors are used (see `standardize.py`)
 | `truth_sources/hgnc_complete_set.txt` | HGNC gene symbols, aliases and Ensembl IDs | https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt | snapshot 2026-10-06 | `pnprank build-candidates` |
 | `truth_sources/panelapp_85.json`, `panelapp_846.json`, `panelapp_165.json` | Genomics England PanelApp panels (hereditary neuropathy; neuropathy or pain GMS; HSP) | https://panelapp.genomicsengland.co.uk/api/v1/panels/{85,846,165}/ | v1.513, v8.37, v1.316; 2026-10-06 | `pnprank build-candidates` |
 | `truth_sources/clingen_gene_validity.csv` | ClinGen gene-disease validity curations | https://search.clinicalgenome.org/kb/gene-validity/download | file created 2026-10-06 | `pnprank build-candidates` |
-| `truth_sources/manifest.json` | URL, date and SHA-256 of the four snapshots above | | | `pnprank build-candidates` |
+| `truth_sources/manifest.json` | URL, date and SHA-256 of the four snapshots above (tracked copy in `metadata/`) | | | `pnprank build-candidates` |
 | `comparators/goa/*.gz` (6 files) | EBI GOA human annotation releases 25, 58, 92, 128, 163, 197 | https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/ | release dates in `config/comparators.yaml`; 2026-10-08 | `comparators_fetch` |
 | `comparators/go/<release>/*.obo` (6 files) | GO ontology releases 2004-12-01 to 2019-12-09 | https://release.geneontology.org/ | 2026-10-08 | `comparators_fetch` |
 | `comparators/biogrid/*.zip` (5 files) | BioGRID ORGANISM releases 2.0.36, 3.1.72, 3.2.108, 3.4.144, 3.5.180 | https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/ | 2026-10-08 | `comparators_fetch` |
 | `comparators/uniprot/2026_03/sec_ac.txt`, `HUMAN_9606_idmapping.dat.gz` | UniProt secondary accessions and human ID mapping (identifier maps for the old GOA files) | https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/ | UniProt 2026_03, 2026-10-08 | `comparators_fetch` |
-| `comparators/manifest.json` | Size, MD5 and SHA-256 of every comparator file | | | `comparators_fetch` |
+| `comparators/manifest.json` | Size, MD5 and SHA-256 of every comparator file (tracked copy in `metadata/`) | | | `comparators_fetch` |
 | `celegans/` | Cached JSON responses from HGNC REST, Ensembl REST (pan-taxonomic Compara) and the Alliance of Genome Resources API, plus `top200_all_orthology.tsv` | URL patterns in `docs/data_sources.md` | Ensembl REST 116, Alliance 9.1.0; 2026-10-08 | `celegans_orthologues` (live queries; reuses the cache) |
 | `atlas_search/` | Stage 2 search records: CELLxGENE Discover dataset listing (`cxg_datasets.json`) and the per-search notes summarised in `results/tables/atlas_candidates.tsv` | CELLxGENE Discover curation API; GEO, Zenodo, SPARC, ArrayExpress | 2026-10-07 | not rebuilt by the workflow; kept as the search record |
 
@@ -94,7 +104,7 @@ The truth-source snapshots cannot be fetched again as they were: HGNC, PanelApp 
 ClinGen serve only their current versions, and `pnprank build-candidates` also rewrites
 `truth/candidates.tsv`. To reproduce the analysis, only `hgnc_complete_set.txt` is needed
 (for symbol-to-ID mapping); a newer snapshot can map a handful of renamed symbols
-differently. The SHA-256 of the files used is in `truth_sources/manifest.json`. The
+differently. The SHA-256 of the files used is in `truth_sources/manifest.json`, with a tracked copy in `metadata/truth_sources_manifest.json`. The
 same applies to the UniProt identifier maps, which come from `current_release`.
 
 Three files under `orthology/` are left over from setting up orthology and are not used:

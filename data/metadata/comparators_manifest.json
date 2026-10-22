@@ -1,0 +1,211 @@
+[
+ {
+  "kind": "go_annotation",
+  "cutoff": 2005,
+  "release": 25,
+  "date": "2004-12-14",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.25.gz",
+  "path": "external/comparators/goa/gene_association.goa_human.25.gz",
+  "bytes": 1302029,
+  "md5": "0926140a10bb70ca97e77d60f83d2153",
+  "sha256": "d1b3e0910a467b30cef03ca27c65132e96660575626c4ee0a5cd164ede6a0a27"
+ },
+ {
+  "kind": "go_annotation",
+  "cutoff": 2008,
+  "release": 58,
+  "date": "2007-12-18",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.58.gz",
+  "path": "external/comparators/goa/gene_association.goa_human.58.gz",
+  "bytes": 2748508,
+  "md5": "d7b93cad2ecfe02a807aee3d68c1edee",
+  "sha256": "5231a5bda92ece9c86ee70c2feed759f1552c680d308d8a1c2619df95d1818db"
+ },
+ {
+  "kind": "go_annotation",
+  "cutoff": 2011,
+  "release": 92,
+  "date": "2010-12-13",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.92.gz",
+  "path": "external/comparators/goa/gene_association.goa_human.92.gz",
+  "bytes": 10998702,
+  "md5": "e95118f20bb988020973895663b00230",
+  "sha256": "941d36d346a258b3d14d848c31d1729d58371c8301c2c5bd190df14b6e35aa81"
+ },
+ {
+  "kind": "go_annotation",
+  "cutoff": 2014,
+  "release": 128,
+  "date": "2013-12-09",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/gene_association.goa_human.128.gz",
+  "path": "external/comparators/goa/gene_association.goa_human.128.gz",
+  "bytes": 5221814,
+  "md5": "0f9bb261ec4355fbf95945aae8a85ff2",
+  "sha256": "3beb821f8b831d25f23dbff815465a2c501ecbbb4406e0844bb4e26726ad5306"
+ },
+ {
+  "kind": "go_annotation",
+  "cutoff": 2017,
+  "release": 163,
+  "date": "2016-11-28",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.163.gz",
+  "path": "external/comparators/goa/goa_human.gaf.163.gz",
+  "bytes": 5017961,
+  "md5": "b46b490cc88f075dbde469f9e2ff19ea",
+  "sha256": "4b9fcc9be1012894a4040232e88aa3d899c5825890e74ab85f3e39a3aac4a8a5"
+ },
+ {
+  "kind": "go_annotation",
+  "cutoff": 2020,
+  "release": 197,
+  "date": "2019-12-17",
+  "url": "https://ftp.ebi.ac.uk/pub/databases/GO/goa/old/HUMAN/goa_human.gaf.197.gz",
+  "path": "external/comparators/goa/goa_human.gaf.197.gz",
+  "bytes": 7098680,
+  "md5": "d438766a0268bd83d8cbcb8eb8c77a36",
+  "sha256": "f9d1defbb12a04f8853a70c9c86af8856f6e96f18f7bcfc6847e76387486ad3c"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2005,
+  "release": "2004-12-01",
+  "date": "2004-12-01",
+  "url": "https://release.geneontology.org/2004-12-01/ontology/gene_ontology.obo",
+  "path": "external/comparators/go/2004-12-01/gene_ontology.obo",
+  "bytes": 5845282,
+  "md5": "7b48d055975900fba5cd24c5b19fcfe4",
+  "sha256": "865a5d413e3bda146a93e4afd0c0face72e8514dfe468a6a03fab4935360c9a4"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2008,
+  "release": "2007-12-01",
+  "date": "2007-12-01",
+  "url": "https://release.geneontology.org/2007-12-01/ontology/gene_ontology.obo",
+  "path": "external/comparators/go/2007-12-01/gene_ontology.obo",
+  "bytes": 14140363,
+  "md5": "7ae61ca4bc16da753e4b8799c41241f4",
+  "sha256": "0f2982b68a9274a8dd01a961e7bd04a37bd4b69fa80f847812e23aaa8418a8e1"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2011,
+  "release": "2010-12-01",
+  "date": "2010-12-01",
+  "url": "https://release.geneontology.org/2010-12-01/ontology/gene_ontology.obo",
+  "path": "external/comparators/go/2010-12-01/gene_ontology.obo",
+  "bytes": 19611873,
+  "md5": "36d038c00031f76629236a1e274893ad",
+  "sha256": "9298c0bc42385593ee8cd1f0678fabdbeb2bcf4c6e7cf1ba64852bf21fc38be7"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2014,
+  "release": "2013-12-01",
+  "date": "2013-12-01",
+  "url": "https://release.geneontology.org/2013-12-01/ontology/go-basic.obo",
+  "path": "external/comparators/go/2013-12-01/go-basic.obo",
+  "bytes": 27361464,
+  "md5": "da8b8f206d112c34178f710f55e4abac",
+  "sha256": "2004f361f5d485e181f62068fa2b5ad1811c736a6476d994b805003be447afcd"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2017,
+  "release": "2016-12-01",
+  "date": "2016-12-01",
+  "url": "https://release.geneontology.org/2016-12-01/ontology/go-basic.obo",
+  "path": "external/comparators/go/2016-12-01/go-basic.obo",
+  "bytes": 33120469,
+  "md5": "61f03d6f44f8c55dc973944529b81e73",
+  "sha256": "f52c5907e4a00428bb642e66fcc017b4fa3ea7b1f6bd1e51473eb43346d45511"
+ },
+ {
+  "kind": "go_ontology",
+  "cutoff": 2020,
+  "release": "2019-12-09",
+  "date": "2019-12-09",
+  "url": "https://release.geneontology.org/2019-12-09/ontology/go-basic.obo",
+  "path": "external/comparators/go/2019-12-09/go-basic.obo",
+  "bytes": 31294034,
+  "md5": "4d357207c5afb1cae421058340e7eec2",
+  "sha256": "fa2d88125ae6ccc372f56bf352253194ad1612238c15488ef33da2a887c5a7dd"
+ },
+ {
+  "kind": "uniprot_sec_ac",
+  "cutoff": null,
+  "release": "2026_03",
+  "date": null,
+  "url": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/sec_ac.txt",
+  "path": "external/comparators/uniprot/2026_03/sec_ac.txt",
+  "bytes": 49485553,
+  "md5": "e87f2532fd5a16bb9a3f7f5dbcd95455",
+  "sha256": "dcc2908ceec5e536c70e8e1f76813df5bed95fe467510942579bc7eaef5767f0"
+ },
+ {
+  "kind": "uniprot_human_idmapping",
+  "cutoff": null,
+  "release": "2026_03",
+  "date": null,
+  "url": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz",
+  "path": "external/comparators/uniprot/2026_03/HUMAN_9606_idmapping.dat.gz",
+  "bytes": 38464542,
+  "md5": "923d3343558ec042d82c45a6436da9bb",
+  "sha256": "5fb356e81b07a938ac4d8e8a4b5e0faa89001bcff2aef59422ff30eaa8e72996"
+ },
+ {
+  "kind": "interactions",
+  "cutoff": 2008,
+  "release": "2.0.36",
+  "date": "2007-12-15",
+  "url": "https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-2.0.36/BIOGRID-ORGANISM-2.0.36.tab.zip",
+  "path": "external/comparators/biogrid/BIOGRID-ORGANISM-2.0.36.tab.zip",
+  "bytes": 3821320,
+  "md5": "82e5e047ec5bb15be886f71a3a323864",
+  "sha256": "4359674f14080055b8dbfe5a0e190ef392dc649bb2668ff5a5e80c3f001d5639"
+ },
+ {
+  "kind": "interactions",
+  "cutoff": 2011,
+  "release": "3.1.72",
+  "date": "2010-12-25",
+  "url": "https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.1.72/BIOGRID-ORGANISM-3.1.72.tab2.zip",
+  "path": "external/comparators/biogrid/BIOGRID-ORGANISM-3.1.72.tab2.zip",
+  "bytes": 12208604,
+  "md5": "95f8603654c6a890081f21512d1a6b39",
+  "sha256": "7bb5e8f91efce7c2454380eeee83f12080f046c59cf52ac1d801bb68f01502e7"
+ },
+ {
+  "kind": "interactions",
+  "cutoff": 2014,
+  "release": "3.2.108",
+  "date": "2013-12-26",
+  "url": "https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.2.108/BIOGRID-ORGANISM-3.2.108.tab2.zip",
+  "path": "external/comparators/biogrid/BIOGRID-ORGANISM-3.2.108.tab2.zip",
+  "bytes": 24935681,
+  "md5": "aebc274c545037eee889d6ae27006b47",
+  "sha256": "cfbfaca7dcb39ee9f9aa64cb728f71e0ecc356209b888d136aa419ef3ea61671"
+ },
+ {
+  "kind": "interactions",
+  "cutoff": 2017,
+  "release": "3.4.144",
+  "date": "2016-12-30",
+  "url": "https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.4.144/BIOGRID-ORGANISM-3.4.144.tab2.zip",
+  "path": "external/comparators/biogrid/BIOGRID-ORGANISM-3.4.144.tab2.zip",
+  "bytes": 58545589,
+  "md5": "e1d4da9e8f222eecbfb18b47c647428a",
+  "sha256": "fabaaece8e2bb9b8baa088ae2d3ac5dd6a67ccfe4752dd00ca855fe7be6d8305"
+ },
+ {
+  "kind": "interactions",
+  "cutoff": 2020,
+  "release": "3.5.180",
+  "date": "2019-12-31",
+  "url": "https://biogrid-downloads.nyc3.digitaloceanspaces.com/BioGRID/Release-Archive/BIOGRID-3.5.180/BIOGRID-ORGANISM-3.5.180.tab2.zip",
+  "path": "external/comparators/biogrid/BIOGRID-ORGANISM-3.5.180.tab2.zip",
+  "bytes": 75046079,
+  "md5": "94b34adc8ad9178665dbb7662354d126",
+  "sha256": "429038d3f97b0c89eb1f15d0a1b3c4d0dc8ae642bb14f06a3d44e36e16d28f83"
+ }
+]
