@@ -79,6 +79,8 @@ e9740cf).
 
 ### 1. Temporal back-test: PNPrank is the best or tied-best score at every cutoff
 
+> Correction (2026-11-02): at 2020 the non-atlas model is 0.002 higher (0.755 vs 0.753), and 0.013 higher after expression matching (0.681 vs 0.668). "Best or tied-best" holds against the dated existing approaches, not against this ablation.
+
 Tier 1, all genes discovered after the cutoff, within-fold percentiles (primary):
 
 | Cutoff | Train / test genes | PNPrank | Non-atlas model | GTEx nerve | GTEx mean | −LOEUF |
