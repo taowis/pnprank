@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use PNPrank, please cite it as below."
+title: "PNPrank: ranking candidate genes for inherited peripheral neuropathy from public single-cell atlases"
+authors:
+  - family-names: Lai
+    given-names: Kaitao
+    orcid: "https://orcid.org/0000-0002-9420-9352"
+    affiliation: "The University of Sydney; ANZAC Research Institute"
+license: MIT
+repository-code: "https://github.com/taowis/pnprank"
+version: 1.0.0
+date-released: 2026-11-02
