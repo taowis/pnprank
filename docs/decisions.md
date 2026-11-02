@@ -480,3 +480,8 @@ Each non-obvious choice, with its reason. Newest last.
     - CCL3L1 is current in 116 but is not on the primary assembly;
     - PAXX, FAM153B and MSL3B returned no usable answer.
   - These IDs entered the gene universe through HGNC. They are left in the ranking, because changing the universe would change the frozen ranking.
+
+## 2026-11-02 Public release and archive
+
+- **Separate public repository.** The code is released as taowis/pnprank, a copy of this repository's `main` and tags without the `manuscript/` and `presentations/` folders. This repository stays private. Pull request references cannot be removed from an existing GitHub repository, so a fresh one was used.
+- **Archive.** Release v1.0.0 of taowis/pnprank is archived at Zenodo, version DOI 10.5281/zenodo.23884223 (concept DOI 10.5281/zenodo.23884222, which resolves to the latest version). The manuscript cites the version DOI, because the results were produced with that version.
