@@ -1,0 +1,14 @@
+{
+  "title": "PNPrank: ranking candidate genes for inherited peripheral neuropathy from public single-cell atlases",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Lai, Kaitao",
+      "affiliation": "The University of Sydney; ANZAC Research Institute",
+      "orcid": "0000-0002-9420-9352"
+    }
+  ],
+  "description": "Code, configuration, curated truth set, result tables and gene ranking for PNPrank, which ranks human genes by their likelihood of causing inherited peripheral neuropathy using cell-type-resolved expression from public single-cell atlases, with a temporal back-test.",
+  "license": "MIT",
+  "keywords": ["peripheral neuropathy", "Charcot-Marie-Tooth disease", "gene prioritisation", "single-cell RNA-seq", "temporal validation"]
+}
