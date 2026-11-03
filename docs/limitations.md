@@ -54,3 +54,20 @@
   back-tested without leakage and are not compared. The PPI comparator has no pre-2005
   release and is not run at 2005. Old GO releases lose 30-40% of proteins to identifiers
   that cannot be mapped today.
+- Co-expression features (the only label-derived features) are computed once from all
+  positives in a model's training data, before the inner cross-validation that chooses C.
+  During that choice the inner-validation positives are therefore also seeds. Outer test
+  and back-test evaluation genes never enter the seed set, so this does not leak
+  evaluation labels, but hyperparameter selection is not fully nested for this feature
+  family. Affects `cross_validated_scores` (Stage 4, repeated CV) and `fit_fold_models`
+  (back-test, interval simulation, linkage case study, release). Found 2026-11-03; not
+  yet corrected or rerun.
+- The back-test restricts the timing of labels only. Atlases (published 2021-2025),
+  GTEx v10 and gnomAD v4.1 are current releases at every cutoff, while the GO and
+  BioGRID comparators use dated releases; the comparison favours PNPrank to an unknown
+  degree.
+- Evaluation background genes are unlabelled, not known negatives, and are chosen with
+  the current candidate lists. Widening the background to all scored genes changed
+  tier-1 AUROC by at most 0.001 (`results/tables/revision_v3/sensitivity_eval_only.tsv`).
+- Bootstrap CIs hold the fitted models fixed; they do not include variation from
+  refitting, fold assignment, truth-set curation or discovery-year assignment.
