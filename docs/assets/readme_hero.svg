@@ -2,14 +2,10 @@
 <title id="t">PNPrank</title>
 <desc id="d">Animated banner. A myelinated axon serves as a time axis from 2005 to 2026. An action potential jumps between nodes of Ranvier; as it passes, each of 70 neuropathy genes appears at the position PNPrank gave it genome-wide in the year it was reported, and 9 of them land in the top 1%. A terminal shows pnprank top, query and interval commands.</desc>
 <style>
-svg{--bg:#fbfaf7;--ink:#1f2328;--muted:#59636e;--grid:#d8dee4;--axon:#8c959f;
---myelin:#dbe4f5;--myelin-edge:#8aa4d6;--dot:#a3abb5;--top10:#1a7f86;--top1:#c96a14;
---glow:#f0a050;--term:#1f2328;--term-ink:#e6edf3;--term-muted:#9198a1;--term-ok:#7ee2b8;
---chip:#eef1f4}
-@media (prefers-color-scheme: dark){svg{--bg:#0d1117;--ink:#e6edf3;--muted:#9198a1;
---grid:#30363d;--axon:#6e7681;--myelin:#1c2b45;--myelin-edge:#4b6aa6;--dot:#5b636d;
---top10:#39c5cf;--top1:#f0a050;--glow:#ffb86b;--term:#161b22;--term-ink:#e6edf3;
---term-muted:#8b949e;--term-ok:#7ee2b8;--chip:#161b22}}
+svg{--bg:#12305a;--ink:#f2f6fb;--muted:#b3c4d9;--grid:#2f527f;--axon:#7f9cc0;
+--myelin:#1f4778;--myelin-edge:#77a2dc;--dot:#7d90a8;--top10:#4fd6de;--top1:#ffb35c;
+--glow:#ffc27a;--term:#0a1b33;--term-ink:#e6edf3;--term-muted:#9198a1;--term-ok:#7ee2b8;
+--chip:#1c406d}
 .bg{fill:var(--bg)}.ink{fill:var(--ink)}.muted{fill:var(--muted)}
 .grid{stroke:var(--grid);stroke-width:1}.gridd{stroke:var(--grid);stroke-width:1;stroke-dasharray:3 4}
 .axon{stroke:var(--axon);stroke-width:2.5}.myelin{fill:var(--myelin);stroke:var(--myelin-edge);stroke-width:1.2}
