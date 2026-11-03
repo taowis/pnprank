@@ -6,8 +6,8 @@ position PNPrank gave it genome-wide in the year it was reported
 (results/backtest/interval_simulation.tsv, column pct_full). The terminal card shows
 real `pnprank` commands with output copied from the released ranking (2026-11-03).
 
-Pure SVG + CSS, no script, so GitHub renders it in an <img>. Light and dark colour
-schemes; with prefers-reduced-motion the final frame is shown.
+Pure SVG + CSS, no script, so GitHub renders it in an <img>. One navy palette is used
+for both GitHub themes; with prefers-reduced-motion the final frame is shown.
 
 Usage: python workflow/scripts/readme_hero.py
 """
@@ -58,14 +58,10 @@ el = []
 
 # ---------------------------------------------------------------- style tokens
 css.append("""
-svg{--bg:#fbfaf7;--ink:#1f2328;--muted:#59636e;--grid:#d8dee4;--axon:#8c959f;
---myelin:#dbe4f5;--myelin-edge:#8aa4d6;--dot:#a3abb5;--top10:#1a7f86;--top1:#c96a14;
---glow:#f0a050;--term:#1f2328;--term-ink:#e6edf3;--term-muted:#9198a1;--term-ok:#7ee2b8;
---chip:#eef1f4}
-@media (prefers-color-scheme: dark){svg{--bg:#0d1117;--ink:#e6edf3;--muted:#9198a1;
---grid:#30363d;--axon:#6e7681;--myelin:#1c2b45;--myelin-edge:#4b6aa6;--dot:#5b636d;
---top10:#39c5cf;--top1:#f0a050;--glow:#ffb86b;--term:#161b22;--term-ink:#e6edf3;
---term-muted:#8b949e;--term-ok:#7ee2b8;--chip:#161b22}}
+svg{--bg:#12305a;--ink:#f2f6fb;--muted:#b3c4d9;--grid:#2f527f;--axon:#7f9cc0;
+--myelin:#1f4778;--myelin-edge:#77a2dc;--dot:#7d90a8;--top10:#4fd6de;--top1:#ffb35c;
+--glow:#ffc27a;--term:#0a1b33;--term-ink:#e6edf3;--term-muted:#9198a1;--term-ok:#7ee2b8;
+--chip:#1c406d}
 .bg{fill:var(--bg)}.ink{fill:var(--ink)}.muted{fill:var(--muted)}
 .grid{stroke:var(--grid);stroke-width:1}.gridd{stroke:var(--grid);stroke-width:1;stroke-dasharray:3 4}
 .axon{stroke:var(--axon);stroke-width:2.5}.myelin{fill:var(--myelin);stroke:var(--myelin-edge);stroke-width:1.2}
