@@ -20,6 +20,7 @@ from pnprank.backtest import auroc, bootstrap_ci, paired_bootstrap_diff
 from pnprank.features import (
     atlas_features,
     atlas_profiles,
+    profiles_from_static,
     gnomad_features,
     gtex_features,
     label_features,
@@ -45,18 +46,27 @@ cands = pd.read_csv(cfg["truth"]["candidates"], sep="\t", dtype=str)
 
 # --- features ---------------------------------------------------------------------
 cmap = load_celltype_map(fc["celltype_map"])
-profiles = atlas_profiles(fc["atlases"], interim, cmap, cfg["pseudobulk"]["min_cells_per_group"],
-                          cfg["pseudobulk"]["min_donors"])
-universe_all = sorted(pc.ensembl_gene_id)
-X_atlas = atlas_features(profiles, universe_all)
-X_gnomad = gnomad_features(cfg["external"]["gnomad_constraint"]["dest"], universe_all)
-X_gtex = gtex_features(cfg["external"]["gtex_median_tpm"]["dest"], universe_all, fc["gtex_tissues"])
-# keep genes seen in at least one atlas or in GTEx (drops genes with no expression data at all)
-seen = X_atlas.notna().any(axis=1) | X_gtex.notna().any(axis=1)
-universe_all = [g for g in universe_all if seen[g]]
-X_static = pd.concat([X_atlas, X_gnomad, X_gtex], axis=1).loc[universe_all]
-X_static.to_csv(Path(paths["data_root"]) / "processed" / "features_static.tsv.gz", sep="\t",
-                compression="gzip")
+static_path = Path(paths["data_root"]) / "processed" / "features_static.tsv.gz"
+if all((interim / a).exists() for a in fc["atlases"]):
+    profiles = atlas_profiles(fc["atlases"], interim, cmap,
+                              cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"])
+    universe_all = sorted(pc.ensembl_gene_id)
+    X_atlas = atlas_features(profiles, universe_all)
+    X_gnomad = gnomad_features(cfg["external"]["gnomad_constraint"]["dest"], universe_all)
+    X_gtex = gtex_features(cfg["external"]["gtex_median_tpm"]["dest"], universe_all,
+                           fc["gtex_tissues"])
+    # keep genes seen in at least one atlas or in GTEx (drops genes with no expression data)
+    seen = X_atlas.notna().any(axis=1) | X_gtex.notna().any(axis=1)
+    universe_all = [g for g in universe_all if seen[g]]
+    X_static = pd.concat([X_atlas, X_gnomad, X_gtex], axis=1).loc[universe_all]
+    X_static.to_csv(static_path, sep="\t", compression="gzip")
+else:
+    # interim/ pseudobulk removed to save disk: reuse the saved static matrix and rebuild
+    # the profiles from its logcpm columns (profiles_from_static)
+    print(f"interim pseudobulk not found; using {static_path}", flush=True)
+    X_static = pd.read_csv(static_path, sep="\t", index_col=0)
+    universe_all = list(X_static.index)
+    profiles = profiles_from_static(X_static, fc["atlases"])
 
 
 def label_fn(known: set[str]) -> pd.DataFrame:
@@ -142,7 +152,8 @@ json.dump(params_log, open(out / "cv_best_params.json", "w"), indent=1)
 y = labelled({"1"})
 known = set(y.index[y == 1])
 X_full = with_label_features(X_static, label_fn, known)
-est, best = fit_tuned(X_full.loc[y.index], y.to_numpy(), "logistic", seed, mc["inner_folds"])
+est, best = fit_tuned(X_full.loc[y.index], y.to_numpy(), "logistic", seed, mc["inner_folds"],
+                      label_fn)
 lr = est.named_steps["logisticregression"]
 imp = est.named_steps["simpleimputer"]
 names = list(X_full.columns) + [f"missing:{X_full.columns[i]}" for i in imp.indicator_.features_]

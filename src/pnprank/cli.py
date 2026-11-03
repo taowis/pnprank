@@ -177,7 +177,7 @@ def _build_ranking(args: argparse.Namespace) -> int:
     import pandas as pd
     import yaml
 
-    from pnprank.features import atlas_profiles, label_features, load_celltype_map
+    from pnprank.features import label_features, load_celltype_map, load_profiles
     from pnprank.ranking import build_ranking
 
     cfg = yaml.safe_load(Path(args.config).read_text())
@@ -185,9 +185,10 @@ def _build_ranking(args: argparse.Namespace) -> int:
     fc, rc = cfg["features"], cfg["release"]
     X = pd.read_csv(root / "processed" / "features_static.tsv.gz", sep="\t", index_col=0)
     universe = list(X.index)
-    profiles = atlas_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
+    profiles = load_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
                               cfg["pseudobulk"]["min_cells_per_group"],
-                              cfg["pseudobulk"]["min_donors"])
+                              cfg["pseudobulk"]["min_donors"],
+                         root / "processed" / "features_static.tsv.gz")
     truth = pd.read_csv(cfg["truth"]["path"], sep="\t", dtype=str)
     cands = pd.read_csv(cfg["truth"]["candidates"], sep="\t", dtype=str)
     hgnc = pd.read_csv(Path(cfg["truth"]["sources_dir"]) / "hgnc_complete_set.txt", sep="\t",

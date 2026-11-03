@@ -97,10 +97,61 @@ def test_cv_label_features_use_training_fold_only():
     oof, _ = cross_validated_scores(X_static, y, "logistic", seed=0, outer_folds=4,
                                     inner_folds=3, label_fn=label_fn)
     positives = set(y.index[y == 1])
-    assert len(seen) == 4
-    for known in seen:
+    # 4 outer folds, each followed by its 3 inner splits
+    assert len(seen) == 4 * (1 + 3)
+    outer = seen[::4]
+    for known in outer:
         assert known < positives and len(known) == 15  # 3/4 of 20 positives per fold
+    for k in range(4):
+        for inner in seen[4 * k + 1: 4 * k + 4]:
+            assert inner < outer[k] and len(inner) == 10  # 2/3 of 15
     assert not oof.isna().any()
+
+
+def test_inner_cv_label_features_exclude_inner_validation_positives():
+    """While hyperparameters are chosen, label features are rebuilt from the inner-training
+    positives only, so no inner-validation positive is ever a seed."""
+    from sklearn.model_selection import StratifiedKFold
+
+    from pnprank.model import fit_tuned, with_label_features
+
+    profiles = _profiles(n_genes=90)
+    universe = list(profiles["atlasA"].index)
+    rng = np.random.default_rng(3)
+    X_static = pd.DataFrame(rng.normal(size=(90, 3)), index=universe, columns=["a", "b", "c"])
+    y = pd.Series(0, index=universe)
+    y.iloc[::4] = 1
+    seen = []
+
+    def label_fn(known):
+        seen.append(set(known))
+        return label_features(profiles, universe, known)
+
+    X = with_label_features(X_static, lambda k: label_features(profiles, universe, k),
+                            set(y.index[y == 1]))
+    fit_tuned(X, y.to_numpy(), "logistic", seed=5, folds=3, label_fn=label_fn)
+    splits = StratifiedKFold(n_splits=3, shuffle=True, random_state=5).split(X, y)
+    assert len(seen) == 3
+    for known, (tr, va) in zip(seen, splits):
+        val_pos = set(y.index[va][y.iloc[va] == 1])
+        assert val_pos and not (known & val_pos)
+        assert known == set(y.index[tr][y.iloc[tr] == 1])
+
+
+def test_fit_tuned_without_label_features_unchanged():
+    """The non-atlas path (no label features) is still a plain grid search."""
+    from sklearn.model_selection import GridSearchCV, StratifiedKFold
+
+    from pnprank.model import GRIDS, fit_tuned, make_model
+
+    rng = np.random.default_rng(4)
+    X = pd.DataFrame(rng.normal(size=(120, 4)), columns=list("abcd"))
+    y = (X.a + rng.normal(scale=2, size=120) > 1).astype(int).to_numpy()
+    est, best = fit_tuned(X, y, "logistic", seed=1, folds=3)
+    gs = GridSearchCV(make_model("logistic", 1), GRIDS["logistic"], scoring="roc_auc",
+                      cv=StratifiedKFold(3, shuffle=True, random_state=1)).fit(X, y)
+    assert best == gs.best_params_
+    assert np.allclose(est.predict_proba(X), gs.best_estimator_.predict_proba(X))
 
 
 def _backtest_scores(truth, cutoff, tiers=frozenset({"1"})):
@@ -278,3 +329,18 @@ def test_comparator_annotations_filtered_to_pre_cutoff(tmp_path):
         fh.write("\t".join(row + ["20071231", "x"]) + "\n")
         fh.write("\t".join(row[:1] + ["P2"] + row[2:] + ["20080101", "x"]) + "\n")
     assert read_gaf(p, before="20080101").db_id.tolist() == ["P1"]
+
+
+def test_profiles_from_static_round_trip():
+    """Profiles rebuilt from the static logcpm columns give the same label features."""
+    from pnprank.features import atlas_features, profiles_from_static
+
+    profiles = _profiles(n_genes=50)
+    universe = list(profiles["atlasA"].index) + ["absent"]
+    X = atlas_features(profiles, universe)
+    rebuilt = profiles_from_static(X, ["atlasA", "atlasB"])
+    known = {"G1", "G5", "G9", "G20"}
+    a = label_features(profiles, universe, known)
+    b = label_features(rebuilt, universe, known)
+    assert "absent" not in rebuilt["atlasA"].index
+    pd.testing.assert_frame_equal(a, b, check_exact=False, rtol=1e-12, atol=1e-12)

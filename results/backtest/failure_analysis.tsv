@@ -1,9 +1,9 @@
 ensembl_gene_id	hgnc_symbol	year	category	n_scored	fold_size	pct_full	pct_non_atlas	pct_gtex_nerve	pct_gtex_mean	pct_neg_loeuf	pct_full_expr_matched	pct_full_pooled	gtex_nerve_logtpm	gtex_mean_logtpm	loeuf	n_atlases_detected	most_specific_type
-ENSG00000140092	FBLN5	2011	CMT	19110	3822	0.2036	0.9383	0.9559	0.9271	0.7883	0.0927	0.0848	4.9	4.26	0.58	11	alkaslasi2021_mouse_mn|neuron_motor_type3
 ENSG00000179902	CFAP276	2019	CMT	19018	3804	0.2206	0.3031	0.1746	0.4351	0.1552	0.1075	0.2382	0.16	2.09	1.49	10	yadav2023_human_spinal_cord|ependymal
-ENSG00000115665	SLC5A7	2012	dHMN	19099	3820	0.233	0.2539	0.115	0.1126	0.8672	0.5027	0.2903	0.02	0.3	0.46	11	yadav2023_human_spinal_cord|neuron_motor
-ENSG00000147224	PRPS1	2007	CMT	19141	3828	0.2717	0.4313	0.7627	0.7433		0.0639	0.4611	3.5	3.16		6	yadav2023_human_spinal_cord|neuron_motor
+ENSG00000115665	SLC5A7	2012	dHMN	19099	3820	0.233	0.2539	0.115	0.1126	0.8672	0.5027	0.2343	0.02	0.3	0.46	11	yadav2023_human_spinal_cord|neuron_motor
+ENSG00000147224	PRPS1	2007	CMT	19141	3828	0.2717	0.4313	0.7627	0.7433		0.0639	0.2684	3.5	3.16		6	yadav2023_human_spinal_cord|neuron_motor
 ENSG00000179403	VWA1	2021	dHMN	19007	3802	0.3406	0.4424	0.975	0.8257	0.1565	0.1194	0.3396	5.31	3.48	1.51	11	heming2025_human_sural|schwann_nonmyelinating
 ENSG00000180198	RCC1	2025	CMT	18992	3798	0.3847	0.4595	0.5198	0.6019	0.898	0.2072	0.3946	2.42	2.63	0.4	11	alkaslasi2021_mouse_mn|neuron_visceral_motor
+ENSG00000140092	FBLN5	2011	CMT	19110	3822	0.4116	0.9383	0.9559	0.9271	0.7883	0.1805	0.412	4.9	4.26	0.58	11	alkaslasi2021_mouse_mn|neuron_motor_type3
 ENSG00000133422	MORC2	2015	CMT	19054	3810	0.4129	0.8478	0.7117	0.6539	0.9487	0.2154	0.4109	3.26	2.79	0.3	6	heming2025_human_sural|schwann_repair
 ENSG00000143858	SYT2	2014	dHMN	19069	3813	0.4671	0.4388	0.2811	0.2832	0.7809	0.7178	0.4577	0.61	1.25	0.58	11	yadav2023_human_spinal_cord|neuron_motor

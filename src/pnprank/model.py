@@ -16,10 +16,12 @@ from typing import Callable
 
 import numpy as np
 import pandas as pd
+from sklearn.base import clone
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV, StratifiedKFold
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import GridSearchCV, ParameterGrid, StratifiedKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -43,15 +45,43 @@ def make_model(kind: str, seed: int):
     raise ValueError(f"unknown model kind {kind}")
 
 
-def fit_tuned(X: pd.DataFrame, y: np.ndarray, kind: str, seed: int, folds: int):
-    """Grid-search hyperparameters by inner stratified CV on (X, y) only; refit on all."""
-    cv = StratifiedKFold(n_splits=folds, shuffle=True, random_state=seed)
-    gs = GridSearchCV(make_model(kind, seed), GRIDS[kind], scoring="roc_auc", cv=cv, n_jobs=1)
-    gs.fit(X, y)
-    return gs.best_estimator_, gs.best_params_
-
-
 LabelFeatureFn = Callable[[set[str]], pd.DataFrame]
+
+
+def fit_tuned(X: pd.DataFrame, y: np.ndarray, kind: str, seed: int, folds: int,
+              label_fn: LabelFeatureFn | None = None):
+    """Choose hyperparameters by inner stratified CV on (X, y) only; refit on all of X.
+
+    Without `label_fn` this is a plain grid search. With `label_fn`, X must already hold
+    the label-derived columns computed from all positives in y (used for the refit);
+    inside each inner split those columns are recomputed from the inner-training
+    positives only, so inner-validation positives never act as seeds while the
+    hyperparameters are chosen. The selection rule matches GridSearchCV: highest mean
+    inner AUROC, first in grid order on ties.
+    """
+    cv = StratifiedKFold(n_splits=folds, shuffle=True, random_state=seed)
+    if label_fn is None:
+        gs = GridSearchCV(make_model(kind, seed), GRIDS[kind], scoring="roc_auc", cv=cv,
+                          n_jobs=1)
+        gs.fit(X, y)
+        return gs.best_estimator_, gs.best_params_
+    y = np.asarray(y)
+    grid = list(ParameterGrid(GRIDS[kind]))
+    scores = np.zeros((len(grid), folds))
+    static = None
+    for f, (tr, va) in enumerate(cv.split(X, y)):
+        known = set(X.index[tr][y[tr] == 1])
+        lab = label_fn(known)
+        if static is None:
+            static = X.drop(columns=list(lab.columns))
+        Xi = pd.concat([static, lab.reindex(X.index)], axis=1)[X.columns]
+        for g, params in enumerate(grid):
+            est = clone(make_model(kind, seed)).set_params(**params)
+            est.fit(Xi.iloc[tr], y[tr])
+            scores[g, f] = roc_auc_score(y[va], est.predict_proba(Xi.iloc[va])[:, 1])
+    best = grid[int(np.argmax(scores.mean(axis=1)))]
+    est = clone(make_model(kind, seed)).set_params(**best).fit(X, y)
+    return est, best
 
 
 def with_label_features(
@@ -74,7 +104,8 @@ def cross_validated_scores(
     """Out-of-fold scores by nested CV.
 
     For each outer fold, label-derived features are recomputed from that fold's training
-    positives only, hyperparameters are tuned by inner CV on the training fold, and the
+    positives only, hyperparameters are tuned by inner CV on the training fold (with the
+    label-derived features recomputed again inside each inner split), and the
     held-out genes are scored. Returns (out-of-fold scores, per-fold best params).
     """
     oof = pd.Series(np.nan, index=y.index)
@@ -84,7 +115,8 @@ def cross_validated_scores(
         train_idx, test_idx = y.index[tr], y.index[te]
         known = set(train_idx[y.iloc[tr].to_numpy().astype(bool)])
         X = with_label_features(X_static, label_fn, known)
-        est, best = fit_tuned(X.loc[train_idx], y.loc[train_idx].to_numpy(), kind, seed + k, inner_folds)
+        est, best = fit_tuned(X.loc[train_idx], y.loc[train_idx].to_numpy(), kind, seed + k,
+                              inner_folds, label_fn)
         oof.loc[test_idx] = est.predict_proba(X.loc[test_idx])[:, 1]
         params.append({"fold": k, **best})
     return oof, params

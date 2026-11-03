@@ -30,7 +30,7 @@ from pnprank.backtest import (
     within_fold_percentile,
 )
 from pnprank.baselines import within_bin_percentile
-from pnprank.features import atlas_profiles, label_features, load_celltype_map
+from pnprank.features import label_features, load_celltype_map, load_profiles
 
 n_jobs = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 cfg = yaml.safe_load(Path("config/config.yaml").read_text())
@@ -46,8 +46,9 @@ missing = [a for a in fc["atlases"] if not any(c.startswith(a + "|") for c in X_
 if missing:
     raise SystemExit(f"features_static.tsv.gz lacks atlases {missing}; rerun stage4_model.py")
 universe = list(X_static.index)
-profiles = atlas_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
-                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"])
+profiles = load_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
+                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"],
+                         root / "processed" / "features_static.tsv.gz")
 non_atlas = [c for c in X_static.columns if c.startswith(("gnomad|", "gtex|"))]
 
 truth = pd.read_csv(cfg["truth"]["path"], sep="\t", dtype=str)

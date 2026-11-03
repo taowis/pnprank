@@ -1,5 +1,5 @@
 a	b	n	mean_pct_diff	ci_lo	ci_hi	top10pct_count_diff	top10_ci_lo	top10_ci_hi
-full	non_atlas	70	0.033	-0.018	0.08	2	-6	10
-full	gtex_nerve	70	0.056	-0.003	0.114	7	-2	16
-full	gtex_mean	70	0.096	0.035	0.164	13	3	23
-full	neg_loeuf	64	0.11	0.038	0.184	11	2	20
+full	non_atlas	70	0.042	-0.007	0.087	3	-5	11
+full	gtex_nerve	70	0.066	0.008	0.123	8	-1	17
+full	gtex_mean	70	0.106	0.044	0.172	14	4	24
+full	neg_loeuf	64	0.119	0.049	0.192	11	2	20

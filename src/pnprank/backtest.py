@@ -99,7 +99,9 @@ def fit_fold_models(X_static, y, kind: str, seed: int, folds: int, inner_folds: 
 
     Label-derived features are built once from the positives in `y` (pre-cutoff genes).
     Genes labelled 0 are split into `folds`; model k is trained on all positives and the
-    0-genes outside fold k, with hyperparameters tuned by inner CV on that training set.
+    0-genes outside fold k, with hyperparameters tuned by inner CV on that training set;
+    inside each inner split the label-derived features are recomputed from the
+    inner-training positives only (`fit_tuned`).
 
     Returns (feature matrix incl. label features, models, best params, fold index per
     0-gene).
@@ -118,7 +120,8 @@ def fit_fold_models(X_static, y, kind: str, seed: int, folds: int, inner_folds: 
     def run(k, tr):
         # positives in y's order (never set order: it varies with hash randomisation)
         train = list(y.index[y == 1]) + list(zeros[tr])
-        return fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds)
+        return fit_tuned(X.loc[train], y.loc[train].to_numpy(), kind, seed + k, inner_folds,
+                         label_fn)
 
     out = Parallel(n_jobs=n_jobs)(delayed(run)(k, tr) for k, (tr, _) in enumerate(splits))
     fold = pd.Series(0, index=zeros)
