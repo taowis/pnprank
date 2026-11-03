@@ -1,5 +1,7 @@
 # Stage 4 — Full feature set and model
 
+> Note (2026-11-03): this report describes results before the inner cross-validation correction. Current values are in `results/` and `manuscript/revision_v3_notes.md` (section 6); see `docs/decisions.md`.
+
 **Date:** 2026-10-07 (updated the same day after adding Jung 2023; 11 atlases)
 
 **Outputs:**

@@ -1,5 +1,7 @@
 # Stage 5 — Validation: temporal back-test, baselines, interval simulation, failure analysis
 
+> Note (2026-11-03): this report describes results before the inner cross-validation correction. Current values are in `results/` and `manuscript/revision_v3_notes.md` (section 6); see `docs/decisions.md`.
+
 **Date:** 2026-10-07
 
 **Outputs (`results/backtest/`):**

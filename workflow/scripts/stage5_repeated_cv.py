@@ -14,7 +14,7 @@ import yaml
 from joblib import Parallel, delayed
 
 from pnprank.backtest import auroc
-from pnprank.features import atlas_profiles, label_features, load_celltype_map
+from pnprank.features import label_features, load_celltype_map, load_profiles
 from pnprank.model import cross_validated_scores
 
 n_jobs = int(sys.argv[1]) if len(sys.argv) > 1 else 1
@@ -27,8 +27,9 @@ out.mkdir(parents=True, exist_ok=True)
 
 X_static = pd.read_csv(root / "processed" / "features_static.tsv.gz", sep="\t", index_col=0)
 universe = list(X_static.index)
-profiles = atlas_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
-                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"])
+profiles = load_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
+                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"],
+                         root / "processed" / "features_static.tsv.gz")
 non_atlas = [c for c in X_static.columns if c.startswith(("gnomad|", "gtex|"))]
 truth = pd.read_csv(cfg["truth"]["path"], sep="\t", dtype=str)
 cands = pd.read_csv(cfg["truth"]["candidates"], sep="\t", dtype=str)

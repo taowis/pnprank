@@ -127,6 +127,16 @@ Written by `standardize_atlas` (`workflow/scripts/standardize.py`), one director
 `interim/comparators/` holds the per-cutoff comparator scores written by
 `comparators_backtest`.
 
+Status on 2026-11-03: `raw/` and `interim/` are not on disk (removed to save space). The
+pipeline still runs from `processed/features_static.tsv.gz`: `load_profiles` rebuilds the
+per-atlas donor-mean CPM profiles from its `logcpm` columns when `interim/` is absent. To
+rebuild `interim/` itself, download the atlases listed in `config/atlases.yaml` (checksums
+there) and run the `standardize_atlas` rule. On the same date the comparator archives
+(`external/comparators/`, checked against `metadata/comparators_manifest.json`) and
+`external/loci/cytoBand.hg38.txt.gz` (SHA-256 in `docs/data_sources.md`) were downloaded
+again. `external/gtex/` and `external/gnomad/` are also absent; their content is already in
+`features_static.tsv.gz`, and `patient_tissue_expression` needs the GTEx file again if rerun.
+
 ## processed/
 
 `features_static.tsv.gz` is the gene-by-feature matrix (19,229 protein-coding genes;

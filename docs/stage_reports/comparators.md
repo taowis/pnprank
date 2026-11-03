@@ -1,5 +1,7 @@
 # Comparators in the temporal back-test
 
+> Note (2026-11-03): this report describes results before the inner cross-validation correction. Current values are in `results/` and `manuscript/revision_v3_notes.md` (section 6); see `docs/decisions.md`.
+
 **Date:** 2026-10-08 (after Stage 6)
 
 **Question:** inside the Stage 5 back-test, how does PNPrank compare with existing

@@ -1,6 +1,6 @@
 # pnprank
 
-**Status:** Stage 6 (Command-line tool) — complete. All stages done; awaiting review.
+**Status:** Stage 6 (Command-line tool) — complete. All stages done. On 2026-11-03 the inner cross-validation was corrected so that label-derived features are recomputed inside each inner split, and every analysis was rerun (`docs/decisions.md`); the released ranking did not change.
 
 | Stage | Description | Status |
 |---|---|---|
@@ -9,7 +9,7 @@
 | 2 | Locate and assess atlases | done (13 shortlisted of 133) |
 | 3 | Feasibility pilot on one atlas | done (Yang 2022 human TG) |
 | 4 | Full feature set and model | done (11 atlases; nested-CV AUROC 0.79 tier 1) |
-| 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | done (back-test AUROC 0.75–0.78 tier 1; see report) |
+| 5 | Validation: temporal back-test, baselines, interval simulation, failure analysis | done (back-test AUROC 0.75–0.79 tier 1 after the 2026-11-03 rerun; see report) |
 | 6 | Command-line tool | done (`pnprank query`, `pnprank top`, `pnprank interval`; see report) |
 
 ## What this is
@@ -66,13 +66,13 @@ Columns:
 | `status` | `known_tier1` (training positive, not ranked), `known_tier2`, `listed_not_in_truth` (on a source gene list but not curated as established), `unlabelled` |
 | `top_cell_type` | the atlas cell type with the highest specificity for the gene (descriptive) |
 
-What the percentiles mean: in the temporal back-test, genes discovered after a cutoff
-had a median percentile of about 0.83 at the time of discovery, but most top-ranked
+What the percentiles mean: in the back-test, tier-1 genes ranked in the year they were
+reported had a median percentile of about 0.83, but most top-ranked
 genes are not neuropathy genes. Use the ranking to prioritise follow-up, not as
 evidence of causality. See `docs/stage_reports/stage5_validation.md` and
 `docs/limitations.md`.
 
-To rebuild the ranking from the raw data (Stages 1–4 must have been run):
+To rebuild the ranking (Stages 1–4 must have been run; if `interim/` has been removed, the atlas profiles are rebuilt from `data/processed/features_static.tsv.gz`):
 `pnprank build-ranking --n-jobs 5`, or `snakemake -c5 results/tables/pnprank_ranking.tsv.gz`.
 
 ## Layout

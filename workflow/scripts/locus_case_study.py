@@ -19,7 +19,7 @@ import pandas as pd
 import yaml
 
 from pnprank.backtest import oof_scores_at_cutoff, training_labels, within_fold_percentile
-from pnprank.features import atlas_profiles, label_features, load_celltype_map
+from pnprank.features import label_features, load_celltype_map, load_profiles
 
 cfg = yaml.safe_load(Path("config/config.yaml").read_text())
 paths = yaml.safe_load(Path("config/paths.yaml").read_text())
@@ -101,8 +101,9 @@ def scores_at(cutoff: int) -> pd.DataFrame:
     X = pd.read_csv(root / "processed" / "features_static.tsv.gz", sep="\t", index_col=0)
     U = list(X.index)
     fc, mc = cfg["features"], cfg["model"]
-    prof = atlas_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
-                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"])
+    prof = load_profiles(fc["atlases"], root / "interim", load_celltype_map(fc["celltype_map"]),
+                          cfg["pseudobulk"]["min_cells_per_group"], cfg["pseudobulk"]["min_donors"],
+                         root / "processed" / "features_static.tsv.gz")
     non_atlas = [c for c in X.columns if c.startswith(("gnomad|", "gtex|"))]
     y = training_labels(U, truth, cutoff, {"1"})
     seed, folds = cfg["seeds"]["global"], cfg["backtest"]["scoring_folds"]

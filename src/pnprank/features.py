@@ -70,6 +70,35 @@ def atlas_profiles(
     return out
 
 
+def profiles_from_static(X_static: pd.DataFrame, atlas_ids: list[str]) -> dict[str, pd.DataFrame]:
+    """Rebuild donor-mean CPM profiles (genes x cell types) from the static feature matrix.
+
+    The `<atlas>|<cell type>|logcpm` columns are log1p of the donor-mean CPM of each
+    harmonised cell type (`atlas_features`), so expm1 recovers the profiles that
+    `harmonised_profile` returns, restricted to the gene universe. Genes absent from an
+    atlas (all NaN) are dropped, as they are absent from the original profile. Used when
+    the per-atlas pseudobulk files under interim/ have been removed to save disk space.
+    """
+    out = {}
+    for a in atlas_ids:
+        cols = [c for c in X_static.columns if c.startswith(a + "|") and c.endswith("|logcpm")]
+        if not cols:
+            raise ValueError(f"no logcpm columns for atlas {a}")
+        prof = np.expm1(X_static[cols])
+        prof.columns = [c.split("|")[1] for c in cols]
+        out[a] = prof[prof.notna().all(axis=1)]
+    return out
+
+
+def load_profiles(atlas_ids: list[str], interim: Path, celltype_map: pd.DataFrame,
+                  min_cells: int, min_donors: int, static_path: Path) -> dict[str, pd.DataFrame]:
+    """Atlas profiles from interim/ pseudobulk if present, else from the static features."""
+    if all((Path(interim) / a).exists() for a in atlas_ids):
+        return atlas_profiles(atlas_ids, Path(interim), celltype_map, min_cells, min_donors)
+    print(f"interim pseudobulk not found; profiles rebuilt from {static_path}", flush=True)
+    return profiles_from_static(pd.read_csv(static_path, sep="\t", index_col=0), atlas_ids)
+
+
 def atlas_features(profiles: dict[str, pd.DataFrame], universe: list[str]) -> pd.DataFrame:
     """log1p CPM and fraction specificity per atlas x cell type; absent genes are NaN.
 
