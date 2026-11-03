@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/readme_hero.svg" alt="PNPrank. A myelinated axon serves as a time axis from 2005 to 2026; as an action potential jumps between nodes, each of 70 neuropathy genes appears at the position PNPrank gave it genome-wide in the year it was reported, and 9 land in the top 1%." width="100%">
+</p>
+
 # pnprank
 
 **Status:** Stage 6 (Command-line tool) — complete. All stages done. On 2026-11-03 the inner cross-validation was corrected so that label-derived features are recomputed inside each inner split, and every analysis was rerun (`docs/decisions.md`); the released ranking did not change.
