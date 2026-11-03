@@ -502,4 +502,4 @@ Each non-obvious choice, with its reason. Newest last.
 
 ## 2026-11-03 Release v1.0.1
 
-- **New release.** v1.0.0 (Zenodo 10.5281/zenodo.23884223) contains the code before the inner-CV correction, so the back-test and Stage 4 gradient-boosting numbers in the revised manuscript cannot be reproduced from it. The corrected code is released as v1.0.1 of taowis/pnprank and archived as a new Zenodo version; the manuscript cites the v1.0.1 version DOI. The ranking is unchanged between the two versions, so the `ranking-frozen-2026-10-16` tag still applies.
+- **New release.** v1.0.0 (Zenodo 10.5281/zenodo.23884223) contains the code before the inner-CV correction, so the back-test and Stage 4 gradient-boosting numbers in the revised manuscript cannot be reproduced from it. The corrected code is released as v1.0.1 of taowis/pnprank and archived as a new Zenodo version; the manuscript cites the v1.0.1 version DOI, 10.5281/zenodo.23908584 (same concept DOI 10.5281/zenodo.23884222). The ranking is unchanged between the two versions, so the `ranking-frozen-2026-10-16` tag still applies.
