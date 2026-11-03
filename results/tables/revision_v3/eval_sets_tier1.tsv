@@ -1,0 +1,7 @@
+cutoff	n_pos	n_background	n_pos_scored_full	n_background_scored_full	ap_full	n_pos_scored_non_atlas	n_background_scored_non_atlas	ap_non_atlas	n_pos_scored_gtex_nerve	n_background_scored_gtex_nerve	n_pos_scored_gtex_mean	n_background_scored_gtex_mean	n_pos_scored_neg_loeuf	n_background_scored_neg_loeuf	n_background_expr_matched	n_pos_expr_matched	prevalence	ap_random_baseline	ap_full_over_prevalence	ap_non_atlas_over_prevalence
+2005	70	18982	70	18982	0.0117	70	18982	0.0106	70	18945	70	18945	64	17477	18945	70	0.00367	0.00367	3.18	2.89
+2008	62	18982	62	18982	0.0161	62	18982	0.0123	62	18945	62	18945	57	17477	18945	62	0.00326	0.00326	4.95	3.78
+2011	54	18982	54	18982	0.0155	54	18982	0.0137	54	18945	54	18945	51	17477	18945	54	0.00284	0.00284	5.46	4.83
+2014	32	18982	32	18982	0.016	32	18982	0.0103	32	18945	32	18945	31	17477	18945	32	0.00168	0.00168	9.51	6.12
+2017	19	18982	19	18982	0.012	19	18982	0.0073	19	18945	19	18945	19	17477	18945	19	0.001	0.001	12.0	7.3
+2020	13	18982	13	18982	0.0045	13	18982	0.0026	13	18945	13	18945	13	17477	18945	13	0.00068	0.00068	6.58	3.8

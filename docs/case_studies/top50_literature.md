@@ -138,7 +138,7 @@ which are new candidates?
     with the expression confound in `docs/limitations.md`: the model partly learns
     "neural, highly expressed, disease-prone" rather than "PNS-specific".
 - **Class E is enriched for atlas-driven genes.** 8 of 15 E genes have a non-atlas
-  percentile below 0.9, against 7 of 35 in other classes (Fisher exact p = 0.049; post hoc,
+  percentile below 0.9, against 8 of 35 in other classes (Fisher exact p = 0.049; post hoc,
   not corrected).
   - Genes that rank high only because of the atlas features are the least studied. That
     fits genuine novelty, and it equally fits noise from the atlas features.

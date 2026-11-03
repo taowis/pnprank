@@ -1,0 +1,25 @@
+hgnc_symbol	tier	category	discovery_year	pmid	reason	role_by_cutoff_tier1_analysis
+KIF1A	1	HSAN	2011	21820098	manual re-check: discovery paper read from PMC PDFs fetched by an automated downloader	2005:test+ 2008:test+ 2011:test+ 2014:train+ 2017:train+ 2020:train+
+SCN9A	1	HSAN	2007	17294067	low-confidence label	2005:test+ 2008:train+ 2011:train+ 2014:train+ 2017:train+ 2020:train+
+ADA2	2	SYND	2014	25278816	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:dropped 2020:dropped
+AGXT	2	SYND	2000	10693261	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+ATM	2	SYND	1996	8755918	manual re-check: discovery paper read from PMC PDFs fetched by an automated downloader	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+ERCC6	2	SYND	2014	25376329	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:dropped 2020:dropped
+FXN	2	SYND	1997	9150176	manual re-check: discovery paper read from PMC PDFs fetched by an automated downloader	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+GLA	2	SYND	1999	10069717	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+HMBS	2	SYND	2002	11940707	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+MAG	2	HSP	2015	26179919	manual re-check: discovery paper read from PMC PDFs fetched by an automated downloader	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:dropped 2020:dropped
+MT-TL1	2	SYND	1992	1436526	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+MTTP	2	SYND	2000	10679949	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+PEX7	2	SYND	2003	12522768	manual re-check: full-text quote came through a summarising web fetch; not verified verbatim	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+PNPLA6	2	HSP	2008	18313024	manual re-check: full-text quote came through a summarising web fetch; not verified verbatim	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+PPOX	2	SYND	2001	11286631	low-confidence label	2005:dropped 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+SAMD9L	2	SYND	2018	30046003	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:label0/tier1+2 test+ 2020:dropped
+SCARB2	2	SYND	2008	18308289	manual re-check: full-text quote came through a summarising web fetch; not verified verbatim	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+SLC52A2	2	SYND	2012	22740598	manual re-check: full-text quote came through a summarising web fetch; not verified verbatim	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:dropped 2017:dropped 2020:dropped
+SPG21	2	HSP	2021	34492745	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:label0/tier1+2 test+ 2020:label0/tier1+2 test+
+TTC19	2	SYND	2011	21278747	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:dropped 2017:dropped 2020:dropped
+UCHL1	2	SYND	2017	28007905	manual re-check: full-text quote came through a summarising web fetch; not verified verbatim	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:label0/tier1+2 test+ 2017:label0/tier1+2 test+ 2020:dropped
+VAPB	2	SYND	2006	16967488	low-confidence label	2005:label0/tier1+2 test+ 2008:dropped 2011:dropped 2014:dropped 2017:dropped 2020:dropped
+VPS13A	2	SYND	2012	22246890	low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:dropped 2017:dropped 2020:dropped
+XPA	2	SYND	2013	24252196	manual re-check: discovery paper read from PMC PDFs fetched by an automated downloader; low-confidence label	2005:label0/tier1+2 test+ 2008:label0/tier1+2 test+ 2011:label0/tier1+2 test+ 2014:dropped 2017:dropped 2020:dropped
