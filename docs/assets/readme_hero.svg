@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-labelledby="t d">
+<title id="t">PNPrank</title>
+<desc id="d">Animated banner. A myelinated axon serves as a time axis from 2005 to 2026. An action potential jumps between nodes of Ranvier; as it passes, each of 70 neuropathy genes appears at the position PNPrank gave it genome-wide in the year it was reported, and 9 of them land in the top 1%. A terminal shows pnprank top, query and interval commands.</desc>
+<style>
+svg{--bg:#fbfaf7;--ink:#1f2328;--muted:#59636e;--grid:#d8dee4;--axon:#8c959f;
+--myelin:#dbe4f5;--myelin-edge:#8aa4d6;--dot:#a3abb5;--top10:#1a7f86;--top1:#c96a14;
+--glow:#f0a050;--term:#1f2328;--term-ink:#e6edf3;--term-muted:#9198a1;--term-ok:#7ee2b8;
+--chip:#eef1f4}
+@media (prefers-color-scheme: dark){svg{--bg:#0d1117;--ink:#e6edf3;--muted:#9198a1;
+--grid:#30363d;--axon:#6e7681;--myelin:#1c2b45;--myelin-edge:#4b6aa6;--dot:#5b636d;
+--top10:#39c5cf;--top1:#f0a050;--glow:#ffb86b;--term:#161b22;--term-ink:#e6edf3;
+--term-muted:#8b949e;--term-ok:#7ee2b8;--chip:#161b22}}
+.bg{fill:var(--bg)}.ink{fill:var(--ink)}.muted{fill:var(--muted)}
+.grid{stroke:var(--grid);stroke-width:1}.gridd{stroke:var(--grid);stroke-width:1;stroke-dasharray:3 4}
+.axon{stroke:var(--axon);stroke-width:2.5}.myelin{fill:var(--myelin);stroke:var(--myelin-edge);stroke-width:1.2}
+.d0{fill:var(--dot)}.d10{fill:var(--top10)}.d1{fill:var(--top1)}.lab{fill:var(--top1);font-weight:600}
+.glow{fill:var(--glow)}.ring{fill:none;stroke:var(--glow);stroke-width:2}
+.term{fill:var(--term)}.tink{fill:var(--term-ink)}.tmut{fill:var(--term-muted)}.tok{fill:var(--term-ok)}
+.chip{fill:var(--chip);stroke:var(--grid)}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.pop{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}
+.s0{animation:s0 18.0s linear infinite}@keyframes s0{0%,0.00%{opacity:0}0.06%,31.67%{opacity:1}33.06%,100%{opacity:0}}.c0{animation:c0 18.0s infinite}@keyframes c0{0%,1.94%{transform:translateX(0);animation-timing-function:steps(16,end)}5.94%,100%{transform:translateX(128.8px)}}.o0{animation:o0 18.0s infinite}@keyframes o0{0%,6.78%{opacity:0}8.17%,100%{opacity:1}}.s1{animation:s1 18.0s linear infinite}@keyframes s1{0%,33.33%{opacity:0}33.39%,65.00%{opacity:1}66.39%,100%{opacity:0}}.c1{animation:c1 18.0s infinite}@keyframes c1{0%,35.28%{transform:translateX(0);animation-timing-function:steps(19,end)}40.03%,100%{transform:translateX(152.2px)}}.o1{animation:o1 18.0s infinite}@keyframes o1{0%,40.86%{opacity:0}42.25%,100%{opacity:1}}.s2{animation:s2 18.0s linear infinite}@keyframes s2{0%,66.67%{opacity:0}66.72%,98.33%{opacity:1}99.72%,100%{opacity:0}}.c2{animation:c2 18.0s infinite}@keyframes c2{0%,68.61%{transform:translateX(0);animation-timing-function:steps(51,end)}81.36%,100%{transform:translateX(401.8px)}}.o2{animation:o2 18.0s infinite}@keyframes o2{0%,82.19%{opacity:0}83.58%,100%{opacity:1}}.g0{animation:g0 16.0s infinite}@keyframes g0{0%,3.75%{opacity:0;transform:scale(0)}4.88%{opacity:1;transform:scale(1.6)}6.25%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g1{animation:g1 16.0s infinite}@keyframes g1{0%,4.00%{opacity:0;transform:scale(0)}5.12%{opacity:1;transform:scale(1.6)}6.50%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g2{animation:g2 16.0s infinite}@keyframes g2{0%,13.31%{opacity:0;transform:scale(0)}14.44%{opacity:1;transform:scale(1.6)}15.81%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g3{animation:g3 16.0s infinite}@keyframes g3{0%,13.56%{opacity:0;transform:scale(0)}14.69%{opacity:1;transform:scale(1.6)}16.06%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g4{animation:g4 16.0s infinite}@keyframes g4{0%,13.81%{opacity:0;transform:scale(0)}14.94%{opacity:1;transform:scale(1.6)}16.31%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g5{animation:g5 16.0s infinite}@keyframes g5{0%,14.06%{opacity:0;transform:scale(0)}15.19%{opacity:1;transform:scale(1.6)}16.56%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g6{animation:g6 16.0s infinite}@keyframes g6{0%,12.81%{opacity:0;transform:scale(0)}13.94%{opacity:1;transform:scale(1.6)}15.31%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g7{animation:g7 16.0s infinite}@keyframes g7{0%,13.06%{opacity:0;transform:scale(0)}14.19%{opacity:1;transform:scale(1.6)}15.56%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g8{animation:g8 16.0s infinite}@keyframes g8{0%,13.31%{opacity:0;transform:scale(0)}14.44%{opacity:1;transform:scale(1.6)}15.81%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g9{animation:g9 16.0s infinite}@keyframes g9{0%,22.62%{opacity:0;transform:scale(0)}23.75%{opacity:1;transform:scale(1.6)}25.13%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g10{animation:g10 16.0s infinite}@keyframes g10{0%,22.88%{opacity:0;transform:scale(0)}24.00%{opacity:1;transform:scale(1.6)}25.38%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g11{animation:g11 16.0s infinite}@keyframes g11{0%,23.12%{opacity:0;transform:scale(0)}24.25%{opacity:1;transform:scale(1.6)}25.63%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g12{animation:g12 16.0s infinite}@keyframes g12{0%,21.88%{opacity:0;transform:scale(0)}23.00%{opacity:1;transform:scale(1.6)}24.38%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g13{animation:g13 16.0s infinite}@keyframes g13{0%,22.12%{opacity:0;transform:scale(0)}23.25%{opacity:1;transform:scale(1.6)}24.62%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g14{animation:g14 16.0s infinite}@keyframes g14{0%,22.38%{opacity:0;transform:scale(0)}23.50%{opacity:1;transform:scale(1.6)}24.88%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g15{animation:g15 16.0s infinite}@keyframes g15{0%,22.62%{opacity:0;transform:scale(0)}23.75%{opacity:1;transform:scale(1.6)}25.13%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g16{animation:g16 16.0s infinite}@keyframes g16{0%,22.88%{opacity:0;transform:scale(0)}24.00%{opacity:1;transform:scale(1.6)}25.38%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g17{animation:g17 16.0s infinite}@keyframes g17{0%,23.12%{opacity:0;transform:scale(0)}24.25%{opacity:1;transform:scale(1.6)}25.63%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g18{animation:g18 16.0s infinite}@keyframes g18{0%,21.88%{opacity:0;transform:scale(0)}23.00%{opacity:1;transform:scale(1.6)}24.38%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g19{animation:g19 16.0s infinite}@keyframes g19{0%,22.12%{opacity:0;transform:scale(0)}23.25%{opacity:1;transform:scale(1.6)}24.62%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g20{animation:g20 16.0s infinite}@keyframes g20{0%,22.38%{opacity:0;transform:scale(0)}23.50%{opacity:1;transform:scale(1.6)}24.88%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g21{animation:g21 16.0s infinite}@keyframes g21{0%,31.69%{opacity:0;transform:scale(0)}32.81%{opacity:1;transform:scale(1.6)}34.19%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g22{animation:g22 16.0s infinite}@keyframes g22{0%,31.94%{opacity:0;transform:scale(0)}33.06%{opacity:1;transform:scale(1.6)}34.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g23{animation:g23 16.0s infinite}@keyframes g23{0%,32.19%{opacity:0;transform:scale(0)}33.31%{opacity:1;transform:scale(1.6)}34.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g24{animation:g24 16.0s infinite}@keyframes g24{0%,30.94%{opacity:0;transform:scale(0)}32.06%{opacity:1;transform:scale(1.6)}33.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g25{animation:g25 16.0s infinite}@keyframes g25{0%,31.19%{opacity:0;transform:scale(0)}32.31%{opacity:1;transform:scale(1.6)}33.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g26{animation:g26 16.0s infinite}@keyframes g26{0%,31.44%{opacity:0;transform:scale(0)}32.56%{opacity:1;transform:scale(1.6)}33.94%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g27{animation:g27 16.0s infinite}@keyframes g27{0%,31.69%{opacity:0;transform:scale(0)}32.81%{opacity:1;transform:scale(1.6)}34.19%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g28{animation:g28 16.0s infinite}@keyframes g28{0%,31.94%{opacity:0;transform:scale(0)}33.06%{opacity:1;transform:scale(1.6)}34.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g29{animation:g29 16.0s infinite}@keyframes g29{0%,32.19%{opacity:0;transform:scale(0)}33.31%{opacity:1;transform:scale(1.6)}34.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g30{animation:g30 16.0s infinite}@keyframes g30{0%,30.94%{opacity:0;transform:scale(0)}32.06%{opacity:1;transform:scale(1.6)}33.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g31{animation:g31 16.0s infinite}@keyframes g31{0%,31.19%{opacity:0;transform:scale(0)}32.31%{opacity:1;transform:scale(1.6)}33.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g32{animation:g32 16.0s infinite}@keyframes g32{0%,31.44%{opacity:0;transform:scale(0)}32.56%{opacity:1;transform:scale(1.6)}33.94%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g33{animation:g33 16.0s infinite}@keyframes g33{0%,31.69%{opacity:0;transform:scale(0)}32.81%{opacity:1;transform:scale(1.6)}34.19%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g34{animation:g34 16.0s infinite}@keyframes g34{0%,31.94%{opacity:0;transform:scale(0)}33.06%{opacity:1;transform:scale(1.6)}34.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g35{animation:g35 16.0s infinite}@keyframes g35{0%,32.19%{opacity:0;transform:scale(0)}33.31%{opacity:1;transform:scale(1.6)}34.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g36{animation:g36 16.0s infinite}@keyframes g36{0%,30.94%{opacity:0;transform:scale(0)}32.06%{opacity:1;transform:scale(1.6)}33.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g37{animation:g37 16.0s infinite}@keyframes g37{0%,31.19%{opacity:0;transform:scale(0)}32.31%{opacity:1;transform:scale(1.6)}33.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g38{animation:g38 16.0s infinite}@keyframes g38{0%,31.44%{opacity:0;transform:scale(0)}32.56%{opacity:1;transform:scale(1.6)}33.94%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g39{animation:g39 16.0s infinite}@keyframes g39{0%,31.69%{opacity:0;transform:scale(0)}32.81%{opacity:1;transform:scale(1.6)}34.19%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g40{animation:g40 16.0s infinite}@keyframes g40{0%,31.94%{opacity:0;transform:scale(0)}33.06%{opacity:1;transform:scale(1.6)}34.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g41{animation:g41 16.0s infinite}@keyframes g41{0%,32.19%{opacity:0;transform:scale(0)}33.31%{opacity:1;transform:scale(1.6)}34.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g42{animation:g42 16.0s infinite}@keyframes g42{0%,30.94%{opacity:0;transform:scale(0)}32.06%{opacity:1;transform:scale(1.6)}33.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g43{animation:g43 16.0s infinite}@keyframes g43{0%,31.19%{opacity:0;transform:scale(0)}32.31%{opacity:1;transform:scale(1.6)}33.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g44{animation:g44 16.0s infinite}@keyframes g44{0%,40.50%{opacity:0;transform:scale(0)}41.62%{opacity:1;transform:scale(1.6)}43.00%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g45{animation:g45 16.0s infinite}@keyframes g45{0%,40.75%{opacity:0;transform:scale(0)}41.87%{opacity:1;transform:scale(1.6)}43.25%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g46{animation:g46 16.0s infinite}@keyframes g46{0%,41.00%{opacity:0;transform:scale(0)}42.12%{opacity:1;transform:scale(1.6)}43.50%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g47{animation:g47 16.0s infinite}@keyframes g47{0%,41.25%{opacity:0;transform:scale(0)}42.37%{opacity:1;transform:scale(1.6)}43.75%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g48{animation:g48 16.0s infinite}@keyframes g48{0%,40.00%{opacity:0;transform:scale(0)}41.12%{opacity:1;transform:scale(1.6)}42.50%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g49{animation:g49 16.0s infinite}@keyframes g49{0%,40.25%{opacity:0;transform:scale(0)}41.37%{opacity:1;transform:scale(1.6)}42.75%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g50{animation:g50 16.0s infinite}@keyframes g50{0%,40.50%{opacity:0;transform:scale(0)}41.62%{opacity:1;transform:scale(1.6)}43.00%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g51{animation:g51 16.0s infinite}@keyframes g51{0%,40.75%{opacity:0;transform:scale(0)}41.87%{opacity:1;transform:scale(1.6)}43.25%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g52{animation:g52 16.0s infinite}@keyframes g52{0%,41.00%{opacity:0;transform:scale(0)}42.12%{opacity:1;transform:scale(1.6)}43.50%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g53{animation:g53 16.0s infinite}@keyframes g53{0%,50.31%{opacity:0;transform:scale(0)}51.44%{opacity:1;transform:scale(1.6)}52.81%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g54{animation:g54 16.0s infinite}@keyframes g54{0%,49.06%{opacity:0;transform:scale(0)}50.19%{opacity:1;transform:scale(1.6)}51.56%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g55{animation:g55 16.0s infinite}@keyframes g55{0%,49.31%{opacity:0;transform:scale(0)}50.44%{opacity:1;transform:scale(1.6)}51.81%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g56{animation:g56 16.0s infinite}@keyframes g56{0%,49.56%{opacity:0;transform:scale(0)}50.69%{opacity:1;transform:scale(1.6)}52.06%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g57{animation:g57 16.0s infinite}@keyframes g57{0%,49.81%{opacity:0;transform:scale(0)}50.94%{opacity:1;transform:scale(1.6)}52.31%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g58{animation:g58 16.0s infinite}@keyframes g58{0%,50.06%{opacity:0;transform:scale(0)}51.19%{opacity:1;transform:scale(1.6)}52.56%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g59{animation:g59 16.0s infinite}@keyframes g59{0%,59.37%{opacity:0;transform:scale(0)}60.50%{opacity:1;transform:scale(1.6)}61.87%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g60{animation:g60 16.0s infinite}@keyframes g60{0%,58.12%{opacity:0;transform:scale(0)}59.25%{opacity:1;transform:scale(1.6)}60.62%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g61{animation:g61 16.0s infinite}@keyframes g61{0%,58.37%{opacity:0;transform:scale(0)}59.50%{opacity:1;transform:scale(1.6)}60.87%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g62{animation:g62 16.0s infinite}@keyframes g62{0%,58.62%{opacity:0;transform:scale(0)}59.75%{opacity:1;transform:scale(1.6)}61.12%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g63{animation:g63 16.0s infinite}@keyframes g63{0%,58.87%{opacity:0;transform:scale(0)}60.00%{opacity:1;transform:scale(1.6)}61.37%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g64{animation:g64 16.0s infinite}@keyframes g64{0%,68.19%{opacity:0;transform:scale(0)}69.31%{opacity:1;transform:scale(1.6)}70.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g65{animation:g65 16.0s infinite}@keyframes g65{0%,68.44%{opacity:0;transform:scale(0)}69.56%{opacity:1;transform:scale(1.6)}70.94%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g66{animation:g66 16.0s infinite}@keyframes g66{0%,67.19%{opacity:0;transform:scale(0)}68.31%{opacity:1;transform:scale(1.6)}69.69%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g67{animation:g67 16.0s infinite}@keyframes g67{0%,67.44%{opacity:0;transform:scale(0)}68.56%{opacity:1;transform:scale(1.6)}69.94%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g68{animation:g68 16.0s infinite}@keyframes g68{0%,67.69%{opacity:0;transform:scale(0)}68.81%{opacity:1;transform:scale(1.6)}70.19%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.g69{animation:g69 16.0s infinite}@keyframes g69{0%,67.94%{opacity:0;transform:scale(0)}69.06%{opacity:1;transform:scale(1.6)}70.44%,91.25%{opacity:1;transform:scale(1)}96.88%,100%{opacity:0;transform:scale(1)}}.pulse{animation:pulse 16.0s infinite}@keyframes pulse{0%{transform:translateX(0);opacity:0}1.88%{transform:translateX(0);opacity:0}3.75%{transform:translateX(0);opacity:1}11.44%{transform:translateX(0.0px);opacity:1}12.81%{transform:translateX(75.7px);opacity:1}20.50%{transform:translateX(75.7px);opacity:1}21.88%{transform:translateX(151.4px);opacity:1}29.56%{transform:translateX(151.4px);opacity:1}30.94%{transform:translateX(227.0px);opacity:1}38.62%{transform:translateX(227.0px);opacity:1}40.00%{transform:translateX(302.7px);opacity:1}47.69%{transform:translateX(302.7px);opacity:1}49.06%{transform:translateX(378.4px);opacity:1}56.75%{transform:translateX(378.4px);opacity:1}58.12%{transform:translateX(454.1px);opacity:1}65.81%{transform:translateX(454.1px);opacity:1}67.19%{transform:translateX(529.7px);opacity:1}73.44%{transform:translateX(529.7px);opacity:0}100%{transform:translateX(529.7px);opacity:0}}.r0{animation:r0 16.0s ease-out infinite}@keyframes r0{0%,3.69%{opacity:0;transform:scale(.4)}4.06%{opacity:.9}9.38%,100%{opacity:0;transform:scale(2.4)}}.r1{animation:r1 16.0s ease-out infinite}@keyframes r1{0%,12.75%{opacity:0;transform:scale(.4)}13.12%{opacity:.9}18.44%,100%{opacity:0;transform:scale(2.4)}}.r2{animation:r2 16.0s ease-out infinite}@keyframes r2{0%,21.81%{opacity:0;transform:scale(.4)}22.19%{opacity:.9}27.50%,100%{opacity:0;transform:scale(2.4)}}.r3{animation:r3 16.0s ease-out infinite}@keyframes r3{0%,30.87%{opacity:0;transform:scale(.4)}31.25%{opacity:.9}36.56%,100%{opacity:0;transform:scale(2.4)}}.r4{animation:r4 16.0s ease-out infinite}@keyframes r4{0%,39.94%{opacity:0;transform:scale(.4)}40.31%{opacity:.9}45.62%,100%{opacity:0;transform:scale(2.4)}}.r5{animation:r5 16.0s ease-out infinite}@keyframes r5{0%,49.00%{opacity:0;transform:scale(.4)}49.38%{opacity:.9}54.69%,100%{opacity:0;transform:scale(2.4)}}.r6{animation:r6 16.0s ease-out infinite}@keyframes r6{0%,58.06%{opacity:0;transform:scale(.4)}58.44%{opacity:.9}63.75%,100%{opacity:0;transform:scale(2.4)}}.r7{animation:r7 16.0s ease-out infinite}@keyframes r7{0%,67.12%{opacity:0;transform:scale(.4)}67.50%{opacity:.9}72.81%,100%{opacity:0;transform:scale(2.4)}}.cap{animation:cap 16.0s infinite}@keyframes cap{0%,70.94%{opacity:0}74.06%,91.25%{opacity:1}96.88%,100%{opacity:0}}</style>
+<rect class="bg" x="0" y="0" width="1280" height="480" rx="18"/>
+<text class="muted" x="56" y="92" font-size="13" letter-spacing="2.2" font-weight="600">INHERITED PERIPHERAL NEUROPATHY</text>
+<text class="ink" x="54" y="152" font-size="62" font-weight="700" letter-spacing="-1">PNPrank</text>
+<text class="muted" x="56" y="192" font-size="18">Ranking candidate genes with public single-cell atlases,</text>
+<text class="muted" x="56" y="217" font-size="18">tested on the genes reported after each cutoff year.</text>
+<rect class="chip" x="56" y="240" width="163" height="28" rx="14"/>
+<text class="ink" x="68" y="259" font-size="13">19,229 genes ranked</text>
+<rect class="chip" x="228.7" y="240" width="97" height="28" rx="14"/>
+<text class="ink" x="240.7" y="259" font-size="13">11 atlases</text>
+<rect class="chip" x="335.7" y="240" width="206" height="28" rx="14"/>
+<text class="ink" x="347.7" y="259" font-size="13">back-test AUROC 0.75–0.79</text>
+<rect class="term" x="56" y="292" width="520" height="150" rx="12"/>
+<defs><clipPath id="tclip"><rect x="56" y="292" width="520" height="150" rx="12"/></clipPath></defs>
+<g clip-path="url(#tclip)">
+<circle cx="76" cy="310" r="5" fill="#ff5f57"/>
+<circle cx="92" cy="310" r="5" fill="#febc2e"/>
+<circle cx="108" cy="310" r="5" fill="#28c840"/>
+<g class="s0" opacity="1">
+<text class="mono tok" x="76" y="344" font-size="13">$</text>
+<text class="mono tink" x="92" y="344" font-size="13" textLength="124.8" lengthAdjust="spacingAndGlyphs">pnprank top -n 3</text>
+<rect class="term c0" x="90" y="330" width="470" height="20" transform="translate(128.8 0)"/>
+<g class="o0">
+<text class="mono tmut" x="76" y="370" font-size="13" xml:space="preserve">  1  TUBA1A   unlabelled           1.000</text>
+<text class="mono tmut" x="76" y="391" font-size="13" xml:space="preserve">  2  L1CAM    listed_not_in_truth  1.000</text>
+<text class="mono tmut" x="76" y="412" font-size="13" xml:space="preserve">  3  MBP      unlabelled           1.000</text>
+</g></g>
+<g class="s1" opacity="0">
+<text class="mono tok" x="76" y="344" font-size="13">$</text>
+<text class="mono tink" x="92" y="344" font-size="13" textLength="148.2" lengthAdjust="spacingAndGlyphs">pnprank query KIF5A</text>
+<rect class="term c1" x="90" y="330" width="470" height="20" transform="translate(152.2 0)"/>
+<g class="o1">
+<text class="mono tmut" x="76" y="370" font-size="13" xml:space="preserve">KIF5A   rank 35   percentile 0.9986</text>
+<text class="mono tmut" x="76" y="391" font-size="13" xml:space="preserve">        known tier 2 (never used in training)</text>
+</g></g>
+<g class="s2" opacity="0">
+<text class="mono tok" x="76" y="344" font-size="13">$</text>
+<text class="mono tink" x="92" y="344" font-size="13" textLength="397.8" lengthAdjust="spacingAndGlyphs">pnprank interval DHMN1=chr7:138,500,001-155,200,000</text>
+<rect class="term c2" x="90" y="330" width="470" height="20" transform="translate(401.8 0)"/>
+<g class="o2">
+<text class="mono tmut" x="76" y="370" font-size="13" xml:space="preserve">DHMN1  145 genes scored</text>
+<text class="mono tmut" x="76" y="391" font-size="13" xml:space="preserve">  1  EPHB6   0.981     2  KCNH2   0.981</text>
+</g></g>
+</g>
+<text class="ink" x="650" y="44" font-size="15" font-weight="600">Each tier-1 gene, ranked genome-wide in the year it was reported</text>
+<text class="muted" x="650" y="64" font-size="12.5">Model trained only on the genes known before that year (2005–2026, n = 70)</text>
+<line class="gridd" x1="664" x2="1224" y1="108.4" y2="108.4"/>
+<text class="muted" x="656" y="112.4" font-size="11" text-anchor="end">top 0.1%</text>
+<line class="gridd" x1="664" x2="1224" y1="189.6" y2="189.6"/>
+<text class="muted" x="656" y="193.6" font-size="11" text-anchor="end">top 1%</text>
+<line class="gridd" x1="664" x2="1224" y1="270.8" y2="270.8"/>
+<text class="muted" x="656" y="274.8" font-size="11" text-anchor="end">top 10%</text>
+<line class="grid" x1="664" x2="1224" y1="352.0" y2="352.0"/>
+<text class="muted" x="656" y="356.0" font-size="11" text-anchor="end">100%</text>
+<line class="axon" x1="644" x2="1236" y1="404" y2="404"/>
+<rect class="myelin" x="685.1" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="760.8" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="836.5" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="912.2" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="987.8" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="1063.5" y="394" width="63.7" height="20" rx="10"/>
+<rect class="myelin" x="1139.2" y="394" width="63.7" height="20" rx="10"/>
+<text class="muted" x="679.1" y="436" font-size="11.5" text-anchor="middle">2005</text>
+<text class="muted" x="754.8" y="436" font-size="11.5" text-anchor="middle">2008</text>
+<text class="muted" x="830.5" y="436" font-size="11.5" text-anchor="middle">2011</text>
+<text class="muted" x="906.2" y="436" font-size="11.5" text-anchor="middle">2014</text>
+<text class="muted" x="981.8" y="436" font-size="11.5" text-anchor="middle">2017</text>
+<text class="muted" x="1057.5" y="436" font-size="11.5" text-anchor="middle">2020</text>
+<text class="muted" x="1133.2" y="436" font-size="11.5" text-anchor="middle">2023</text>
+<text class="muted" x="1208.9" y="436" font-size="11.5" text-anchor="middle">2026</text>
+<text class="muted" x="1236" y="456" font-size="11" text-anchor="end">myelinated axon as the time axis; nodes of Ranvier at the cutoff years</text>
+<circle class="d0 pop g0" cx="679.1" cy="271.5" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g1" cx="679.1" cy="299.7" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g2" cx="704.4" cy="248.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g3" cx="729.6" cy="282.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g4" cx="729.6" cy="289.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g5" cx="729.6" cy="318.1" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g6" cx="729.6" cy="326.2" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g7" cx="729.6" cy="340.8" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g8" cx="754.8" cy="261.1" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g9" cx="780.0" cy="219.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g10" cx="780.0" cy="284.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g11" cx="780.0" cy="291.2" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g12" cx="780.0" cy="304.9" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g13" cx="805.3" cy="261.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g14" cx="805.3" cy="272.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g15" cx="805.3" cy="304.0" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g16" cx="830.5" cy="84.0" r="5.5" opacity="0.92"/>
+<circle class="d1 pop g17" cx="830.5" cy="188.6" r="5.5" opacity="0.92"/>
+<circle class="d10 pop g18" cx="830.5" cy="235.2" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g19" cx="830.5" cy="289.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g20" cx="830.5" cy="333.3" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g21" cx="855.7" cy="125.0" r="5.5" opacity="0.92"/>
+<circle class="d10 pop g22" cx="855.7" cy="206.2" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g23" cx="855.7" cy="267.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g24" cx="855.7" cy="277.2" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g25" cx="855.7" cy="286.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g26" cx="855.7" cy="303.7" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g27" cx="855.7" cy="322.7" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g28" cx="855.7" cy="327.5" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g29" cx="855.7" cy="342.6" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g30" cx="880.9" cy="225.0" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g31" cx="880.9" cy="260.5" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g32" cx="880.9" cy="268.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g33" cx="880.9" cy="287.5" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g34" cx="880.9" cy="289.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g35" cx="880.9" cy="307.7" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g36" cx="880.9" cy="316.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g37" cx="880.9" cy="318.3" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g38" cx="906.2" cy="202.5" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g39" cx="906.2" cy="221.1" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g40" cx="906.2" cy="243.5" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g41" cx="906.2" cy="265.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g42" cx="906.2" cy="316.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g43" cx="906.2" cy="329.8" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g44" cx="931.4" cy="125.0" r="5.5" opacity="0.92"/>
+<circle class="d0 pop g45" cx="931.4" cy="297.4" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g46" cx="931.4" cy="302.8" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g47" cx="931.4" cy="326.9" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g48" cx="931.4" cy="333.2" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g49" cx="956.6" cy="142.1" r="5.5" opacity="0.92"/>
+<circle class="d10 pop g50" cx="956.6" cy="244.0" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g51" cx="981.8" cy="247.1" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g52" cx="981.8" cy="310.5" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g53" cx="1007.1" cy="111.8" r="5.5" opacity="0.92"/>
+<circle class="d1 pop g54" cx="1032.3" cy="142.1" r="5.5" opacity="0.92"/>
+<circle class="d0 pop g55" cx="1032.3" cy="309.6" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g56" cx="1032.3" cy="343.2" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g57" cx="1057.5" cy="255.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g58" cx="1057.5" cy="291.0" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g59" cx="1082.7" cy="100.6" r="5.5" opacity="0.92"/>
+<circle class="d0 pop g60" cx="1082.7" cy="337.3" r="4.5" opacity="0.92"/>
+<circle class="d1 pop g61" cx="1108.0" cy="173.3" r="5.5" opacity="0.92"/>
+<circle class="d0 pop g62" cx="1108.0" cy="310.4" r="4.5" opacity="0.92"/>
+<circle class="d10 pop g63" cx="1133.2" cy="256.5" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g64" cx="1158.4" cy="301.9" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g65" cx="1158.4" cy="312.0" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g66" cx="1158.4" cy="318.7" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g67" cx="1183.6" cy="292.8" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g68" cx="1183.6" cy="334.9" r="4.5" opacity="0.92"/>
+<circle class="d0 pop g69" cx="1208.9" cy="304.1" r="4.5" opacity="0.92"/>
+<text class="lab g16" x="838.5" y="88.0" font-size="11.5">DYNC1H1</text>
+<text class="lab g17" x="838.5" y="192.6" font-size="11.5">KIF1A</text>
+<text class="lab g21" x="863.7" y="129.0" font-size="11.5">DST</text>
+<text class="lab g44" x="939.4" y="129.0" font-size="11.5">DRP2</text>
+<text class="lab g49" x="964.6" y="146.1" font-size="11.5">NEFH</text>
+<text class="lab g53" x="1015.1" y="115.8" font-size="11.5">ATP1A1</text>
+<text class="lab g54" x="1040.3" y="146.1" font-size="11.5">SPTAN1</text>
+<text class="lab g59" x="1090.7" y="104.6" font-size="11.5">CADM3</text>
+<text class="lab g61" x="1116.0" y="177.3" font-size="11.5">SARS1</text>
+<g class="pulse" opacity="0" transform="translate(529.7 0)"><line class="gridd" x1="679.1" x2="679.1" y1="78" y2="392" opacity="0.9"/><circle class="glow" cx="679.1" cy="404" r="13" opacity="0.25"/><circle class="glow" cx="679.1" cy="404" r="6.5"/></g>
+<circle class="ring pop r0" cx="679.1" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r1" cx="754.8" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r2" cx="830.5" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r3" cx="906.2" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r4" cx="981.8" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r5" cx="1057.5" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r6" cx="1133.2" cy="404" r="8" opacity="0"/>
+<circle class="ring pop r7" cx="1208.9" cy="404" r="8" opacity="0"/>
+<g class="cap"><text class="ink" x="1224" y="376" font-size="13" text-anchor="end"><tspan class="lab">9 of 70</tspan> genes were in the top 1% of the genome in the year they were reported</text></g>
+</svg>
